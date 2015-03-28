@@ -1,0 +1,84 @@
+body {
+  text-align: center;
+  background-color:#EEEEEE;
+  font-family: 'Noto Sans', 'sans-serif', 'Microsoft Jhenghei';
+}
+
+.main.segment {
+  max-width:1024px;
+  margin: 0px auto;
+}
+
+.head.segment {
+  text-align: left;
+}
+
+.plot {
+  max-width:800px;
+  margin: 0px auto;
+}
+
+line {
+  stroke: #fff;
+}
+
+.tooltip.segment {
+  text-align: left;
+}
+
+.control.panels {
+  max-width:800px;
+  min-height:50px;
+  margin: 0px auto;
+}
+
+.control.panel {
+  max-width:350px;
+  min-height:50px;
+  display:inline-block;
+}
+
+.control.button {
+  float:left;
+}
+
+.control.progress {
+  float:left;
+  min-width:200px;
+  margin-left:20px;
+  margin-right:20px;
+  margin-top:5px;
+}
+
+.intro.segment {
+  float: right;
+  text-align: left;
+}
+
+.table {
+  width:100%;
+}
+
+.fb-plugins {
+  margin: 0px auto;
+}
+
+.fb-plugin {
+  display: block;
+  max-width:450px;
+  margin: 0px auto;
+}
+
+.fb-comments, .fb-comments iframe[style] {width: 100% !important;}
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+    width: 100% !important;
+}
+
+.navigation {
+  text-align:left;
+  font-size: 17px;
+}
+
+.switch.checkbox {
+  float:right;
+}

@@ -1,0 +1,1 @@
+# TaiwanStat long term data
