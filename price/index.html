@@ -63,7 +63,7 @@
             <div class="bar"></div>
             <div class="year label"></div>
           </div>
-          <div class="ui compact icon year left control button">
+          <div class="ui compact icon year right control button">
             <i class="year caret right icon"></i>
           </div>
         </div>
@@ -282,7 +282,7 @@
         $('.year.label').text(year + '年');
         $('.month.label').text(month + '月');
 
-        $('.year.caret.left').on('click', function(){
+        $('.year.left.button').on('click', function(){
           if(year-1 >= parseInt(years[0]))
             year = year-1;
           $('.year.label').text(year + '年');
@@ -292,7 +292,7 @@
           updateTable(complicated, year.toString(), month);
         })
 
-        $('.year.caret.right').on('click', function(){
+        $('.year.right.button').on('click', function(){
           if(year+1 <= parseInt(years[years.length-1]))
             year = year+1;
 
@@ -307,7 +307,7 @@
           updateTable(complicated, year.toString(), month);
         })
 
-        $('.month.caret.left').on('click', function(){
+        $('.month.left.button').on('click', function(){
           if(month-1 >= 1)
             month = month-1;
           else if(year > parseInt(years[0])){
@@ -323,7 +323,7 @@
           updateTable(complicated, year.toString(), month);
         })
 
-        $('.month.caret.right').on('click', function(){
+        $('.month.right.button').on('click', function(){
           if(year == parseInt(years[years.length-1]) && month < parseInt(Object.keys(data[year]).length))
             month = month + 1;
           else if(year != parseInt(years[years.length-1]) && month+1 <= 12)
