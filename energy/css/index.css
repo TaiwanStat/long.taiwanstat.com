@@ -62,3 +62,7 @@ body {
 .breadcrumb {
   margin-bottom:2px !important;
 }
+
+.left.label {
+  float:left;
+}

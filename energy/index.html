@@ -60,13 +60,13 @@
               <div class="ui curSelect small statistics">
                 <div class="statistic">
                   <div class="raw value"></div>
-                  <div class="label">
+                  <div class="left label">
                     百萬度
                   </div>
                 </div>
                 <div class="statistic">
                   <div class="percent value"></div>
-                  <div class="label">
+                  <div class="left label">
                     所佔百分率(%)
                   </div>
                 </div>
@@ -90,8 +90,8 @@
               <thead>
                 <tr>
                   <th>項目</th>
-                  <th>原始值(百萬度)</th>
-                  <th>比例(%)</th>
+                  <th>原始值</th>
+                  <th>比例</th>
                 </tr>
               </thead>
               <tbody class="piechart tbody">
@@ -244,11 +244,21 @@
 
         var ihtml =
           '<tr><td><div class="ui header name tno'+k+'">'+curItem[k]['name']+'</div></td>' +
-          '<td><div class="ui header val tno'+k+'">'+value+'</div></td>' +
-          '<td><div class="ui header mean tno'+k+'">'+mean+'</div></td></tr>';
+          '<td><div class="ui mini statistic">'+
+            '<div class="value">'+value+'</div>'+
+            '<div class="left label">百萬度</div></div></td>'+
+          '<td><div class="ui mini horizontal statistic">'+
+            '<div class="mean tno'+k+' value">'+mean+'</div>'+
+            '<div class="label">%</div></div></td></tr>';
 
         html += ihtml;
       }
+
+      if( screen.width <= 480 ) {
+        html = html.replace(/mini statistic/g, 'mini horizontal statistic');
+        html = html.replace(/left label/g, 'label');
+      }
+      console.log(html);
 
       if(curItem[highlight].children == undefined)
         $('.curSelect.button').addClass('disabled');
