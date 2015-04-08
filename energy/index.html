@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
+<html>
+  <bead>
+    <title>台灣發電量統計</title>
+    <meta charset="utf-8" />
+    <link href="css/semantic.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/index.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet" type="text/css">
+
+  </head>
+  <body>
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/semantic.min.js" type="text/javascript"></script> 
+    <script src="js/d3.min.js" type="text/javascript"></script>
+    <script src="js/visual.js" type="text/javascript"></script> 
+
+    <div class="ui basic main segment">
+      <div class="ui head basic segment">
+        <h1 class="ui header">台灣發電量統計</h1>
+      </div>
+
+      <div class="ui head basic segment">
+        <h2 class="ui header">時間</h2>
+      </div>
+
+      <div class="control panels">
+        <div class="year control panel">
+          <div class="ui compact icon year control left button">
+            <i class="year caret left icon"></i>
+          </div>
+
+          <div class="ui horizontal year control statistic">
+            <div class="value"></div>
+            <div class="label">年</div>
+          </div>
+
+          <div class="ui compact icon year right control button">
+            <i class="year caret right icon"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui segment">
+        <div class="ui stackable grid">
+
+          <div class="ten wide column">
+            <div class="plot"></div>
+          </div>
+
+          <div class="six wide column">
+
+            <div class="ui basic curSelect segment">
+              <div class="ui breadcrumb">
+                <div class="active section">全部</div>
+                <i class="right chevron icon divider"></i>
+              </div>
+
+              <h1 class="ui curSelect header"></h1>
+
+              <div class="ui curSelect small statistics">
+                <div class="statistic">
+                  <div class="raw value"></div>
+                  <div class="label">
+                    百萬度
+                  </div>
+                </div>
+                <div class="statistic">
+                  <div class="percent value"></div>
+                  <div class="label">
+                    所佔百分率(%)
+                  </div>
+                </div>
+
+              </div>
+              <div class="ui curSelect teal button">詳細</div>
+              <br><br><br>
+              *點擊圓餅圖來顯示其他部分
+            </div>
+
+            <h2 class="ui header">合計</h2>
+
+            <div class="ui horizontal total small statistic">
+              <div class="value"></div>
+              <div class="label">
+                百萬度
+              </div>
+            </div>
+
+            <table class="ui table">
+              <thead>
+                <tr>
+                  <th>項目</th>
+                  <th>原始值(百萬度)</th>
+                  <th>比例(%)</th>
+                </tr>
+              </thead>
+              <tbody class="piechart tbody">
+              </tbody>
+            </table>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+
+    var highlight = 0;
+    var curYearIndex;
+    var curItem;
+    var parentStack = [];
+    var parentNameStack = [];
+    var years = [];
+
+    d3.csv("data/data.csv", function(data) {
+
+      for(var k in Object.keys(data[0])){
+        var y = parseInt(Object.keys(data[0])[k]);
+        if(!isNaN(y))
+          years.push(y)
+      }
+
+      curYearIndex = years.length-1;
+
+      curItem = preProcess(data);
+
+      buttonInit();
+
+      updateTable();
+
+      piechart(curItem, years[curYearIndex]);
+
+    });
+
+    function buttonInit() {
+      $('.year.control .value').html('<i class="small calendar outline icon"></i>' + years[curYearIndex])
+
+      $('.year.left.button').on('click', function(){
+        if(curYearIndex == 0)
+          curYearIndex = years.length-1;
+        else
+          curYearIndex = curYearIndex - 1;
+        $('.year.control .value').html('<i class="small calendar outline icon"></i>' + years[curYearIndex])
+        updateTable();
+        updatePie(curItem, years[curYearIndex]);
+      })
+      $('.year.right.button').on('click', function(){
+        if(curYearIndex == years.length-1)
+          curYearIndex = 0;
+        else
+          curYearIndex = curYearIndex + 1;
+        $('.year.control .value').html('<i class="small calendar outline icon"></i>' + years[curYearIndex])
+        updateTable();
+        updatePie(curItem, years[curYearIndex]);
+      })
+
+      $('.curSelect.button').on('click', function() {
+        if(curItem[highlight].children != undefined) {
+          parentStack.push(curItem);
+          parentNameStack.push(curItem[highlight].name);
+          curItem = curItem[highlight].children;
+          highlight = 0;
+          updateTable();
+          updatePie(curItem, years[curYearIndex]);
+        }
+
+        if(curItem[highlight].children == undefined)
+          $(this).addClass('disabled');
+        else if(curItem[highlight][years[curYearIndex]] == 0)
+          $(this).addClass('disabled');
+        else
+          $(this).removeClass('disabled');
+
+        updateBreadcrumb();
+      })
+    }
+
+    function updateBreadcrumb() {
+      var html = ''
+      if(parentNameStack.length == 0){
+        html = '<div class="active section">全部</div><i class="right chevron icon divider"></i>';
+        $('.breadcrumb').html(html);
+      }
+      else {
+        html = '<a class="section" onclick="toBreadcrumb('+0+')">全部</a><i class="right chevron icon divider"></i>'
+        for(var i=0; i<parentNameStack.length; i++) {
+          // console.log(parentStack[i]);
+          if(i != parentNameStack.length-1){
+            html = html + '<a class="section" onclick="toBreadcrumb('+(i+1)+')">' +
+              parentNameStack[i] + '</a><i class="right chevron icon divider"></i>';
+          }
+          else{
+            html += '<div class="active section" onclick="toBreadcrumb('+(i+1)+'")>' +
+              parentNameStack[i] + '</div><i class="right chevron icon divider"></i>';
+          }
+        }
+        $('.breadcrumb').html(html);
+      }
+    }
+
+    function updateTable() {
+      var total = 0;
+      var validCount = 0;
+      var y = years[curYearIndex];
+
+      for(var k in curItem){
+        var o = curItem[k];
+        var value = o[y];
+
+        if(typeof(value) == 'string')
+          value = value.replace(',','');
+
+        if(!isNaN(parseFloat(value))){
+          value = parseFloat(value);
+          curItem[k][y] = value;
+          total += value;
+          validCount += 1;
+        }
+        else {
+          value = 0;
+          curItem[k][y] = value;
+        }
+      }
+
+      if(highlight > validCount-1)
+        hightlight = 0;
+
+      $('.total.statistic .value').text(Math.round(total*100)/100);
+
+      var html = ''
+      for(var k in curItem){
+        var value = curItem[k][y];
+        var mean = value;
+
+        if(!isNaN(value)){
+          mean = curItem[k][y]/total;
+          mean = Math.round(mean*10000)/100;
+        }
+
+        if(isNaN(mean))
+          mean = 0;
+
+        var ihtml =
+          '<tr><td><div class="ui header name tno'+k+'">'+curItem[k]['name']+'</div></td>' +
+          '<td><div class="ui header val tno'+k+'">'+value+'</div></td>' +
+          '<td><div class="ui header mean tno'+k+'">'+mean+'</div></td></tr>';
+
+        html += ihtml;
+      }
+
+      if(curItem[highlight].children == undefined)
+        $('.curSelect.button').addClass('disabled');
+      else if(curItem[highlight][y] == 0)
+        $('.curSelect.button').addClass('disabled');
+      else
+        $('.curSelect.button').removeClass('disabled');
+
+      $('.piechart.tbody').html(html);
+
+    }
+
+    function preProcess(data) {
+      for(var i=0; i<data.length; i++){
+        var d = data[i];
+        for(var j=1; j<5; j++){
+          if(d['level'+j] != '')
+            d.level = j
+        }
+        d.name = d['level'+d.level];
+      }
+
+      var i = 0;
+      var level = 4;
+
+      while(level > 1){
+
+        if(i != 0){
+          if(data[i].level == level && data[i].level == data[i-1].level+1){
+            if(data[i-1].children == undefined)
+              data[i-1].children = []
+            data[i-1].children.push(data[i]);
+            data.splice(i, 1);
+            i -= 1;
+          }
+        }
+
+        i++;
+        if(i == data.length){
+          i = 0;
+          level -= 1;
+        }
+      }
+
+      return data;
+    }
+
+    function toBreadcrumb(i) {
+      curItem = parentStack[i];
+      highlight = 0;
+      updateTable();
+      updatePie(curItem, years[curYearIndex]);
+      while(parentStack.length > i){
+        parentStack.pop();
+        parentNameStack.pop();
+      }
+      updateBreadcrumb();
+    }
+
+    </script>
+
+  </body>
+</html>
