@@ -66,3 +66,7 @@ body {
 .left.label {
   float:left;
 }
+
+.note {
+  text-align:left;
+}
