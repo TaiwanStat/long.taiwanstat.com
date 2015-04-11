@@ -1,0 +1,26 @@
+{
+    "data": {
+        "page": [
+            {
+                "title": "台灣用電來源結構分析",
+                "link": "./energy/",
+                "img": "images/energy.png",
+                "description": "台灣用電來源結構分析"
+            },
+            {
+                "title": "pm2.5 2013 年各關測站資料",
+                "link": "./pm2.5_map/",
+                "img": "images/pm2.5.png",
+                "description": "pm2.5 2013 年各關測站資料"
+            },
+            {
+                "title": "台灣物價指數變化",
+                "link": "./price",
+                "img": "images/price.png",
+                "description": "2010 到 2015 年台灣物價指數變化"
+            }
+        ]
+    }, 
+    "layout": "./index.hbs", 
+    "filename": "index.html"
+}
