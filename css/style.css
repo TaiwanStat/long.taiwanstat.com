@@ -27,3 +27,6 @@ body, html {
 .btn-sites {
     margin: 10px;
 }
+.btn-sites .button{
+    margin: 10px;
+}
