@@ -10,11 +10,12 @@
     <meta property="og:title" content="台灣物價指數變化">
     <meta property="og:site_name" content="台灣物價指數變化">
     <meta property="og:description" content="台灣物價指數變化">
-    <meta property="og:image" content="http://i.imgur.com/zIXU42K.png">
+    <meta property="og:image" content="http://i.imgur.com/04AFcnA.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="300">
     <meta property="og:image:height" content="300">
     <link href="//fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
   </head>
 
   <body>
@@ -24,27 +25,16 @@
     <script src="js/d3.min.js" type="text/javascript"></script> 
     <script src="js/d3-tip.js"></script>
     <script src="js/visual.js" type="text/javascript"></script> 
+    
 
     <div class="ui basic main segment">
       <div class="ui head basic segment">
         <h1 class="ui header">台灣物價指數變化</h1>
       </div>
 
-      <nav id="menu" class="navigation">
-        <ul>
-          <li><a href="http://water.taiwanstat.com/">台灣水庫即時水情</a></li>
-        </ul>
-        <ul>
-          <li><a href="http://real.taiwanstat.com/air/">台灣即時空氣品質指標</a></li>
-        </ul>
-        <ul>
-          <li><a href="http://real.taiwanstat.com/power/">台灣即時用電資訊</a></li>
-        </ul>
-      </nav>
-
       <div class="ui stackable two column grid">
         <div class="column">
-          <div class="fb-like-box" data-href="https://www.facebook.com/statTaiwan?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+          <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
         </div>
         <div class="column">
           <div class="fb-like" data-href="http://long.taiwanstat.com/price/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
@@ -363,6 +353,8 @@
       }
       (document, 'script', 'facebook-jssdk'));
     </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/headroom/0.7.0/headroom.min.js"></script>
+    <script src="/js/main.js"></script>
   </body>
 
 </html>

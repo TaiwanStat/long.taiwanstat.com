@@ -5,7 +5,7 @@
   <meta property="og:title" content="台灣各觀測站 103 年 PM2.5 歷史資訊">
   <meta property="og:site_name" content="台灣各觀測站 103 年 PM2.5 歷史資訊">
   <meta property="og:description" content="台灣各觀測站 103 年 PM2.5 歷史資訊">
-  <meta property="og:image" content="http://i.imgur.com/lBLHfnQ.jpg">
+  <meta property="og:image" content="http://i.imgur.com/04AFcnA.png">
   <meta property="og:image:type" content="image/jpg">
   <meta property="og:image:width" content="300">
   <meta property="og:image:height" content="300">
@@ -48,60 +48,66 @@
       color: #FFF;
     }
 
+    .container {
+      margin: 20px;
+    }
+
 
   </style>
+  <link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
   <link rel="stylesheet" href="./css/tipsy.css" type="text/css" />
 </head>
 <body>
-  <h2>台灣 103 年各觀測站 PM2.5 狀況</h2>
-  <h3>
-    快速選擇空品區
-    <select id="select-area">
-      <option value="中部空品區">中部空品區</option>
-      <option value="北部空品區">北部空品區</option>
-      <option value="宜蘭空品區">宜蘭空品區</option>
-      <option value="竹苗空品區">竹苗空品區</option>
-      <option value="花東空品區">花東空品區</option>
-      <option value="離島監測站">離島監測站</option>
-      <option value="雲嘉南空品區">雲嘉南空品區</option>
-    </select>
-  </h3>
+  <div class="container">
+    <h2>台灣 103 年各觀測站 PM2.5 狀況</h2>
 
-  <a href="http://real.taiwanstat.com/pm2.5">
-      <div class="ui basic button">台灣即時空污 PM2.5</div>
-  </a>
-  <a href="http://real.taiwanstat.com/air">
-      <div class="ui basic button">台灣即時空污 PSI</div>
-  </a>
+    <h3>相關連結：</h3>
+              
+    <a href="http://real.taiwanstat.com/pm2.5">
+        <div class="ui basic button">台灣即時空污 PM2.5</div>
+    </a>
+    <a href="http://real.taiwanstat.com/air">
+        <div class="ui basic button">台灣即時空污 PSI</div>
+    </a>
+    
+    <hr>
 
-  <nav id="menu" class="navigation">
-    <ul>
-      <li><a href="http://water.taiwanstat.com">台灣水庫即時水情</li>
-      <li><a href="http://real.taiwanstat.com/power/">台灣即時用電資訊</a></li>
-      <li><a href="http://price.taiwanstat.com/">台灣物價指數變化</a></li>
-    </ul>
-  </nav>
+    <div class="fb-plugin">
+      <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+      <div class="fb-like" data-href="http://long.taiwanstat.com/pm2.5_map/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+    </div>
 
-  <div class="remarker">
-    <p>備註：</p>
-    <ol>
-      <li>
-        每隔為一日，每日 24 小時資料做平均 （滑鼠移至每隔，可以看到當日的日期及值）
-      </li>
-      <li>
-        空污指標使用美國標準
-      </li>
-      <li>
-        資料來源：行政院環保署
-      </li>
-    </ol>
-  </div>
+    <h3>
+      快速選擇空品區
+      <select id="select-area">
+        <option value="中部空品區">中部空品區</option>
+        <option value="北部空品區">北部空品區</option>
+        <option value="宜蘭空品區">宜蘭空品區</option>
+        <option value="竹苗空品區">竹苗空品區</option>
+        <option value="花東空品區">花東空品區</option>
+        <option value="離島監測站">離島監測站</option>
+        <option value="雲嘉南空品區">雲嘉南空品區</option>
+      </select>
+    </h3>
 
-  <div class="fb-plugin">
-    <div class="fb-like-box" data-href="https://www.facebook.com/statTaiwan?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
-    <div class="fb-like" data-href="http://long.taiwanstat.com/pm2.5_map/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-  </div>
-  <div id="domain">
+    <div id="domain">
+    </div>
+
+    <div class="remarker">
+      <p>備註：</p>
+      <ol>
+        <li>
+          每隔為一日，每日 24 小時資料做平均 （滑鼠移至每隔，可以看到當日的日期及值）
+        </li>
+        <li>
+          空污指標使用美國標準
+        </li>
+        <li>
+          資料來源：行政院環保署
+        </li>
+      </ol>
+    </div>
   </div>
   <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -262,4 +268,8 @@
       fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
   </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/bower_components/semantic/dist/semantic.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/headroom/0.7.0/headroom.min.js"></script>
+  <script src="/js/main.js"></script>
 </body>

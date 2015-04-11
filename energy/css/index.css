@@ -1,5 +1,4 @@
 body {
-  text-align: center;
   background-color:#EEEEEE;
   font-family: 'Noto Sans', 'sans-serif', 'Microsoft Jhenghei';
 }
@@ -17,6 +16,7 @@ body {
   max-width:800px;
   min-height:50px;
   margin: 0px auto;
+  text-align: center;
 }
 
 .control.panel {
