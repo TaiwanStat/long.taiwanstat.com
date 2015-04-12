@@ -8,10 +8,10 @@
                 "description": "台灣用電來源結構分析"
             },
             {
-                "title": "pm2.5 2013 年各關測站資料",
+                "title": "pm2.5 2013 年各觀測站資料",
                 "link": "./pm2.5_map/",
                 "img": "images/pm2.5.png",
-                "description": "pm2.5 2013 年各關測站資料"
+                "description": "pm2.5 2013 年各觀測站資料"
             },
             {
                 "title": "台灣物價指數變化",
