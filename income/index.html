@@ -42,6 +42,7 @@
       </div>
     </div>
 
+
     <div class="ui head basic segment">
       <h1 class="ui header">時間</h1>
     </div>
@@ -68,22 +69,31 @@
       <div class="ui stackable grid">
         <div class="ten wide column">
           <div class="plot"></div>
+          <br>
+          <div class="note">
+            <ul>
+              <li class='hightlight'>點擊圖中圓形可以對其放大，並顯示其資料。</li>
+              <li>圖中圓形大小代表各族群所得佔總所得的比例。</li>
+              <li>WTID提供之資料為1977至2013。</li>
+              <li class="data-src">資料來源：<a href="http://topincomes.parisschoolofeconomics.eu/">WTID</a></li>
+            </ul>
+          </div>
         </div>
 
         <div class="six wide column">
-          <h1 class="ui focus header"></h1>
+          <h1 class="ui focus green header"></h1>
 
           <div class="ui focus small statistics">
 
-            <h3 class="ui attribute header">總年收入值</h3>
+            <h3 class="ui attribute blue header">總年收入值</h3>
             <div class="ui horizontal statistic">
               <div class="raw value"></div>
-              <div class="label">
-                萬元(新臺幣)
+              <div class="raw label">
+                百萬元(新臺幣)
               </div>
             </div><br><br><br>
 
-            <h3 class="ui attribute header">每人平均年收入</h3>
+            <h3 class="ui attribute yellow header">每人平均年收入</h3>
             <div class="ui horizontal statistic">
               <div class="mean value"></div>
               <div class="label">
@@ -91,7 +101,7 @@
               </div>
             </div><br><br><br>
 
-            <h3 class="ui attribute header">所得佔全部比例</h3>
+            <h3 class="ui attribute red header">所得佔全部比例</h3>
             <div class="ui horizontal statistic">
               <div class="percent value"></div>
               <div class="label">
@@ -111,16 +121,6 @@
               <tbody class="tbody">
               </tbody>
             </table>
-
-            <br>
-            <div class="note">
-              <ul>
-                <li class="data-src">資料來源：<a href="http://topincomes.parisschoolofeconomics.eu/">WTID</a></li>
-                <li>圖中圓形大小代表各族群所得佔總所得的比例。</li>
-                <li>點擊圖中圓形可以對其放大，並顯示其資料。</li>
-                <li>WTID提供之資料為1977至2013。</li>
-              </ul>
-            </div>
 
           </div>
 
@@ -279,5 +279,5 @@
     }
     (document, 'script', 'facebook-jssdk'));
   </script>
-  
+
 </body>

@@ -1,7 +1,7 @@
 var margin = 20,
     diameter = 919;
 
-var trueWidth = $('.plot').parent().width()*0.95;
+var trueWidth = $('.plot').parent().width()*0.9;
 
 var color = d3.scale.linear()
     .domain([0, 6])
@@ -191,22 +191,22 @@ function updateTable(d) {
     percent = 100;
   }
   else if(d.name == '前10%') {
-    totalV = parseFloat(curData['Number of tax units'])* parseFloat(curData['Top 10% average income']/10);
+    totalV = parseFloat(curData['Average income per tax unit'])* parseFloat(curData['Number of tax units'])* parseFloat(curData['Top 10% income share'])/100;
     meanV = parseFloat(curData['Top 10% average income']);
     percent = parseFloat(curData['Top 10% income share']);
   }
   else if(d.name == '前5%') {
-    totalV = parseFloat(curData['Number of tax units'])* parseFloat(curData['Top 5% average income']/10);
+    totalV = parseFloat(curData['Average income per tax unit'])* parseFloat(curData['Number of tax units'])* parseFloat(curData['Top 5% income share'])/100;
     meanV = parseFloat(curData['Top 5% average income']);
     percent = parseFloat(curData['Top 5% income share']);
   }
   else if(d.name == '前1%') {
-    totalV = parseFloat(curData['Number of tax units'])* parseFloat(curData['Top 1% average income']/10);
+    totalV = parseFloat(curData['Average income per tax unit'])* parseFloat(curData['Number of tax units'])* parseFloat(curData['Top 1% income share'])/100;
     meanV = parseFloat(curData['Top 1% average income']);
     percent = parseFloat(curData['Top 1% income share']);
   }
 
-  $('.raw.value').text(Math.round(totalV/10));
+  $('.raw.value').text(Math.round(totalV));
   $('.mean.value').text(Math.round(meanV/10));
   $('.percent.value').text(percent);
 
@@ -239,7 +239,7 @@ function updateTable(d) {
     }
     else if(c.name == '前0.1-1%') {
       cp = parseFloat(curData['Top 1% income share'])-parseFloat(curData['Top 0.1-0.01% income share'])-parseFloat(curData['Top 0.01% income share']);
-      cmv = parseFloat(curData['Average income per tax unit'])* parseFloat(curData['Number of tax units']) *cp/100/ (parseFloat(curData['Number of tax units'])* 0.009);
+      cmv = parseFloat(curData['Average income per tax unit'])*cp/100/ 0.009;
     }
     else if(c.name == '前0.01-0.1%') {
       cmv = parseFloat(curData['Top 0.1-0.01% average income']);
@@ -262,7 +262,7 @@ function updateTable(d) {
       cp = parseFloat(curData['Top 1% income share']);
     }
 
-    thtml += '<tr><td>' + c.name + '</td><td>' + Math.round(cmv/10) + '萬元</td><td>' + Math.round(cp*100)/100 + '%</td></tr>';
+    thtml += '<tr><td class="positive">' + c.name + '</td><td class="warning">' + Math.round(cmv/10) + '萬元</td><td class="negative">' + Math.round(cp*100)/100 + '%</td></tr>';
 
   }
 
