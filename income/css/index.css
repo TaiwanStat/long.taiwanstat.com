@@ -1,0 +1,62 @@
+.main.segment {
+  max-width:1024px;
+  margin: 0px auto;
+}
+
+.control.panels {
+  max-width:800px;
+  min-height:50px;
+  margin: 0px auto;
+  text-align: center;
+}
+
+.control.panel {
+  max-width:350px;
+  min-height:50px;
+  display:inline-block;
+}
+
+.control.button {
+  float:left;
+  margin-top:5px;
+  margin-left:5px;
+  margin-right:5px;
+}
+
+.control.statistic {
+  float:left;
+  max-width:250px!important;
+}
+
+.note {
+  text-align:left;
+}
+
+.note ul {
+  padding-left:10px;
+}
+
+.statistic {
+  /*margin-left:5px !important;*/
+  margin-right:10px !important;
+  margin-bottom:5px !important;
+}
+
+.yearDetail .head.segment {
+  margin: 0px;
+  padding-bottom: 0px;
+}
+
+.plot {
+  text-align: center;
+}
+
+.focus.header {
+  margin-left: -14px;
+}
+
+.attribute.header {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: "Yu Gothic", SimHei;
+}
