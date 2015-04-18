@@ -18,6 +18,12 @@
                 "link": "./price",
                 "img": "images/price.png",
                 "description": "2010 到 2015 年台灣物價指數變化"
+            },
+            {
+                "title": "台灣富人所得統計(1977-2013)",
+                "link": "./income",
+                "img": "images/income.png",
+                "description": "台灣富人所得統計(1977-2013)"
             }
         ]
     }, 
