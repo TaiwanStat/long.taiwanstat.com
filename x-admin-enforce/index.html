@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.valueTip {
+  padding: 5px;
+  background-color: #000;
+  color: #FFF;
+}
+
+.totalVal {
+  color: red;
+}
+
+</style>
+<body>
+<h1> 行政執行署各分署行政執行案件徵起金額 </h1>
+
+<h2>92 年到 102 年共有 <span class="totalVal"></span> 元的徵起金額 </h2>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="./zhutil.min.js"></script>
+<script>
+var all = 0;
+var margin = {top: 20, right: 40, bottom: 30, left: 80},
+    width = 1000 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .rangeRound([height, 0]);
+
+var color = d3.scale.ordinal()
+    .range(["#d0743c", "#ff8c00", "#7b6888", "#6b486b"]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(function(d) { return d3.formatPrefix(d).scale(d) + "0 億"; });
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+var tooltip = d3.select("body")
+  .append("div")
+  .attr("class", "valueTip")
+  .style("position", "absolute")
+  .style("z-index", "10")
+  .style("visibility", "hidden")
+
+function rmComma(num) {
+  num = num.replace(/,/g, '');
+  num = num + "000";
+  return num;
+}
+
+d3.csv("./admin-enforcement-account.csv", function(d) {
+    return {
+      "時間": d["時間"],
+      "總計": +rmComma(d["總計"]),
+      "財稅案件": +rmComma(d["財稅案件"]) ,
+      "健保案件": +rmComma(d["健保案件"]),
+      "罰鍰案件": +rmComma(d["罰鍰案件"]),
+      "費用案件": +rmComma(d["費用案件"])
+    }
+  }, function(error, data) {
+  data.pop();
+  color.domain(d3.keys(data[0]).filter(function(key) { return (key !== "時間" && key !== "總計" && key !== "年底待執行金額"); }));
+  data.forEach(function(d) {
+    var y0 = 0;
+    all += d["總計"];
+    d.amount = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.amount[d.amount.length - 1].y1;
+  });
+
+  data.sort(function(a, b) { return b.total - a.total; });
+
+  x.domain(data.map(function(d) { return d["時間"]; }));
+  y.domain([0, d3.max(data, function(d) { return d.total; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("transform", "translate(-10, -10)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("金額");
+
+  var amount = svg.selectAll(".amount")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x(d["時間"]) + ",0)"; });
+
+  amount.selectAll("rect")
+      .data(function(d) { return d.amount; })
+    .enter().append("rect")
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.y1); })
+      .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+      .style("fill", function(d) { return color(d.name); })
+      .on("mouseover", function(d){
+        d3.selectAll(".valueTip")
+          .text(d.name + ": 共 " + zhutil.annotate(d.y1 - d.y0) + " 元");
+
+        return tooltip.style("visibility", "visible");})
+      .on("mousemove", function(){ return tooltip.style("top",
+          (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+      .on("mouseout", function(){ return tooltip.style("visibility", "hidden");});
+
+  var legend = svg.selectAll(".legend")
+      .data(color.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend.append("rect")
+      .attr("x", width - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+  
+  d3.select(".totalVal").text(zhutil.annotate(all))
+
+
+});
+
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38980669-1', 'auto');
+  ga('send', 'pageview');
+</script>

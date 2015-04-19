@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.arc path {
+  stroke: #fff;
+}
+
+polyline{
+  opacity: .3;
+  stroke: black;
+  stroke-width: 2px;
+  fill: none;
+}
+
+#id {
+  color: red;
+}
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.js"></script>
+<h1>Taiwan <span id="year"></span> patients with different cancer rates</h1>
+<button id="restart">Restart</button>
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+<div id="content">
+</div>
+<script>
+
+var width = 960,
+    height = 500,
+    // find the min of width and height and devided by 2
+    radius = Math.min(width, height) / 2;
+
+var color = d3.scale.category20();
+
+var arc = d3.svg.arc()
+    // the outer radius of the pie chart.
+    .outerRadius(radius * 0.8)
+    // the inner radius of the pie chart, set 0 for now
+    .innerRadius(radius * 0.4);
+
+var outerArc = d3.svg.arc()
+    .innerRadius(radius * 0.8)
+    .outerRadius(radius * 1.0);
+
+// Constructs a new pie function
+var pie = d3.layout.pie()
+    // not sorting
+    .sort(null)
+    // set the pie chart value to population.
+    .value(function(d) { return d.total; });
+
+var svg = d3.select("#content").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+svg.append("g")
+  .attr("class", "labels");
+svg.append("g")
+  .attr("class", "lines");
+svg.append("g")
+  .attr("class", "arc");
+svg.append("g")
+  .attr("class", "percentage");
+
+
+d3.json("total.json", function(error, data) {
+  var count_year = 93;
+  var set_switch_year;
+
+  function set_loop() {
+    clearTimeout(set_switch_year);
+    set_switch_year = setInterval(function() {
+      addYear(count_year);
+      count_year++;
+      console.log(count_year)
+    }, 2000)
+  }
+
+  set_loop();
+
+  document.getElementById("restart").onclick = function() {
+    count_year = 93;
+    set_loop();
+  }
+
+  document.getElementById("start").onclick = function() {
+    set_loop()
+  }
+
+  document.getElementById("stop").onclick = function() {
+    clearTimeout(set_switch_year);
+  }
+
+  function addYear(year) {
+    var data_cancer = [];
+    // counting total population of each cancer.
+    // the title of the cancer
+    if(year === 101) {
+      clearInterval(set_switch_year);
+    }
+ 
+    d3.select("#year").html(year + 1911);
+    for(rank in data.title[year]) {
+      // rank cancer
+      var total = 0;
+      for(district in data.value[year][rank]) {
+        var district_total = 0;
+        for(town in data.value[year][rank][district]) {
+          var population = data.value[year][rank][district][town];
+          district_total += population;
+        }
+        total += district_total;
+      }
+
+      data_cancer.push({
+        rank: +rank, 
+        title: data.title[year][rank],
+        total: +total
+      })
+    }
+
+    // append a group
+    var slice = svg.select(".arc").selectAll(".slice")
+        .data(pie(data_cancer), function(d) { return d.data.title; });
+
+    // append path, the pie for each age
+    slice.enter()
+        .append("path")
+        .style("fill", function(d) { return color(d.data.rank); })
+        .attr("class", "slice")
+
+    slice.transition().duration(1000)
+      .attrTween("d", function(d) {
+        this._current = this._current || d;
+        var interpolate = d3.interpolate(this._current, d);
+        this._current = interpolate(0);
+        return function(t) {
+          return arc(interpolate(t));
+        };
+      })
+
+    slice.exit()
+      .remove();
+
+    var total_percent = d3.sum(data_cancer, function(d){return d.total;});
+
+    // add percentage text
+    var slice_percentage = svg.select(".percentage").selectAll("text")
+        .data(pie(data_cancer), function(d) { return d.data.title; });
+
+    slice_percentage.enter()
+      .append("text")
+      .attr("dy", ".35em")
+      .style("text-anchor", "middle")
+      .text(function(d, i) { 
+        return (d3.round(100* d.data.total / total_percent, 1) + "% ") ; 
+      });
+
+    slice_percentage.transition().duration(1000)
+      .attrTween("transform", function(d) { 
+        return function(t) {
+          return "translate(" + arc.centroid(d) + ")";
+        }
+      });
+
+    slice_percentage.exit()
+      .remove();
+
+    var text = svg.select(".labels").selectAll("text")
+      .data(pie(data_cancer), function(d) { return d.data.title; });
+
+    text.enter()
+      .append("text")
+      .attr("dy", ".35em")
+      .text(function(d) {
+        return d.data.title;
+      });
+    
+    function midAngle(d){
+      return d.startAngle + (d.endAngle - d.startAngle)/2;
+    }
+
+    text.transition().duration(1000)
+      .attrTween("transform", function(d) {
+        this._current = this._current || d;
+        var interpolate = d3.interpolate(this._current, d);
+        this._current = interpolate(0);
+        return function(t) {
+          var d2 = interpolate(t);
+          var pos = outerArc.centroid(d2);
+          pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
+          return "translate("+ pos +")";
+        };
+      })
+      .styleTween("text-anchor", function(d){
+        this._current = this._current || d;
+        var interpolate = d3.interpolate(this._current, d);
+        this._current = interpolate(0);
+        return function(t) {
+          var d2 = interpolate(t);
+          return midAngle(d2) < Math.PI ? "start":"end";
+        };
+      });
+
+    text.exit()
+      .remove();
+
+    var polyline = svg.select(".lines").selectAll("polyline")
+      .data(pie(data_cancer), function(d) { return d.data.title; });
+    
+    polyline.enter()
+      .append("polyline");
+
+    polyline.transition().duration(1000)
+      .attrTween("points", function(d){
+        this._current = this._current || d;
+        var interpolate = d3.interpolate(this._current, d);
+        this._current = interpolate(0);
+        return function(t) {
+          var d2 = interpolate(t);
+          var pos = outerArc.centroid(d2);
+          pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+          return [arc.centroid(d2), outerArc.centroid(d2), pos];
+        };      
+      });
+    
+    polyline.exit()
+      .remove();
+  }
+});
+
+</script>

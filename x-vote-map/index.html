@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+/* CSS goes here. */
+#content {
+	position: relative;
+	fill: #CCC;
+}
+
+#region-description {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 200px;
+	height: 100px;
+	margin: 20px;
+	font-size: 20px;
+}
+
+.background {
+	fill: none;
+	pointer-events: all;
+}
+
+.active {
+	fill: orange;
+}
+
+
+
+</style>
+<body>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	<div id="descirption">
+		<h2>請點選其中一個縣市（支援滑鼠拖移和放大縮小）</h2>
+	</div>
+	<div id="content">
+		<div id="region-description">
+
+		</div>
+	</div>
+	<script>
+
+	var w = 1000,
+		h = 800,
+		centered,
+		rows;
+
+	var projection = d3.geo.mercator()
+		.center([120.979531, 23.978567])
+		.scale(10000);
+
+	var path = d3.geo.path()
+		.projection(projection);
+
+	var zoom = d3.behavior.zoom()
+	    .translate(projection.translate())
+	    .scale(projection.scale())
+	    .scaleExtent([h, 8 * w])
+	    .on("zoom", zoomed);
+
+	var svg = d3.select('#content')
+		.append('svg')
+		.attr('width', w)
+		.attr('height', h)
+		.attr('viewBox', "0 0 1000 800")
+		.attr('preserveAspectRatio', 'xMidYMid');
+
+	svg.append("rect")
+	    .attr("class", "background")
+	    .attr("width", w)
+	    .attr("height", h)
+	    .on("click", clicked);
+
+	var g = svg.append("g")
+			.call(zoom);
+
+	d3.csv("vote.csv", function(d) {
+			return {
+				region: d["區域"],
+				people_total: +d["選舉人數"],
+				vote_total: +d["投票數"],
+				valid_vote: +d["有效票數"],
+				invalid_vote: +d["無效票數"],
+				vote_rate: +d["投票率"]
+			}
+		}, function(error, _rows) {
+			// loading Taiwan county 2010
+			
+			rows = _rows;
+			
+			d3.json('../../data/taiwan-map/twCounty2010.topo.json', function(err, data) {
+
+				// var color_scale = d3.scale.linear()
+				// 	.domain([0, d3.max(total)])
+
+				var topo = topojson.feature(data, data.objects["layer1"]);
+
+				var topomesh = topojson.mesh(data, data.objects["layer1"], function(a, b){
+					return a !== b;
+				});
+
+				g.append("g")
+					.selectAll('path.village')
+					.data(topo.features)
+					.enter()
+					.append('path')
+					.attr('id', function(d) { return d.properties.COUNTYSN; })
+					.attr('d', path)
+					.attr("class", function(d) {
+						if(d.properties.COUNTYNAME === "台北縣") {
+							d.properties.COUNTYNAME = "新北市";
+						}else if (d.properties.COUNTYNAME === "台南縣") {
+							d.properties.COUNTYNAME = "台南市";
+						}else if (d.properties.COUNTYNAME === "台中縣") {
+							d.properties.COUNTYNAME = "台中市";
+						}else if (d.properties.COUNTYNAME === "高雄縣") {
+							d.properties.COUNTYNAME = "高雄市";
+						}
+					})
+					.on("click", clicked);
+
+				g.append('path')
+					.attr('class', 'boundary')
+					.datum(topomesh)
+					.attr('d', path)
+					.style('fill', 'none')
+					.style('stroke', "rgba(255,255,255,0.5)")
+					.style('stroke-width', '2px');
+			})
+		}
+	)
+
+	function clicked(d) {
+		var county_name = d.properties.COUNTYNAME;
+		var x, y, k;
+		var item;
+
+		if (d && centered !== d) {
+			var centroid = path.centroid(d);
+			x = centroid[0];
+			y = centroid[1];
+			k = 4;
+			centered = d;
+		} else {
+			x = w / 2;
+			y = h / 2;
+			k = 1;
+			centered = null;
+		}
+
+		rows.forEach(function(_item) {
+			if(_item.region === county_name) {
+				item = _item;
+			}
+		})
+
+		d3.select("#region-description").html("<li>區域：" + item.region + "</li><li>選舉人數：" + item.people_total + "</li><li>投票數：" + item.vote_total + "</li><li>有效票數：" + item.valid_vote + "</li><li>無效票數：" + item.invalid_vote + "</li><li>投票率：" + item.vote_rate + "</li>")
+
+		g.selectAll("path")
+			.classed("active", centered && function(d) { return d === centered; });
+
+		g.transition()
+			.duration(750)
+			.attr("transform", "translate(" + w / 2 + "," + h / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+			.style("stroke-width", 1.5 / k + "px");
+	}
+
+	function zoomed() {
+		projection.translate(d3.event.translate).scale(d3.event.scale);
+		g.selectAll("path").attr("d", path);
+	}
+
+
+
+	</script>
+</body>
