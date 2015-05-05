@@ -1,0 +1,49 @@
+body {
+  background-color:#EEEEEE;
+  /*font-family: 'Noto Sans', 'sans-serif', 'Microsoft Jhenghei';*/
+}
+
+.main.segment {
+  max-width:1400px;
+  margin: 0px auto;
+  font-family: "Yu Gothic", SimHei;
+}
+
+.head.segment {
+  text-align: left;
+}
+
+.main.segment .ui.header {
+  font-family: "Yu Gothic", SimHei;
+}
+
+.control.panels {
+  max-width:800px;
+  min-height:50px;
+  margin: 0px auto;
+  text-align: center;
+}
+
+.control.panel {
+  max-width:350px;
+  min-height:50px;
+  display:inline-block;
+}
+
+.control.button {
+  float:left;
+  margin-top:5px;
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.control.statistic {
+  float:left;
+  max-width:250px!important;
+}
+
+.plot {
+  text-align: center;
+  max-width:600px;
+  margin: 0px auto;
+}
