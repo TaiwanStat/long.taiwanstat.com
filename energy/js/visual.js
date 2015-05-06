@@ -5,7 +5,7 @@ function piechart(data, year) {
     radius = Math.min(width, height) / 2;
 
   var color = d3.scale.ordinal()
-    .range(["#F2C61F", "#60BF76", "#3C83C0", "#E1805A", "#D95C5C", "#00B5AD", "#D9499A"]);
+    .range(["#3C83C0", "#60BF76", "#BD0C12", "#E1805A", "#D95C5C", "#00B5AD", "#D9499A"]);
 
   var arc = d3.svg.arc()
       .outerRadius(radius - 10)
