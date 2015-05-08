@@ -115,7 +115,7 @@
   }
 
 
-  var x, y, color, partition, arc, path, node, back, labels, polyline;
+  var x, y, color, partition, arc, path, node, back, labels, polyline, backbtn;
   function d3init(original, year){
     // console.log(JSON.stringify( original ));
     var data = JSON.parse( JSON.stringify( original ) );
@@ -194,6 +194,16 @@
 
       total = node.value;
 
+      backbtn = svg.append('rect')
+        .attr('width', 160)
+        .attr('height', 70)
+        .attr('x', -80)
+        .attr('y', -35)
+        .attr('rx', 20)
+        .attr('ry', 20)
+        .style('opacity', 0)
+        .style('fill', '#D9499A')
+
       back = svg.append('text')
         .style('font-size', '50px')
         .text('上一層')
@@ -204,6 +214,7 @@
             click(node.parent);
         })
         .style('opacity', node.parent? 1 : 0)
+        .style('fill', '#EEEEEE')
 
       svg.append("g")
         .attr("class", "labels");
@@ -307,6 +318,10 @@
         else
           return color((d.children ? d : d.parent).name);
       })
+
+    backbtn.transition()
+      .duration(1000)
+      .style('opacity', node.parent? 1 : 0)
 
     back.transition()
       .duration(1000)
