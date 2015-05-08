@@ -44,6 +44,13 @@ body {
 
 .plot {
   text-align: center;
-  max-width:600px;
+  max-width:900px;
   margin: 0px auto;
+}
+
+polyline{
+  opacity: .3;
+  stroke: black;
+  stroke-width: 2px;
+  fill: none;
 }

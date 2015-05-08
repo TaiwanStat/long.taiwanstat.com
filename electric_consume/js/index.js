@@ -11,6 +11,7 @@
     var index = 0;
 
     $scope.init = function(){
+      index = years.length-1;
       $scope.year = years[index];
       d3init(data, years[index]);
     }
@@ -32,7 +33,6 @@
       $scope.current = current.name;
       $scope.value = Math.round(parseFloat(current.value)/1000000);
       $scope.percent = Math.round(parseFloat(current.value)/parseFloat(total)*10000)/100;
-      // console.log(total);
     }
 
   })
@@ -115,7 +115,7 @@
   }
 
 
-  var x, y, color, partition, arc, path, node, back;
+  var x, y, color, partition, arc, path, node, back, labels, polyline;
   function d3init(original, year){
     // console.log(JSON.stringify( original ));
     var data = JSON.parse( JSON.stringify( original ) );
@@ -124,17 +124,18 @@
 
     svg = d3.select(".plot").append("svg")
       .attr("width", trueWidth)
-      .attr("height", trueWidth)
-      .attr("viewBox", "0 0 " + 800 + " " + 800)
+      .attr("height", trueWidth*0.75)
+      .attr("viewBox", "0 0 " + 800 + " " + 600)
       .attr("preserveAspectRatio", "xMinYMin meet")
     .append("g")
-      .attr("transform", "translate(" + 400 + "," + 400 + ")")
+      .attr("transform", "translate(" + 400 + "," + 300 + ")")
 
     x = d3.scale.linear()
       .range([0, 2 * Math.PI])
 
     y = d3.scale.sqrt()
-      .range([0, 400])
+      .range([0, 250])
+
 
     color = d3.scale.category20c();
 
@@ -146,7 +147,7 @@
       .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
       .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
       .innerRadius(function(d) { return Math.max(0, y(d.y)); })
-      .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+      .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy))-2; });
 
     node = data;
     current = data;
@@ -175,6 +176,7 @@
           if(d3.select(this).style('opacity') == 1){
             current = d;
             d3.select(this).style('opacity', 0.5);
+            $('.current.header').css('color', d3.select(this).style('fill'));
             angular.element('#InfoCtrl').scope().update();
             angular.element('#InfoCtrl').scope().$apply();
           }
@@ -202,6 +204,73 @@
             click(node.parent);
         })
         .style('opacity', node.parent? 1 : 0)
+
+      svg.append("g")
+        .attr("class", "labels");
+
+      labels = svg.select(".labels").selectAll("text")
+        .data(node.children)
+        .enter()
+        .append('text')
+        .attr("dy", ".35em")
+        .style("font-size","15px")
+        .style("font-weight", "bold")
+        .text(function(d) {
+          return d.name;
+        })
+
+      var lastY = 1000;
+      labels.transition().duration(1000)
+        .attrTween("transform", function(d) {
+
+          return function(t) {
+            var pos = arc.centroid(d);
+            pos[0] = pos[0] *1.6;
+            pos[1] = pos[1] *1.6;
+            pos[0] = 220 * (midAngle(d) < Math.PI ? 1 : -1);
+
+            if(Math.abs(lastY-pos[1]) < 20)
+              pos[1] = lastY + 20;
+
+            lastY = pos[1];
+            return "translate("+ pos +")";
+          };
+        })
+        .styleTween("text-anchor", function(d){
+          return function(t) {
+            return midAngle(d) < Math.PI ? "start":"end";
+          };
+        })
+
+    svg.append("g")
+        .attr("class", "lines");
+
+    polyline = svg.select(".lines").selectAll("polyline")
+      .data(node.children)
+    .enter()
+      .append("polyline");
+
+    var lastY = 1000;
+    polyline.transition().duration(1000)
+      .attrTween("points", function(d){
+        return function(t) {
+          var pos = arc.centroid(d);
+          pos[0] = pos[0] *1.6;
+          pos[1] = pos[1] *1.6;
+
+          if(Math.abs(lastY-pos[1]) < 20)
+              pos[1] = lastY + 20;
+
+          var pos2 = pos.slice(0);
+
+          pos[0] = 220 * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
+          lastY = pos[1]
+          if(Math.abs(pos2[0]-arc.centroid(d)[0]) > Math.abs(pos[0]-arc.centroid(d)[0]))
+            return [arc.centroid(d), pos];
+          return [arc.centroid(d), pos2, pos];
+
+        };
+      });
 
     d3.select(self.frameElement).style("height", 800 + "px");
 
@@ -242,12 +311,8 @@
     back.transition()
       .duration(1000)
       .style('opacity', node.parent? 1 : 0)
-      // .text(function(){
-      //   if(node.parent)
-      //     return '上一層';
-      //   else
-      //     return '點擊區快顯示'
-      // })
+
+    updateLabels();
   }
 
   // Setup for switching data: stash the old values for transition.
@@ -260,7 +325,7 @@
   function arcTweenZoom(d) {
     var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
         yd = d3.interpolate(y.domain(), [d.y, 1]),
-        yr = d3.interpolate(y.range(), [d.y ? 20 : 0, 400]);
+        yr = d3.interpolate(y.range(), [d.y ? 20 : 0, 250]);
     return function(d, i) {
       return i
           ? function(t) { return arc(d); }
@@ -312,7 +377,105 @@
     total = n.value;
 
     angular.element('#InfoCtrl').scope().update();
+
+    updateLabels();
     // angular.element('#InfoCtrl').scope().$apply();
+
+  }
+
+  function midAngle(d){
+     var st = Math.max(0, Math.min(2 * Math.PI, x(d.x)));
+     var ed = Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx)));
+     return st + (ed - st)/2;
+  }
+
+  function updateLabels(){
+
+      labels.transition()
+        .style("opacity", 0)
+        .remove()
+
+      svg.select('.labels').remove()
+
+      polyline.transition()
+        .style("opacity", 0)
+        .remove()
+
+      svg.select('.lines').remove()
+
+      svg.append("g")
+        .attr("class", "labels");
+
+      svg.append("g")
+        .attr("class", "lines");
+
+      labels = svg.select(".labels").selectAll("text")
+        .data(node.children)
+        .enter()
+        .append('text')
+        .attr("dy", ".35em")
+        .style("font-size","15px")
+        .style("font-weight", "bold")
+        .text(function(d) {
+          // console.log(d.name);
+          return d.name;
+        })
+        .each(function(d){
+          console.log('message');
+        })
+
+      var lastY = 1000;
+      labels.transition().duration(1000)
+        .attrTween("transform", function(d, i) {
+          return function(t) {
+            var pos = arc.centroid(d);
+            pos[1] = pos[1] *1.6;
+            pos[0] = pos[0] *1.6;
+            pos[0] = 220 * (midAngle(d) < Math.PI ? 1 : -1);
+
+            if(Math.abs(lastY-pos[1]) < 20)
+                pos[1] = lastY + 20;
+
+            if(pos[1]<-295)
+              pos[1] = -280;
+
+            lastY = pos[1];
+            return "translate("+ pos +")";
+          };
+        })
+        .styleTween("text-anchor", function(d){
+          return function(t) {
+            return midAngle(d) < Math.PI ? "start":"end";
+          };
+        })
+
+    polyline = svg.select(".lines").selectAll("polyline")
+      .data(node.children)
+    .enter()
+      .append("polyline");
+
+    lastY = 1000;
+    polyline.transition().duration(1000)
+      .attrTween("points", function(d){
+        return function(t) {
+          var pos = arc.centroid(d);
+          pos[0] = pos[0] *1.6;
+          pos[1] = pos[1] *1.6;
+
+          if(Math.abs(lastY-pos[1]) < 20)
+              pos[1] = lastY + 20;
+
+          if(pos[1]<-295)
+            pos[1] = -280;
+
+          var pos2 = pos.slice(0);
+          lastY = pos[1];
+          pos[0] = 220 * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
+          if(Math.abs(pos2[0]-arc.centroid(d)[0]) > Math.abs(pos[0]-arc.centroid(d)[0]))
+            return [arc.centroid(d), pos];
+          return [arc.centroid(d), pos2, pos];
+        };
+      });
 
   }
 

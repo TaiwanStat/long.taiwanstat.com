@@ -36,9 +36,9 @@
       <h1 class="ui header">台灣行業別用電比例</h1>
     </div>
 
-    <div class="ui head basic segment">
+    <!-- <div class="ui head basic segment">
       <h1 class="ui header">時間</h1>
-    </div>
+    </div> -->
 
     <div class="control panels" ng-controller="YearCtrl" id="YearCtrl">
       <div class="year control panel">
@@ -58,13 +58,13 @@
     </div>
 
     <div class="ui stackable grid">
-      <div class="ten wide column">
+      <div class="eleven wide column">
         <div class="plot"></div>
       </div>
-      <div class="six wide column" ng-controller="InfoCtrl" id="InfoCtrl">
-        <h1 class="ui header">{{ current }}</h1>
+      <div class="five wide column" ng-controller="InfoCtrl" id="InfoCtrl">
+        <h1 class="ui current header">{{ current }}</h1>
 
-        <h1 class="ui header">總用電量</h1>
+        <h1 class="ui orange header">總用電量</h1>
         <div class="ui horizontal statistic">
           <div class="value">
             {{ value }}
@@ -74,7 +74,7 @@
           </div>
         </div><br>
 
-        <h1 class="ui header">佔全體比例</h1>
+        <h1 class="ui blue header">佔全體比例</h1>
         <div class="ui horizontal statistic">
           <div class="value">
             {{ percent }}
@@ -83,6 +83,7 @@
             %
           </div>
         </div>
+        <h5 class="ui header">*點擊圖中區塊可以放大</h5>
 
       </div>
     </div>
