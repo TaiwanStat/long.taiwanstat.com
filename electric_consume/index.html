@@ -26,6 +26,26 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
   <script src="/js/main.js"></script>
   <script src="/bower_components/semantic/dist/semantic.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-61023469-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <div id="fb-root"></div>
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=600079286760117&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }
+    (document, 'script', 'facebook-jssdk'));
+  </script>
 
   <script src="js/angular.min.js"></script>
   <script src="js/index.js"></script>
@@ -36,9 +56,21 @@
       <h1 class="ui header">台灣行業別用電比例</h1>
     </div>
 
-    <!-- <div class="ui head basic segment">
-      <h1 class="ui header">時間</h1>
-    </div> -->
+    <div class="ui stackable two column grid">
+      <div class="column">
+        <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+      </div>
+      <div class="column">
+        <div class="fb-like" data-href="http://long.taiwanstat.com/electric_consume/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+    </div>
+
+    <div class="note">
+      <ul>
+        <li class="data-src">資料來源：<a href="http://www.taipower.com.tw/content/govern/govern01.aspx?MType=5&MSType=20">台電統計資料</a></li>
+        <li>點擊圖中區塊可放大</li>
+      </ul>
+    </div>
 
     <div class="control panels" ng-controller="YearCtrl" id="YearCtrl">
       <div class="year control panel">
@@ -83,7 +115,6 @@
             %
           </div>
         </div>
-        <h5 class="ui header">*點擊圖中區塊可以放大</h5>
 
       </div>
     </div>
