@@ -215,6 +215,7 @@
         })
         .style('opacity', node.parent? 1 : 0)
         .style('fill', '#EEEEEE')
+        .style('cursor', '')
 
       svg.append("g")
         .attr("class", "labels");
@@ -326,6 +327,7 @@
     back.transition()
       .duration(1000)
       .style('opacity', node.parent? 1 : 0)
+      .style('cursor', node.parent?'pointer' : '')
 
     updateLabels();
   }
