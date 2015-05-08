@@ -378,7 +378,7 @@
 
     angular.element('#InfoCtrl').scope().update();
 
-    updateLabels();
+    updateLabels2();
     // angular.element('#InfoCtrl').scope().$apply();
 
   }
@@ -420,9 +420,6 @@
           // console.log(d.name);
           return d.name;
         })
-        .each(function(d){
-          console.log('message');
-        })
 
       var lastY = 1000;
       labels.transition().duration(1000)
@@ -438,6 +435,8 @@
 
             if(pos[1]<-295)
               pos[1] = -280;
+            else if(pos[1] > 295)
+              pos[1] = 280;
 
             lastY = pos[1];
             return "translate("+ pos +")";
@@ -467,6 +466,8 @@
 
           if(pos[1]<-295)
             pos[1] = -280;
+          else if(pos[1] > 295)
+            pos[1] = 280;
 
           var pos2 = pos.slice(0);
           lastY = pos[1];
@@ -477,6 +478,60 @@
         };
       });
 
+  }
+
+  function updateLabels2(){
+    var lastY = 1000;
+    labels.transition().duration(1000)
+      .attrTween("transform", function(d, i) {
+        return function(t) {
+          var pos = arc.centroid(d);
+          pos[1] = pos[1] *1.6;
+          pos[0] = pos[0] *1.6;
+          pos[0] = 220 * (midAngle(d) < Math.PI ? 1 : -1);
+
+          if(Math.abs(lastY-pos[1]) < 20)
+              pos[1] = lastY + 20;
+
+          if(pos[1]<-295)
+            pos[1] = -280;
+          else if(pos[1] > 295)
+            pos[1] = 280;
+
+          lastY = pos[1];
+          return "translate("+ pos +")";
+        };
+      })
+      .styleTween("text-anchor", function(d){
+        return function(t) {
+          return midAngle(d) < Math.PI ? "start":"end";
+        };
+      })
+
+  lastY = 1000;
+  polyline.transition().duration(1000)
+    .attrTween("points", function(d){
+      return function(t) {
+        var pos = arc.centroid(d);
+        pos[0] = pos[0] *1.6;
+        pos[1] = pos[1] *1.6;
+
+        if(Math.abs(lastY-pos[1]) < 20)
+            pos[1] = lastY + 20;
+
+        if(pos[1]<-295)
+          pos[1] = -280;
+        else if(pos[1] > 295)
+          pos[1] = 280;
+
+        var pos2 = pos.slice(0);
+        lastY = pos[1];
+        pos[0] = 220 * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
+        if(Math.abs(pos2[0]-arc.centroid(d)[0]) > Math.abs(pos[0]-arc.centroid(d)[0]))
+          return [arc.centroid(d), pos];
+        return [arc.centroid(d), pos2, pos];
+      };
+    });
   }
 
 })()
