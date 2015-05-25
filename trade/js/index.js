@@ -190,18 +190,18 @@
         var excess = '';
 
         if(data[k].import > data[k].export) {
-          excess = '<span class="red">入超(百萬元) : ' + (data[k].import-data[k].export) +
+          excess = '<span class="green">入超(百萬元) : ' + (data[k].import-data[k].export) +
             '</span><br>';
         }
         else {
-          excess = '<span class="green">出超(百萬元) : ' + (data[k].export-data[k].import) +
+          excess = '<span class="red">出超(百萬元) : ' + (data[k].export-data[k].import) +
             '</span><br>';
         }
 
         html += '<div class="card" style="display:none;"><div class="image"><img src="images/' + abb +
           '.gif"></div><div class="content"><div class="header">' + data[k].country +
-          '<div class="description"><span class="red">進口值(百萬元) : ' + data[k].import + '</span><br>' +
-          '<span class="green">出口值(百萬元) : ' + data[k].export + '</span><br><br>' + excess +
+          '<div class="description"><span class="">進口值(百萬元) : ' + data[k].import + '</span><br>' +
+          '<span class="">出口值(百萬元) : ' + data[k].export + '</span><br><br>' + excess +
           '</div></div></div><div class="extra content"><a><i class="trophy icon"></i>第 ' + (parseInt(k)+1) +' 名</a></div></div>'
       }
 
