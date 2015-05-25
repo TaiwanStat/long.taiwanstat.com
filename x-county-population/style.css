@@ -46,3 +46,8 @@
 .q2-11{fill:rgb(102,189,99)}
 .q1-11{fill:rgb(26,152,80)}
 .q0-11{fill:rgb(0,104,55)}
+
+.fb-comments, .fb-comments iframe[style] {width: 100% !important;}
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+    width: 100% !important;
+}
