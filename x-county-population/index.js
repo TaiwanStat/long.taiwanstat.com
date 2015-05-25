@@ -143,6 +143,24 @@ d3.json("population.json", function(error, population_data) {
 			clearTimeout(set_switch_year);
 		}
 
+        document.getElementById("next").onclick = function() {
+            if (count_year == 22){
+                count_year = 0;
+            }else {
+                count_year++;
+            }
+            addYear(count_year);
+        }
+
+        document.getElementById("prev").onclick = function () {
+            if (count_year == 0){
+                count_year = 22;
+            }else {
+                count_year--;
+            }
+            addYear(count_year);
+        }
+
 		function addYear(count) {
 
 			if(year[count] === "102") {
