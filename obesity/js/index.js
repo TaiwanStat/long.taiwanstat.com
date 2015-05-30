@@ -1,7 +1,7 @@
 var margin = {top: 20, right: 20, bottom: 60, left: 50},
         width = 1200 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
-
+//testinttttt
 
     var x0 = d3.scale.ordinal()
         .rangeRoundBands([0, width], .3);
@@ -12,8 +12,9 @@ var margin = {top: 20, right: 20, bottom: 60, left: 50},
         .range([height, 0]);
 
     var color = d3.scale.ordinal()
-        .range(["rgb(96, 79, 230)", "rgb(251, 210, 35)", "rgb(255, 87, 44)"]);
-
+        // .range(["rgb(96, 79, 230)", "rgb(251, 210, 35)", "rgb(255, 87, 44)"]);
+        .range(["#3182bd", "rgb(249, 216, 73)", "rgb(255, 87, 44)"]);
+        
     var xAxis = d3.svg.axis()
         .scale(x0)
         .orient("bottom");

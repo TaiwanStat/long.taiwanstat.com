@@ -1,12 +1,31 @@
+
+
+h1{
+  font-size: 35px;
+}
+
 body {
     margin: auto;
     margin-top: 30px;
     background-color: #EEEEEE;
 }
 
+#male{
+  background-color: #3182bd;
+}
+
+#female{
+  background-color: rgb(249, 216, 73);
+}
+
+#average{
+  background-color: rgb(255, 87, 44);
+}
+
+
 .container {
     margin: 20px;
-    overflow: scroll;
+    /*overflow: scroll;*/
 }
 
 .go-to {
