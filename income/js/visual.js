@@ -206,6 +206,7 @@ function updateTable(d) {
     percent = parseFloat(curData['Top 1% income share']);
   }
 
+  totalV = totalV/100;
   $('.raw.value').text(Math.round(totalV));
   $('.mean.value').text(Math.round(meanV/10));
   $('.percent.value').text(percent);
