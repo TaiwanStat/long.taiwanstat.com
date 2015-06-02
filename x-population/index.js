@@ -77,7 +77,7 @@ d3.json("population.json", function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Population");
+      .text("人口數");
 
   var stat_arr = [];
   district.forEach(function(d, i) {
