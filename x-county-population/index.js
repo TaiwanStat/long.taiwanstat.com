@@ -12,12 +12,22 @@ var color = d3.scale.quantize()
 var path = d3.geo.path()
 	.projection(projection);
 
+var tip = d3.tip()
+  	.attr('class', 'd3-tip')
+  	.offset([-10, 0])
+  	.html(function(d) {
+		var count_district = districtName.indexOf(d.properties.TOWNNAME.trim());
+    	return townValue[count_district];
+  	});
+
 var svg = d3.select('#content')
 	.append('svg')
 	.attr('width', w)
 	.attr('height', h)
 	.attr('viewBox', "0 0 800 600")
 	.attr('preserveAspectRatio', 'xMidYMid');
+
+svg.call(tip);
 
 var g = svg.append("g")
 	.attr("class", "key")
@@ -82,14 +92,16 @@ d3.json("population.json", function(error, population_data) {
 			.attr('d', path)
 			.attr("class", function(d) {
 				var count_district = districtName.indexOf(d.properties.TOWNNAME.trim());
-				var color_class = color(color_scale(townValue[count_district]))
+				var color_class = color(color_scale(townValue[count_district]));
 				if(count_district >= 0){
 					return ("town " + color_class);
 				}else {
-					console.log(d.properties.TOWNNAME)
-					return "town RdYlGn"
+					console.log(d.properties.TOWNNAME);
+					return "town RdYlGn";
 				}
 			})
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide)
 
 		g.selectAll("rect")
 			.data(d3.range(11).map(function(d) { return "q" + d + "-11"; }))
@@ -103,7 +115,7 @@ d3.json("population.json", function(error, population_data) {
 		g.call(xAxis).append("text")
 			.attr("class", "caption")
 			.attr("y", -10)
-			.text("Population");
+			.text("人口數");
 
 		svg.append('path')
 			.attr('class', 'boundary')
@@ -196,15 +208,15 @@ d3.json("population.json", function(error, population_data) {
 			svg.selectAll('path.town')
 				.data(topo.features)
 				.attr("class", function(d) {
-				var count_district = districtName.indexOf(d.properties.TOWNNAME.trim());
-				var color_class = color(color_scale(townValue[count_district]))
-				if(count_district >= 0){
-					return ("town " + color_class);
-				}else {
-					console.log(d.properties.TOWNNAME)
-					return "town RdYlGn"
-				}
-			})
+				    var count_district = districtName.indexOf(d.properties.TOWNNAME.trim());
+				    var color_class = color(color_scale(townValue[count_district]))
+    				if(count_district >= 0){
+	    				return ("town " + color_class);
+		    		}else {
+			    		console.log(d.properties.TOWNNAME)
+				    	return "town RdYlGn"
+				    }
+			    })
 
 			g.call(xAxis)
 

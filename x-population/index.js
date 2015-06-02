@@ -21,7 +21,7 @@ var tip = d3.tip()
   .offset([-10, 0])
   .html(function(d) {
     return d.total;
-  })
+  });
 
 var svg = d3.select("#content").append("svg")
     .attr("width", width + margin.left + margin.right)
