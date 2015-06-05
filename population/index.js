@@ -134,7 +134,7 @@ d3.json("population.json", function(error, data) {
   }
 
   document.getElementById("next").onclick = function() {
-    if (count_year == 22){
+    if (count_year >= 22){
       count_year = 0;
     }else {
       count_year++;
