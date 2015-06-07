@@ -134,7 +134,7 @@ d3.json("population.json", function(error, data) {
   }
 
   document.getElementById("next").onclick = function() {
-    if (count_year == 22){
+    if (count_year >= 22){
       count_year = 0;
     }else {
       count_year++;
@@ -208,6 +208,8 @@ d3.json("population.json", function(error, data) {
     var x1 = x.domain(stat_arr.map(function(d) { return d.district}));
 
     var y1 = y.domain([0, d3.max(stat_arr_new, function(d) { return d.total; })]);
+	yAxis.scale(y1);
+	svg.select('.y.axis').call(yAxis);
 
     d3.select("#year_population").html(+year[count] + 1911);
 
