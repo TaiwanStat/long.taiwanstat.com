@@ -1,0 +1,50 @@
+#chart{
+	float:left;
+	margin:5px 5px 50px 0px;
+}
+#menu{
+	margin:0 0 50 0;
+}
+.axisX{
+	fill:none;
+	stroke:#000;
+	transform:translate(80px,420px);
+}
+.axisY{
+	fill:none;
+	stroke:#000;
+	transform:translate(80px,20px);
+}
+.axisY text{
+	fill:#000;
+	stroke:none;	
+}
+.axisX text{
+	fill:#000;
+	stroke:none;	
+}
+.dataPath{
+	fill:none;
+	stroke-width:2px;
+	transform:translate(80px,20px);
+}
+.yearPath{
+	transform:translate(80px,20px);
+}
+input {
+	margin:0px 0px 0px 0px;
+}
+
+.labelX{
+	stroke:none;
+	fill:#000;
+	font-size:30px;
+}
+.area_mask{
+	opacity:0;
+}
+.circleOnLine{
+	transform:translate(80px,20px);
+	fill:blue;
+
+}
