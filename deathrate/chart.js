@@ -8,7 +8,7 @@ var scaleColor=d3.scale.category20();
 var axisX = d3.svg.axis()
     .scale(scaleX)
     .orient("bottom")
-    .ticks(15);
+    .ticks(15).tickFormat(function(d){return d;});
 
 var axisY = d3.svg.axis()
     .scale(scaleY)
@@ -32,6 +32,16 @@ var areaHeight=$("#chart").height()-100;
 var area=svg.append("rect").attr("class","area_mask").attr("x",80).attr("y",20)
 		.attr("width",areaWidth).attr("height",areaHeight).on("mousemove",rectInteraction);
 var yearScale=d3.scale.linear().range([80,80+areaWidth]).domain([1985,2014]);
+for(var index in $("input[name='death[]']")){
+	var itemName=$("input[name='death[]']")[index].defaultValue;
+	if(itemName=="所有死因"){}
+	else{
+		$("input[value="+itemName+"]").prop("checked",true);
+	}
+	
+}
+	createPath();
+
 function rectInteraction(){
 	d3.select(".yearPath").remove();
 	console.log(yearScale.invert(d3.mouse(this)[0]));
