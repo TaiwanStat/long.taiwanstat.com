@@ -1,10 +1,22 @@
 
+/*general*/
+.data_container{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
 .year_button {
     background-color: rgb(251, 201, 127);
     padding: 3px;
     margin: 2px;
-    font-size: 18px;
+    font-size: 17px;
 }
+
+#play_button{
+    float: right;
+    margin-right: 150px;
+}
+
 
 /*tw map*/
 .tw_map_svg{
@@ -14,16 +26,34 @@
     font-size: 20px;
 }
 
+
 /*pie charts*/
 .pie_chart_section{
-    float: right;
-    height: 500px;
-    width: 300px;
-    margin-right: 80px;
+    width: 100%;
+    margin-right: 10px;
 }
 
+.pie_chart1{
+    float: left;
+    margin-left: 10px;
+}
+.pie_chart2{
+    float: left;
+}
+.pie_chart3{
+    
+    float: right;
+    margin-top: 70px;
+    margin-right: 5px;
+
+}
+
+
+/*line charts*/
 .line_chart_section{
     float: left;
     margin-bottom: 200px;
 }
+
+
 

@@ -1,5 +1,8 @@
-var Svg_Width = 700;
-var Svg_Height = 800;
+
+
+
+var Svg_Width = 640;
+var Svg_Height = 730;
 
 var color_array =['#fff7ec', '#fee8c8', '#fdd49e', '#fdbb84', '#fc8d59', '#ef6548', '#d7301f','#b30000', '#7f0000'];
 
@@ -13,7 +16,7 @@ var svg = d3.select(".tw_map_svg")
                 .attr("width", Svg_Width)
                 .attr("height", Svg_Height);
 
-var projection = d3.geo.mercator().center([120.675531, 24.01000]).scale(10000);
+var projection = d3.geo.mercator().center([121.175531, 24.01000]).scale(10000);
 
 var path = d3.geo.path()
             .projection(projection);
@@ -154,10 +157,10 @@ d3.csv("data/line_data1.csv", function(line_data1){
         .enter()
         .append("rect")
         .attr("x", function() {
-            return 420;
+            return 280;
         })
         .attr("y", function(d, i){
-            return 25 + i*30;
+            return 30 + i*30;
         })
         .attr("width", 35)
         .attr("height", 28)
@@ -187,7 +190,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
                     .attr("fill", "black")
                     .attr("background-color", "red")
                     .attr("x", function() {
-                        return 50;
+                        return 30;
                     })
                     .attr("y", function(d, i){
                         return 50 + i*30;
@@ -298,7 +301,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
         },
         size:{
             height: 300,
-            width: 300
+            width: 450
         },
 
     });
@@ -406,7 +409,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
     }
 
     //write total unemployment rate
-    d3.select("#total_unemployment_rate").html("總計失業率: "+ line_data1_by_cat[1][1]+ "%");
+    d3.select("#total_unemployment_rate").html("失業率: "+ line_data1_by_cat[1][1]+ "%");
 
     var line_chart = c3.generate({
         bindto: '#line_chart',
@@ -454,8 +457,8 @@ d3.csv("data/line_data1.csv", function(line_data1){
             }
         },
         size: {
-            height:300,
-            width:1000
+            height:400,
+            width:1160
         },
         color: {
             pattern: ['rgb(44, 160, 44)', 'rgb(31, 119, 180)', 'rgb(214, 39, 40)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)']
@@ -542,10 +545,6 @@ d3.csv("data/line_data1.csv", function(line_data1){
         } 
     })
 
-
-    function update_line(curr_year){
-
-    }
     //line chart section ends///////
 
 
@@ -597,7 +596,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
         //update total info
         d3.select('#curr_year').html("西元 "+current_year +" 年台灣失業數據")
-        d3.select("#total_unemployment_rate").html("總計失業率: "+ line_data1_by_cat[1][current_year-1992]+ "%");
+        d3.select("#total_unemployment_rate").html("失業率: "+ line_data1_by_cat[1][current_year-1992]+ "%");
 
         //update path color
         svg.selectAll("path")
@@ -654,7 +653,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
             }
 
             d3.select('#curr_year').html("西元 "+year_range[count_year] + "台灣失業數據")
-            d3.select("#total_unemployment_rate").html("總計失業率: "+ line_data1_by_cat[1][count_year+1]+ "%");
+            d3.select("#total_unemployment_rate").html("失業率: "+ line_data1_by_cat[1][count_year+1]+ "%");
 
 
             d3.selectAll(".year_button")
@@ -709,7 +708,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
             //update pie chart
             update_data(actual_year);
 
-
+            //update line chart
             var animation_data_array = [];
             for(i = 1; i < line_data1_by_cat.length; i++){
                 temp = line_data1_by_cat[i].slice(0, count_year+2);
