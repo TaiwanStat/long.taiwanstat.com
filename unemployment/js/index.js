@@ -431,6 +431,9 @@ d3.csv("data/line_data1.csv", function(line_data1){
                     culling:{
                         max:24,
                     },
+                },
+                padding: {
+                    right:0.5,
                 }
             },
             y:{

@@ -1,4 +1,5 @@
 
+
 /*general*/
 .data_container{
     margin-left: 15px;
@@ -25,6 +26,7 @@
 }
 
 
+
 /*tw map*/
 .tw_map_svg{
     float: left;
@@ -32,44 +34,6 @@
 .rank_text{
     font-size: 20px;
 }
-
-
-/*pie charts*/
-.pie_chart_section{
-    width: 100%;
-    margin-right: 10px;
-}
-
-.pie_chart1{
-    float: left;
-    margin-left: 10px;
-}
-.pie_chart2{
-    float: left;
-}
-.pie_chart3{
-    
-    float: right;
-    margin-top: 70px;
-    margin-right: 5px;
-
-}
-
-
-/*line charts*/
-.line_chart_section{
-    float: left;
-    margin-bottom: 100px;
-}
-
-.line_chart_options{
-
-    margin-top: 8px;
-    margin-left: 30px;
-}
-
-
-
 
 .d3-tip {
   line-height: 1;
@@ -100,6 +64,54 @@
   top: 100%;
   left: 0;
 }
+
+
+/*pie charts*/
+.pie_chart_section{
+    width: 100%;
+    margin-right: 10px;
+}
+
+.pie_chart1{
+    float: left;
+    margin-left: 10px;
+}
+.pie_chart2{
+    float: left;
+}
+.pie_chart3{
+    
+    float: right;
+    margin-top: 70px;
+    margin-right: 5px;
+
+}
+
+
+/*line charts*/
+.line_chart_section{
+
+    float: left;
+    margin-bottom: 100px;
+}
+.line_chart{
+    padding-left: 10px;
+}
+
+.line_chart_options{
+
+    margin-top: 8px;
+    margin-left: 30px;
+}
+
+
+.tick{
+    font-size: 15px;
+}
+
+
+
+
 
 
 
