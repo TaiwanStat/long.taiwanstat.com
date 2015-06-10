@@ -18,11 +18,11 @@ var svg=d3.select("#chart").append("svg").attr("width",width).attr("height",widt
 var g=svg.append("g");
 var line = d3.svg.line()  
     .x(function(d,i) {  
-        return scaleX(parseInt(d.key)); //利用尺度運算資料索引，傳回x的位置  
+        return scaleX(parseInt(d.key));  
     })  
     .y(function(d) {
 	if(d.values[0].key=="") return scaleY(0);   
-        else return scaleY(parseFloat(d.values[0].key)); //利用尺度運算資料的值，傳回y的位置  
+        else return scaleY(parseFloat(d.values[0].key)); 
     });
 svg.append("g").attr("class","axisX").call(axisX)
 svg.append("text").attr("class","labelX").attr("x",width-140).attr("y",height-20).text("單位：年");
@@ -30,9 +30,13 @@ svg.append("g").attr("class","axisY").call(axisY);
 var areaWidth=$("#chart").width()-100;
 var areaHeight=$("#chart").height()-100;
 var area=svg.append("rect").attr("class","area_mask").attr("x",80).attr("y",20)
-		.attr("width",areaWidth).attr("height",areaHeight).on("mousemove",rectInteraction);
+		.attr("width",areaWidth).attr("height",areaHeight)
+		.on("mousemove",rectInteraction)
+		.on("mouseleave",function(){
+			d3.select(".yearPath").remove();
+			$("#menu text").text();});
 var yearScale=d3.scale.linear().range([80,80+areaWidth]).domain([1985,2014]);
-for(var index in $("input[name='death[]']")){
+for(var index in $("input[name='death[]']")){ 				//default show
 	var itemName=$("input[name='death[]']")[index].defaultValue;
 	if(itemName=="所有死因"){}
 	else{
@@ -42,7 +46,7 @@ for(var index in $("input[name='death[]']")){
 }
 	createPath();
 
-function rectInteraction(){
+function rectInteraction(){ 						//when the mouse enter the g ,create yearPath
 	d3.select(".yearPath").remove();
 	console.log(yearScale.invert(d3.mouse(this)[0]));
 	var year=yearScale.invert(d3.mouse(this)[0]);
@@ -63,13 +67,13 @@ function rectInteraction(){
 			value=computeValue(data,itemName,year);
 			console.log(value);
 			//g.append("circle").attr("cx",scaleX(year)).attr("cy",scaleY(value)).attr("r",2).attr("class","circleOnLine");
-			$($("#menu text")[index]).text(":"+value);//.text();
+			$($("#menu text")[index]).text(":"+value); 	//change value
 		}
 	}
 	});
 	
 }
-function computeValue(data,itemName,year){
+function computeValue(data,itemName,year){ 		//compute the value in the year
 	var ceil=Math.ceil(year);
 	var floor=Math.floor(year);
 	var ceilValue,floorValue;
@@ -109,12 +113,24 @@ function createPath(){
 		function create(itemName){
 		d3.csv("deathrate.csv",function(data){
 			theItem=d3.nest().key(function(d){return d.year;}).key(function(d){return d[itemName];}).entries(data);
-			if($(".dataPath."+itemName).length!=0){
+			if($(".dataPath."+itemName).length!=0){ //when the path is already created
 				g.select(".dataPath."+itemName).transition().duration(500).attr("d",line(theItem));
 			}
 			else{ 
 				g.append("path").attr("d",line(theItem))
 					.attr("stroke",scaleColor(itemName)).attr("class",itemName).classed("dataPath",true);
+				//d3.select(".dataPath."+itemName).transition().duration(250).attrTween("d",getInterpolation);//transition line
+				function getInterpolation() {
+				  	var interpolate = d3.scale.quantile()
+				      		.domain([0,1])
+				      		.range(d3.range(1, theItem.length + 1));
+
+				  	return function(t) {
+				      		var interpolatedLine = theItem.slice(0, interpolate(t));
+				      		return line(interpolatedLine);
+				      	}
+				  }
+
 			}
 		});
 		}
@@ -130,7 +146,7 @@ function redraw(max){
    	 .scale(scaleY)
   	  .orient("left")
     	.ticks(10);
-	svg.select(".axisY").call(axisY);
+	svg.select(".axisY").transition().duration(500).call(axisY);
 	g.selectAll(".itemColor").remove();
 	
 //svg.append("g").attr("class","axisY").call(axisY);
