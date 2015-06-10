@@ -563,7 +563,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
     d3.select('#button' +1993)
         .transition()
         .duration(300)
-        .style("background", "#3b83c0")
+        .style("background", "black")
 
 
 
@@ -580,8 +580,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
         d3.select(this)
           .transition()
           .duration(200)
-          .style("background", "#3b83c0");
-
+          .style("background", "black");
 
 
         //update year
@@ -661,7 +660,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
             d3.select('#button' + actual_year)
               .transition()
               .duration(200)
-              .style("background", "#3b83c0");
+              .style("background", "black");
 
 
             top3_rect = d3.selectAll("rect")
