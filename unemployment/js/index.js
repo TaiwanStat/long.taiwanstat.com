@@ -353,25 +353,16 @@ d3.csv("data/line_data1.csv", function(line_data1){
         var year_data_education = year_data.slice(13, year_data.length);
 
         //first pie chart
-        chart1.unload({
-            columns: year_data_gender
-        });
         chart1.load({
             columns: year_data_gender
         });
 
         //second pie chart
-        chart2.unload({
-            columns: year_data_age
-        });
         chart2.load({
             columns: year_data_age
         });
 
         //second pie chart
-        chart3.unload({
-            columns: year_data_education
-        });
         chart3.load({
             columns: year_data_education
         });
