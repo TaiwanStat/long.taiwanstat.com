@@ -27,7 +27,7 @@
   <body>
     <div class="container">
 
-    <h1>台灣失業率</h1>
+    <h1 style = "font-size: 50px"></style>台灣失業率</h1>
 
     <div class="fb-plugin">
       <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
@@ -41,14 +41,14 @@
       
 
     </p>
-
-    <div><button id = "play_button" style ="font-size: 30px">play</button>&nbsp;</div>
-      <div class = "button_role"> </div>
+    <div class = "data_content">
+      <div><button id = "play_button" style ="font-size: 30px">play</button>&nbsp;</div>
 
       <h1 id="curr_year"></h1>
       <h1 id = "total_pop_unemployed"></h1>
       <h1 id = "total_unemployment_rate"></h1>
-
+      <div class = "button_role"> </div>
+      
       <div class = "tw_map_svg"></div>
       <div class = "pie_chart_section">
           <h3>性別圓餅圖</h3>
@@ -66,6 +66,7 @@
           <button><div id="education_button">隱藏學歷資料</div></button>
           <button><div id="transform_bar">長條圖顯示</div></button>
       </div>
+    </div>
 
 
     <script src="http://d3js.org/d3.v3.min.js"></script>

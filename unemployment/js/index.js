@@ -44,7 +44,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
     //processing map section ////////////////////
 
-    d3.select('#curr_year').html("西元 "+current_year)  //first declare year 
+    d3.select('#curr_year').html("西元 "+current_year + '年台灣失業數據')  //first declare year 
 
     var topo = topojson.feature(tw_topo_data, tw_topo_data.objects["layer1"]);
 
@@ -231,8 +231,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
     var year_to_data_index = curr_year-1992;
 
-    d3.select('#curr_year').html(curr_year);
-    d3.select('#total_pop_unemployed').html('總計失業人數:'+data2_by_cat[1][year_to_data_index]*1000);
+    d3.select('#total_pop_unemployed').html('總計失業人數:'+data2_by_cat[1][year_to_data_index]*1000+ '人');
 
     var year_data = [];
     for(i = 2; i < data2_by_cat.length; i++){   //start from 2 because don't want year and total
@@ -335,8 +334,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
     function update_data(curr_year){
         var year_to_data_index = curr_year-1992;
 
-        d3.select('#curr_year').html(curr_year);
-        d3.select('#total_pop_unemployed').html('總計失業人數:'+data2_by_cat[1][year_to_data_index]*1000);
+        d3.select('#total_pop_unemployed').html('總計失業人數:'+data2_by_cat[1][year_to_data_index]*1000 + '人');
 
         var year_data = [];
         for(i = 2; i < data2_by_cat.length; i++){   //start from 2 because don't want year and total
@@ -598,7 +596,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
         current_year = selected_year;
 
         //update total info
-        d3.select('#curr_year').html("西元 "+current_year)
+        d3.select('#curr_year').html("西元 "+current_year +" 年台灣失業數據")
         d3.select("#total_unemployment_rate").html("總計失業率: "+ line_data1_by_cat[1][current_year-1992]+ "%");
 
         //update path color
@@ -655,7 +653,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
                 $("#play_button").show();
             }
 
-            d3.select('#curr_year').html("西元 "+year_range[count_year])
+            d3.select('#curr_year').html("西元 "+year_range[count_year] + "台灣失業數據")
             d3.select("#total_unemployment_rate").html("總計失業率: "+ line_data1_by_cat[1][count_year+1]+ "%");
 
 
