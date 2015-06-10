@@ -36,17 +36,21 @@
     </div>
    
     <br>
-    <div class = "data_container">
+    <div class = "ui stackable grid">
 
-      <div class="ui black buttons button_role"> </div>
+      <div class="sixteen wide column">
+        <div class="ui black buttons button_role"> </div>
+      </div>
 
-      <h1>
-        <div id="curr_year" style = "font-size: 35px"></div>
-      </h1>
+      <div class="right floated left aligned five wide column">
+        <div class="ui primary button" id ="play_button" style = "font-size: 20px" ><i class="play icon"></i>播放數據動畫</div>
+      </div>
 
-      <div class="ui primary button" id ="play_button" style = "font-size: 20px" ><i class="play icon"></i>播放數據動畫</div>
+      <div class="seven wide column">
+       <h1><div id="curr_year" style = "font-size: 35px"></div></h1>
+      </div>
 
-      <div>
+      <div class="eleven wide column">
         <h2>
           <span id = "total_pop_unemployed"></span>&nbsp;
           <span id = "total_unemployment_rate"></span>
@@ -54,35 +58,41 @@
       </div>
       <br>
 
-      <div class = "tw_map_svg"></div>
-      <div class = "pie_chart_section">
+      
+      <div class="eight wide column">
+        <div class = "tw_map_svg"></div>
+      </div>
 
-        <div class = "pie_chart1">
-          <h3>性別圓餅圖</h3>
-          <div id="pie_chart1"></div>
-        </div>
-
-        <div class = "pie_chart3">
-          <h3>學歷圓餅圖</h3>
-          <div id="pie_chart3"></div>
-        </div>
-
-        <div class = "pie_chart2">
-          <h3>年齡圓餅圖</h3> 
-          <div id="pie_chart2"></div>
-        </div>
+      <div class="eight wide column">
+        <div class="ui stackable grid">
+          <div class="row" style="padding-bottom: 0px;">
+            <div class = "pie_chart1 eight wide column">
+              <h3>性別圓餅圖</h3>
+              <div id="pie_chart1"></div>
+            </div>
+            <div class = "eight wide column pie_chart3">
+              <h3>學歷圓餅圖</h3>
+              <div id="pie_chart3"></div>
+            </div>
+          </div>
+          <div class = "pie_chart2 thirteen wide column" style="padding: 0px;">
+            <h3>年齡圓餅圖</h3> 
+            <div id="pie_chart2"></div>
+          </div>
+         </div>
       </div>
       
+      
+        <div class = "line_chart_section sixteen wide column">
+            <div id="line_chart"></div> 
+            <div class = "line_chart_options row">
+              <div class = "ui yellow button" id="transform_bar">切換成長條圖顯示</div>
+              <div class = "ui green button" id="gender_button">隱藏性別資料</div>
+              <div class = "ui green button" id="age_button">隱藏年齡資料</div>
+              <div class = " center floated ui green button" id="education_button">隱藏學歷資料</div>
+            </div>
+        </div>
 
-      <div class = "line_chart_section">
-          <div id="line_chart"></div> 
-          <div class = "line_chart_options">
-            <div class = "ui green button" id="gender_button">隱藏性別資料</div>
-            <div class = "ui green button" id="age_button">隱藏年齡資料</div>
-            <div class = "ui green button" id="education_button">隱藏學歷資料</div>
-            <div class = "ui green button" id="transform_bar">長條圖顯示</div>
-          </div>
-      </div>
     </div>
 
 

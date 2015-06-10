@@ -16,7 +16,7 @@ var svg = d3.select(".tw_map_svg")
                 .attr("width", Svg_Width)
                 .attr("height", Svg_Height);
 
-var projection = d3.geo.mercator().center([121.175531, 24.01000]).scale(10000);
+var projection = d3.geo.mercator().center([121.375531, 24.01000]).scale(9000);
 
 var path = d3.geo.path()
             .projection(projection);
@@ -35,9 +35,11 @@ var tip = d3.tip()
                 + d.properties.value[current_year-1993] + "%";
            })
 
+var draw_stroke = d3.tip()
+                    .attr('class', '')
 
 svg.call(tip);
-
+svg.call(draw_stroke);
 
 d3.csv('data/tw_data1.csv', function(tw_data1){
 d3.json('data/twCounty2011merge.topo.json', function(error, tw_topo_data) {
@@ -62,9 +64,14 @@ d3.csv("data/line_data1.csv", function(line_data1){
                 .append("path")
                 .attr("d",path)
                 .attr("opacity", 0.8)
-                .on('mouseover', tip.show)
-                .on('mouseout', tip.hide);
-
+                .on('mouseover', function(d){
+                    tip.show(d);
+                    d3.select(this).style({'stroke':"#FFFF00", 'stroke-width': '3px' });
+                })
+                .on('mouseout', function(d){
+                    tip.hide(d);
+                    d3.select(this).style({stroke:"rgba(255,255,255,0.5)"});
+                })
 
     svg.append('path')
         .attr('class', "borders")
@@ -72,7 +79,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
         .attr('d', path)
         .style('fill', 'none')
         .style('stroke', "rgba(255,255,255,0.5)")
-        .style('stroke-width', '2px')
+        .style('stroke-width', '3px')
 
 
     //get max value in the data
@@ -273,10 +280,6 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
             }
         },
-        size:{
-            height: 250,
-            width: 250
-        },
 
     });
 
@@ -299,11 +302,6 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
             }
         },
-        size:{
-            height: 300,
-            width: 450
-        },
-
     });
 
     //third pie chart
@@ -323,10 +321,6 @@ d3.csv("data/line_data1.csv", function(line_data1){
                 }
 
             }
-        },
-        size:{
-            height: 250,
-            width: 310
         },
 
     });
@@ -447,10 +441,6 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
             }
         },
-        size: {
-            height:400,
-            width:1160
-        },
         color: {
             pattern: ['rgb(44, 160, 44)', 'rgb(31, 119, 180)', 'rgb(214, 39, 40)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)']
         }
@@ -527,11 +517,11 @@ d3.csv("data/line_data1.csv", function(line_data1){
     d3.select("#transform_bar").on("click", function(){
         if(!transform_bar){
             line_chart.transform('bar');
-            d3.select("#transform_bar").text("以直線圖顯示");
+            d3.select("#transform_bar").text("切換直線圖顯示");
             transform_bar = true;
         }else{
             line_chart.transform('line');
-            d3.select("#transform_bar").text("以長條圖顯示");
+            d3.select("#transform_bar").text("切換長條圖顯示");
             transform_bar = false;
         } 
     })
@@ -634,6 +624,9 @@ d3.csv("data/line_data1.csv", function(line_data1){
     //play animation function
     d3.select("#play_button").on("click", function(){
 
+        svg.selectAll("path")
+             .on('mouseover', function(d){});
+
         $("#play_button").hide();
         var count_year = 0;
 
@@ -642,7 +635,25 @@ d3.csv("data/line_data1.csv", function(line_data1){
             if(count_year == tw_data1.length -1 ) {
                 clearInterval(set_switch);
                 $("#play_button").show();
+
+                // console.log(svg.selectAll("path")
+                //     .data(topo.features));
+
+                svg.selectAll("path")
+                    // .data(topo.features)
+
+                    .on('mouseover', function(d){
+                         console.log(d);
+                        tip.show(d);
+                        d3.select(this).style({'stroke':"#FFFF00", 'stroke-width': '3px' });
+                    })
+                    .on('mouseout', function(d){
+                        tip.hide(d);
+                        d3.select(this).style({stroke:"rgba(255,255,255,0.5)"});
+                    })
+
             }
+
 
             d3.select('#curr_year').html("西元 "+year_range[count_year] + " 年台灣失業數據")
             d3.select("#total_unemployment_rate").html("失業率: "+ line_data1_by_cat[1][count_year+1]+ "%");
@@ -713,7 +724,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
             count_year++;
 
-        }, 1500)
+        }, 150)
 
 
     });

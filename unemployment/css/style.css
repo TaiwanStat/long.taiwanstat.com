@@ -1,20 +1,17 @@
 
 
 /*general*/
-.data_container{
+.ui.grid{
     margin-left: 15px;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
-
 #play_button{
-    float: right;
     margin-right: 80px;
-    margin-bottom: 20px;
 }
 
 .ui.button.year_button{
-    font-size: 17px;
+    font-size: 15px;
     padding-left: 7px;
     padding-right: 8px;
 }
@@ -66,24 +63,12 @@ text{
 
 
 /*pie charts*/
-.pie_chart_section{
-    width: 100%;
-    margin-right: 10px;
+.pies{
+    margin-right: 20px;
 }
 
-.pie_chart1{
-    float: left;
-    margin-left: 10px;
-}
-.pie_chart2{
-    float: left;
-}
-.pie_chart3{
-    
-    float: right;
-    margin-top: 70px;
-    margin-right: 5px;
-
+.eight.wide.column.pie_chart3{
+    margin-top: 100px;
 }
 
 
