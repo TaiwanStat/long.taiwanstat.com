@@ -7,13 +7,13 @@
     <meta property="og:image:type" content="image/jpg">
     <meta property="og:image:width" content="300">
     <meta property="og:image:height" content="300">
-    <meta property="og:title" content="台灣失業率">
-    <meta property="og:site_name" content="台灣失業率">
-    <meta property="og:description" content="用數據看台灣-台灣失業率">
+    <meta property="og:title" content="台灣近20年失業數據">
+    <meta property="og:site_name" content="台灣近20年失業數據">
+    <meta property="og:description" content="用數據看台灣-台灣近20年失業數據">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" href="/favicon.ico" />
-    <title>台灣失業率</title>
+    <title>台灣近20年失業數據</title>
     <link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all" />
 
     <!-- my css -->
@@ -27,7 +27,7 @@
   <body>
     <div class="container">
 
-    <h1 style = "font-size: 50px"></style>台灣失業率</h1>
+    <h1 style = "font-size: 30px"></style>台灣近20年失業數據</h1>
 
     <div class="fb-plugin">
       <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
@@ -42,16 +42,18 @@
     <br>
     <div class = "data_container">
 
-      <div class = "button_role"> </div>
-      <h1>
-        <span id="curr_year"></span>
-        <span><button id = "play_button" style ="font-size: 30px">play</button>&nbsp;</span>
-      </h1>
+      <div class="blue ui buttons button_role"> </div>
 
       <h1>
+        <span id="curr_year"></span>
+        <span class="ui red button" id ="play_button" style = "font-size: 20px" ><i class="play icon"></i>播放數據動畫</span>
+
+      </h1>
+
+      <h2>
         <span id = "total_pop_unemployed"></span>&nbsp;
         <span id = "total_unemployment_rate"></span>
-      </h1>
+      </h2>
       <br>
 
       
@@ -78,10 +80,12 @@
 
       <div class = "line_chart_section">
           <div id="line_chart"></div> 
-          <button><div id="gender_button">隱藏性別資料</div></button>
-          <button><div id="age_button">隱藏年齡資料</div></button>
-          <button><div id="education_button">隱藏學歷資料</div></button>
-          <button><div id="transform_bar">長條圖顯示</div></button>
+          <div class = "line_chart_options">
+            <div class = "ui green button" id="gender_button">隱藏性別資料</div>
+            <div class = "ui green button" id="age_button">隱藏年齡資料</div>
+            <div class = "ui green button" id="education_button">隱藏學歷資料</div>
+            <div class = "ui green button" id="transform_bar">長條圖顯示</div>
+          </div>
       </div>
     </div>
 

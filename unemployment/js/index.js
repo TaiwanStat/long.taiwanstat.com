@@ -31,8 +31,8 @@ var tip = d3.tip()
            .html(function(d) {
                 return d.properties.name + " " 
                 + current_year 
-                + "<strong> 年失業率:</strong> <span style='color:black'>" 
-                + d.properties.value[current_year-1993] + "%"+ "</span>";
+                + "年失業率: " 
+                + d.properties.value[current_year-1993] + "%";
            })
 
 
@@ -47,7 +47,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
     //processing map section ////////////////////
 
-    d3.select('#curr_year').html("西元 "+current_year + '年台灣失業數據')  //first declare year 
+    d3.select('#curr_year').html("西元 "+current_year + ' 年台灣失業數據')  //first declare year 
 
     var topo = topojson.feature(tw_topo_data, tw_topo_data.objects["layer1"]);
 
@@ -326,7 +326,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
         },
         size:{
             height: 250,
-            width: 250
+            width: 310
         },
 
     });
@@ -557,7 +557,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
                         .data(year_range)
                         .enter()
                         .append("button")
-                        .attr("class", "year_button")
+                        .attr("class", "ui button year_button")
                         .text(function(d){
                             return d;
                         })
@@ -580,13 +580,13 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
         d3.selectAll(".year_button")
             .transition()
-            .duration(500)
-            .style("color", "black")
-            .style("background", "rgb(251, 201, 127)");
+            .duration(200)
+            .style("color", "white")
+            .style("background", "#3b83c0");
 
         d3.select(this)
           .transition()
-          .duration(500)
+          .duration(200)
           .style("background", "lightBlue")
           .style("color", "white");
 
@@ -652,15 +652,15 @@ d3.csv("data/line_data1.csv", function(line_data1){
                 $("#play_button").show();
             }
 
-            d3.select('#curr_year').html("西元 "+year_range[count_year] + "台灣失業數據")
+            d3.select('#curr_year').html("西元 "+year_range[count_year] + " 年台灣失業數據")
             d3.select("#total_unemployment_rate").html("失業率: "+ line_data1_by_cat[1][count_year+1]+ "%");
 
 
             d3.selectAll(".year_button")
                 .transition()
-                .duration(300)
-                .style("color", "black")
-                .style("background", "rgb(251, 201, 127)");
+                .duration(200)
+                .style("color", "white")
+                .style("background", "#3b83c0");
 
 
             var actual_year = count_year+1993;
@@ -732,3 +732,8 @@ d3.csv("data/line_data1.csv", function(line_data1){
 });
 });
 });
+
+
+
+
+
