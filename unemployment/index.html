@@ -38,14 +38,38 @@
    
     <p>
       
-      my content
+      
 
     </p>
 
+    <div><button id = "play_button" style ="font-size: 30px">play</button>&nbsp;</div>
+      <div class = "button_role"> </div>
 
+      <h1 id="curr_year"></h1>
+      <h1 id = "total_pop_unemployed"></h1>
+      <h1 id = "total_unemployment_rate"></h1>
+
+      <div class = "tw_map_svg"></div>
+      <div class = "pie_chart_section">
+          <h3>性別圓餅圖</h3>
+          <div id="pie_chart1"></div>
+          <h3>年齡圓餅圖</h3> 
+          <div id="pie_chart2"></div>
+          <h3>學歷圓餅圖</h3>
+          <div id="pie_chart3"></div>
+      </div>
+
+      <div class = "line_chart_section">
+          <div id="line_chart"></div> 
+          <button><div id="gender_button">隱藏性別資料</div></button>
+          <button><div id="age_button">隱藏年齡資料</div></button>
+          <button><div id="education_button">隱藏學歷資料</div></button>
+          <button><div id="transform_bar">長條圖顯示</div></button>
+      </div>
 
 
     <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
     <!-- my script -->
