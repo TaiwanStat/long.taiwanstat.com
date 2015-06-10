@@ -234,7 +234,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
     var year_to_data_index = curr_year-1992;
 
-    d3.select('#total_pop_unemployed').html('總計失業人數:'+data2_by_cat[1][year_to_data_index]*1000+ '人');
+    d3.select('#total_pop_unemployed').html('總計失業人數: '+data2_by_cat[1][year_to_data_index]*1000+ '人');
 
     var year_data = [];
     for(i = 2; i < data2_by_cat.length; i++){   //start from 2 because don't want year and total
@@ -331,13 +331,10 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
     });
 
-    
-
-
     function update_data(curr_year){
         var year_to_data_index = curr_year-1992;
 
-        d3.select('#total_pop_unemployed').html('總計失業人數:'+data2_by_cat[1][year_to_data_index]*1000 + '人');
+        d3.select('#total_pop_unemployed').html('總計失業人數: '+data2_by_cat[1][year_to_data_index]*1000 + '人');
 
         var year_data = [];
         for(i = 2; i < data2_by_cat.length; i++){   //start from 2 because don't want year and total
@@ -552,6 +549,9 @@ d3.csv("data/line_data1.csv", function(line_data1){
                         .enter()
                         .append("button")
                         .attr("class", "ui button year_button")
+                        .style("background", function(d){
+                            return color(colorMap(line_data1_by_cat[1][d-1992]));
+                        })
                         .text(function(d){
                             return d;
                         })
@@ -560,12 +560,10 @@ d3.csv("data/line_data1.csv", function(line_data1){
                         })
 
 
-
     d3.select('#button' +1993)
         .transition()
         .duration(300)
-        .style("background", "lightBlue")
-        .style("color", "white");
+        .style("background", "#3b83c0")
 
 
 
@@ -575,14 +573,15 @@ d3.csv("data/line_data1.csv", function(line_data1){
         d3.selectAll(".year_button")
             .transition()
             .duration(200)
-            .style("color", "white")
-            .style("background", "#3b83c0");
+            .style("background", function(d){
+                return color(colorMap(line_data1_by_cat[1][d-1992]));
+            });
 
         d3.select(this)
           .transition()
           .duration(200)
-          .style("background", "lightBlue")
-          .style("color", "white");
+          .style("background", "#3b83c0");
+
 
 
         //update year
@@ -651,19 +650,18 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
 
             d3.selectAll(".year_button")
-                .transition()
-                .duration(200)
-                .style("color", "white")
-                .style("background", "#3b83c0");
-
+                        .transition()
+                        .duration(200)
+                        .style("background", function(d){
+                            return color(colorMap(line_data1_by_cat[1][d-1992]));
+                        });
 
             var actual_year = count_year+1993;
 
             d3.select('#button' + actual_year)
               .transition()
               .duration(200)
-              .style("background", "lightBlue")
-              .style("color", "white");
+              .style("background", "#3b83c0");
 
 
             top3_rect = d3.selectAll("rect")
