@@ -15,8 +15,8 @@
 
 #play_button{
     float: right;
-    margin-top: 10px;
     margin-right: 80px;
+    margin-bottom: 20px;
 }
 
 .ui.button.year_button{
@@ -31,8 +31,13 @@
 .tw_map_svg{
     float: left;
 }
+
 .rank_text{
     font-size: 20px;
+}
+
+text{
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
 .d3-tip {
@@ -90,12 +95,8 @@
 
 /*line charts*/
 .line_chart_section{
-
     float: left;
     margin-bottom: 100px;
-}
-.line_chart{
-    padding-left: 10px;
 }
 
 .line_chart_options{
