@@ -1,0 +1,29 @@
+
+.year_button {
+    background-color: rgb(251, 201, 127);
+    padding: 3px;
+    margin: 2px;
+    font-size: 18px;
+}
+
+/*tw map*/
+.tw_map_svg{
+    float: left;
+}
+.rank_text{
+    font-size: 20px;
+}
+
+/*pie charts*/
+.pie_chart_section{
+    float: right;
+    height: 500px;
+    width: 300px;
+    margin-right: 80px;
+}
+
+.line_chart_section{
+    float: left;
+    margin-bottom: 200px;
+}
+
