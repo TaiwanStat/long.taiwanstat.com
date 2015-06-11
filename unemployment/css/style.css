@@ -11,11 +11,12 @@
 }
 
 .ui.button.year_button{
-    font-size: 15px;
+    font-size: 16px;
     padding-left: 7px;
     padding-right: 8px;
-}
 
+
+}
 
 
 /*tw map*/
@@ -73,20 +74,17 @@ text{
 
 
 /*line charts*/
-.line_chart_section{
-    float: left;
-    margin-bottom: 100px;
+
+#line_chart{
+  min-width: 700px;
 }
-
-.line_chart_options{
-
-    margin-top: 8px;
-    margin-left: 30px;
-}
-
 
 .tick{
-    font-size: 15px;
+    font-size: 12px;
+}
+
+.ui.yellow.button.last{
+  margin-bottom: 20px;
 }
 
 

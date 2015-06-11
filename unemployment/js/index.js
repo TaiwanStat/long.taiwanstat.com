@@ -558,7 +558,9 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
 
     //button animation
-    buttons.on("click", function(selected_year){
+    buttons.on("click", function(d){ update_map_with_year(d); });
+
+    function update_map_with_year(selected_year){
 
         d3.selectAll(".year_button")
             .transition()
@@ -567,7 +569,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
                 return color(colorMap(line_data1_by_cat[1][d-1992]));
             });
 
-        d3.select(this)
+        d3.select("#button"+selected_year)
           .transition()
           .duration(200)
           .style("background", "black");
@@ -617,7 +619,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
         //update pie chart
         update_data(selected_year);
 
-    })
+    };
 
 
 
@@ -634,14 +636,12 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
             if(count_year == tw_data1.length -1 ) {
                 clearInterval(set_switch);
-                $("#play_button").show();
 
-                // console.log(svg.selectAll("path")
-                //     .data(topo.features));
+
+                $("#play_button").show();
+                update_map_with_year(2014);
 
                 svg.selectAll("path")
-                    // .data(topo.features)
-
                     .on('mouseover', function(d){
                          console.log(d);
                         tip.show(d);
