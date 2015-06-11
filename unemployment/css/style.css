@@ -26,6 +26,11 @@
   font-size: 40px;
 }
 
+#data_source{
+  margin-left: 20px;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
 
 /*tw map*/
 .tw_map_svg{
