@@ -435,7 +435,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
                     return '西元' + d + '年';
                 },
                 value: function(value){
-                    var format = d3.format("2.1f");
+                    var format = d3.format("2.2f");
                     return format(value)+"%";
                 }
 
