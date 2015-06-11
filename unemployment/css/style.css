@@ -14,8 +14,11 @@
     font-size: 16px;
     padding-left: 7px;
     padding-right: 8px;
+}
 
-
+#title{
+  margin-left: 18px;
+  font-size: 30px;
 }
 
 
