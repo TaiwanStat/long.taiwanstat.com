@@ -1,6 +1,7 @@
 
 
 /*general*/
+
 .ui.grid{
     margin-left: 15px;
     margin-right: 10px;
@@ -16,9 +17,13 @@
     padding-right: 8px;
 }
 
+.fb-plugin{
+  margin-left: 20px;
+}
+
 #title{
   margin-left: 18px;
-  font-size: 30px;
+  font-size: 40px;
 }
 
 

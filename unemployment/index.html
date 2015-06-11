@@ -25,18 +25,88 @@
     <script src="/bower_components/semantic/dist/semantic.min.js"></script>
   </head>
   <body>
-    <div class="container">
+    
 
-    <h1 id = "title">
-      台灣近20年失業數據
-    </h1>
+    <div class = "row">
+      <h1 id = "title">
+        台灣近20年失業數據
+      </h1>
+      <div class="fb-plugin">
+        <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
 
-    <div class="fb-plugin">
-      <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
-
-      <div class="fb-like" data-href="http://long.taiwanstat.com/unemployment/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        <div class="fb-like" data-href="http://long.taiwanstat.com/unemployment/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
     </div>
-    <br>
+    <br><br>
+
+    <!-- instructions -->
+    <div class="ui grid">
+    <div class="ui icon message">
+    <div class="ui three column  stackable grid">
+
+
+      <div class = "column">
+        <i class="star icon"></i>
+        <div class="content">
+          <div class="header">
+            長條時間軸線    
+          </div>
+          <li>
+            點擊年份觀看各年數據
+          </li>
+          <li>
+          年份背景色象徵各年總失業率
+          </li>
+          <li>
+            點擊播放動畫觀看台灣近20年失業率變化
+          </li>
+        </div>
+      </div>
+      
+      <div class = "column">
+        <i class="star icon"></i>
+        <div class="content">
+          <div class="header">
+            地圖及圓餅圖    
+          </div>
+          <li>
+            鼠標移至各縣市上觀看各縣市失業率
+          </li>
+          <li>
+            鼠標移至圓餅圖上觀看各群組失業人數
+          </li>
+          <li>
+            點擊圓餅圖的各群組備註可隱藏/顯示群組資料
+          </li>
+        </div>
+      </div>
+
+      <div class = "column">
+        <i class="star icon"></i>
+        <div class="content">
+          <div class="header">
+            長線圖    
+          </div>
+          <li>
+            在長線圖上可使用鼠標滑輪放大/縮小圖表
+          </li>
+          <li>
+            點擊長線圖的各群組備註可隱藏/顯示群組資料
+          </li>
+          <li>
+            鼠標移至長線圖的各群組備註可加重顯示群組資料
+          </li>
+        </div>
+      </div>
+
+
+    </div>
+    </div>
+    </div>
+
+
+
+
 
 
     <div class = "ui stackable grid">
