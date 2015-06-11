@@ -16,7 +16,7 @@ var svg = d3.select(".tw_map_svg")
                 .attr("width", Svg_Width)
                 .attr("height", Svg_Height);
 
-var projection = d3.geo.mercator().center([121.375531, 24.01000]).scale(9000);
+var projection = d3.geo.mercator().center([121.675531, 24.41000]).scale(9000);
 
 var path = d3.geo.path()
             .projection(projection);
