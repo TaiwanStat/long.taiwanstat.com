@@ -724,7 +724,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
             count_year++;
 
-        }, 150)
+        }, 1600)
 
 
     });
