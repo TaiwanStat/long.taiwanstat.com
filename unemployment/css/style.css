@@ -1,6 +1,7 @@
 
 
 /*general*/
+
 .ui.grid{
     margin-left: 15px;
     margin-right: 10px;
@@ -14,8 +15,20 @@
     font-size: 16px;
     padding-left: 7px;
     padding-right: 8px;
+}
 
+.fb-plugin{
+  margin-left: 20px;
+}
 
+#title{
+  margin-left: 18px;
+  font-size: 40px;
+}
+
+#data_source{
+  margin-left: 20px;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
 
@@ -84,7 +97,7 @@ text{
 }
 
 .ui.yellow.button.last{
-  margin-bottom: 20px;
+  margin-bottom: 200px;
 }
 
 
