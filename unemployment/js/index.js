@@ -122,21 +122,24 @@ d3.csv("data/line_data1.csv", function(line_data1){
         for( j = 0; j < topo.features.length; j++){    
             var county_name_and_rate =[];
             county_name_and_rate.push(topo.features[j].properties.name);
-            county_name_and_rate.push(topo.features[j].properties.value[i]);
+            county_name_and_rate.push(+topo.features[j].properties.value[i]);
             temp.push(county_name_and_rate);
         };
         unemployment_by_year.push(temp);
     };
 
 
+
+
+
     var top3s_each_year = [];
 
     for(m = 0; m< unemployment_by_year.length; m++){
         var temp = [];
-        for(k = 0; k <3; k++){
+        for(k = 0; k <3; k++){      //get 3
             var max = -1;
             var index;
-            for(i = 0; i < unemployment_by_year[m].length; i++){
+            for(i = 0; i < unemployment_by_year[m].length; i++){      //every year
                 
                 if(unemployment_by_year[m][i][1]>max){
                     max = unemployment_by_year[m][i][1];
@@ -147,10 +150,21 @@ d3.csv("data/line_data1.csv", function(line_data1){
             temp.push(unemployment_by_year[m][index]);
             unemployment_by_year[m].splice(index, 1)
         }
+
+        for(i = 0; i < unemployment_by_year[m].length; i++){
+                
+            if(unemployment_by_year[m][i][1]==temp[2][1]){
+                temp.push(unemployment_by_year[m][i]);
+                unemployment_by_year[m].splice(i, 1);
+            }
+        }
+
         top3s_each_year.push(temp);
+
     }
 
-    
+
+    console.log(top3s_each_year);
 
     // fill each path with 1993 data color
     blocks.style("fill",function(it){ 
@@ -184,18 +198,18 @@ d3.csv("data/line_data1.csv", function(line_data1){
                     .append("text")
                     .attr("class", "rank_text")
                     .text(function(d, i){
-                        if(i == 0)
-                            var rank = "失業率第ㄧ高: "
-                        if(i == 1)
-                            var rank = "失業率第二高: "
-                        if(i == 2)
-                            var rank = "失業率第三高: "
+                        if(i == 0){
+                            var rank = "失業率第ㄧ高: ";
+                        }else if(i == 1){
+                            var rank = "失業率第二高: ";
+                        }else if(i == 2){
+                            var rank = "失業率第三高: ";
+                        }else{ 
+                            var rank = "並列: ";
+                        }
+
                         return rank +d[0]+ " " + d[1] + "% ";
                     })
-                    .attr("font-family", "sans-serif")
-                    .attr("font-size", "20px")
-                    .attr("fill", "black")
-                    .attr("background-color", "red")
                     .attr("x", function() {
                         return 30;
                     })
@@ -601,19 +615,68 @@ d3.csv("data/line_data1.csv", function(line_data1){
                     .attr("opacity", 0.8);
 
 
+
+        //generate top 3 text
+        svg.selectAll("text")
+                    .data(top3s_each_year[current_year-1993])
+                    .exit()
+                    .remove("text");
+        
+
+
         top3_text = d3.selectAll("text")
             .data(top3s_each_year[current_year-1993])
             .transition()
             .duration(400)
             .text(function(d, i){
-                if(i == 0)
-                    var rank = "失業率第一高: "
-                if(i == 1)
-                    var rank = "失業率第二高: "
-                if(i == 2)
-                    var rank = "失業率第三高: "
+                if(i == 0){
+                    var rank = "失業率第ㄧ高: ";
+                }else if(i == 1){
+                    var rank = "失業率第二高: ";
+                }else if(i == 2){
+                    var rank = "失業率第三高: ";
+                }else{ 
+                    var rank = "並列: ";
+                }
+
+
                 return rank +d[0]+ " " + d[1] + "%";
-            });
+            });                    
+
+
+        var top3_text = svg.selectAll("text")
+                    .data(top3s_each_year[current_year-1993])
+                    .enter()
+                    .append("text")
+                    .attr("class", "rank_text")
+                    .text(function(d, i){
+                        var rank = "並列: ";
+                        return rank +d[0]+ " " + d[1] + "% ";
+                    })
+                    .attr("x", function() {
+                        return 30;
+                    })
+                    .attr("y", function(d, i){
+                        return 50 + i*30;
+                    });
+
+
+        // //original
+        // top3_text = d3.selectAll("text")
+        //     .data(top3s_each_year[current_year-1993])
+        //     .transition()
+        //     .duration(400)
+        //     .text(function(d, i){
+        //         if(i == 0){
+        //             var rank = "失業率第ㄧ高: ";
+        //         }else if(i == 1){
+        //             var rank = "失業率第二高: ";
+        //         }else if(i == 2){
+        //             var rank = "失業率第三高: ";
+        //         };
+
+        //         return rank +d[0]+ " " + d[1] + "%";
+        //     });
 
 
         //update pie chart
@@ -683,19 +746,51 @@ d3.csv("data/line_data1.csv", function(line_data1){
                             })
                             .attr("opacity", 0.8);
 
+
+            //update text
+            svg.selectAll("text")
+                    .data(top3s_each_year[count_year])
+                    .exit()
+                    .remove("text");
+        
+
+
             top3_text = d3.selectAll("text")
+                .data(top3s_each_year[count_year])
+                .transition()
+                .duration(400)
+                .text(function(d, i){
+                    if(i == 0){
+                        var rank = "失業率第ㄧ高: ";
+                    }else if(i == 1){
+                        var rank = "失業率第二高: ";
+                    }else if(i == 2){
+                        var rank = "失業率第三高: ";
+                    }else{ 
+                        var rank = "並列: ";
+                    }
+
+
+                    return rank +d[0]+ " " + d[1] + "%";
+                });                    
+
+
+            var top3_text = svg.selectAll("text")
                         .data(top3s_each_year[count_year])
-                        .transition()
-                        .duration(200)
+                        .enter()
+                        .append("text")
+                        .attr("class", "rank_text")
                         .text(function(d, i){
-                            if(i == 0)
-                                var rank = "失業率第一高: "
-                            if(i == 1)
-                                var rank = "失業率第二高: "
-                            if(i == 2)
-                                var rank = "失業率第三高: "
-                            return rank +d[0]+ " " + d[1] + "%";
+                            var rank = "並列: ";
+                            return rank +d[0]+ " " + d[1] + "% ";
+                        })
+                        .attr("x", function() {
+                            return 30;
+                        })
+                        .attr("y", function(d, i){
+                            return 50 + i*30;
                         });
+
 
 
             svg.selectAll("path")
