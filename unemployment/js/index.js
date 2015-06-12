@@ -18,7 +18,7 @@ var svg = d3.select(".tw_map_svg")
                 .append("svg")
                 .attr('width', Svg_Width)
                 .attr('height', Svg_Height)
-                .attr("viewBox", "0 0 600 680");
+                .attr("viewBox", "0 0 600 700");
 
 var projection = d3.geo.mercator().center([121.675531, 24.41000]).scale(9000);
 
