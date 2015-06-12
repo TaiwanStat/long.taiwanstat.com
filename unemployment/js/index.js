@@ -1,8 +1,6 @@
 
 
 var Svg_Width = $('.map.column').width();
-if(Svg_Width > 640)
-  Svg_Width = 640;
 
 var Svg_Height = Svg_Width/640*730;
 
