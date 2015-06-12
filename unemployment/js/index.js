@@ -168,7 +168,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
     }
 
 
-    console.log(top3s_each_year);
+    // console.log(top3s_each_year);
 
     // fill each path with 1993 data color
     blocks.style("fill",function(it){ 
