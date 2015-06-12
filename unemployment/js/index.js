@@ -1,7 +1,9 @@
 
 
+var Svg_Width = $('.map.column').width();
+if(Svg_Width > 640)
+  Svg_Width = 640;
 
-var Svg_Width = 640;
 var Svg_Height = 730;
 
 var color_array =['#fff7ec', '#fee8c8', '#fdd49e', '#fdbb84', '#fc8d59', '#ef6548', '#d7301f','#b30000', '#7f0000'];
@@ -11,10 +13,12 @@ var color = d3.scale.quantize()
                 .domain([0, 1])
                 .range(d3.range(9).map(function(d) { return color_array[d] }));
 
+
 var svg = d3.select(".tw_map_svg")
                 .append("svg")
-                .attr("width", Svg_Width)
-                .attr("height", Svg_Height);
+                .attr('width', Svg_Width)
+                .attr('height', Svg_Height)
+                .attr("viewBox", "0 0 600 730");
 
 var projection = d3.geo.mercator().center([121.675531, 24.41000]).scale(9000);
 
