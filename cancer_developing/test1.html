@@ -1,0 +1,103 @@
+﻿
+<!doctype html>
+
+<html>
+
+<head>
+  <title> D3 </title>
+  <link href="c3.css" rel="stylesheet" type="text/css">
+  <script src = "http://d3js.org/d3.v3.min.js"></script>
+  <script src="c3.min.js"></script>
+</head>
+
+<body>
+
+  <div id = "spline_chart"></div>
+
+  <script type="text/javascript">
+    d3.csv("cancer_happen_rate.csv", analyze_happen_rate);
+
+    function analyze_happen_rate(data){
+    	// console.log(data);
+
+
+      //get [ [yaer][sex][cancer][county] [happen rate every year]]
+
+      var categories = ['性別', '縣市', '癌別'];
+
+      var category_combinations = [];     //stores all category combinations
+      
+      for(i = 0; i< data.length; i++){
+        
+        if(data[i]['年度'] == '1996'){
+          var category_combination = [];
+          for( j = 0; j < categories.length; j++){
+            // console.log(categories[j]);
+            if(data[i].hasOwnProperty(categories[j])){
+              category_combination.push(data[i][categories[j]]);
+            }
+          }
+        category_combinations.push(category_combination);       
+
+        }
+      }
+
+      for(j = 0; j < category_combinations.length; j++){
+        for(i = 0; i < data.length; i++){
+          if(data[i]['性別'] ==category_combinations[j][0] && data[i]['縣市'] ==category_combinations[j][1] && data[i]['癌別'] ==category_combinations[j][2]){
+              category_combinations[j].push(+data[i]['WHO2000年人口標準化發生率(每10萬人口)']);
+          }
+        }
+      }
+
+      // console.log(category_combinations);
+
+      //merge first 3 elements
+      var category_combinations_merged = category_combinations;
+
+      for(i = 0; i < category_combinations_merged.length; i++){
+        var categories_string = category_combinations_merged[i].splice(0, 3).join();
+
+        category_combinations_merged[i].unshift(categories_string);
+      }
+
+      console.log(category_combinations_merged);
+
+      // debugger;
+
+      var chart = c3.generate({
+        bindto: '#spline_chart',
+        data: {
+            columns: category_combinations_merged,
+            type: 'spline'
+        },
+        size:{
+          height: 1000
+        },
+        legend: {
+          show: false
+        },
+        zoom: {
+        enabled: true
+    }
+      });
+
+
+
+
+
+
+
+
+    // debugger;
+    
+    }
+
+
+
+  </script>
+
+
+</body>
+
+</html>
