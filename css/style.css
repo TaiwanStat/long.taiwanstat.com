@@ -39,9 +39,9 @@ body, html {
 
 .fb-comments, .fb-comments iframe[style], .fb-comments span {
    margin-top:10px;
-   width: 90% !important;
+   width: 95% !important;
    margin-left: 10px;
-   padding-right: 150px;
+   padding-right: 5%;
    margin-bottom: 30px;
 
 
