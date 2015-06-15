@@ -8,18 +8,79 @@
   <link href="c3.css" rel="stylesheet" type="text/css">
   <script src = "http://d3js.org/d3.v3.min.js"></script>
   <script src="c3.min.js"></script>
+
+
+  <style>
+    svg{
+      width: 2000px;
+    }
+
+    g{
+      pointer-events: painted;
+    }
+
+
+    #select_line{
+      font-size: 30px;
+    }
+    #top{
+      z-index: 1000;
+    }
+
+
+
+  </style>
+
 </head>
 
 <body>
 
   <div id = "spline_chart"></div>
+  <div class = "line_info">
+    <h1>INFO
+      <span id = "gender"></span>
+      <span id = "county"></span>
+      <span id = "cancer_type"></span>
+      <br>
+      <span id = "oldest_happen_rate"></span>
+      <span id = "newest_happen_rate"></span>
+    </h1>
+  </div>
+
+  <button id = "select_line" checked/>select line</button>
+
+  <!-- <div id = "graphSettings">
+    <div id = 'blue'>       
+      <div class = 'radioBox' id = 'blueSex'>
+        <span class = 'radioHeader'>Sex</span>
+        <input type="radio" id="bsA" name="b_sex" value="不分男女" />      <label for="bsA">不分男女</label>
+        <input type="radio" id="bsm" name="b_sex" value="男" />      <label for="bsm">男</label>
+        <input type="radio" id="bsw" name="b_sex" value="女"checked/>  <label for="bsw">女</label>
+      </div>
+
+      <div class = 'radioBox'>
+        <span class = 'radioHeader'>Race</span>
+        <input type="radio" id="brA" name="b_county" value="全國" checked/>  <label for="brA">全國</label>
+        <input type="radio" id="brw" name="b_county" value="台北市" />     <label for="brw">台北市</label>
+        <input type="radio" id="brb" name="b_county" value="台中市"/>      <label for="brb">台中市</label>
+        <input type="radio" id="brh" name="b_county" value="台南市"/>      <label for="brh">台南市</label>
+        <input type="radio" id="bra" name="b_county" value="高雄市"/>      <label for="bra">高雄市</label>
+      </div>
+
+      <div class = 'radioBox'>
+        <span class = 'radioHeader'>Age</span>
+        <input type="radio" id="baA" name="b_age" value="口腔" checked/> <label for="baA">口腔</label>
+        <input type="radio" id="bay" name="b_age" value="主唾液線" />     <label for="bay">主唾液線</label>
+      </div>
+
+
+    </div>
+  </div> -->
 
   <script type="text/javascript">
     d3.csv("cancer_happen_rate.csv", analyze_happen_rate);
 
     function analyze_happen_rate(data){
-    	// console.log(data);
-
 
       //get [ [yaer][sex][cancer][county] [happen rate every year]]
 
@@ -61,29 +122,116 @@
         category_combinations_merged[i].unshift(categories_string);
       }
 
-      console.log(category_combinations_merged);
+      console.log(category_combinations_merged);  //total 2211 arrays
 
       // debugger;
+
+
 
       var chart = c3.generate({
         bindto: '#spline_chart',
         data: {
             columns: category_combinations_merged,
-            type: 'spline'
+            type: 'spline',
         },
         size:{
-          height: 1000
+          height: 800
         },
         legend: {
           show: false
         },
         zoom: {
-        enabled: true
-    }
+            enabled: false
+        },
+        point: {
+            show: false
+        },
+        color: {
+            opacity: 0.2,
+            pattern:  ['#aec7e8']
+        },
+        tooltip: {
+            show: false
+        },
+
+
+        
       });
 
 
+      // d3.selection.prototype.moveToFront = function() {
+      //   return this.each(function(){
+      //   this.parentNode.appendChild(this);
+      //   });
+      // };
 
+      d3.select('svg').select('.c3-chart-lines').selectAll('.c3-chart-line').select('.c3-shapes.c3-lines')
+        .select("path")
+
+        .style('stroke-width', '2.5px')
+        .attr('z-index', '-1')
+
+        .on("mouseover", function(d){
+            console.log(d);
+
+            d3.select('.c3-chart-lines').selectAll("path").sort(function (a, b) { // select the parent and sort the path's
+              if (a.id != d.id) return -1;               // a is not the hovered element, send "a" to the back
+              else return 1;                             // a is the hovered element, bring "a" to the front
+            });
+
+            d3.select(this)
+              .attr('z-index', '10000')
+              .style('stroke', 'red')
+              .style('opacity', '0.8')
+              .style('stroke-width', '8px');
+
+
+            
+            d3.select('#gender').html(d.id.split(',')[0]);
+            d3.select('#county').html(d.id.split(',')[1]);
+            d3.select('#cancer_type').html(d.id.split(',')[2]);
+            d3.select('#oldest_happen_rate').html('1993: ' + d.values[0].value);
+
+            var newest_year = 1993 + d.values.length+2;
+            d3.select('#newest_happen_rate').html( newest_year + ": " +d.values[d.values.length-1].value);
+
+            // debugger;
+
+        })
+        .on("mouseleave", function(){
+            d3.select(this)
+              .style('stroke', '#aec7e8')
+              .style('z-index', '-1')
+              .attr('opacity', '0.2')
+              .style('stroke-width', '2.5px');
+
+            d3.select('#gender').html(null);
+            d3.select('#county').html(null);
+            d3.select('#cancer_type').html(null);
+            d3.select('#oldest_happen_rate').html(null);
+            d3.select('#newest_happen_rate').html(null);
+
+
+        });
+
+
+
+
+      d3.select('#select_line')
+        .on('click', function(){
+
+          console.log('button clicked');
+
+          chart.load({
+            colors: {
+              '不分男女,台北市,口腔': '#ff0000',
+
+            },
+          });
+        });
+
+
+       document.getElementById("select_line").click(); 
 
 
 
@@ -92,6 +240,7 @@
     // debugger;
     
     }
+
 
 
 
