@@ -415,11 +415,8 @@
 	      var cancer_input = document.getElementById("cancer_form");
 	      var selected_cancer = cancer_input.options[cancer_input.selectedIndex].text;
 
+	      var combined_input = selected_sex + "-"+ selected_county + "-" +selected_cancer;
 
-	      combined_input = selected_sex + "-"+ selected_county + "-" +selected_cancer;
-	      // console.log(combined_input);
-
-		    // initial highlight
 
 		    d3.select("#"+combined_input)
 		    		.each( function(d){
@@ -447,9 +444,7 @@
 
 	    }
 
-	    update_hightlight();
-
-
+	    update_hightlight();     // initial highlight
 
 	    d3.select('#highlight_form').on('change', function(){
 	    	update_hightlight();
