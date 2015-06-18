@@ -5,242 +5,470 @@
 
 <head>
   <title> D3 </title>
-  <link href="c3.css" rel="stylesheet" type="text/css">
+  <meta http-equiv="content-type" content="text/html; charset=UTF8">
   <script src = "http://d3js.org/d3.v3.min.js"></script>
-  <script src="c3.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 
 
   <style>
-    svg{
-      width: 2000px;
-    }
 
-    g{
-      pointer-events: painted;
-    }
+  .axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
 
-
-    #select_line{
-      font-size: 30px;
-    }
-    #top{
-      z-index: 1000;
-    }
-
-
-
+	.line {
+	  fill: none;
+	}
+  
   </style>
 
 </head>
 
 <body>
+	<div class = "graph"></div>
 
-  <div id = "spline_chart"></div>
-  <div class = "line_info">
+	<div class = "line_info">
     <h1>INFO
       <span id = "gender"></span>
       <span id = "county"></span>
-      <span id = "cancer_type"></span>
-      <br>
+      <span id = "cancer"></span>
+      <!-- <br> -->
       <span id = "oldest_happen_rate"></span>
       <span id = "newest_happen_rate"></span>
     </h1>
   </div>
 
-  <button id = "select_line" checked/>select line</button>
-
-  <!-- <div id = "graphSettings">
-    <div id = 'blue'>       
-      <div class = 'radioBox' id = 'blueSex'>
-        <span class = 'radioHeader'>Sex</span>
-        <input type="radio" id="bsA" name="b_sex" value="不分男女" />      <label for="bsA">不分男女</label>
-        <input type="radio" id="bsm" name="b_sex" value="男" />      <label for="bsm">男</label>
-        <input type="radio" id="bsw" name="b_sex" value="女"checked/>  <label for="bsw">女</label>
-      </div>
-
-      <div class = 'radioBox'>
-        <span class = 'radioHeader'>Race</span>
-        <input type="radio" id="brA" name="b_county" value="全國" checked/>  <label for="brA">全國</label>
-        <input type="radio" id="brw" name="b_county" value="台北市" />     <label for="brw">台北市</label>
-        <input type="radio" id="brb" name="b_county" value="台中市"/>      <label for="brb">台中市</label>
-        <input type="radio" id="brh" name="b_county" value="台南市"/>      <label for="brh">台南市</label>
-        <input type="radio" id="bra" name="b_county" value="高雄市"/>      <label for="bra">高雄市</label>
-      </div>
-
-      <div class = 'radioBox'>
-        <span class = 'radioHeader'>Age</span>
-        <input type="radio" id="baA" name="b_age" value="口腔" checked/> <label for="baA">口腔</label>
-        <input type="radio" id="bay" name="b_age" value="主唾液線" />     <label for="bay">主唾液線</label>
-      </div>
+  <div id = "highlight_form">
+<!--     <form>
+      <select id="sex_form">
+  　     <option>不分男女</option>
+  　     <option>男</option>
+  　     <option selected = "selected">女</option>
+      </select>
+    </form>    
 
 
-    </div>
-  </div> -->
+    <form>
+      <select id="county_form">
+  　     <option selected = "selected">全國</option>
+  　     <option>台北市</option>
+  　     <option>台中市</option>
+         <option>台南市</option>
+         <option>高雄市</option>
+         <option>基隆市</option>
+         <option>新竹市</option>
+         <option>嘉義市</option>
+         <option>新北市</option>
+         <option>桃園市</option>
+         <option>新竹縣</option>
+         <option>宜蘭縣</option>
+         <option>苗栗縣</option>
+         <option>彰化縣</option>
+         <option>南投縣</option>
+         <option>雲林縣</option>
+         <option>嘉義縣</option>
+         <option>屏東縣</option>
+         <option>澎湖縣</option>
+         <option>花蓮縣</option>
+         <option>台東縣</option>
+         <option>金門縣</option>
+         <option>連江縣</option>
+      </select>
+    </form>     -->
+  </div>
+
+  <div class = "line_info">
+    <h1>INFO
+      <span id = "selected_gender"></span>
+      <span id = "selected_county"></span>
+      <span id = "selected_cancer"></span>
+      <span id = "selected_oldest_happen_rate"></span>
+      <span id = "selected_newest_happen_rate"></span>
+    </h1>
+  </div>
+
 
   <script type="text/javascript">
-    d3.csv("cancer_happen_rate.csv", analyze_happen_rate);
 
-    function analyze_happen_rate(data){
 
-      //get [ [yaer][sex][cancer][county] [happen rate every year]]
+		var margin = { top: 20, right:80, bottom: 30, left: 50};
+
+		var width = 960 - margin.left - margin.right;
+
+		var height = 500 - margin.top - margin.bottom;
+
+
+
+		var x = d3.time.scale()
+							.range([ 0, width]);
+
+		var y = d3.scale.linear()
+							.range([ height, -10]);
+
+		var color = d3.scale.category10();
+
+		var xAxis = d3.svg.axis()
+									.scale(x)
+									.orient('bottom')
+									.tickFormat(d3.format("4.0f"))
+
+		var yAxis = d3.svg.axis()
+									.scale(y)
+									.orient("left");
+
+		var line = d3.svg.line()
+								.interpolate("basis")
+								.x( function (d, i){
+									return x(i+1996);
+								})
+								.y(function (d){
+									return y(d);
+								});
+
+		var svg = d3.select(".graph").append("svg")
+							.attr("width", width + margin.left + margin.right )
+							.attr("height", height + margin.top + margin.bottom )
+						.append("g")
+							.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+		//input data
+		d3.csv("cancer_happen_rate.csv", function(data){
+			console.log(data);
+		
+      var date_range = [];
+      for(i = 0; i < data.length; i++){
+        if( date_range.indexOf(data[i]['年度']) <0){
+          date_range.push(data[i]['年度'])
+        }
+      }
+
+			//get [ [yaer][sex][cancer][county] [happen rate every year]]
+			// 3*23 42
 
       var categories = ['性別', '縣市', '癌別'];
 
       var category_combinations = [];     //stores all category combinations
-      
-      for(i = 0; i< data.length; i++){
-        
-        if(data[i]['年度'] == '1996'){
-          var category_combination = [];
-          for( j = 0; j < categories.length; j++){
-            // console.log(categories[j]);
-            if(data[i].hasOwnProperty(categories[j])){
-              category_combination.push(data[i][categories[j]]);
-            }
-          }
-        category_combinations.push(category_combination);       
 
-        }
+ 
+      for(i = 0; i< data.length; i++){    //get all combinations
+      	var temp = [];
+      	if(data[i]['年度'] == '1996'){
+	      	temp.push(data[i]['性別']);
+	      	temp.push(data[i]['縣市']);
+	      	temp.push(data[i]['癌別']);
+
+	      	category_combinations.push(temp);
+	      }
+				
       }
 
+      // console.log(category_combinations)
+
+
+
+      //get yearly data for each categoryies
       for(j = 0; j < category_combinations.length; j++){
-        for(i = 0; i < data.length; i++){
+        for(i = 0; i < data.length; i++){					//change data length here ************************************
           if(data[i]['性別'] ==category_combinations[j][0] && data[i]['縣市'] ==category_combinations[j][1] && data[i]['癌別'] ==category_combinations[j][2]){
               category_combinations[j].push(+data[i]['WHO2000年人口標準化發生率(每10萬人口)']);
           }
         }
       }
 
-      // console.log(category_combinations);
+      // console.log(category_combinations)				//left off here: try to plot only complete data 20 
+
+      var complete_category_combinations= [];         //elminate incomplete data
+      for(i = 0; i <category_combinations.length; i++){
+      	if(category_combinations[i].length==20){
+      		complete_category_combinations.push(category_combinations[i]);
+      		// console.log(temp);
+      	}
+      }
+
+      console.log(complete_category_combinations)
+
+      for(i = 0; i < complete_category_combinations.length; i ++){
+       if(complete_category_combinations[i].length!=20){
+         console.log(complete_category_combinations[i]);
+       }
+      }
+
+
+
+      var gender_type = [];
+      for(i = 0; i < complete_category_combinations.length; i++){
+        if(gender_type.indexOf(complete_category_combinations[i][0]) <0)
+          gender_type.push(complete_category_combinations[i][0]);
+
+      }
+
+      // console.log(gender_type);
+
+
+      //get all cancer type for form
+      var county_type = [];
+      for(i = 0; i < complete_category_combinations.length; i++){
+        if(county_type.indexOf(complete_category_combinations[i][1]) <0)
+          county_type.push(complete_category_combinations[i][1]);
+
+      }
+
+
+      var cancer_type = [];
+      for(i = 0; i < complete_category_combinations.length; i++){
+        if(cancer_type.indexOf(complete_category_combinations[i][2]) <0)
+          cancer_type.push(complete_category_combinations[i][2]);
+      }
+
+
+      d3.select('#highlight_form')
+        .append('form')
+        .append('select')
+        .attr('id', 'gender_form')
+        .selectAll('option')
+        .data(gender_type)  
+        .enter()
+        .append('option')
+        .text( function(d){
+          return d;
+        })
+
+
+      d3.select('#highlight_form')
+        .append('form')
+        .append('select')
+        .attr('id', 'county_form')
+        .selectAll('option')
+        .data(county_type)  
+        .enter()
+        .append('option')
+        .text( function(d){
+          return d;
+        })
+
+
+      //cancer type form 
+      d3.select('#highlight_form')
+        .append('form')
+        .append('select')
+        .attr('id', 'cancer_form')
+        .selectAll('option')
+        // .data(cancer_type.reverse())
+        .data(cancer_type)  //temp
+        .enter()
+        .append('option')
+        .text( function(d){
+          return d;
+        })
+
+
+
+
+      // debugger;
 
       //merge first 3 elements
       var category_combinations_merged = category_combinations;
 
       for(i = 0; i < category_combinations_merged.length; i++){
-        var categories_string = category_combinations_merged[i].splice(0, 3).join();
+        var categories_string = category_combinations_merged[i].splice(0, 3).join("-");
 
         category_combinations_merged[i].unshift(categories_string);
       }
 
-      console.log(category_combinations_merged);  //total 2211 arrays
+      // for(i = 0; i < category_combinations_merged.length; i ++){
+      // 	if(category_combinations_merged[i].length!=18){
+      // 		console.log(category_combinations_merged[i]);
+      // 	}
+      // }
 
-      // debugger;
-
-
-
-      var chart = c3.generate({
-        bindto: '#spline_chart',
-        data: {
-            columns: category_combinations_merged,
-            type: 'spline',
-        },
-        size:{
-          height: 800
-        },
-        legend: {
-          show: false
-        },
-        zoom: {
-            enabled: false
-        },
-        point: {
-            show: false
-        },
-        color: {
-            opacity: 0.2,
-            pattern:  ['#aec7e8']
-        },
-        tooltip: {
-            show: false
-        },
-
-
-        
+      var cases = category_combinations_merged.map( function(d){    //data process completed
+      	return {
+      		name: d[0],
+      		values: d.slice(1, d.length)
+      		
+      	}
       });
 
+      // console.log(cases);  //total 2211 arrays
 
-      // d3.selection.prototype.moveToFront = function() {
-      //   return this.each(function(){
-      //   this.parentNode.appendChild(this);
-      //   });
-      // };
-
-      d3.select('svg').select('.c3-chart-lines').selectAll('.c3-chart-line').select('.c3-shapes.c3-lines')
-        .select("path")
-
-        .style('stroke-width', '2.5px')
-        .attr('z-index', '-1')
-
-        .on("mouseover", function(d){
-            console.log(d);
-
-            d3.select('.c3-chart-lines').selectAll("path").sort(function (a, b) { // select the parent and sort the path's
-              if (a.id != d.id) return -1;               // a is not the hovered element, send "a" to the back
-              else return 1;                             // a is the hovered element, bring "a" to the front
-            });
-
-            d3.select(this)
-              .attr('z-index', '10000')
-              .style('stroke', 'red')
-              .style('opacity', '0.8')
-              .style('stroke-width', '8px');
+      // for(i = 0; i < cases.length; i ++){
+      // 	if(cases[i].values.length!=17){
+      // 		console.log(cases[i]);
+      // 	}
+      // }
 
 
-            
-            d3.select('#gender').html(d.id.split(',')[0]);
-            d3.select('#county').html(d.id.split(',')[1]);
-            d3.select('#cancer_type').html(d.id.split(',')[2]);
-            d3.select('#oldest_happen_rate').html('1993: ' + d.values[0].value);
+      x.domain([1995.8, 2012]);
+
+      // x.domain(date_range);
+
+      y.domain([
+      	-5, 
+      	d3.max(cases, function(c){
+      		return d3.max(c.values)
+      	})
+
+      ])
+
+
+
+      svg.append("g")
+      		.attr("class", "x axis")
+      		.attr("transform", "translate(0," + height + ")")
+      		.call(xAxis);
+
+      svg.append('g')
+  			.attr('class', 'y axis')
+  			.call(yAxis)
+  		.append('text')
+  			.attr('transform', 'rotate(-90)')
+  			.attr('y', 6)
+  			.attr('dy', '.71em')
+  			.style('text-anchor', 'end')
+  			.text('rate');
+
+
+  		var recorded_color;
+  		var recorded_op;
+  		var recorded_width;
+
+      var name = svg.selectAll(".name")
+  								.data(cases)
+  								.enter()
+  								.append("g")
+  								.attr("class", "name")
+  								
+
+      name.append("path")
+      		.attr("class", "line")
+      		.attr("id", function(d){
+      			return d.name;
+      		})
+
+      		.attr("d", function(d){
+      			return line(d.values);
+      		})
+
+      		.style("stroke", "#1f77b4")
+      		.style("opacity", "0.2")
+      		.style("stroke-width", "2.5px")
+
+      		.on("mouseover", function(d){
+      			recorded_color = d3.select(this).style("stroke");
+      			recorded_op = d3.select(this).style("opacity");
+      			recorded_width = d3.select(this).style("stroke-width");
+      			
+      			d3.select(this)
+      				.style("stroke", "red")
+      				.style("opacity", "1")
+      				.style("stroke-width", "5px");
+
+      			d3.select('#gender').html(d.name.split(',')[0]);
+            d3.select('#county').html(d.name.split(',')[1]);
+            d3.select('#cancer').html(d.name.split(',')[2]);
+            d3.select('#oldest_happen_rate').html('1996: ' + d.values[0]);
 
             var newest_year = 1993 + d.values.length+2;
-            d3.select('#newest_happen_rate').html( newest_year + ": " +d.values[d.values.length-1].value);
+            d3.select('#newest_happen_rate').html( newest_year + ": " +d.values[d.values.length-1]);
 
-            // debugger;
 
-        })
-        .on("mouseleave", function(){
-            d3.select(this)
-              .style('stroke', '#aec7e8')
-              .style('z-index', '-1')
-              .attr('opacity', '0.2')
-              .style('stroke-width', '2.5px');
 
-            d3.select('#gender').html(null);
+      		})
+
+      		.on("mouseleave", function(){
+      			d3.select(this)
+      				.style("stroke", recorded_color)
+      				.style("opacity", recorded_op)
+      				.style("stroke-width", recorded_width);
+
+      			d3.select('#gender').html(null);
             d3.select('#county').html(null);
-            d3.select('#cancer_type').html(null);
+            d3.select('#cancer').html(null);
             d3.select('#oldest_happen_rate').html(null);
             d3.select('#newest_happen_rate').html(null);
 
-
-        });
-
-
-
-
-      d3.select('#select_line')
-        .on('click', function(){
-
-          console.log('button clicked');
-
-          chart.load({
-            colors: {
-              '不分男女,台北市,口腔': '#ff0000',
-
-            },
-          });
-        });
-
-
-       document.getElementById("select_line").click(); 
+      		})
 
 
 
 
+      function update_hightlight(){
 
-    // debugger;
-    
-    }
+      
+	      d3.selectAll('.line')
+	    		.style("stroke", "#1f77b4")
+      		.style("opacity", "0.2")
+      		.style("stroke-width", "2.5px");
 
+
+	      var sex_input = document.getElementById("gender_form");
+	      var selected_sex = sex_input.options[sex_input.selectedIndex].text;
+
+	      var county_input = document.getElementById("county_form");
+	      var selected_county = county_input.options[county_input.selectedIndex].text;
+
+	      var cancer_input = document.getElementById("cancer_form");
+	      var selected_cancer = cancer_input.options[cancer_input.selectedIndex].text;
+
+
+	      combined_input = selected_sex + "-"+ selected_county + "-" +selected_cancer;
+	      // console.log(combined_input);
+
+		    // initial highlight
+
+		    d3.select("#"+combined_input)
+		    		.each( function(d){
+			    		
+			    		d3.selectAll(".line").sort(function (a, b) { 
+			              if (a.name != d.name) return -1;               
+			              else return 1;                             
+			            });
+			    	})
+			    	.style('stroke', 'red')
+		        .style("opacity", "1")
+		      	.style("stroke-width", "10px");
+
+	      d3.select('#selected_gender').html(selected_sex);
+        d3.select('#selected_county').html(selected_county);
+        d3.select('#selected_cancer').html(selected_cancer);
+
+        var result = $.grep(cases, function(e){ return e.name == combined_input; });
+
+        // console.log(result)
+        d3.select('#selected_oldest_happen_rate').html('1996: ' + result[0].values[0]);
+
+        var newest_year = 1993 + result[0].values.length+2;
+        d3.select('#selected_newest_happen_rate').html( newest_year + ": " +result[0].values[result[0].values.length-1]);
+
+	    }
+
+	    update_hightlight();
+
+
+
+	    d3.select('#highlight_form').on('change', function(){
+	    	update_hightlight();
+	    });
+
+
+
+			// debugger;
+
+
+
+
+
+		}) //data file close
+
+
+
+
+   
 
 
 
@@ -250,3 +478,6 @@
 </body>
 
 </html>
+
+
+
