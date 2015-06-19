@@ -1,0 +1,7 @@
+.jobdiv{
+	height:70px;
+}
+.selected{
+	stroke-width:5px;
+	stroke:black;
+}

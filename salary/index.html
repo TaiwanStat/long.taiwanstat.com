@@ -1,0 +1,93 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+	<meta property="og:title" content="臺灣主要死因死亡率">
+	<meta property="og:site_name" content="台灣主要死因死亡率">
+	<meta property="og:description" content="臺灣近年主要死亡率變化">
+	<meta property="og:image" content="http://i.imgur.com/04AFcnA.png">
+	<meta property="og:image:type" content="image/jpg">
+	<meta property="og:image:width" content="300">
+	<meta property="og:image:height" content="300">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>用數據看台灣 - 台灣主要死因死亡率</title>
+	<link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="./css/style.css" type="text/css" media="all" />
+</head>
+
+<body>
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script>
+        	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-61023469-1', 'auto');
+			ga('send', 'pageview');
+    	</script>
+    	<div id="fb-root"></div>
+    	<script>
+        	(function(d, s, id) {
+            		var js, fjs = d.getElementsByTagName(s)[0];
+            		if (d.getElementById(id)) return;
+            		js = d.createElement(s); js.id = id;
+            		js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=600079286760117&version=v2.0";
+            		fjs.parentNode.insertBefore(js, fjs);
+        	}(document, 'script', 'facebook-jssdk'));
+   	 </script>
+    	<script src="//cdnjs.cloudflare.com/ajax/libs/headroom/0.7.0/headroom.min.js"></script>
+    	<script src="/js/main.js"></script>
+	<script src="/bower_components/semantic/dist/semantic.min.js"></script>
+	<div class="fb-plugin">
+          	<div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+          	<div class="fb-like" data-href="http://long.taiwanstat.com/deathrate" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        </div>	
+	<ul>
+       		<li>
+                	<div class="data-src">資料來源 : <a href="http://www.stat.gov.tw/mp.asp?mp=4">中華民國統計資訊網</a></div>
+            	</li>
+            	<li>
+                	目前資料為1986年至2015年
+            	</li>
+            	<li>
+                	敗血症及慢性下呼吸道疾病資料從2008開始
+            	</li>
+        </ul>
+	<div class="ui basic header segment">
+	</div>
+		<div class="ui stackable page grid center aligned">
+			<div class="column nine wide">
+				<div class="ui fluid 3 buttons basic">
+					<div class="ui button">人數</div>
+					<div class="ui button">薪資</div>
+					<div class="ui button">工時</div>
+				</div>
+			</div>
+		</div>
+	<div class="ui basic main segment">
+		<div class="ui stackable  grid center aligned">
+			<div class="detail four wide column">
+				<div class="jobdiv">
+					<h2 class="job ui header">
+						<h4 class="ui header type">
+						</h4>
+					</h2>
+				</div>
+				<div class="numbers">
+				</div>
+				<div class="salary">
+				</div>
+				<div class="time">
+				</div>
+			</div>
+			<div class="visual six wide column">
+			</div>
+		</div>
+	</div>
+	<script src="js/index.js"></script>
+</body>
+
+</html>
