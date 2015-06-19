@@ -30,3 +30,21 @@ body, html {
 .btn-sites .button{
     margin: 10px;
 }
+
+#discussion_title{
+    font-size: 38px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.fb-comments, .fb-comments iframe[style], .fb-comments span {
+   margin-top:10px;
+   width: 95% !important;
+   margin-left: 10px;
+   padding-right: 5%;
+   margin-bottom: 30px;
+
+}
+
+
+

@@ -7,13 +7,13 @@
     <meta property="og:image:type" content="image/jpg">
     <meta property="og:image:width" content="300">
     <meta property="og:image:height" content="300">
-    <meta property="og:title" content="台灣失業率">
-    <meta property="og:site_name" content="台灣失業率">
-    <meta property="og:description" content="用數據看台灣-台灣失業率">
+    <meta property="og:title" content="台灣20內年失業數據">
+    <meta property="og:site_name" content="台灣20年內失業數據">
+    <meta property="og:description" content="用數據看台灣-台灣20年內失業數據">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" href="/favicon.ico" />
-    <title>台灣失業率</title>
+    <title>台灣20年內失業數據</title>
     <link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all" />
 
     <!-- my css -->
@@ -25,47 +25,154 @@
     <script src="/bower_components/semantic/dist/semantic.min.js"></script>
   </head>
   <body>
-    <div class="container">
 
-    <h1 style = "font-size: 50px"></style>台灣失業率</h1>
+    
+    
+  <h1 id = "title">
+    台灣20年內失業數據
+  </h1>
+  <p id = "data_source">數據出處: 
+    <a href = "http://data.gov.tw/node/6640" target="_blank">人力資源調查縣市別失業率</a>,
+    <a href = "http://data.gov.tw/node/6798" target="_blank">人力資源調查失業人數</a>,
+    <a href = "http://data.gov.tw/node/6637" target="_blank">人力資源調查失業率</a>
+  </p>
 
-    <div class="fb-plugin">
-      <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+  <div class="fb-plugin">
+    <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
 
-      <div class="fb-like" data-href="http://long.taiwanstat.com/unemployment/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+    <div class="fb-like" data-href="http://long.taiwanstat.com/unemployment/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+  </div>
+
+    <br><br>
+
+    <!-- instructions -->
+    <div class="ui grid">
+    <div class="ui icon message">
+    <div class="ui three column  stackable grid">
+
+
+      <div class = "column">
+        <i class="star icon"></i>
+        <div class="content">
+          <div class="header">
+            長條時間軸線    
+          </div>
+          <li>
+            點擊年份觀看各年數據
+          </li>
+          <li>
+          年份背景色象徵各年總失業率
+          </li>
+          <li>
+            點擊播放動畫觀看台灣近20年失業率變化
+          </li>
+        </div>
+      </div>
+      
+      <div class = "column">
+        <i class="star icon"></i>
+        <div class="content">
+          <div class="header">
+            地圖及圓餅圖    
+          </div>
+          <li>
+            鼠標移至各縣市上觀看各縣市失業率
+          </li>
+          <li>
+            鼠標移至圓餅圖上觀看各群組失業人數
+          </li>
+          <li>
+            點擊圓餅圖的各群組備註可隱藏/顯示群組資料
+          </li>
+        </div>
+      </div>
+
+      <div class = "column">
+        <i class="star icon"></i>
+        <div class="content">
+          <div class="header">
+            長線圖    
+          </div>
+          <li>
+            在長線圖上可使用鼠標滑輪放大/縮小圖表
+          </li>
+          <li>
+            點擊長線圖的各群組備註可隱藏/顯示群組資料
+          </li>
+          <li>
+            鼠標移至長線圖的各群組備註可加重顯示群組資料
+          </li>
+        </div>
+      </div>
     </div>
-   
-   
-    <p>
-      
-      
+    </div>
+    </div>
+    <br>
+    <br>
 
-    </p>
-    <div class = "data_content">
-      <div><button id = "play_button" style ="font-size: 30px">play</button>&nbsp;</div>
 
-      <h1 id="curr_year"></h1>
-      <h1 id = "total_pop_unemployed"></h1>
-      <h1 id = "total_unemployment_rate"></h1>
-      <div class = "button_role"> </div>
-      
-      <div class = "tw_map_svg"></div>
-      <div class = "pie_chart_section">
-          <h3>性別圓餅圖</h3>
-          <div id="pie_chart1"></div>
-          <h3>年齡圓餅圖</h3> 
-          <div id="pie_chart2"></div>
-          <h3>學歷圓餅圖</h3>
-          <div id="pie_chart3"></div>
+
+    <div class = "ui stackable grid">
+
+      <div class="sixteen wide column">
+        <div class="ui black buttons button_role"> </div>
       </div>
 
-      <div class = "line_chart_section">
-          <div id="line_chart"></div> 
-          <button><div id="gender_button">隱藏性別資料</div></button>
-          <button><div id="age_button">隱藏年齡資料</div></button>
-          <button><div id="education_button">隱藏學歷資料</div></button>
-          <button><div id="transform_bar">長條圖顯示</div></button>
+      <div class="right floated left aligned five wide column">
+        <div class="ui primary button" id ="play_button" style = "font-size: 23px" ><i class="play icon"></i>播放數據動畫</div>
       </div>
+
+      <div class="seven wide column">
+       <h1><div id="curr_year" style = "font-size: 35px"></div></h1>
+      </div>
+
+      <div class="eleven wide column">
+        <h2>
+          <span id = "total_pop_unemployed"></span>&nbsp;
+          <span id = "total_unemployment_rate"></span>
+        </h2>
+      </div>
+      <br>
+
+      
+      <div class="map eight wide column">
+        <div class = "tw_map_svg"></div>
+      </div>
+
+      <div class="eight wide column">
+        <div class="ui stackable grid">
+          <div class="row" style="padding-bottom: 0px;">
+            <div class = "pie_chart1 eight wide column">
+              <h3>性別圓餅圖</h3>
+              <div id="pie_chart1"></div>
+            </div>
+            <div class = "eight wide column pie_chart3">
+              <h3>學歷圓餅圖</h3>
+              <div id="pie_chart3"></div>
+            </div>
+          </div>
+          <div class = "pie_chart2 thirteen wide column" style="padding: 0px;">
+            <h3>年齡圓餅圖</h3> 
+            <div id="pie_chart2"></div>
+          </div>
+         </div>
+      </div>
+      
+
+      <!-- line chart section -->
+      <div class="sixteen wide column">
+        <div id="line_chart"></div> 
+      </div> 
+
+      <div class="five wide column ">
+        <div class = "ui yellow button" id="transform_bar">切換成長條圖顯示</div>
+      </div> 
+      <div class="eight wide column last">
+        <div class = "ui green button" id="gender_button">隱藏性別資料</div>
+        <div class = "ui green button" id="age_button">隱藏年齡資料</div>
+        <div class = " center floated ui green button" id="education_button">隱藏學歷資料</div>
+      </div>  
+
     </div>
 
 

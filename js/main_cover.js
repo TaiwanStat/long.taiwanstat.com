@@ -19,19 +19,8 @@
 		str += '</a>'
 		str += '</div>'
 
-		var discussion = '<discussion>'
-				discussion += '<span id="discussion_title">數據討論區</span>'
-				discussion += '<div id="fb-root"></div>'
-				discussion += '<script>'
-				discussion += '(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.3&appId=1659889874241396";fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));'
-				discussion += '</script>'
-				discussion +='<div class="fb-comments" data-href="' + document.location.href + '" data-width="100%" data-numposts="8"></div>'
-				discussion += '</discussion>'
-
 
 	$('body').prepend(str);
-	$('body').append(discussion);
-
 
 
   // grab an element

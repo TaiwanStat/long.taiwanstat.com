@@ -1,5 +1,8 @@
-var Svg_Width = 700;
-var Svg_Height = 800;
+
+
+var Svg_Width = $('.map.column').width();
+
+var Svg_Height = Svg_Width/640*730;
 
 var color_array =['#fff7ec', '#fee8c8', '#fdd49e', '#fdbb84', '#fc8d59', '#ef6548', '#d7301f','#b30000', '#7f0000'];
 
@@ -8,12 +11,14 @@ var color = d3.scale.quantize()
                 .domain([0, 1])
                 .range(d3.range(9).map(function(d) { return color_array[d] }));
 
+
 var svg = d3.select(".tw_map_svg")
                 .append("svg")
-                .attr("width", Svg_Width)
-                .attr("height", Svg_Height);
+                .attr('width', Svg_Width)
+                .attr('height', Svg_Height)
+                .attr("viewBox", "0 0 640 680");
 
-var projection = d3.geo.mercator().center([120.675531, 24.01000]).scale(10000);
+var projection = d3.geo.mercator().center([121.675531, 24.41000]).scale(9000);
 
 var path = d3.geo.path()
             .projection(projection);
@@ -28,13 +33,15 @@ var tip = d3.tip()
            .html(function(d) {
                 return d.properties.name + " " 
                 + current_year 
-                + "<strong> 年失業率:</strong> <span style='color:black'>" 
-                + d.properties.value[current_year-1993] + "%"+ "</span>";
+                + "年失業率: " 
+                + d.properties.value[current_year-1993] + "%";
            })
 
+var draw_stroke = d3.tip()
+                    .attr('class', '')
 
 svg.call(tip);
-
+svg.call(draw_stroke);
 
 d3.csv('data/tw_data1.csv', function(tw_data1){
 d3.json('data/twCounty2011merge.topo.json', function(error, tw_topo_data) {
@@ -44,7 +51,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
     //processing map section ////////////////////
 
-    d3.select('#curr_year').html("西元 "+current_year + '年台灣失業數據')  //first declare year 
+    d3.select('#curr_year').html("西元 "+current_year + ' 年台灣失業數據')  //first declare year 
 
     var topo = topojson.feature(tw_topo_data, tw_topo_data.objects["layer1"]);
 
@@ -59,9 +66,14 @@ d3.csv("data/line_data1.csv", function(line_data1){
                 .append("path")
                 .attr("d",path)
                 .attr("opacity", 0.8)
-                .on('mouseover', tip.show)
-                .on('mouseout', tip.hide);
-
+                .on('mouseover', function(d){
+                    tip.show(d);
+                    d3.select(this).style({'stroke':"#FFFF00", 'stroke-width': '3px' });
+                })
+                .on('mouseout', function(d){
+                    tip.hide(d);
+                    d3.select(this).style({stroke:"rgba(255,255,255,0.5)"});
+                })
 
     svg.append('path')
         .attr('class', "borders")
@@ -69,7 +81,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
         .attr('d', path)
         .style('fill', 'none')
         .style('stroke', "rgba(255,255,255,0.5)")
-        .style('stroke-width', '2px')
+        .style('stroke-width', '3px')
 
 
     //get max value in the data
@@ -112,21 +124,24 @@ d3.csv("data/line_data1.csv", function(line_data1){
         for( j = 0; j < topo.features.length; j++){    
             var county_name_and_rate =[];
             county_name_and_rate.push(topo.features[j].properties.name);
-            county_name_and_rate.push(topo.features[j].properties.value[i]);
+            county_name_and_rate.push(+topo.features[j].properties.value[i]);
             temp.push(county_name_and_rate);
         };
         unemployment_by_year.push(temp);
     };
 
 
+
+
+
     var top3s_each_year = [];
 
     for(m = 0; m< unemployment_by_year.length; m++){
         var temp = [];
-        for(k = 0; k <3; k++){
+        for(k = 0; k <3; k++){      //get 3
             var max = -1;
             var index;
-            for(i = 0; i < unemployment_by_year[m].length; i++){
+            for(i = 0; i < unemployment_by_year[m].length; i++){      //every year
                 
                 if(unemployment_by_year[m][i][1]>max){
                     max = unemployment_by_year[m][i][1];
@@ -137,10 +152,21 @@ d3.csv("data/line_data1.csv", function(line_data1){
             temp.push(unemployment_by_year[m][index]);
             unemployment_by_year[m].splice(index, 1)
         }
+
+        for(i = 0; i < unemployment_by_year[m].length; i++){
+                
+            if(unemployment_by_year[m][i][1]==temp[2][1]){
+                temp.push(unemployment_by_year[m][i]);
+                unemployment_by_year[m].splice(i, 1);
+            }
+        }
+
         top3s_each_year.push(temp);
+
     }
 
-    
+
+    // console.log(top3s_each_year);
 
     // fill each path with 1993 data color
     blocks.style("fill",function(it){ 
@@ -154,10 +180,10 @@ d3.csv("data/line_data1.csv", function(line_data1){
         .enter()
         .append("rect")
         .attr("x", function() {
-            return 420;
+            return 280;
         })
         .attr("y", function(d, i){
-            return 25 + i*30;
+            return 30 + i*30;
         })
         .attr("width", 35)
         .attr("height", 28)
@@ -174,20 +200,20 @@ d3.csv("data/line_data1.csv", function(line_data1){
                     .append("text")
                     .attr("class", "rank_text")
                     .text(function(d, i){
-                        if(i == 0)
-                            var rank = "失業率第ㄧ高: "
-                        if(i == 1)
-                            var rank = "失業率第二高: "
-                        if(i == 2)
-                            var rank = "失業率第三高: "
+                        if(i == 0){
+                            var rank = "失業率第ㄧ高: ";
+                        }else if(i == 1){
+                            var rank = "失業率第二高: ";
+                        }else if(i == 2){
+                            var rank = "失業率第三高: ";
+                        }else{ 
+                            var rank = "並列: ";
+                        }
+
                         return rank +d[0]+ " " + d[1] + "% ";
                     })
-                    .attr("font-family", "sans-serif")
-                    .attr("font-size", "20px")
-                    .attr("fill", "black")
-                    .attr("background-color", "red")
                     .attr("x", function() {
-                        return 50;
+                        return 30;
                     })
                     .attr("y", function(d, i){
                         return 50 + i*30;
@@ -231,7 +257,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
     var year_to_data_index = curr_year-1992;
 
-    d3.select('#total_pop_unemployed').html('總計失業人數:'+data2_by_cat[1][year_to_data_index]*1000+ '人');
+    d3.select('#total_pop_unemployed').html('總計失業人數: '+data2_by_cat[1][year_to_data_index]*1000+ '人');
 
     var year_data = [];
     for(i = 2; i < data2_by_cat.length; i++){   //start from 2 because don't want year and total
@@ -270,10 +296,6 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
             }
         },
-        size:{
-            height: 250,
-            width: 250
-        },
 
     });
 
@@ -296,11 +318,6 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
             }
         },
-        size:{
-            height: 300,
-            width: 300
-        },
-
     });
 
     //third pie chart
@@ -321,20 +338,13 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
             }
         },
-        size:{
-            height: 250,
-            width: 250
-        },
 
     });
-
-    
-
 
     function update_data(curr_year){
         var year_to_data_index = curr_year-1992;
 
-        d3.select('#total_pop_unemployed').html('總計失業人數:'+data2_by_cat[1][year_to_data_index]*1000 + '人');
+        d3.select('#total_pop_unemployed').html('總計失業人數: '+data2_by_cat[1][year_to_data_index]*1000 + '人');
 
         var year_data = [];
         for(i = 2; i < data2_by_cat.length; i++){   //start from 2 because don't want year and total
@@ -350,25 +360,16 @@ d3.csv("data/line_data1.csv", function(line_data1){
         var year_data_education = year_data.slice(13, year_data.length);
 
         //first pie chart
-        chart1.unload({
-            columns: year_data_gender
-        });
         chart1.load({
             columns: year_data_gender
         });
 
         //second pie chart
-        chart2.unload({
-            columns: year_data_age
-        });
         chart2.load({
             columns: year_data_age
         });
 
         //second pie chart
-        chart3.unload({
-            columns: year_data_education
-        });
         chart3.load({
             columns: year_data_education
         });
@@ -406,7 +407,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
     }
 
     //write total unemployment rate
-    d3.select("#total_unemployment_rate").html("總計失業率: "+ line_data1_by_cat[1][1]+ "%");
+    d3.select("#total_unemployment_rate").html("失業率: "+ line_data1_by_cat[1][1]+ "%");
 
     var line_chart = c3.generate({
         bindto: '#line_chart',
@@ -428,6 +429,9 @@ d3.csv("data/line_data1.csv", function(line_data1){
                     culling:{
                         max:24,
                     },
+                },
+                padding: {
+                    right:0.5,
                 }
             },
             y:{
@@ -447,15 +451,11 @@ d3.csv("data/line_data1.csv", function(line_data1){
                     return '西元' + d + '年';
                 },
                 value: function(value){
-                    var format = d3.format("2.1f");
+                    var format = d3.format("2.2f");
                     return format(value)+"%";
                 }
 
             }
-        },
-        size: {
-            height:300,
-            width:1000
         },
         color: {
             pattern: ['rgb(44, 160, 44)', 'rgb(31, 119, 180)', 'rgb(214, 39, 40)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(255, 127, 14)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)', 'rgb(23, 190, 207)']
@@ -533,19 +533,15 @@ d3.csv("data/line_data1.csv", function(line_data1){
     d3.select("#transform_bar").on("click", function(){
         if(!transform_bar){
             line_chart.transform('bar');
-            d3.select("#transform_bar").text("以直線圖顯示");
+            d3.select("#transform_bar").text("切換直線圖顯示");
             transform_bar = true;
         }else{
             line_chart.transform('line');
-            d3.select("#transform_bar").text("以長條圖顯示");
+            d3.select("#transform_bar").text("切換長條圖顯示");
             transform_bar = false;
         } 
     })
 
-
-    function update_line(curr_year){
-
-    }
     //line chart section ends///////
 
 
@@ -558,7 +554,10 @@ d3.csv("data/line_data1.csv", function(line_data1){
                         .data(year_range)
                         .enter()
                         .append("button")
-                        .attr("class", "year_button")
+                        .attr("class", "ui button year_button")
+                        .style("background", function(d){
+                            return color(colorMap(line_data1_by_cat[1][d-1992]));
+                        })
                         .text(function(d){
                             return d;
                         })
@@ -567,29 +566,29 @@ d3.csv("data/line_data1.csv", function(line_data1){
                         })
 
 
-
     d3.select('#button' +1993)
         .transition()
         .duration(300)
-        .style("background", "lightBlue")
-        .style("color", "white");
+        .style("background", "black")
 
 
 
     //button animation
-    buttons.on("click", function(selected_year){
+    buttons.on("click", function(d){ update_map_with_year(d); });
+
+    function update_map_with_year(selected_year){
 
         d3.selectAll(".year_button")
             .transition()
-            .duration(500)
-            .style("color", "black")
-            .style("background", "rgb(251, 201, 127)");
+            .duration(200)
+            .style("background", function(d){
+                return color(colorMap(line_data1_by_cat[1][d-1992]));
+            });
 
-        d3.select(this)
+        d3.select("#button"+selected_year)
           .transition()
-          .duration(500)
-          .style("background", "lightBlue")
-          .style("color", "white");
+          .duration(200)
+          .style("background", "black");
 
 
         //update year
@@ -597,7 +596,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
         //update total info
         d3.select('#curr_year').html("西元 "+current_year +" 年台灣失業數據")
-        d3.select("#total_unemployment_rate").html("總計失業率: "+ line_data1_by_cat[1][current_year-1992]+ "%");
+        d3.select("#total_unemployment_rate").html("失業率: "+ line_data1_by_cat[1][current_year-1992]+ "%");
 
         //update path color
         svg.selectAll("path")
@@ -618,30 +617,82 @@ d3.csv("data/line_data1.csv", function(line_data1){
                     .attr("opacity", 0.8);
 
 
+
+        //generate top 3 text
+        svg.selectAll("text")
+                    .data(top3s_each_year[current_year-1993])
+                    .exit()
+                    .remove("text");
+        
+
+
         top3_text = d3.selectAll("text")
             .data(top3s_each_year[current_year-1993])
             .transition()
             .duration(400)
             .text(function(d, i){
-                if(i == 0)
-                    var rank = "失業率第一高: "
-                if(i == 1)
-                    var rank = "失業率第二高: "
-                if(i == 2)
-                    var rank = "失業率第三高: "
+                if(i == 0){
+                    var rank = "失業率第ㄧ高: ";
+                }else if(i == 1){
+                    var rank = "失業率第二高: ";
+                }else if(i == 2){
+                    var rank = "失業率第三高: ";
+                }else{ 
+                    var rank = "並列: ";
+                }
+
+
                 return rank +d[0]+ " " + d[1] + "%";
-            });
+            });                    
+
+
+        var top3_text = svg.selectAll("text")
+                    .data(top3s_each_year[current_year-1993])
+                    .enter()
+                    .append("text")
+                    .attr("class", "rank_text")
+                    .text(function(d, i){
+                        var rank = "並列: ";
+                        return rank +d[0]+ " " + d[1] + "% ";
+                    })
+                    .attr("x", function() {
+                        return 30;
+                    })
+                    .attr("y", function(d, i){
+                        return 50 + i*30;
+                    });
+
+
+        // //original
+        // top3_text = d3.selectAll("text")
+        //     .data(top3s_each_year[current_year-1993])
+        //     .transition()
+        //     .duration(400)
+        //     .text(function(d, i){
+        //         if(i == 0){
+        //             var rank = "失業率第ㄧ高: ";
+        //         }else if(i == 1){
+        //             var rank = "失業率第二高: ";
+        //         }else if(i == 2){
+        //             var rank = "失業率第三高: ";
+        //         };
+
+        //         return rank +d[0]+ " " + d[1] + "%";
+        //     });
 
 
         //update pie chart
         update_data(selected_year);
 
-    })
+    };
 
 
 
     //play animation function
     d3.select("#play_button").on("click", function(){
+
+        svg.selectAll("path")
+             .on('mouseover', function(d){});
 
         $("#play_button").hide();
         var count_year = 0;
@@ -650,27 +701,42 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
             if(count_year == tw_data1.length -1 ) {
                 clearInterval(set_switch);
+
+
                 $("#play_button").show();
+                update_map_with_year(2014);
+
+                svg.selectAll("path")
+                    .on('mouseover', function(d){
+                         console.log(d);
+                        tip.show(d);
+                        d3.select(this).style({'stroke':"#FFFF00", 'stroke-width': '3px' });
+                    })
+                    .on('mouseout', function(d){
+                        tip.hide(d);
+                        d3.select(this).style({stroke:"rgba(255,255,255,0.5)"});
+                    })
+
             }
 
-            d3.select('#curr_year').html("西元 "+year_range[count_year] + "台灣失業數據")
-            d3.select("#total_unemployment_rate").html("總計失業率: "+ line_data1_by_cat[1][count_year+1]+ "%");
+
+            d3.select('#curr_year').html("西元 "+year_range[count_year] + " 年台灣失業數據")
+            d3.select("#total_unemployment_rate").html("失業率: "+ line_data1_by_cat[1][count_year+1]+ "%");
 
 
             d3.selectAll(".year_button")
-                .transition()
-                .duration(300)
-                .style("color", "black")
-                .style("background", "rgb(251, 201, 127)");
-
+                        .transition()
+                        .duration(200)
+                        .style("background", function(d){
+                            return color(colorMap(line_data1_by_cat[1][d-1992]));
+                        });
 
             var actual_year = count_year+1993;
 
             d3.select('#button' + actual_year)
               .transition()
               .duration(200)
-              .style("background", "lightBlue")
-              .style("color", "white");
+              .style("background", "black");
 
 
             top3_rect = d3.selectAll("rect")
@@ -682,19 +748,51 @@ d3.csv("data/line_data1.csv", function(line_data1){
                             })
                             .attr("opacity", 0.8);
 
+
+            //update text
+            svg.selectAll("text")
+                    .data(top3s_each_year[count_year])
+                    .exit()
+                    .remove("text");
+        
+
+
             top3_text = d3.selectAll("text")
+                .data(top3s_each_year[count_year])
+                .transition()
+                .duration(400)
+                .text(function(d, i){
+                    if(i == 0){
+                        var rank = "失業率第ㄧ高: ";
+                    }else if(i == 1){
+                        var rank = "失業率第二高: ";
+                    }else if(i == 2){
+                        var rank = "失業率第三高: ";
+                    }else{ 
+                        var rank = "並列: ";
+                    }
+
+
+                    return rank +d[0]+ " " + d[1] + "%";
+                });                    
+
+
+            var top3_text = svg.selectAll("text")
                         .data(top3s_each_year[count_year])
-                        .transition()
-                        .duration(200)
+                        .enter()
+                        .append("text")
+                        .attr("class", "rank_text")
                         .text(function(d, i){
-                            if(i == 0)
-                                var rank = "失業率第一高: "
-                            if(i == 1)
-                                var rank = "失業率第二高: "
-                            if(i == 2)
-                                var rank = "失業率第三高: "
-                            return rank +d[0]+ " " + d[1] + "%";
+                            var rank = "並列: ";
+                            return rank +d[0]+ " " + d[1] + "% ";
+                        })
+                        .attr("x", function() {
+                            return 30;
+                        })
+                        .attr("y", function(d, i){
+                            return 50 + i*30;
                         });
+
 
 
             svg.selectAll("path")
@@ -709,7 +807,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
             //update pie chart
             update_data(actual_year);
 
-
+            //update line chart
             var animation_data_array = [];
             for(i = 1; i < line_data1_by_cat.length; i++){
                 temp = line_data1_by_cat[i].slice(0, count_year+2);
@@ -723,7 +821,7 @@ d3.csv("data/line_data1.csv", function(line_data1){
 
             count_year++;
 
-        }, 1500)
+        }, 1600)
 
 
     });
@@ -733,3 +831,8 @@ d3.csv("data/line_data1.csv", function(line_data1){
 });
 });
 });
+
+
+
+
+

@@ -1,29 +1,109 @@
 
-.year_button {
-    background-color: rgb(251, 201, 127);
-    padding: 3px;
-    margin: 2px;
-    font-size: 18px;
+
+/*general*/
+
+.ui.grid{
+    margin-left: 15px;
+    margin-right: 10px;
 }
+
+#play_button{
+    margin-right: 80px;
+}
+
+.ui.button.year_button{
+    font-size: 16px;
+    padding-left: 7px;
+    padding-right: 8px;
+}
+
+.fb-plugin{
+  margin-left: 20px;
+}
+
+#title{
+  margin-left: 18px;
+  font-size: 40px;
+}
+
+#data_source{
+  margin-left: 20px;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
 
 /*tw map*/
 .tw_map_svg{
     float: left;
 }
+
 .rank_text{
     font-size: 20px;
 }
 
-/*pie charts*/
-.pie_chart_section{
-    float: right;
-    height: 500px;
-    width: 300px;
-    margin-right: 80px;
+text{
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
-.line_chart_section{
-    float: left;
-    margin-bottom: 200px;
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 20px;
+  border-radius: 2px;
 }
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+
+/*pie charts*/
+.pies{
+    margin-right: 20px;
+}
+
+.eight.wide.column.pie_chart3{
+    margin-top: 100px;
+}
+
+
+/*line charts*/
+
+#line_chart{
+  min-width: 700px;
+}
+
+.tick{
+    font-size: 12px;
+}
+
+#education_button{
+  margin-bottom: 200px;
+}
+
+
+
+
+
+
+
 
