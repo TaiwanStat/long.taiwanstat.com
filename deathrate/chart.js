@@ -48,7 +48,6 @@ for(var index in $("input[name='death[]']")){ 				//default show
 
 function rectInteraction(){ 						//when the mouse enter the g ,create yearPath
 	d3.select(".yearPath").remove();
-	console.log(yearScale.invert(d3.mouse(this)[0]));
 	var year=yearScale.invert(d3.mouse(this)[0]);
 	var value;
 	var first="";
