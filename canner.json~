@@ -25,6 +25,12 @@
                 "img": "images/income.png",
                 "description": "台灣富人所得統計(1977-2013)"
             },
+	    {
+                "title": "台灣主要死因死亡率(1986-2013)",
+                "link": "./deathrate",
+                "img": "images/deathrate.png",
+                "description": "台灣主要死因死亡率(1977-2013)"
+            }
         ]
     }, 
     "layout": "./index.hbs", 

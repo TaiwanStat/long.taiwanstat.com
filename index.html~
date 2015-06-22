@@ -147,20 +147,6 @@
             </div>
             </div>
          </div>
-	<div class="card">
-          <a class="image" href="./deathrate" target="_parent" onclick="pageOnclick()">
-            <img src="images/deathrate.png">
-          </a>
-          <div class="content">
-            <a class="header" href="./deathrate" target="_parent">台灣主要死因死亡率變化</a>
-            <div class="meta">
-              <span></span>
-            </div>
-            <div class="description">
-              <p>1986年 到 2013 年台灣主要死因死亡率變化</p>
-            </div>
-            </div>
-         </div>
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
