@@ -65,7 +65,6 @@ function rectInteraction(){ 						//when the mouse enter the g ,create yearPath
 		itemName=$("input[name='death[]']")[index].defaultValue;
 		if($("input[value="+itemName+"]").prop("checked")) {
 			value=computeValue(data,itemName,year);
-			console.log(value);
 			if(isNaN(value))
 			$($("#menu text")[index]).text(""); 	//change value
 			else
