@@ -84,7 +84,10 @@ function computeValue(data,itemName,year){ 		//compute the value in the year
 		if(parseInt(theItem[index].key)==ceil) ceilValue=parseFloat(theItem[index].values[0].key); 
 	}
 	value=Math.round(((year-floor)*(ceilValue-floorValue)+floorValue)*100)/100;
+	if(year<=2013&&year>=1986)
 	return value;
+	else
+	return "";
 }
 function checkAll(){
 	if($("input[name='all']").prop("checked")){
