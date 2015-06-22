@@ -66,7 +66,9 @@ function rectInteraction(){ 						//when the mouse enter the g ,create yearPath
 		if($("input[value="+itemName+"]").prop("checked")) {
 			value=computeValue(data,itemName,year);
 			console.log(value);
-			//g.append("circle").attr("cx",scaleX(year)).attr("cy",scaleY(value)).attr("r",2).attr("class","circleOnLine");
+			if(isNaN(value))
+			$($("#menu text")[index]).text(""); 	//change value
+			else
 			$($("#menu text")[index]).text(":"+value); 	//change value
 		}
 	}
@@ -84,10 +86,7 @@ function computeValue(data,itemName,year){ 		//compute the value in the year
 		if(parseInt(theItem[index].key)==ceil) ceilValue=parseFloat(theItem[index].values[0].key); 
 	}
 	value=Math.round(((year-floor)*(ceilValue-floorValue)+floorValue)*100)/100;
-	if(year<=2013&&year>=1986)
 	return value;
-	else
-	return "";
 }
 function checkAll(){
 	if($("input[name='all']").prop("checked")){
