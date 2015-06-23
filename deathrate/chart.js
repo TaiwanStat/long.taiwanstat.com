@@ -109,7 +109,6 @@ function createPath(){
 	}
 	else {
 		$($("label")[i-1+2]).css("color",scaleColor(itemName));
-		create(itemName);
 		function create(itemName){
 		d3.csv("deathrate.csv",function(data){
 			theItem=d3.nest().key(function(d){return d.year;}).key(function(d){return d[itemName];}).entries(data);
@@ -134,6 +133,7 @@ function createPath(){
 			}
 		});
 		}
+		create(itemName);
 	}
 	}
 	

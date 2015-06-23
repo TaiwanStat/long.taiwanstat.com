@@ -9,11 +9,13 @@
 	fill:none;
 	stroke:#000;
 	-webkit-transform:translate(80px,420px);
+	transform:translate(80px,420px);
 }
 .axisY{
 	fill:none;
 	stroke:#000;
 	-webkit-transform:translate(80px,20px);
+	transform:translate(80px,20px);
 }
 .axisY text{
 	fill:#000;
@@ -27,9 +29,11 @@
 	fill:none;
 	stroke-width:2px;
 	-webkit-transform:translate(80px,20px);
+	transform:translate(80px,20px);
 }
 .yearPath{
 	-webkit-transform:translate(80px,20px);
+	transform:translate(80px,20px);
 }
 input {
 	width:18px;
@@ -47,6 +51,7 @@ input {
 }
 .circleOnLine{
 	-webkit-transform:-webkit-translate(80px,20px);
+	transform:translate(80px,20px);
 	fill:blue;
 
 }
