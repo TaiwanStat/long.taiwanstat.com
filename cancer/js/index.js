@@ -41,8 +41,8 @@ var svg = d3.select(".graph").append("svg")
 
 
 //input data
-// d3.csv("data/cancer_happen_rate.csv", function(data){
-d3.csv("data/shorter.csv", function(data){
+d3.csv("data/cancer_happen_rate.csv", function(data){
+// d3.csv("data/shorter.csv", function(data){
 
   
   var date_range = [];
