@@ -111,7 +111,7 @@ d3.csv("data/cancer_happen_rate.csv", function(data){
     .attr("class", "ui dropdown")
     .attr('id', 'cancer_form')
     .selectAll('option')
-    .data(cancer_type)
+    .data(cancer_type.reverse())
     .enter()
     .append('option')
     .text( function(d){
