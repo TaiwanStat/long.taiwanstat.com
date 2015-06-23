@@ -1,0 +1,70 @@
+
+
+/*general*/
+.container{
+	margin-left: 20px;
+}
+
+.fb-like{
+	margin-bottom: 20px;
+}
+
+
+/*main graph*/
+.ui.grid {
+	font-size: 20px;
+}
+
+#y_axis_label{
+	font-size: 15px;
+}
+
+#x_axis_label{
+	font-size: 15px;
+}
+
+.field label{
+	font-size: 20px;
+}
+
+g.tick text{
+	font-size: 16px;
+}
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.line {
+  fill: none;
+}
+
+
+/*form*/
+select{
+	font-size: 25px;
+	width: 200px;
+}
+
+
+/*text*/
+#rate_change{
+	 font-weight: bold;
+	 font-size: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
