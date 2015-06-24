@@ -41,10 +41,9 @@ var svg = d3.select(".graph").append("svg")
 
 
 //input data
-d3.csv("data/test.csv", function(data){
-
-// d3.csv("data/shorter.csv", function(data){
-
+d3.json("data/data.json", function(data){
+  
+  category_combinations = data;
   
   var date_range = [];
   for(i = 1996; i < 2013; i++){
@@ -58,39 +57,6 @@ d3.csv("data/test.csv", function(data){
               .orient('bottom')
               .tickValues(date_range)
               .tickFormat(d3.format("4.0f"))
-
-
-  var categories = ['性別', '縣市', '癌別'];
-
-  var category_combinations = [];     //stores all category combinations
-
-
-  for(i = 0; i< data.length; i++){    //get all combinations
-  	var temp = [];
-  	if(data[i]['年度'] == '1996'){
-    	temp.push(data[i]['性別']);
-    	temp.push(data[i]['縣市']);
-    	temp.push(data[i]['癌別']);
-
-    	category_combinations.push(temp);
-    }
-  }
-
-
-  //get yearly data for each categoryies
-  for(j = 0; j < category_combinations.length; j++){
-    for(i = 0; i < data.length; i++){					
-      if(data[i]['性別'] ==category_combinations[j][0] && data[i]['縣市'] ==category_combinations[j][1] && data[i]['癌別'] ==category_combinations[j][2]){
-          category_combinations[j].push(+data[i]['WHO2000年人口標準化發生率(每10萬人口)']);
-      }
-    }
-  }
-
-
-
-
-
-
 
 
   var cancer_type = [];
@@ -218,20 +184,11 @@ d3.csv("data/test.csv", function(data){
     var combined_input = selected_sex + "-"+ selected_county + "-" +selected_cancer;    //data user entered
 
 
-    //merge first 3 elements
-    var category_combinations_merged = $.extend(true, [], render_cancer_type);  //deep copy
-
-    for(i = 0; i < category_combinations_merged.length; i++){
-      var categories_string = category_combinations_merged[i].splice(0, 3).join("-");
-      category_combinations_merged[i].unshift(categories_string);
-    }
-
-
     //make case objects
-    cases = category_combinations_merged.map( function(d){    //data process completed
+    cases = render_cancer_type.map( function(d){    //data process completed
       return {
-        name: d[0],
-        values: d.slice(1, d.length)
+        name: d.slice(0,3).join("-"),
+        values: d.slice(3, d.length)
       }
     });
 
@@ -299,15 +256,14 @@ d3.csv("data/test.csv", function(data){
         })
 
 
-
-
-
   };   //end of form change update
 
 
 
 
   function change_highlight(){
+
+
     var sex_input = document.getElementById("gender_form");
     var selected_sex = sex_input.options[sex_input.selectedIndex].text;
 
@@ -350,11 +306,10 @@ d3.csv("data/test.csv", function(data){
 
 
 
-
-    function change_color(){ 
-
     //highlight line
-    d3.select("#"+combined_input)
+    function change_color(){ 
+    
+      d3.select("#"+combined_input)
         .each( function(d){
           
           d3.selectAll(".line").sort(function (a, b) { 
@@ -363,12 +318,12 @@ d3.csv("data/test.csv", function(data){
               });
         })
         .transition()
-        .duration(1000)
+        .duration(600)
         .style('stroke', 'red')
         .style("opacity", "1")
         .style("stroke-width", "10px");
     }
-    
+
 
     d3.select('#selected_gender').html('性別: '+selected_sex);
     d3.select('#selected_county').html('縣市: ' + selected_county);
@@ -395,8 +350,7 @@ d3.csv("data/test.csv", function(data){
   }
 
 
-
-
+  //initial 
   update_line();
   change_highlight();
 
