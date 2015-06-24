@@ -107,7 +107,7 @@ d3.json("data/data.json", function(data){
       .attr("x", 70)
       .attr('y', -5)
       .style('text-anchor', 'end')
-      .text('發生率(每10萬人)');
+      .text('發生率(人/每10萬人)');
 
 
 
