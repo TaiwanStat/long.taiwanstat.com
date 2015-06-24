@@ -1,14 +1,14 @@
 
 
 
-var margin = { top: 20, right:80, bottom: 30, left: 50};
+var margin = { top: 20, right:80, bottom: 25, left: 50};
 
-var width = $('.row').width() - margin.left - margin.right;
+var width = $('.row').width() - 110;
 
 if (width<700)
   width = 700;
 
-var height = 500 - margin.top - margin.bottom;
+var height = 400;
 
 
 var x = d3.time.scale()
