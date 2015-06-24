@@ -41,7 +41,7 @@ var svg = d3.select(".graph").append("svg")
 
 
 //input data
-d3.csv("data/cancer_happen_rate.csv", function(data){
+d3.csv("data/test.csv", function(data){
 // d3.csv("data/shorter.csv", function(data){
 
   
@@ -92,10 +92,11 @@ d3.csv("data/cancer_happen_rate.csv", function(data){
   for(i = 0; i <category_combinations.length; i++){
   	if(category_combinations[i].length==20){
   		complete_category_combinations.push(category_combinations[i]);
-  		// console.log(temp);
   	}
   }
+  console.log(category_combinations)
 
+  console.log(complete_category_combinations)
 
   var cancer_type = [];
   for(i = 0; i < complete_category_combinations.length; i++){
