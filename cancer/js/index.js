@@ -391,8 +391,9 @@ d3.json("data/data.json", function(data){
 
 
   d3.select('#form1').on('change', function(){
-    change_highlight();
     update_county_form();
+    change_highlight();
+    
   });
 
   d3.select('#form2').on('change', function(){
