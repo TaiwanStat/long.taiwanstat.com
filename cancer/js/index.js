@@ -24,12 +24,12 @@ var yAxis = d3.svg.axis()
 							.orient("left");
 
 var line = d3.svg.line()
-						.interpolate("step-after")
+						.interpolate("step")
 						.x( function (d, i){
 							return x(i+1996);
 						})
 						.y(function (d){
-							return y(d);
+  							return y(d);
 						});
             
 
@@ -137,7 +137,6 @@ d3.json("data/data.json", function(data){
       }
     }
 
-    
 
     var gender_type = [];
 
@@ -399,10 +398,6 @@ d3.json("data/data.json", function(data){
   d3.select('#form2').on('change', function(){
     change_highlight();
   });
-
-
-
-
 
 
 
