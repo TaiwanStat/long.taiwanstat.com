@@ -112,6 +112,8 @@ d3.json("data/data.json", function(data){
 
   var cases;
 
+  var  render_cancer_type = []; 
+
   function update_line(){
 
     svg.selectAll(".name")
@@ -127,7 +129,7 @@ d3.json("data/data.json", function(data){
     var selected_cancer = cancer_input.options[cancer_input.selectedIndex].text;
 
 
-    var  render_cancer_type = [];     //only render the selected cancer
+    render_cancer_type = [];     //only render the selected cancer
 
     for(i = 0; i< category_combinations.length; i++){
       if( category_combinations[i][2] == selected_cancer){
@@ -186,12 +188,6 @@ d3.json("data/data.json", function(data){
 
 
 
-    var county_input = document.getElementById("county_form");
-    var selected_county = county_input.options[county_input.selectedIndex].text;
-
-    var combined_input = selected_sex + "-"+ selected_county + "-" +selected_cancer;    //data user entered
-
-
     //make case objects
     cases = render_cancer_type.map( function(d){    //data process completed
       return {
@@ -199,8 +195,6 @@ d3.json("data/data.json", function(data){
         values: d.slice(3, d.length)
       }
     });
-
-
 
 
 
@@ -265,9 +259,6 @@ d3.json("data/data.json", function(data){
 
   function change_highlight(){
 
-
-    // d3.select(".county_form_remove")
-    //   .remove();
 
 
     var sex_input = document.getElementById("gender_form");
@@ -356,6 +347,40 @@ d3.json("data/data.json", function(data){
   }
 
 
+  function update_county_form(){
+    d3.select(".county_form_remove")
+      .remove();
+
+    var cancer_input = document.getElementById("cancer_form");
+    var selected_cancer = cancer_input.options[cancer_input.selectedIndex].text;
+
+
+    var sex_input = document.getElementById("gender_form");
+    var selected_sex = sex_input.options[sex_input.selectedIndex].text;  
+
+    var county_type = [];
+    for(i = 0; i < render_cancer_type.length; i++){
+      if(render_cancer_type[i][0] == selected_sex && render_cancer_type[i][2] == selected_cancer)
+        county_type.push(render_cancer_type[i][1])
+    }
+
+
+    d3.select('#form2')
+      .append('form')
+      .attr("class",'county_form_remove')
+      .append('select')
+      .attr("class", "ui dropdown")
+      .attr('id', 'county_form')
+      .selectAll('option')
+      .data(county_type)  
+      .enter()
+      .append('option')
+      .text( function(d){
+        return d;
+      })
+
+  }
+
   //initial 
   update_line();
   change_highlight();
@@ -368,6 +393,7 @@ d3.json("data/data.json", function(data){
 
   d3.select('#form1').on('change', function(){
     change_highlight();
+    update_county_form();
   });
 
   d3.select('#form2').on('change', function(){
@@ -375,11 +401,7 @@ d3.json("data/data.json", function(data){
   });
 
 
-  // d3.select(".gender_form_remove")
-  //     .remove();
 
-  //   d3.select(".county_form_remove")
-  //     .remove();
 
 
 
