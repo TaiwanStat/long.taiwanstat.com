@@ -5,8 +5,10 @@ var margin = { top: 20, right:80, bottom: 30, left: 50};
 
 var width = $('.row').width() - margin.left - margin.right;
 
-var height = 500 - margin.top - margin.bottom;
+if (width<700)
+  width = 700;
 
+var height = 500 - margin.top - margin.bottom;
 
 
 var x = d3.time.scale()
@@ -340,8 +342,8 @@ d3.json("data/data.json", function(data){
 
     var change_percent = ((Math.abs(oldest_year_value - newest_year_value))/oldest_year_value * 100).toFixed(2)
 
-    d3.select('#rate_text').html(newest_year-1996 + "年" + change + "了 ")
-    d3.select("#rate_change").html(change_percent + "%")
+    d3.select('#rate_text').html(newest_year-1996 + "年")
+    d3.select("#rate_change").html(change + "了 "+ change_percent + "%")
 
   }
 

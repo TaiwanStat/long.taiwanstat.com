@@ -11,6 +11,10 @@
 
 
 /*main graph*/
+svg{
+	min-width: 700px;
+}
+
 .ui.grid {
 	font-size: 20px;
 }
@@ -44,11 +48,13 @@ g.tick text{
 }
 
 
+
 /*form*/
 select{
 	font-size: 25px;
 	width: 200px;
 }
+
 
 
 /*text*/
