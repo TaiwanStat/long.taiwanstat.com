@@ -87,6 +87,12 @@ d3.csv("data/test.csv", function(data){
   }
 
 
+
+
+
+
+
+
   var cancer_type = [];
   for(i = 0; i < category_combinations.length; i++){
     if(cancer_type.indexOf(category_combinations[i][2]) <0)
@@ -134,8 +140,9 @@ d3.csv("data/test.csv", function(data){
       .text('發生率(每10萬人)');
 
 
-  var cases;
 
+
+  var cases;
 
   function update_line(){
 
@@ -153,7 +160,6 @@ d3.csv("data/test.csv", function(data){
 
 
     var  render_cancer_type = [];     //only render the selected cancer
-    // console.log(complete_category_combinations)
 
     for(i = 0; i< category_combinations.length; i++){
       if( category_combinations[i][2] == selected_cancer){
@@ -202,6 +208,7 @@ d3.csv("data/test.csv", function(data){
       })
 
 
+
     var sex_input = document.getElementById("gender_form");
     var selected_sex = sex_input.options[sex_input.selectedIndex].text;
 
@@ -216,7 +223,6 @@ d3.csv("data/test.csv", function(data){
 
     for(i = 0; i < category_combinations_merged.length; i++){
       var categories_string = category_combinations_merged[i].splice(0, 3).join("-");
-
       category_combinations_merged[i].unshift(categories_string);
     }
 
@@ -226,7 +232,6 @@ d3.csv("data/test.csv", function(data){
       return {
         name: d[0],
         values: d.slice(1, d.length)
-        
       }
     });
 
@@ -294,56 +299,7 @@ d3.csv("data/test.csv", function(data){
         })
 
 
-    d3.selectAll(".line")                 //draw lines here
-        .transition()
-        .duration(500)
-        .attr("id", function(d){
-          return d.name;
-        })
 
-        .attr("d", function(d){
-          return line(d.values);
-        })
-        .each("end", change_color)
-
-
-    function change_color(){          //highlight selected
-      d3.select("#"+combined_input)
-        .each( function(d){
-          
-          d3.selectAll(".line").sort(function (a, b) { 
-                if (a.name != d.name) return -1;               
-                else return 1;                             
-              });
-        })
-        .transition()
-        .duration(800)
-        .style('stroke', 'red')
-        .style("opacity", "1")
-        .style("stroke-width", "10px");
-    }
-
-    d3.select('#selected_gender').html('性別: '+selected_sex);
-    d3.select('#selected_county').html('縣市: ' + selected_county);
-    d3.select('#selected_cancer').html('癌症類別: ' +selected_cancer);
-
-    var oldest_year_value = result[0].values[0];
-    var newest_year_value = result[0].values[result[0].values.length-1];
-
-    d3.select('#selected_oldest_happen_rate').html('1996年: ' + oldest_year_value + '人');
-
-    var newest_year = 1993 + result[0].values.length+2;
-    d3.select('#selected_newest_happen_rate').html( newest_year + "年: " +newest_year_value+ '人');
-
-    if(oldest_year_value<newest_year_value)
-      var change = "增加"
-    else 
-      var change = "下降"
-
-    var change_percent = ((Math.abs(oldest_year_value - newest_year_value))/oldest_year_value * 100).toFixed(2)
-
-    d3.select('#rate_text').html(newest_year-1996 + "年" + change + "了 ")
-    d3.select("#rate_change").html(change_percent + "%")
 
 
   };   //end of form change update
@@ -372,9 +328,7 @@ d3.csv("data/test.csv", function(data){
       .style("stroke-width", "2.5px");
 
 
-
     var max = d3.max(result[0].values)
-    // console.log(result);
 
     y.domain([0, max + max *0.3]);
 
@@ -414,6 +368,7 @@ d3.csv("data/test.csv", function(data){
         .style("opacity", "1")
         .style("stroke-width", "10px");
     }
+    
 
     d3.select('#selected_gender').html('性別: '+selected_sex);
     d3.select('#selected_county').html('縣市: ' + selected_county);
@@ -443,11 +398,11 @@ d3.csv("data/test.csv", function(data){
 
 
   update_line();
-
+  change_highlight();
 
   d3.select('#form3').on('change', function(){
     update_line();
-
+    change_highlight();
   });
 
 
