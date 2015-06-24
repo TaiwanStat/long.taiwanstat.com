@@ -45,6 +45,8 @@ d3.json("data/data.json", function(data){
   
   category_combinations = data;
   
+  console.log(category_combinations)
+
   var date_range = [];
   for(i = 1996; i < 2013; i++){
     date_range.push(i);
@@ -132,17 +134,16 @@ d3.json("data/data.json", function(data){
         render_cancer_type.push(category_combinations[i]);
       }
     }
+
     
+
     var gender_type = [];
-    var county_type = [];
 
     for(i = 0; i < render_cancer_type.length; i++){
       if(gender_type.indexOf(render_cancer_type[i][0]) <0)
         gender_type.push(render_cancer_type[i][0]);
-      if(county_type.indexOf(render_cancer_type[i][1]) <0)
-        county_type.push(render_cancer_type[i][1]);
-    }
 
+    }
 
     d3.select('#form1')
       .append('form')
@@ -157,6 +158,16 @@ d3.json("data/data.json", function(data){
       .text( function(d){
         return d;
       })
+
+    var sex_input = document.getElementById("gender_form");
+    var selected_sex = sex_input.options[sex_input.selectedIndex].text;  
+
+
+    var county_type = [];
+    for(i = 0; i < render_cancer_type.length; i++){
+      if(render_cancer_type[i][0] == selected_sex && render_cancer_type[i][2] == selected_cancer)
+        county_type.push(render_cancer_type[i][1])
+    }
 
 
     d3.select('#form2')
@@ -175,9 +186,6 @@ d3.json("data/data.json", function(data){
 
 
 
-    var sex_input = document.getElementById("gender_form");
-    var selected_sex = sex_input.options[sex_input.selectedIndex].text;
-
     var county_input = document.getElementById("county_form");
     var selected_county = county_input.options[county_input.selectedIndex].text;
 
@@ -193,15 +201,7 @@ d3.json("data/data.json", function(data){
     });
 
 
-    //get the data object of selected category
-    var result = $.grep(cases, function(e){ return e.name == combined_input; });
 
-    var max = d3.max(result[0].values)
-
-    y.domain([0, max + max *0.3]);
-
-    svg.select("g.y.axis")
-        .call(yAxis)
 
 
     var recorded_color;
@@ -261,7 +261,13 @@ d3.json("data/data.json", function(data){
 
 
 
+
+
   function change_highlight(){
+
+
+    // d3.select(".county_form_remove")
+    //   .remove();
 
 
     var sex_input = document.getElementById("gender_form");
@@ -294,7 +300,7 @@ d3.json("data/data.json", function(data){
 
     d3.selectAll(".line")                 //draw lines here
           .transition()
-          .duration(2000)
+          .duration(800)
           .attr("id", function(d){
             return d.name;
           })
@@ -318,7 +324,7 @@ d3.json("data/data.json", function(data){
               });
         })
         .transition()
-        .duration(600)
+        .duration(500)
         .style('stroke', 'red')
         .style("opacity", "1")
         .style("stroke-width", "10px");
@@ -368,6 +374,12 @@ d3.json("data/data.json", function(data){
     change_highlight();
   });
 
+
+  // d3.select(".gender_form_remove")
+  //     .remove();
+
+  //   d3.select(".county_form_remove")
+  //     .remove();
 
 
 
