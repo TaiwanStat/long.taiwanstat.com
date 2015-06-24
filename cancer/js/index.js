@@ -42,14 +42,13 @@ var svg = d3.select(".graph").append("svg")
 
 //input data
 d3.csv("data/test.csv", function(data){
+
 // d3.csv("data/shorter.csv", function(data){
 
   
   var date_range = [];
-  for(i = 0; i < data.length; i++){
-    if( date_range.indexOf(data[i]['年度']) <0){
-      date_range.push(data[i]['年度'])
-    }
+  for(i = 1996; i < 2013; i++){
+    date_range.push(i);
   }
 
 
@@ -88,20 +87,10 @@ d3.csv("data/test.csv", function(data){
   }
 
 
-  var complete_category_combinations= [];         //elminate incomplete data
-  for(i = 0; i <category_combinations.length; i++){
-  	if(category_combinations[i].length==20){
-  		complete_category_combinations.push(category_combinations[i]);
-  	}
-  }
-  console.log(category_combinations)
-
-  console.log(complete_category_combinations)
-
   var cancer_type = [];
-  for(i = 0; i < complete_category_combinations.length; i++){
-    if(cancer_type.indexOf(complete_category_combinations[i][2]) <0)
-      cancer_type.push(complete_category_combinations[i][2]);
+  for(i = 0; i < category_combinations.length; i++){
+    if(cancer_type.indexOf(category_combinations[i][2]) <0)
+      cancer_type.push(category_combinations[i][2]);
   }
 
 
@@ -166,9 +155,9 @@ d3.csv("data/test.csv", function(data){
     var  render_cancer_type = [];     //only render the selected cancer
     // console.log(complete_category_combinations)
 
-    for(i = 0; i< complete_category_combinations.length; i++){
-      if( complete_category_combinations[i][2] == selected_cancer){
-        render_cancer_type.push(complete_category_combinations[i]);
+    for(i = 0; i< category_combinations.length; i++){
+      if( category_combinations[i][2] == selected_cancer){
+        render_cancer_type.push(category_combinations[i]);
       }
     }
     
