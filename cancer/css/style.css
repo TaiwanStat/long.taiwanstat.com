@@ -1,0 +1,85 @@
+
+
+/*general*/
+.container{
+	margin-left: 20px;
+}
+
+.fb-like{
+	margin-bottom: 20px;
+}
+
+
+/*main graph*/
+svg{
+	min-width: 700px;
+}
+
+.ui.grid {
+	font-size: 20px;
+}
+
+#y_axis_label{
+	font-size: 15px;
+}
+
+#x_axis_label{
+	font-size: 15px;
+}
+
+.field label{
+	font-size: 20px;
+}
+
+g.tick text{
+	font-size: 16px;
+}
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.line {
+  fill: none;
+}
+
+
+
+/*form*/
+.three.column.row{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+h3{
+	margin-bottom: 5px;
+}
+
+select{
+	font-size: 16px;
+	width: 200px;
+}
+
+
+
+/*text*/
+#rate_change{
+	 font-weight: bold;
+	 font-size: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
