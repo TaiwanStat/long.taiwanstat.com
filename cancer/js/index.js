@@ -226,10 +226,9 @@ d3.json("data/data.json", function(data){
             .style("opacity", "1")
             .style("stroke-width", "8px");
 
-          d3.select('#gender').html('性別: '+ d.name.split('-')[0]);
-          d3.select('#county').html('縣市: '+ d.name.split('-')[1]);
-          d3.select('#cancer').html('癌症類別: '+ d.name.split('-')[2]);
-          d3.select('#oldest_happen_rate').html('1996年: ' + d.values[0] + '人');
+          d3.select('#gender').html('性別: '+ '<span style = "font-weight: lighter">' +d.name.split('-')[0] + '</span>');
+          d3.select('#county').html('縣市: '+ '<span style = "font-weight: lighter">' +d.name.split('-')[1] + '</span>');
+          d3.select('#cancer').html('癌症類別: '+ '<span style = "font-weight: lighter">' +d.name.split('-')[2] + '</span>');          d3.select('#oldest_happen_rate').html('1996年: ' + d.values[0] + '人');
 
           var newest_year = 1993 + d.values.length+2;
           d3.select('#newest_happen_rate').html( newest_year + "年: " +d.values[d.values.length-1] + '人');
