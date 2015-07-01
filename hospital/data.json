@@ -2,9 +2,9 @@
     {
         "country": "\u57fa\u9686\u5e02", 
         "hospBedNumber": 2296, 
-        "hospBedRate": 6.15574352856013, 
+        "hospBedRate": "6.2", 
         "hospHumanNumber": 2338, 
-        "hospHumanRate": 6.268348593106961, 
+        "hospHumanRate": "6.3", 
         "hospNumber": 8, 
         "order": 0, 
         "population": 372985
@@ -12,9 +12,9 @@
     {
         "country": "\u81fa\u5317\u5e02", 
         "hospBedNumber": 20660, 
-        "hospBedRate": 7.6350293372121945, 
+        "hospBedRate": "7.6", 
         "hospHumanNumber": 31283, 
-        "hospHumanRate": 11.560823947531901, 
+        "hospHumanRate": "11.6", 
         "hospNumber": 39, 
         "order": 1, 
         "population": 2705949
@@ -22,9 +22,9 @@
     {
         "country": "\u65b0\u5317\u5e02", 
         "hospBedNumber": 12610, 
-        "hospBedRate": 3.1804177066287878, 
+        "hospBedRate": "3.2", 
         "hospHumanNumber": 13930, 
-        "hospHumanRate": 3.513340099392467, 
+        "hospHumanRate": "3.5", 
         "hospNumber": 58, 
         "order": 2, 
         "population": 3964888
@@ -32,9 +32,9 @@
     {
         "country": "\u6843\u5712\u5e02", 
         "hospBedNumber": 12096, 
-        "hospBedRate": 5.8211806081920985, 
+        "hospBedRate": "5.8", 
         "hospHumanNumber": 13546, 
-        "hospHumanRate": 6.518990783611952, 
+        "hospHumanRate": "6.5", 
         "hospNumber": 34, 
         "order": 3, 
         "population": 2077929
@@ -42,9 +42,9 @@
     {
         "country": "\u65b0\u7af9\u5e02", 
         "hospBedNumber": 2363, 
-        "hospBedRate": 5.462838595428601, 
+        "hospBedRate": "5.5", 
         "hospHumanNumber": 3019, 
-        "hospHumanRate": 6.979394718408356, 
+        "hospHumanRate": "7.0", 
         "hospNumber": 8, 
         "order": 4, 
         "population": 432559
@@ -52,9 +52,9 @@
     {
         "country": "\u65b0\u7af9\u7e23", 
         "hospBedNumber": 2075, 
-        "hospBedRate": 3.8557807909646513, 
+        "hospBedRate": "3.9", 
         "hospHumanNumber": 1408, 
-        "hospHumanRate": 2.6163563150256524, 
+        "hospHumanRate": "2.6", 
         "hospNumber": 9, 
         "order": 5, 
         "population": 538153
@@ -62,9 +62,9 @@
     {
         "country": "\u82d7\u6817\u7e23", 
         "hospBedNumber": 2843, 
-        "hospBedRate": 5.0212027926577045, 
+        "hospBedRate": "5.0", 
         "hospHumanNumber": 2219, 
-        "hospHumanRate": 3.9191167769635764, 
+        "hospHumanRate": "3.9", 
         "hospNumber": 15, 
         "order": 6, 
         "population": 566199
@@ -72,9 +72,9 @@
     {
         "country": "\u81fa\u4e2d\u5e02", 
         "hospBedNumber": 17768, 
-        "hospBedRate": 6.514486005294303, 
+        "hospBedRate": "6.5", 
         "hospHumanNumber": 19742, 
-        "hospHumanRate": 7.2382363077735326, 
+        "hospHumanRate": "7.2", 
         "hospNumber": 66, 
         "order": 7, 
         "population": 2727460
@@ -82,9 +82,9 @@
     {
         "country": "\u5f70\u5316\u7e23", 
         "hospBedNumber": 6967, 
-        "hospBedRate": 5.401646156899718, 
+        "hospBedRate": "5.4", 
         "hospHumanNumber": 7795, 
-        "hospHumanRate": 6.043610132486479, 
+        "hospHumanRate": "6.0", 
         "hospNumber": 32, 
         "order": 8, 
         "population": 1289792
@@ -92,9 +92,9 @@
     {
         "country": "\u5357\u6295\u7e23", 
         "hospBedNumber": 3014, 
-        "hospBedRate": 5.881434648557936, 
+        "hospBedRate": "5.9", 
         "hospHumanNumber": 2359, 
-        "hospHumanRate": 4.603286110135425, 
+        "hospHumanRate": "4.6", 
         "hospNumber": 11, 
         "order": 9, 
         "population": 512460
@@ -102,9 +102,9 @@
     {
         "country": "\u96f2\u6797\u7e23", 
         "hospBedNumber": 3259, 
-        "hospBedRate": 4.636631236297467, 
+        "hospBedRate": "4.6", 
         "hospHumanNumber": 3116, 
-        "hospHumanRate": 4.433182857411141, 
+        "hospHumanRate": "4.4", 
         "hospNumber": 15, 
         "order": 10, 
         "population": 702881
@@ -112,9 +112,9 @@
     {
         "country": "\u5609\u7fa9\u5e02", 
         "hospBedNumber": 3669, 
-        "hospBedRate": 13.538295776155035, 
+        "hospBedRate": "13.5", 
         "hospHumanNumber": 4009, 
-        "hospHumanRate": 14.792866657564877, 
+        "hospHumanRate": "14.8", 
         "hospNumber": 12, 
         "order": 11, 
         "population": 271009
@@ -122,9 +122,9 @@
     {
         "country": "\u5609\u7fa9\u7e23", 
         "hospBedNumber": 3098, 
-        "hospBedRate": 5.928199515104662, 
+        "hospBedRate": "5.9", 
         "hospHumanNumber": 3231, 
-        "hospHumanRate": 6.18270259306106, 
+        "hospHumanRate": "6.2", 
         "hospNumber": 4, 
         "order": 12, 
         "population": 522587
@@ -132,9 +132,9 @@
     {
         "country": "\u81fa\u5357\u5e02", 
         "hospBedNumber": 9320, 
-        "hospBedRate": 4.9435444046450225, 
+        "hospBedRate": "4.9", 
         "hospHumanNumber": 11909, 
-        "hospHumanRate": 6.316810119626349, 
+        "hospHumanRate": "6.3", 
         "hospNumber": 36, 
         "order": 13, 
         "population": 1885287
@@ -142,9 +142,9 @@
     {
         "country": "\u9ad8\u96c4\u5e02", 
         "hospBedNumber": 16954, 
-        "hospBedRate": 6.100944469674125, 
+        "hospBedRate": "6.1", 
         "hospHumanNumber": 20902, 
-        "hospHumanRate": 7.521643347005341, 
+        "hospHumanRate": "7.5", 
         "hospNumber": 89, 
         "order": 14, 
         "population": 2778914
@@ -152,9 +152,9 @@
     {
         "country": "\u5c4f\u6771\u7e23", 
         "hospBedNumber": 5272, 
-        "hospBedRate": 6.238470012862702, 
+        "hospBedRate": "6.2", 
         "hospHumanNumber": 4564, 
-        "hospHumanRate": 5.4006785164463915, 
+        "hospHumanRate": "5.4", 
         "hospNumber": 26, 
         "order": 15, 
         "population": 845079
@@ -162,9 +162,9 @@
     {
         "country": "\u5b9c\u862d\u7e23", 
         "hospBedNumber": 3673, 
-        "hospBedRate": 8.014873230585263, 
+        "hospBedRate": "8.0", 
         "hospHumanNumber": 3234, 
-        "hospHumanRate": 7.056928948465216, 
+        "hospHumanRate": "7.1", 
         "hospNumber": 10, 
         "order": 16, 
         "population": 458273
@@ -172,9 +172,9 @@
     {
         "country": "\u82b1\u84ee\u7e23", 
         "hospBedNumber": 4197, 
-        "hospBedRate": 12.61595435771957, 
+        "hospBedRate": "12.6", 
         "hospHumanNumber": 3340, 
-        "hospHumanRate": 10.039858840787078, 
+        "hospHumanRate": "10.0", 
         "hospNumber": 11, 
         "order": 17, 
         "population": 332674
@@ -182,9 +182,9 @@
     {
         "country": "\u81fa\u6771\u7e23", 
         "hospBedNumber": 1295, 
-        "hospBedRate": 5.792654288129755, 
+        "hospBedRate": "5.8", 
         "hospHumanNumber": 1286, 
-        "hospHumanRate": 5.752396459100282, 
+        "hospHumanRate": "5.8", 
         "hospNumber": 7, 
         "order": 18, 
         "population": 223559
@@ -192,9 +192,9 @@
     {
         "country": "\u9023\u6c5f\u7e23", 
         "hospBedNumber": 46, 
-        "hospBedRate": 3.68442130556668, 
+        "hospBedRate": "3.7", 
         "hospHumanNumber": 46, 
-        "hospHumanRate": 3.68442130556668, 
+        "hospHumanRate": "3.7", 
         "hospNumber": 1, 
         "order": 19, 
         "population": 12485
@@ -202,9 +202,9 @@
     {
         "country": "\u91d1\u9580\u7e23", 
         "hospBedNumber": 251, 
-        "hospBedRate": 1.9393770813533917, 
+        "hospBedRate": "1.9", 
         "hospHumanNumber": 254, 
-        "hospHumanRate": 1.9625568871066192, 
+        "hospHumanRate": "2.0", 
         "hospNumber": 1, 
         "order": 20, 
         "population": 129423
@@ -212,9 +212,9 @@
     {
         "country": "\u6f8e\u6e56\u7e23", 
         "hospBedNumber": 471, 
-        "hospBedRate": 4.624810981716777, 
+        "hospBedRate": "4.6", 
         "hospHumanNumber": 386, 
-        "hospHumanRate": 3.7901847960566366, 
+        "hospHumanRate": "3.8", 
         "hospNumber": 3, 
         "order": 21, 
         "population": 101842

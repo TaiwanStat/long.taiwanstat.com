@@ -29,23 +29,30 @@
   </head>
   <body>
     <div class="container">
-
+  
     <h1>102年台灣各縣市醫院數據統計</h1>
+
 
     <div class="fb-plugin">
       <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
 
       <div class="fb-like" data-href="http://long.taiwanstat.com/hospital/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
     </div>
-   
-   
+    <br/> 
+   <div id = "data_source">數據出處: 
+    <a href = "http://data.gov.tw/node/6474" target="_blank">醫院病床統計</a>,
+    <a href = "http://data.gov.tw/node/6473" target="_blank">醫院人力統計數</a>
+    <a href = "http://data.moi.gov.tw/MoiOD/default/Index.aspx" target="_blank">內政部</a>
+  </div><hr/>
+
+ 
     <div class="data-container">
       <div class="country" ng-repeat="obj in data">
         <h3 ng-bind="obj.country"></h3>
         <h5>醫院數量：<span ng-bind="obj.hospNumber"></span><i class="fa fa-hospital-o"></i></h5>
         <h5>病床總計：<span ng-bind="obj.hospBedNumber"></span><i class="fa fa-bed"></i></h5>
         <h5>醫事人員總計：<span ng-bind="obj.hospHumanNumber"></span><i class="fa fa-user-md"></i></h5>
-        <h5>人口數：<span ng-bind="obj.population"></span><i class="fa fa-users"></i></h5>
+        <h5>縣市人口總計：<span ng-bind="obj.population"></span><i class="fa fa-users"></i></h5>
       </div>
     </div>
 

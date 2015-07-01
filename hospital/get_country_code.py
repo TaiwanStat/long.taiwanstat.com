@@ -78,8 +78,8 @@ for country in country_order:
             'hospNumber': new_bed_data[country]['hospNumber'], \
             'hospBedNumber': new_bed_data[country]['hospBedNumber'], \
             'population': population[country.decode('utf-8')],
-            'hospHumanRate': float(new_human_data[country]['hospHumanNumber'])/population[country.decode('utf-8')]*1000, \
-            'hospBedRate': float(new_bed_data[country]['hospBedNumber'])/population[country.decode('utf-8')]*1000 } )
+            'hospHumanRate': "%0.1f" %  (float(new_human_data[country]['hospHumanNumber'])/population[country.decode('utf-8')]*1000), \
+            'hospBedRate': "%0.1f" %  (float(new_bed_data[country]['hospBedNumber'])/population[country.decode('utf-8')]*1000) })
     order += 1
 data = sorted(data, key=lambda k: k['order']) 
 write_json('data.json', data)
