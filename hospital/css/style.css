@@ -40,14 +40,14 @@ h5 {
     float: left;
     text-align: center;
     padding: 20px;
-    width: 270px;
-    height: 180px;
+    width: 280px;
+    height: 300px;
     margin-bottom: 10px;
 }
 .data-container {
     clear: both;
     width: 100%;
-    min-height: 500px;
+    min-height: 600px;
 }
 .fa {
     padding-left: 10px;
