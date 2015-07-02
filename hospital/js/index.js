@@ -100,8 +100,8 @@
     }
 
     function click (d) {
-      $('.' + d.properties.C_Name + '1').show(); 
       $('.' + vm.previousCountry + '1').hide(); 
+      $('.' + d.properties.C_Name + '1').show(); 
       vm.previousCountry = d.properties.C_Name;
     }
 
