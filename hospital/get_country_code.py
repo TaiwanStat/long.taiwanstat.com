@@ -70,7 +70,6 @@ order = 0
 for country in country_order:
     country = country[0]
     print country
-    print population
     data.append( { \
             'order': order,
             'country': country, \
@@ -80,6 +79,8 @@ for country in country_order:
             'population': population[country.decode('utf-8')],
             'hospHumanRate': "%0.1f" %  (population[country.decode('utf-8')]/float(new_human_data[country]['hospHumanNumber'])), \
             'hospBedRate': "%0.1f" %  (population[country.decode('utf-8')]/float(new_bed_data[country]['hospBedNumber'])) })
+    sum_v  = float(data[-1]['hospBedRate'])  + float(data[-1]['hospHumanRate'])
+    print sum_v
     order += 1
 data = sorted(data, key=lambda k: k['order']) 
 write_json('./data/data.json', data)

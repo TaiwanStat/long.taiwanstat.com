@@ -43,11 +43,15 @@
     <a href = "http://data.gov.tw/node/6474" target="_blank">醫院病床統計</a>,
     <a href = "http://data.gov.tw/node/6473" target="_blank">醫院人力統計數</a>
     <a href = "http://data.moi.gov.tw/MoiOD/default/Index.aspx" target="_blank">內政部</a>
+  </div>
+  <div>
+    地圖顏色深淺依據為病床與醫事人合計服務該縣市人口平均值。
   </div><hr/>
 
  
+		<svg id="map"></svg>
     <div class="data-container">
-      <div class="country" ng-repeat="obj in data">
+      <div class="country" ng-repeat="obj in data" ng-class="obj.country + '1'">
         <h3 ng-bind="obj.country"></h3>
         <h5>醫院數量：<span ng-bind="obj.hospNumber"></span><i class="fa fa-hospital-o"></i></h5>
         <h5>病床總計：<span ng-bind="obj.hospBedNumber"></span><i class="fa fa-bed"></i></h5>
@@ -59,7 +63,8 @@
     </div>
 
 
-    <script src="http://d3js.org/d3.v3.min.js"></script>
+	  <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	  <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
     <!-- my script -->
