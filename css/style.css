@@ -30,6 +30,10 @@ body, html {
 .btn-sites .button{
     margin: 10px;
 }
+discussion {
+    float: left;
+    width: 100%;
+}
 
 #discussion_title{
     font-size: 38px;

@@ -1,0 +1,137 @@
+html {
+    background: #eee;
+    font-family: 'Noto Sans', 'sans-serif', 'Microsoft Jhenghei'; 
+    width: 100%;
+    height: 100%;
+}
+body {
+    margin: auto;
+    margin-top: 30px;
+    background: #eee;
+}
+
+.container {
+    margin: 20px;
+}
+a {
+    color: #337ab7;
+    text-decoration: blink;
+}
+h5 {
+    margin: 15x;
+}
+.state-note {
+  margin: 5px 0 15px 0;
+}
+.red {
+    color: rgb(255, 119, 119);
+}
+.blue {
+    color: rgb(23, 139, 202);
+}
+.orange {
+    color: rgb(249, 118, 9);
+}
+.yellow {
+    color:  #FDCA00;
+}
+.country {
+    display: inline;
+    float: left;
+    text-align: center;
+    padding: 20px;
+    width: 280px;
+    height: 300px;
+    margin-bottom: 10px;
+}
+.data-container {
+    width: 300px;
+    min-height: 400px;
+    float: left;
+    margin-top: 100px;
+}
+.fa {
+    padding-left: 10px;
+}
+.country h5 {
+    margin-bottom: 0px;
+    margin-top: 8px;
+    font-size: 16px;
+}
+.country {
+    display: none;
+}
+.country i {
+    color: rgb(23, 139, 202);
+    font-size: 22px;
+}
+.mouse{
+	stroke:#FFFF00;
+	stroke-width:2;
+}
+svg {
+    float: left;
+    margin: 10px;
+}
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Northward tooltips */
+.d3-tip.n:after {
+  content: "\25BC";
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+  text-align: center;
+}
+
+/* Eastward tooltips */
+.d3-tip.e:after {
+  content: "\25C0";
+  margin: -4px 0 0 0;
+  top: 50%;
+  left: -8px;
+}
+
+/* Southward tooltips */
+.d3-tip.s:after {
+  content: "\25B2";
+  margin: 0 0 1px 0;
+  top: -8px;
+  left: 0;
+  text-align: center;
+}
+
+/* Westward tooltips */
+.d3-tip.w:after {
+  content: "\25B6";
+  margin: -4px 0 0 -1px;
+  top: 50%;
+  left: 100%;
+}
+@media screen and (max-width: 600px) {                      
+    .data-container {
+        margin: 0px;
+    }
+}
+
+
