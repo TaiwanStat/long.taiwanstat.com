@@ -103,6 +103,7 @@
       $('.' + vm.previousCountry + '1').hide(); 
       $('.' + d.properties.C_Name + '1').show(); 
       vm.previousCountry = d.properties.C_Name;
+      d3.selectAll("."+Cname).classed("mouse",false);
     }
 
     function leave(d){
