@@ -49,8 +49,10 @@
   </div><hr/>
 
  
-		<svg id="map"></svg>
-    <div class="data-container">
+  <svg id="map"></svg>
+
+  <div class="data-container">
+    <h5 class="data-note">請點選地圖，以顯示資訊。</h5>
       <div class="country" ng-repeat="obj in data" ng-class="obj.country + '1'">
         <h3 ng-bind="obj.country"></h3>
         <h5>醫院數量：<span ng-bind="obj.hospNumber"></span><i class="fa fa-hospital-o"></i></h5>
