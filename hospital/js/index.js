@@ -102,8 +102,10 @@
     function click (d) {
       $('.' + vm.previousCountry + '1').hide(); 
       $('.' + d.properties.C_Name + '1').show(); 
+      var Cname = d.properties.C_Name;
       vm.previousCountry = d.properties.C_Name;
-      d3.selectAll("."+Cname).classed("mouse",false);
+      d3.selectAll('.city').classed("mouse",false);
+      d3.selectAll("."+Cname).classed("mouse",true);
     }
 
     function leave(d){
