@@ -17,12 +17,12 @@ var yScale=d3.scale.linear().domain([0,2]).range([padding,leftheight-padding]);
 var xScale=d3.scale.linear().domain([0,0]).range([widthpadding,leftwidth-widthpadding]);
 
 d3.csv("salary.csv",function(data){
-$('.ui.checkbox').checkbox('behavior', 'set enabled');
 $(".ui.button").click(function(){
-	$(".ui.button").each(function(){
-		$(this).data("clicked",false);
-	});
-	$(this).data("clicked",true);
+	console.log("dsaa");
+	$("input[name='sort']").prop("checked",false);
+	$(".ui.button").removeClass("clicked");
+	$(this).addClass("clicked");
+
 	visualize();
 });
 
@@ -40,12 +40,16 @@ var tmp3=data.map(function(d){return parseFloat(d.工時平均);})
 timeMM=[d3.min(tmp3),d3.max(tmp3)];
 
 function visualize(){
+	//$(".ui.checkbox").checkbox("behavior","set enabled");
+	console.log("here");
 	d3.selectAll("circle").remove();
-	$(".ui.button").each(function(){
+	/*$(".ui.button").each(function(){
 		if($(this).data("clicked")){
 			itemName=$(this).text();
 		}
-	});
+	});*/
+	itemName=$(".ui.button.clicked").text();
+
 	var max=0,min=1000000;
 	var nodes=data.map(function(d){
 					return{
@@ -72,7 +76,7 @@ function visualize(){
     		.nodes(nodes)               // 綁定資料
     		.size([width,width])            // 設定範圍
 				.charge(-60)
-    		.on("tick", tick)           // 設定 tick 函式
+    		.on("tick", tick2)           // 設定 tick 函式
     		.start();                   // 啟動！
 	function mouseenter(d){
 		d3.selectAll("circle").classed("selected",false);
@@ -95,7 +99,7 @@ function visualize(){
 		force.charge(-60);
 		force.start();
 	}
-	function tick() { // tick 會不斷的被呼叫
+	function tick2() { // tick 會不斷的被呼叫
     		circles.attr({
       		cx: function(it) { return it.x; },  // it.x 由 Force Layout 提供
       		cy: function(it) { return it.y; },  // it.y 由 Force Layout 提供
@@ -104,6 +108,8 @@ function visualize(){
     			stroke: "#444",
     		})
   	}
+
+
 }
 $(".ui.button.people").click();
 function showDetail(d){
@@ -210,9 +216,9 @@ function circlesort(){
 	$(".visual svg").attr("height",width*3);
 	force.size([width,1200])
 				.charge(0)
-    		.on("tick", tick)           // 設定 tick 函式
+    		.on("tick", tick3)           // 設定 tick 函式
     		.start();                   // 啟動！
-	function tick() { // tick 會不斷的被呼叫
+	function tick3() { // tick 會不斷的被呼叫
     		circles.transition().duration(50).attr({
       		cx: function(it) { return (dataTmp.indexOf(it.value)%(Math.floor(width/80)))*80+40; },
       		cy: function(it) { return Math.floor(dataTmp.indexOf(it.value)/(width/80))*80+40; },
@@ -222,27 +228,27 @@ function circlesort(){
     		})
   	}
 }
-$('.ui.checkbox')
-  .checkbox()
-  .first().checkbox({
-    onChecked: function() {
-			circlesort();
-    },
-    onUnchecked: function() {
-			$(".visual svg").attr("height",width);
-				force.size([width,width])
-							.charge(-60)
-			    		.on("tick", tick)           // 設定 tick 函式
-			    		.start();                   // 啟動！
-				function tick() { // tick 會不斷的被呼叫
-			    		circles.transition().duration(50).attr({
-			      		cx: function(it) { return it.x; },
-			      		cy: function(it) { return it.y; },
-			      		r: function(it){return circleScale(it.value); },
-								fill:function(d){return colorScale(d.type);},
-			    			stroke: "#444",
-			    		})
-			  	}
-    }
-  });
+$("input[name='sort']").click(function(){
+	if($(this).prop("checked")){
+		circlesort();
+
+	}
+	else{
+
+		$(".visual svg").attr("height",width);
+			force.size([width,width])
+						.charge(-60)
+						.on("tick", tick1)           // 設定 tick 函式
+						.start();                   // 啟動！
+			function tick1() { // tick 會不斷的被呼叫
+						circles.attr({
+							cx: function(it) { return it.x; },
+							cy: function(it) { return it.y; },
+							r: function(it){return circleScale(it.value); },
+							fill:function(d){return colorScale(d.type);},
+							stroke: "#444",
+						})
+				}
+	}
+})
 });
