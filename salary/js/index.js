@@ -216,22 +216,36 @@ function circlesort(){
     		.on("tick", tick3)           // 設定 tick 函式
     		.start();                   // 啟動！
 	function tick3() { // tick 會不斷的被呼叫
+				var checky=[];
+				var checkx=[];
 				circles.attr({
       		cx: function(it) {
-															return (dataTmp.indexOf(it.value)%6)*80+40;},
+
+															if(checkx.indexOf(it.value)==-1){
+
+																	checkx.push(it.value);
+																	return (dataTmp.indexOf(it.value)%6)*80+40;
+															}
+															else{
+
+																	return ((dataTmp.indexOf(it.value)+1)%6)*80+40;
+															}
+					},
       		cy: function(it) {
-															var tmp=Math.floor(dataTmp.indexOf(it.value)/6)*80+40;
+															if(checky.indexOf(it.value)==-1){
 
-															if(dataTmp[dataTmp.indexOf(it.value)]==dataTmp[dataTmp.indexOf(it.value)+1]){
-																dataTmp[dataTmp.indexOf(it.value)]=dataTmp[dataTmp.indexOf(it.value)]-0.1;
-																dataTmp.sort(function(a,b){return b-a;});
-															}*/
-
-															return tmp; },
+																	checky.push(it.value);
+																	return Math.floor(dataTmp.indexOf(it.value)/6)*80+40;
+															}
+															else{
+																	return Math.floor((dataTmp.indexOf(it.value)+1)/6)*80+40;
+															}
+					},
       		r: function(it){return circleScale(it.value); },
 					fill:function(d){return colorScale(d.type);},
     			stroke: "#444",
     		})
+
   	}
 }
 
@@ -242,7 +256,8 @@ $("input[name='sort']").click(function(){
 	}
 	else{
 		$(".visual svg").attr("height",width);
-		visualize();/*
+		//visualize();
+
 			force.size([width,width])
 						.charge(-60)
 						.on("tick", tick1)           // 設定 tick 函式
@@ -255,7 +270,7 @@ $("input[name='sort']").click(function(){
 							fill:function(d){return colorScale(d.type);},
 							stroke: "#444",
 						})
-				}*/
+				}
 	}
 })
 });
