@@ -43,11 +43,6 @@ function visualize(){
 	//$(".ui.checkbox").checkbox("behavior","set enabled");
 	console.log("here");
 	d3.selectAll("circle").remove();
-	/*$(".ui.button").each(function(){
-		if($(this).data("clicked")){
-			itemName=$(this).text();
-		}
-	});*/
 	itemName=$(".ui.button.clicked").text();
 
 	var max=0,min=1000000;
@@ -212,30 +207,42 @@ function circlesort(){
 	else {
 		dataTmp=tmp3;
 	}
+
 	dataTmp.sort(function(a,b){return b-a;});
 	$(".visual svg").attr("height",width*3);
+
 	force.size([width,1200])
 				.charge(0)
     		.on("tick", tick3)           // 設定 tick 函式
     		.start();                   // 啟動！
 	function tick3() { // tick 會不斷的被呼叫
-    		circles.transition().duration(50).attr({
-      		cx: function(it) { return (dataTmp.indexOf(it.value)%(Math.floor(width/80)))*80+40; },
-      		cy: function(it) { return Math.floor(dataTmp.indexOf(it.value)/(width/80))*80+40; },
+				circles.attr({
+      		cx: function(it) {
+															return (dataTmp.indexOf(it.value)%6)*80+40;},
+      		cy: function(it) {
+															var tmp=Math.floor(dataTmp.indexOf(it.value)/6)*80+40;
+
+															if(dataTmp[dataTmp.indexOf(it.value)]==dataTmp[dataTmp.indexOf(it.value)+1]){
+																dataTmp[dataTmp.indexOf(it.value)]=dataTmp[dataTmp.indexOf(it.value)]-0.1;
+																dataTmp.sort(function(a,b){return b-a;});
+															}*/
+
+															return tmp; },
       		r: function(it){return circleScale(it.value); },
 					fill:function(d){return colorScale(d.type);},
     			stroke: "#444",
     		})
   	}
 }
+
 $("input[name='sort']").click(function(){
 	if($(this).prop("checked")){
 		circlesort();
 
 	}
 	else{
-
 		$(".visual svg").attr("height",width);
+		visualize();/*
 			force.size([width,width])
 						.charge(-60)
 						.on("tick", tick1)           // 設定 tick 函式
@@ -248,7 +255,7 @@ $("input[name='sort']").click(function(){
 							fill:function(d){return colorScale(d.type);},
 							stroke: "#444",
 						})
-				}
+				}*/
 	}
 })
 });
