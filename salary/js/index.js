@@ -1,12 +1,12 @@
 
-var width=$(".six.wide.column").width();
-var leftwidth=$(".four.wide.column").width();
-if(width>800) width=800;
+var width=$(".visual").width();
+var leftwidth=$(".detail").width();
+if(width>700) width=700;
 if(width<500) width=500;
 if(leftwidth>800) leftwidth=800;
 if(leftwidth<500) leftwidth=500;
 var leftheight=leftwidth*1/3;
-var svg=d3.select(".six.wide.column").append("svg").attr("width",width).attr("height",width);
+var svg=d3.select(".visual").append("svg").attr("width",width).attr("height",width);
 var svgNum=d3.select(".numbers").append("svg").attr("width",leftwidth).attr("height",leftheight);
 var svgSalary=d3.select(".salary").append("svg").attr("width",leftwidth).attr("height",leftheight);
 var svgTime=d3.select(".time").append("svg").attr("width",leftwidth).attr("height",leftheight);
@@ -29,6 +29,7 @@ $(".ui.button").click(function(){
 
 var force;
 var circles;
+var gcircles;
 var salaryMM,numberMM,timeMM;
 var itemName;
 var circleScale=d3.scale.sqrt().range([8,40]).domain([0,0]);
@@ -42,7 +43,11 @@ timeMM=[d3.min(tmp3),d3.max(tmp3)];
 function visualize(){
 	//$(".ui.checkbox").checkbox("behavior","set enabled");
 	console.log("here");
-	d3.selectAll("circle").remove();
+	d3.selectAll("g.gcircles").remove();
+	$(".detail").show();
+	$(".visual").removeClass("fourteen wide column");
+	$(".visual").addClass("eight wide column");
+	$(".visual svg").attr("width",width).attr("height",width);
 	itemName=$(".ui.button.clicked").text();
 
 	var max=0,min=1000000;
@@ -66,15 +71,22 @@ function visualize(){
 		circleScale=d3.scale.sqrt().range([8,40]).domain(salaryMM);
 	else
 		circleScale=d3.scale.sqrt().range([8,40]).domain(timeMM);
-	circles=d3.select(".visual svg").selectAll("circle").data(nodes).enter().append("circle").on("mouseover",mouseenter);//.on("mouseout",out);
+	gcircles=d3.select(".visual svg").selectAll("g.gcircles").data(nodes).enter().append("g")
+		.attr("class","gcircles").on("mouseover",mouseover);;
+	gcircles.append("circle").attr({
+		r: function(d){return circleScale(d.value); },
+		fill:function(d){return colorScale(d.type);},
+		stroke: "#444",
+	})
+	//gcircles.append("text").text(function(d){return d.job;});
   force = d3.layout.force() // 建立 Layout
     		.nodes(nodes)               // 綁定資料
     		.size([width,width])            // 設定範圍
 				.charge(-60)
     		.on("tick", tick2)           // 設定 tick 函式
     		.start();                   // 啟動！
-	function mouseenter(d){
-		d3.selectAll("circle").classed("selected",false);
+	function mouseover(d){
+		d3.selectAll("g.gcircles").classed("selected",false);
 		force.charge(-60);
 		force.start();
 		d3.select(this).classed("selected",true);
@@ -95,13 +107,7 @@ function visualize(){
 		force.start();
 	}
 	function tick2() { // tick 會不斷的被呼叫
-    		circles.attr({
-      		cx: function(it) { return it.x; },  // it.x 由 Force Layout 提供
-      		cy: function(it) { return it.y; },  // it.y 由 Force Layout 提供
-      		r: function(it){return circleScale(it.value); },
-					fill:function(d){return colorScale(d.type);},
-    			stroke: "#444",
-    		})
+    		gcircles.attr("transform",function(d) { return 'translate(' + [d.x, d.y] + ')'; })
   	}
 
 
@@ -207,46 +213,37 @@ function circlesort(){
 	else {
 		dataTmp=tmp3;
 	}
-
+	$(".detail").hide();
+	$(".visual").removeClass("eight wide column");
+	$(".visual").addClass("twelve wide column");
+	var num=Math.floor($(".visual").width()/120);
+	gcircles.append("text").text(function(d){return d.job;}).attr("class","gtext")
 	dataTmp.sort(function(a,b){return b-a;});
-	$(".visual svg").attr("height",width*3);
-
-	force.size([width,1200])
+	$(".visual svg").attr("width",width+leftwidth).attr("height",Math.floor(89/num)*120);
+	force.size([$(".visual").width(),$(".visual").width()])
 				.charge(0)
     		.on("tick", tick3)           // 設定 tick 函式
     		.start();                   // 啟動！
 	function tick3() { // tick 會不斷的被呼叫
-				var checky=[];
-				var checkx=[];
-				circles.attr({
-      		cx: function(it) {
+				var check=[];
+				gcircles.attr(
+      		"transform", function(d) {
 
-															if(checkx.indexOf(it.value)==-1){
+						if(check.indexOf(d.value)==-1){
 
-																	checkx.push(it.value);
-																	return (dataTmp.indexOf(it.value)%6)*80+40;
-															}
-															else{
+							check.push(d.value);
+							return 'translate(' + [(dataTmp.indexOf(d.value)%num)*120+60,Math.floor(dataTmp.indexOf(d.value)/num)*120+60] + ')';
+						}
+						else{
 
-																	return ((dataTmp.indexOf(it.value)+1)%6)*80+40;
-															}
-					},
-      		cy: function(it) {
-															if(checky.indexOf(it.value)==-1){
+							return 'translate(' + [((dataTmp.indexOf(d.value)+1)%num)*120+60,(Math.floor((dataTmp.indexOf(d.value)+1)/num))*120+60] + ')';
+						}
+					}
+      );
 
-																	checky.push(it.value);
-																	return Math.floor(dataTmp.indexOf(it.value)/6)*80+40;
-															}
-															else{
-																	return Math.floor((dataTmp.indexOf(it.value)+1)/6)*80+40;
-															}
-					},
-      		r: function(it){return circleScale(it.value); },
-					fill:function(d){return colorScale(d.type);},
-    			stroke: "#444",
-    		})
 
   	}
+
 }
 
 $("input[name='sort']").click(function(){
@@ -255,21 +252,18 @@ $("input[name='sort']").click(function(){
 
 	}
 	else{
-		$(".visual svg").attr("height",width);
+		d3.selectAll(".gtext").remove();
+		$(".detail").show();
+		$(".visual").removeClass("twelve wide column");
+		$(".visual").addClass("eight wide column");
+		$(".visual svg").attr("width",width).attr("height",width);
 		//visualize();
-
 			force.size([width,width])
 						.charge(-60)
 						.on("tick", tick1)           // 設定 tick 函式
 						.start();                   // 啟動！
 			function tick1() { // tick 會不斷的被呼叫
-						circles.attr({
-							cx: function(it) { return it.x; },
-							cy: function(it) { return it.y; },
-							r: function(it){return circleScale(it.value); },
-							fill:function(d){return colorScale(d.type);},
-							stroke: "#444",
-						})
+						gcircles.attr("transform",function(d) { return 'translate(' + [d.x, d.y] + ')'; })
 				}
 	}
 })

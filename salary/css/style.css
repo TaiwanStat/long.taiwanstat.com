@@ -1,7 +1,19 @@
 .jobdiv{
 	height:70px;
 }
-.selected{
+.gcircles circle{
+	opacity: 0.9;
+}
+.selected circle{
 	stroke-width:5px;
 	stroke:black;
+	opacity: 1;
+}
+.gtext{
+	text-anchor:middle;
+	opacity: 0.3;
+}
+.selected text{
+	opacity: 1;
+	font-size: 17px;
 }
