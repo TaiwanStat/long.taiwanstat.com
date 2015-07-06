@@ -17,3 +17,6 @@
 	opacity: 1;
 	font-size: 17px;
 }
+.checkbox{
+	display: inline-block;
+}

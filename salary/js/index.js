@@ -24,6 +24,7 @@ $(".ui.button").click(function(){
 	$(this).addClass("clicked");
 
 	visualize();
+	$("input[name='text']").prop("checked",false);
 });
 
 
@@ -78,7 +79,8 @@ function visualize(){
 		fill:function(d){return colorScale(d.type);},
 		stroke: "#444",
 	})
-	//gcircles.append("text").text(function(d){return d.job;});
+	gcircles.append("text").text(function(d){return d.job;}).attr("class","gtext")
+	$(".gtext").hide(); //default no text
   force = d3.layout.force() // 建立 Layout
     		.nodes(nodes)               // 綁定資料
     		.size([width,width])            // 設定範圍
@@ -217,7 +219,7 @@ function circlesort(){
 	$(".visual").removeClass("eight wide column");
 	$(".visual").addClass("twelve wide column");
 	var num=Math.floor($(".visual").width()/120);
-	gcircles.append("text").text(function(d){return d.job;}).attr("class","gtext")
+
 	dataTmp.sort(function(a,b){return b-a;});
 	$(".visual svg").attr("width",width+leftwidth).attr("height",Math.floor(89/num)*120);
 	force.size([$(".visual").width(),$(".visual").width()])
@@ -245,7 +247,14 @@ function circlesort(){
   	}
 
 }
-
+$("input[name='text']").click(function(){
+	if($(this).prop("checked")){
+		$(".gtext").show();
+	}
+	else{
+		$(".gtext").hide();
+	}
+});
 $("input[name='sort']").click(function(){
 	if($(this).prop("checked")){
 		circlesort();
@@ -257,14 +266,13 @@ $("input[name='sort']").click(function(){
 		$(".visual").removeClass("twelve wide column");
 		$(".visual").addClass("eight wide column");
 		$(".visual svg").attr("width",width).attr("height",width);
-		//visualize();
-			force.size([width,width])
-						.charge(-60)
-						.on("tick", tick1)           // 設定 tick 函式
-						.start();                   // 啟動！
-			function tick1() { // tick 會不斷的被呼叫
-						gcircles.attr("transform",function(d) { return 'translate(' + [d.x, d.y] + ')'; })
-				}
+		visualize();
+			if($("input[name='text']").prop("checked")){
+				$(".gtext").show();
+			}
+			else{
+				$(".gtext").hide();
+			}
 	}
 })
 });
