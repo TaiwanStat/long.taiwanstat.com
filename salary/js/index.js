@@ -43,10 +43,11 @@ timeMM=[d3.min(tmp3),d3.max(tmp3)];
 
 function visualize(){
 	//$(".ui.checkbox").checkbox("behavior","set enabled");
+	if(force!=undefined) force.stop();
 	console.log("here");
-	d3.selectAll("g.gcircles").remove();
+	d3.selectAll(".gcircles").remove();
 	$(".detail").show();
-	$(".visual").removeClass("fourteen wide column");
+	$(".visual").removeClass("twelve wide column");
 	$(".visual").addClass("eight wide column");
 	$(".visual svg").attr("width",width).attr("height",width);
 	itemName=$(".ui.button.clicked").text();
@@ -228,24 +229,16 @@ function circlesort(){
     		.start();                   // 啟動！
 	function tick3() { // tick 會不斷的被呼叫
 				var check=[];
-				gcircles.attr(
-      		"transform", function(d) {
-
+				gcircles.transition().duration(60).attr("transform", function(d) {
 						if(check.indexOf(d.value)==-1){
-
 							check.push(d.value);
 							return 'translate(' + [(dataTmp.indexOf(d.value)%num)*120+60,Math.floor(dataTmp.indexOf(d.value)/num)*120+60] + ')';
 						}
 						else{
-
 							return 'translate(' + [((dataTmp.indexOf(d.value)+1)%num)*120+60,(Math.floor((dataTmp.indexOf(d.value)+1)/num))*120+60] + ')';
 						}
-					}
-      );
-
-
+				});
   	}
-
 }
 $("input[name='text']").click(function(){
 	if($(this).prop("checked")){
@@ -257,15 +250,12 @@ $("input[name='text']").click(function(){
 });
 $("input[name='sort']").click(function(){
 	if($(this).prop("checked")){
+		force.stop();
 		circlesort();
 
 	}
 	else{
-		d3.selectAll(".gtext").remove();
-		$(".detail").show();
-		$(".visual").removeClass("twelve wide column");
-		$(".visual").addClass("eight wide column");
-		$(".visual svg").attr("width",width).attr("height",width);
+		force.stop();
 		visualize();
 			if($("input[name='text']").prop("checked")){
 				$(".gtext").show();

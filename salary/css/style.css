@@ -11,7 +11,7 @@
 }
 .gtext{
 	text-anchor:middle;
-	opacity: 0.3;
+	opacity: 0.5;
 }
 .selected text{
 	opacity: 1;
