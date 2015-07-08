@@ -20,3 +20,9 @@
 .checkbox{
 	display: inline-block;
 }
+.colorinfo circle{
+	opacity: 0.9;
+}
+.colorinfo text{
+	fill:black;
+}

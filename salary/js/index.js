@@ -15,7 +15,18 @@ var padding=(leftheight-80)/2;
 var widthpadding=60;
 var yScale=d3.scale.linear().domain([0,2]).range([padding,leftheight-padding]);
 var xScale=d3.scale.linear().domain([0,0]).range([widthpadding,leftwidth-widthpadding]);
-
+d3.csv("bigitem.csv",function(data){
+	sv=d3.select(".colorinfo").append("svg").attr("width",$(".colorinfo").width()).attr("height",600);
+	sv.selectAll("circle").data(data).enter()
+		.append("circle").attr({
+			cx:function(d,i){return 30;},
+			cy:function(d,i){return i*25+30;},
+			r:10,
+			fill:function(d){return colorScale(d.job);}
+		})
+	sv.selectAll("text").data(data).enter()
+		.append("text").attr("x",45).attr("y",function(d,i){return i*25+35;}).text(function(d){return d.job;})
+})
 d3.csv("salary.csv",function(data){
 $(".ui.button").click(function(){
 	console.log("dsaa");
