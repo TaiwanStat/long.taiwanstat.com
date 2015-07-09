@@ -86,12 +86,24 @@ function visualize(){
 		circleScale=d3.scale.sqrt().range([8,40]).domain(timeMM);
 	gcircles=d3.select(".visual svg").selectAll("g.gcircles").data(nodes).enter().append("g")
 		.attr("class","gcircles").on("mouseover",mouseover);;
+
+
 	gcircles.append("circle").attr({
 		r: function(d){return circleScale(d.value); },
 		fill:function(d){return colorScale(d.type);},
 		stroke: "#444",
 	})
 	gcircles.append("text").text(function(d){return d.job;}).attr("class","gtext")
+
+	gsort_info=gcircles.append("g").attr("class","sort_info")
+	gsort_info.append("rect");
+	gsort_info.append("text").attr("fill","#000").attr("transform","translate("+10+","+15+")").text("人數:");
+	gsort_info.append("text").attr("fill","#000").attr("transform","translate("+10+","+30+")").text(function(d){return sort_detail(d,1);});
+	gsort_info.append("text").attr("fill","#000").attr("transform","translate("+10+","+45+")").text("薪資:");
+	gsort_info.append("text").attr("fill","#000").attr("transform","translate("+10+","+60+")").text(function(d){return sort_detail(d,2);});
+	gsort_info.append("text").attr("fill","#000").attr("transform","translate("+10+","+75+")").text("工時:");
+	gsort_info.append("text").attr("fill","#000").attr("transform","translate("+10+","+90+")").text(function(d){return sort_detail(d,3);});
+	$(".sort_info").hide();
 	$(".gtext").hide(); //default no text
   force = d3.layout.force() // 建立 Layout
     		.nodes(nodes)               // 綁定資料
@@ -127,6 +139,23 @@ function visualize(){
 
 }
 $(".ui.button.people").click();
+function sort_detail(d,num){
+	var theData;
+	for(var i in data){
+		if(data[i].job==d.job){
+			theData=data[i]
+		}
+	}
+	if(num==1){
+		return theData.人數總計+rank(["人數總計",theData.人數總計]);
+	}
+	else if (num==2) {
+		return theData.薪資平均+rank(["薪資平均",theData.薪資平均]);
+	}
+	else {
+		return theData.工時平均+rank(["工時平均",theData.工時平均]);
+	}
+}
 function showDetail(d){
 	var theData;
 	for(var i in data){
@@ -139,7 +168,7 @@ function showDetail(d){
 	numData=[["人數總計",theData.人數總計],["人數(男)",theData.人數男],["人數(女)",theData.人數女]]; //to d3 selector read
 	salData=[["薪資平均",theData.薪資平均],["薪資(男)",theData.薪資男],["薪資(女)",theData.薪資女]]; //to d3 selector read
 	timeData=[["工時平均",theData.工時平均],["工時(男)",theData.工時男],["工時(女)",theData.工時女]]; //to d3 selector read
-	if ($("rect").length==9){
+	if ($(".detail rect").length==9){ //detail is displayed
 		xScale=d3.scale.linear().domain(numberMM).range([padding,leftheight-padding]);
 		changeRect(".numbers svg",numData);
 		xScale=d3.scale.linear().domain(salaryMM).range([padding,leftheight-padding]);
@@ -233,7 +262,7 @@ function circlesort(){
 	var num=Math.floor($(".visual").width()/120);
 
 	dataTmp.sort(function(a,b){return b-a;});
-	$(".visual svg").attr("width",width+leftwidth).attr("height",Math.floor(89/num)*120);
+	$(".visual svg").attr("width",width+leftwidth).attr("height",Math.ceil(89/num)*120+200);
 	force.size([$(".visual").width(),$(".visual").width()])
 				.charge(0)
     		.on("tick", tick3)           // 設定 tick 函式
@@ -250,6 +279,7 @@ function circlesort(){
 						}
 				});
   	}
+		$(".sort_info").show();
 }
 $("input[name='text']").click(function(){
 	if($(this).prop("checked")){

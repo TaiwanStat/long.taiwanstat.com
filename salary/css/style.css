@@ -15,7 +15,8 @@
 }
 .selected text{
 	opacity: 1;
-	font-size: 17px;
+	font-size: 20px;
+	font-weight: bold;
 }
 .checkbox{
 	display: inline-block;
@@ -25,4 +26,16 @@
 }
 .colorinfo text{
 	fill:black;
+}
+.sort_info text{
+	opacity: 0.5;
+}
+.selected .sort_info text{
+		font-size: 17px;
+}
+.sort_info rect{
+	width:100px;
+	height:100px;
+	fill: #AAA;
+	opacity: 0.2;
 }
