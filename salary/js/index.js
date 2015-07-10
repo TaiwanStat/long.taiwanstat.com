@@ -28,14 +28,6 @@ d3.csv("bigitem.csv",function(data){    //CREATE color info
         })
     sv.selectAll("text").data(data).enter()
         .append("text").attr("x",45).attr("y",function(d,i){return i*25+35;}).text(function(d){return d.job;})
-        function rank_info(d,itemname,num){
-            var rankArr=[];
-            d.map(function(d){
-                rankArr.push(parseFloat(d[item]));
-            })
-            rankArr.sort(function(a,b){return b-a;})
-            return indexOf(parseFloat(item[1]))+1;
-        }
 
 })
 ////////////
