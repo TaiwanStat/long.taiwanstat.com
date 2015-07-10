@@ -16,7 +16,7 @@ var widthpadding=60;
 var yScale=d3.scale.linear().domain([0,2]).range([padding,leftheight-padding]);
 var xScale=d3.scale.linear().domain([0,0]).range([widthpadding,leftwidth-widthpadding]);
 
-
+///colorinfo
 d3.csv("bigitem.csv",function(data){    //CREATE color info
     sv=d3.select(".colorinfo").append("svg").attr("width",$(".colorinfo").width()).attr("height",600);
     sv.selectAll("circle").data(data).enter()
@@ -28,14 +28,25 @@ d3.csv("bigitem.csv",function(data){    //CREATE color info
         })
     sv.selectAll("text").data(data).enter()
         .append("text").attr("x",45).attr("y",function(d,i){return i*25+35;}).text(function(d){return d.job;})
+        function rank_info(d,itemname,num){
+            var rankArr=[];
+            d.map(function(d){
+                rankArr.push(parseFloat(d[item]));
+            })
+            rankArr.sort(function(a,b){return b-a;})
+            return indexOf(parseFloat(item[1]))+1;
+        }
+
 })
+////////////
 d3.csv("salary.csv",function(data){ //the main part in this code ,including circles and detail
     //search part
     var content = [];
     data.map(function(d){
         content.push({title:d.job});
     })
-    $('.ui.search').search({source: content});
+    $('.ui.search').search({source: content,
+                            maxResults: 89});
 
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -256,6 +267,7 @@ function changeRect(itemName,rectData){
     .text(function(d){return d[1]+rank(d);})
 
 }
+
 function rank(item){
     item[0]=item[0].replace("(","");
     item[0]=item[0].replace(")","");
