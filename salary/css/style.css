@@ -18,9 +18,17 @@
 	font-size: 20px;
 	font-weight: bold;
 }
-.checkbox{
-	display: inline-block;
+.checkbox {
+	text-align: left;
+	padding-left: 25px;
+	font-size: 20px;
 }
+.checkbox input{
+	fill:gray;
+	height: 15px;
+	width: 15px;
+}
+
 .colorinfo circle{
 	opacity: 0.9;
 }

@@ -15,6 +15,8 @@ var padding=(leftheight-80)/2;
 var widthpadding=60;
 var yScale=d3.scale.linear().domain([0,2]).range([padding,leftheight-padding]);
 var xScale=d3.scale.linear().domain([0,0]).range([widthpadding,leftwidth-widthpadding]);
+
+
 d3.csv("bigitem.csv",function(data){
 	sv=d3.select(".colorinfo").append("svg").attr("width",$(".colorinfo").width()).attr("height",600);
 	sv.selectAll("circle").data(data).enter()
@@ -28,6 +30,16 @@ d3.csv("bigitem.csv",function(data){
 		.append("text").attr("x",45).attr("y",function(d,i){return i*25+35;}).text(function(d){return d.job;})
 })
 d3.csv("salary.csv",function(data){
+var content = [];
+data.map(function(d){
+	content.push({title:d.job});
+})
+$('.ui.search').search({source: content});
+$(".results").click(function(){
+	var name = $(".ui.search").search("get result").title;
+	$("."+name).mouseover();
+})
+$(".search.icon").click(function(){console.log($(".ui.search").search("get result"));})
 $(".ui.button").click(function(){
 	console.log("dsaa");
 	$("input[name='sort']").prop("checked",false);
@@ -89,6 +101,7 @@ function visualize(){
 
 
 	gcircles.append("circle").attr({
+		class:function(d){return d.job;},
 		r: function(d){return circleScale(d.value); },
 		fill:function(d){return colorScale(d.type);},
 		stroke: "#444",
@@ -259,10 +272,10 @@ function circlesort(){
 	$(".detail").hide();
 	$(".visual").removeClass("eight wide column");
 	$(".visual").addClass("twelve wide column");
-	var num=Math.floor($(".visual").width()/120);
+	var num=Math.floor($(".visual").width()/160);
 
 	dataTmp.sort(function(a,b){return b-a;});
-	$(".visual svg").attr("width",width+leftwidth).attr("height",Math.ceil(89/num)*120+200);
+	$(".visual svg").attr("width",width+leftwidth).attr("height",Math.ceil(89/num)*160+80);
 	force.size([$(".visual").width(),$(".visual").width()])
 				.charge(0)
     		.on("tick", tick3)           // 設定 tick 函式
@@ -272,10 +285,10 @@ function circlesort(){
 				gcircles.transition().duration(60).attr("transform", function(d) {
 						if(check.indexOf(d.value)==-1){
 							check.push(d.value);
-							return 'translate(' + [(dataTmp.indexOf(d.value)%num)*120+60,Math.floor(dataTmp.indexOf(d.value)/num)*120+60] + ')';
+							return 'translate(' + [(dataTmp.indexOf(d.value)%num)*160+80,Math.floor(dataTmp.indexOf(d.value)/num)*160+80] + ')';
 						}
 						else{
-							return 'translate(' + [((dataTmp.indexOf(d.value)+1)%num)*120+60,(Math.floor((dataTmp.indexOf(d.value)+1)/num))*120+60] + ')';
+							return 'translate(' + [((dataTmp.indexOf(d.value)+1)%num)*160+80,(Math.floor((dataTmp.indexOf(d.value)+1)/num))*160+80] + ')';
 						}
 				});
   	}
