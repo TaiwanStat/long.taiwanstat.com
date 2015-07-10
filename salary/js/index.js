@@ -17,7 +17,7 @@ var yScale=d3.scale.linear().domain([0,2]).range([padding,leftheight-padding]);
 var xScale=d3.scale.linear().domain([0,0]).range([widthpadding,leftwidth-widthpadding]);
 
 
-d3.csv("bigitem.csv",function(data){
+d3.csv("bigitem.csv",function(data){    //CREATE color info
     sv=d3.select(".colorinfo").append("svg").attr("width",$(".colorinfo").width()).attr("height",600);
     sv.selectAll("circle").data(data).enter()
         .append("circle").attr({
@@ -26,30 +26,29 @@ d3.csv("bigitem.csv",function(data){
             r:10,
             fill:function(d){return colorScale(d.job);}
         })
-  sv.selectAll("text").data(data).enter()
+    sv.selectAll("text").data(data).enter()
         .append("text").attr("x",45).attr("y",function(d,i){return i*25+35;}).text(function(d){return d.job;})
 })
-d3.csv("salary.csv",function(data){
+d3.csv("salary.csv",function(data){ //the main part in this code ,including circles and detail
+    //search part
     var content = [];
     data.map(function(d){
         content.push({title:d.job});
     })
     $('.ui.search').search({source: content});
-    $(".results").click(function(){
-        var name = $(".ui.search").search("get result").title;
-        $("."+name).mouseover();
-    })
-    $(".search.icon").click(function(){console.log($(".ui.search").search("get result"));})
+
+
+    //////////////////////////////////////////////////////////////////////////////////
+    //button part
     $(".ui.button").click(function(){
         console.log("dsaa");
         $("input[name='sort']").prop("checked",false);
         $(".ui.button").removeClass("clicked");
         $(this).addClass("clicked");
-
         visualize();
         $("input[name='text']").prop("checked",false);
     });
-
+    ////////////////////////////////////////////////////////////////////////////////
 
     var force;
     var circles;
@@ -65,7 +64,7 @@ d3.csv("salary.csv",function(data){
     timeMM=[d3.min(tmp3),d3.max(tmp3)];
 
     function visualize(){
-  //$(".ui.checkbox").checkbox("behavior","set enabled");
+
         if(force!=undefined) force.stop();
         console.log("here");
         d3.selectAll(".gcircles").remove();
@@ -73,6 +72,11 @@ d3.csv("salary.csv",function(data){
         $(".visual").removeClass("twelve wide column");
         $(".visual").addClass("eight wide column");
         $(".visual svg").attr("width",width).attr("height",width);
+        $(".results").click(function(){
+            var name = $(".ui.search").search("get result").title;
+            over(d3.select("g.gcircles."+name).data()[0]);
+        })
+
         itemName=$(".ui.button.clicked").text();
 
         var max=0,min=1000000;
@@ -102,11 +106,11 @@ d3.csv("salary.csv",function(data){
           circleScale=d3.scale.sqrt().range([8,40]).domain(timeMM);
       }
       gcircles=d3.select(".visual svg").selectAll("g.gcircles").data(nodes).enter().append("g")
-    .attr("class","gcircles").on("mouseover",mouseover);
+    .attr("class",function(d){return "gcircles "+d.job;}).on("mouseover",over);
 
 
     gcircles.append("circle").attr({
-        class:function(d){return d.job;},
+
         r: function(d){return circleScale(d.value); },
         fill:function(d){return colorScale(d.type);},
         stroke: "#444",
@@ -129,11 +133,11 @@ d3.csv("salary.csv",function(data){
         .charge(-60)
         .on("tick", tick2)           // 設定 tick 函式
         .start();                   // 啟動！
-    function mouseover(d){
+    function over(d){
         d3.selectAll("g.gcircles").classed("selected",false);
         force.charge(-60);
         force.start();
-        d3.select(this).classed("selected",true);
+        d3.select("g.gcircles."+d.job).classed("selected",true);
         force.charge(
             function(d2){
                 if(d==d2) {
@@ -145,17 +149,14 @@ d3.csv("salary.csv",function(data){
         force.start();
         showDetail(d);
     }
-    function out(){
-        d3.select(this).classed("selected",false);
-        force.charge(-60);
-        force.start();
-    }
+
     function tick2() { // tick 會不斷的被呼叫
         gcircles.attr("transform",function(d) { return 'translate(' + [d.x, d.y] + ')'; })
     }
+    over(d3.select("g.gcircles").data()[0]); ///init display detail
 
+    }
 
-}
 $(".ui.button.people").click();
 function sort_detail(d,num){
     var theData;
