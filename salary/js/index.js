@@ -283,14 +283,14 @@ function circlesort(){
     var num=Math.floor($(".visual").width()/160);
 
     dataTmp.sort(function(a,b){return b-a;});
-    $(".visual svg").attr("width",width+leftwidth).attr("height",Math.ceil(89/num)*160+80);
+    d3.select(".visual svg").transition().duration(750).attr("width",width+leftwidth).attr("height",Math.ceil(89/num)*160+80);
     force.size([$(".visual").width(),$(".visual").width()])
     .charge(0)
     .on("tick", tick3)           // 設定 tick 函式
     .start();                   // 啟動！
     function tick3() { // tick 會不斷的被呼叫
         var check=[];
-        gcircles.transition().duration(60).attr("transform", function(d) {
+        gcircles.transition().duration(150).delay(250).attr("transform", function(d) {
             if(check.indexOf(d.value)==-1){
                 check.push(d.value);
                 return 'translate(' + [(dataTmp.indexOf(d.value)%num)*160+80,Math.floor(dataTmp.indexOf(d.value)/num)*160+80] + ')';
@@ -300,7 +300,7 @@ function circlesort(){
             }
         });
     }
-    $(".sort_info").show();
+    $(".sort_info").delay(500).show(3000);
 }
 $("input[name='text']").click(function(){
     if($(this).prop("checked")){
