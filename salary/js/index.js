@@ -10,6 +10,7 @@ var svg=d3.select(".visual").append("svg").attr("width",width).attr("height",wid
 var svgNum=d3.select(".numbers").append("svg").attr("width",leftwidth).attr("height",leftheight);
 var svgSalary=d3.select(".salary").append("svg").attr("width",leftwidth).attr("height",leftheight);
 var svgTime=d3.select(".time").append("svg").attr("width",leftwidth).attr("height",leftheight);
+var svgSa_Time=d3.select(".sa_time").append("svg").attr("width",leftwidth).attr("height",leftheight);
 var colorScale=d3.scale.category20();
 var padding=(leftheight-80)/2;
 var widthpadding=60;
@@ -56,7 +57,7 @@ d3.csv("salary.csv",function(data){ //the main part in this code ,including circ
     var force;
     var circles;
     var gcircles;
-    var salaryMM,numberMM,timeMM;
+    var salaryMM,numberMM,timeMM,sa_timeMM;
     var itemName;
     var circleScale=d3.scale.sqrt().range([8,40]).domain([0,0]);
     var tmp1=data.map(function(d){return parseInt(d.人數總計);})
@@ -65,6 +66,8 @@ d3.csv("salary.csv",function(data){ //the main part in this code ,including circ
     salaryMM=[d3.min(tmp2),d3.max(tmp2)];
     var tmp3=data.map(function(d){return parseFloat(d.工時平均);})
     timeMM=[d3.min(tmp3),d3.max(tmp3)];
+    var tmp4=data.map(function(d){return parseFloat(d.時薪平均);})
+    sa_timeMM=[d3.min(tmp4),d3.max(tmp4)];
 
     function visualize(){
 
@@ -105,8 +108,11 @@ d3.csv("salary.csv",function(data){ //the main part in this code ,including circ
       else if(itemName=="薪資"){
           circleScale=d3.scale.sqrt().range([8,40]).domain(salaryMM);
       }
-      else{
+      else if(itemName == "工時"){
           circleScale=d3.scale.sqrt().range([8,40]).domain(timeMM);
+      }
+      else {
+          circleScale=d3.scale.sqrt().range([8,40]).domain(sa_timeMM);
       }
       gcircles=d3.select(".visual svg").selectAll("g.gcircles").data(nodes).enter().append("g")
     .attr("class",function(d){return "gcircles "+d.job;}).on("mouseover",over);
@@ -128,6 +134,8 @@ d3.csv("salary.csv",function(data){ //the main part in this code ,including circ
     gsort_info.append("text").attr("fill","#000").attr("transform","translate("+10+","+60+")").text(function(d){return sort_detail(d,2);});
     gsort_info.append("text").attr("fill","#000").attr("transform","translate("+10+","+75+")").text("工時:");
     gsort_info.append("text").attr("fill","#000").attr("transform","translate("+10+","+90+")").text(function(d){return sort_detail(d,3);});
+    gsort_info.append("text").attr("fill","#000").attr("transform","translate("+10+","+105+")").text("時薪:");
+    gsort_info.append("text").attr("fill","#000").attr("transform","translate("+10+","+120+")").text(function(d){return sort_detail(d,4);});
     $(".sort_info").hide();
     $(".gtext").hide(); //default no text
     force = d3.layout.force() // 建立 Layout
@@ -174,8 +182,11 @@ function sort_detail(d,num){
     else if (num==2) {
         return theData.薪資平均+rank(["薪資平均",theData.薪資平均]);
     }
-    else {
+    else if (num == 3){
         return theData.工時平均+rank(["工時平均",theData.工時平均]);
+    }
+    else {
+        return theData.時薪平均+rank(["時薪平均",theData.時薪平均]);
     }
 }
 function showDetail(d){
@@ -190,13 +201,17 @@ function showDetail(d){
     numData=[["人數總計",theData.人數總計],["人數(男)",theData.人數男],["人數(女)",theData.人數女]]; //to d3 selector read
     salData=[["薪資平均",theData.薪資平均],["薪資(男)",theData.薪資男],["薪資(女)",theData.薪資女]]; //to d3 selector read
     timeData=[["工時平均",theData.工時平均],["工時(男)",theData.工時男],["工時(女)",theData.工時女]]; //to d3 selector read
-    if ($(".detail rect").length==9){ //detail is displayed
+    sa_timeData=[["時薪平均",theData.時薪平均],["時薪(男)",theData.時薪男],["時薪(女)",theData.時薪女]]; //to d3 selector read
+    if ($(".detail rect").length==12){ //detail is displayed
         xScale=d3.scale.linear().domain(numberMM).range([padding,leftheight-padding]);
         changeRect(".numbers svg",numData);
         xScale=d3.scale.linear().domain(salaryMM).range([padding,leftheight-padding]);
         changeRect(".salary svg",salData);
         xScale=d3.scale.linear().domain(timeMM).range([padding,leftheight-padding]);
         changeRect(".time svg",timeData);
+        xScale=d3.scale.linear().domain(sa_timeMM).range([padding,leftheight-padding]);
+        changeRect(".sa_time svg",sa_timeData);
+
     }
     else{
         xScale=d3.scale.linear().domain(numberMM).range([padding,leftheight-padding]);
@@ -205,6 +220,8 @@ function showDetail(d){
         createRect(".salary svg",salData);
         xScale=d3.scale.linear().domain(timeMM).range([padding,leftheight-padding]);
         createRect(".time svg",timeData);
+        xScale=d3.scale.linear().domain(sa_timeMM).range([padding,leftheight-padding]);
+        createRect(".sa_time svg",sa_timeData);
     }
 }
 function createRect(itemName,rectData){
@@ -278,8 +295,11 @@ function circlesort(){
     else if (itemName=="薪資") {
         dataTmp=tmp2;
     }
-    else {
+    else if (itemName=="工時"){
         dataTmp=tmp3;
+    }
+    else {
+        dataTmp=tmp4;
     }
     $(".detail").hide();
     $(".visual").removeClass("eight wide column");
