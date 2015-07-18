@@ -1,0 +1,101 @@
+
+.startDemo_button {
+	font-size: 20px;
+	font-family: Helvetica; 
+	color: #ffffff;
+	text-align: center;
+	background-color:#00BA17; 
+	border-collapse: collapse;
+	margin-top: 20px;
+	width: 300px;
+	padding: 5px 0px 5px 0px;
+	border-radius: 5px;
+
+}
+
+.resetDemo_button { 
+	font-size: 20px;
+	font-family: Helvetica; 
+	color: #ffffff;
+	text-align: center;
+	background-color:#2E4C75; 
+	width: 300px;
+	border-collapse: collapse;
+	padding: 5px 0px 5px 0px;
+	border-radius: 5px;
+}
+
+.xAxis { 
+	fill: none; 
+	stroke: #000; 
+	stroke-width: 1px; 
+	shape-rendering: crispEdges;
+}
+
+.yAxis { 
+	fill: none; 
+	stroke: #000; 
+	stroke-width: 1px; 
+	shape-rendering: crispEdges;
+}
+
+.yAxis text { 
+	font:Helvetica;
+	shape-rending: crispEdges; 
+	}
+
+.title {
+	z-index: -1;
+  font: 500 130px Helvetica Neue;
+  fill: #656565;
+}
+
+.xyTrace { 
+	stroke-width: 2px; 
+	stroke: #ADA05E;
+	opacity: 0.5;	
+}
+
+#chart {
+	overflow: visible;
+	width: 900px;
+	height: 500px;
+	float: left;
+}
+
+#cityName {
+	color: red;
+}
+
+#detail_box { 
+	margin-bottom: 30px;
+	width: 300px; 
+	height: 500px; 
+	float:left;
+}
+
+#detail_information { 
+	list-style-type: none; 
+}
+
+h3 { 
+	font-family: sans-serif;
+	padding-left: 50px; 	 
+}
+
+.detail_child { 
+	font:40px Helvetica;
+	padding-left: 100px; 
+}
+
+h2 { 
+	font-family: Helvetica; 
+}
+
+h3 { 
+	font: 14px sans-serif;
+}
+
+#detail_total_population li { 
+	display: inline; 
+}
