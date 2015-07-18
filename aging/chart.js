@@ -52,7 +52,7 @@ d3.csv("taiwan_population-csv.csv", function(data) {
 
 	svg.append("g") 
 		.attr("class", "yAxis") 
-		.attr("transform", "translate(" + margin.left + ", 0)")
+		.attr("transform", "translate(" + margin.left + ", 5)")
 		.call(yAxis)
 		.append("text") 
 		.attr("y", -20)
