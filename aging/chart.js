@@ -1,6 +1,6 @@
 var margin = {top: 20, right: 30, bottom: 30, left: 50}, 
 	width = 900 - margin.right - margin.left, 
-	height = 500 - margin.top - margin.bottom; 
+	height = 530 - margin.top - margin.bottom; 
 
 var xScale = d3.scale.linear() 
 	.domain([0, 18])

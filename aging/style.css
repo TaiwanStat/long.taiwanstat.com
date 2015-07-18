@@ -59,7 +59,7 @@
 #chart {
 	overflow: visible;
 	width: 900px;
-	height: 700px;
+	height: 500px;
 	float: left;
 }
 
@@ -68,9 +68,10 @@
 }
 
 #detail_box { 
-	width: 400px; 
+	margin-bottom: 30px;
+	width: 300px; 
 	height: 500px; 
-	float:right;
+	float:left;
 }
 
 #detail_information { 
@@ -79,26 +80,21 @@
 
 h3 { 
 	font-family: sans-serif;
-	padding-left: 50px; 
-	 
-	
+	padding-left: 50px; 	 
 }
 
-.detail_item { 
-}
 .detail_child { 
 	font:40px Helvetica;
 	padding-left: 100px; 
-	}
+}
+
 h2 { 
 	font-family: Helvetica; 
 }
 
 h3 { 
 	font: 14px sans-serif;
-	}
-
-
+}
 
 #detail_total_population li { 
 	display: inline; 
