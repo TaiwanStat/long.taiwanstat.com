@@ -72,6 +72,7 @@
 	width: 900px;
 	height: 500px;
 	float: left;
+	margin-bottom: 50px;
 }
 
 #cityName {
@@ -79,7 +80,7 @@
 }
 
 #detail_box { 
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 	width: 300px; 
 	height: 500px; 
 	float:left;
