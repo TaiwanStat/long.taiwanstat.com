@@ -189,11 +189,7 @@ function drawCircles(totalPopData, oldPopData, middlePopData, totalPopList, data
 			
 
 	$("#start_demo").click(function() {
-		if (yearIndex == 194) { 
-			yearIndex = 0;
-			showAnimation(yearIndex, totalPopData, oldPopData, oldPercentageData, data);
-			update(); 
-		}
+		
 		makeCallBack();
 	});
 
