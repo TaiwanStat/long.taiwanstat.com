@@ -196,7 +196,7 @@ function drawCircles(totalPopData, oldPopData, middlePopData, totalPopList, data
 	});
 
 	$("#reset_demo").click(function() { 
-		// clearTimeout(set_switch_year); 
+		clearTimeout(set_switch_year); 
 		// makeCallBack(0);
 		yearIndex = 0; 
 		showAnimation(yearIndex, totalPopData, oldPopData, oldPercentageData, data);
