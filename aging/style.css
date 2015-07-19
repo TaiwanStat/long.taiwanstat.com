@@ -89,6 +89,10 @@
 	z-index: 100000;
 }
 
+discussion {
+	margin-top: 50px;
+}
+
 #detail_information { 
 	list-style-type: none; 
 }
