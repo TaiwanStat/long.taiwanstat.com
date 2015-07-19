@@ -72,7 +72,7 @@
 	width: 900px;
 	height: 600px;
 	float: left;
-	margin-bottom: 50px;
+	margin-bottom: 100px;
 	padding-bottom: 50px;
 	z-index: 100000;
 }
@@ -82,16 +82,13 @@
 }
 
 #detail_box { 
-	margin-bottom: 50px;
+	margin-bottom: 100px;
 	width: 300px; 
 	height: 600px; 
 	float:left;
 	z-index: 100000;
 }
 
-discussion {
-	margin-top: 50px;
-}
 
 #detail_information { 
 	list-style-type: none; 
