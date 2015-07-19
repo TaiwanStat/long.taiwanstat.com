@@ -70,7 +70,7 @@
 #chart {
 	overflow: visible;
 	width: 900px;
-	height: 600px;
+	height: 800px;
 	float: left;
 	margin-bottom: 100px;
 	padding-bottom: 50px;
@@ -84,7 +84,7 @@
 #detail_box { 
 	margin-bottom: 100px;
 	width: 300px; 
-	height: 600px; 
+	height: 800px; 
 	float:left;
 	z-index: 100000;
 }
@@ -95,7 +95,7 @@
 }
 
 #chart_footer {
-	clear: both;
+	clear:both;
 	width: 1000px;
 	height: 50px;
 }
