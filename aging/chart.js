@@ -189,7 +189,7 @@ function drawCircles(totalPopData, oldPopData, middlePopData, totalPopList, data
 			
 
 	$("#start_demo").click(function() {
-		if (yearIndex == 195) {}
+		if (yearIndex > 195) {}
 		else { 
 			makeCallBack();
 		}
