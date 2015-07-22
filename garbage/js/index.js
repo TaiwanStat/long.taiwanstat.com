@@ -32,18 +32,32 @@ d3.csv("year_data.csv",function(dataset){
     //console.log(dataset);
 });
 function visual(dataset_arr){
-    //var arc_g = pie_g.selectAll("g").data(pie(dataset_arr[0])).enter().append("g").attr("class","arc_g");
-    //var arc_path = arc_g.append("path").attr("class","arc_path").attr("d",arc).attr("fill",function(d){return color_scale(d.data.key);});
-    var arc_path = pie_g.selectAll("path").data(pie(dataset_arr[0])).enter().append("path")
+    var arc_g = pie_g.selectAll("g").data(pie(dataset_arr[0])).enter().append("g").attr("class","arc_g");
+    var arc_path = arc_g.append("path").attr("class","arc_path").attr("d",arc)
+        .attr("fill",function(d){return color_scale(d.data.key);}).each(function(d){this._current = d;});
+    /*var arc_path = pie_g.selectAll("path").data(pie(dataset_arr[0])).enter().append("path")
         .attr("class","arc_path").attr("d",arc)
         .attr("fill",function(d){return color_scale(d.data.key);})
-        .each(function(d){this._current = d;});
+        .each(function(d){this._current = d;});*/
+    var arc_text = arc_g.append("text")
+          .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+          .attr("dy", ".35em")
+          .style("text-anchor", "middle")
+          .text(function(d) {
+              if(d.data.value>10000){
+                  return d.data.key;
+              }
+              else{
+                  return "";
+              }
+          });
+
     var index = 0;
     info(dataset_arr,index);
     var interval = setInterval(function(){
         index = index + 1;
         info(dataset_arr,index);
-        change(dataset_arr,arc_path,index,interval);
+        change(dataset_arr,arc_path,arc_text,index,interval);
     },2000);
     //change(dataset_arr,arc_path);
 
@@ -56,17 +70,29 @@ function info(dataset_arr,index){
         if(d.key=="year"){
             return d.value+"年";
         }
+        else if (d.key=="總計") {
+            return d.key+"每年垃圾"+d.value+"公噸";
+        }
         else if (d.key=="平均每人每日垃圾產生量") {
             return d.key+":"+d.value+"公斤";
         }
     });
 }
-function change(dataset_arr,arc_path,index,interval){
+function change(dataset_arr,arc_path,arc_text,index,interval){
    if(index == 8){
         clearTimeout(interval);
     }
     arc_path = arc_path.data(pie(dataset_arr[index]));
     arc_path.transition().duration(700).attrTween("d",arcTween);
+    arc_text = arc_text.data(pie(dataset_arr[index])).text(function(d) {
+            if(d.data.value>10000){
+                return d.data.key;
+            }
+            else{
+                return "";
+            }
+        });
+    arc_text.transition().duration(700) .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
     //arc_g.transition().duration(750).attrTween("d",arcTween); //redraw
 }
 function arcTween(a){
