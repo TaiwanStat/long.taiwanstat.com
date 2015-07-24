@@ -176,25 +176,36 @@ function drawCircles(totalPopData, oldPopData, middlePopData, totalPopList, data
 	var interval = 100; 
 
 	function makeCallBack() {  
-
-		if (yearIndex < 194) {
-			yearIndex++; 
-			d3.timer(makeCallBack, interval); 
+		set_switch_year = setInterval(function() { 
 			showAnimation(yearIndex, totalPopData, oldPopData, oldPercentageData, data);
 			update();
-			return true;
-		}
-		else {}
+			yearIndex++;  
+			if (yearIndex < 194) {}
+			else{clearTimeout(set_switch_year);}
+		}, interval);
+	
+
 	}
+			
 
 	$("#start_demo").click(function() {
-		makeCallBack(); 
+		if (yearIndex > 194) {}
+		else { 
+			makeCallBack();
+		}
 	});
 
 	$("#reset_demo").click(function() { 
-		// refresh
-		window.location.reload();
+		clearTimeout(set_switch_year); 
+		// makeCallBack(0);
+		yearIndex = 0; 
+		showAnimation(yearIndex, totalPopData, oldPopData, oldPercentageData, data);
+			update();
 	});
+
+	$("#stop_demo").click(function() { 
+		clearTimeout(set_switch_year); 
+	})
 	
 	g.selectAll("circle") 
 		.data(totalPopData[yearIndex])
