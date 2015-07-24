@@ -1,0 +1,39 @@
+.xAxis path { 
+	fill: none; 
+	stroke: #000; 
+	stroke-width: 1px; 
+	shape-rendering: crispEdges;
+}
+
+.yAxis path {
+	fill: none; 
+	stroke: #000; 
+	stroke-width: 1px; 
+	shape-rendering: crispEdges;
+}
+
+form {
+	margin: 30px;
+}
+
+.yLabels {
+	float:right; 
+}
+
+.xAxis text { 
+	display: none;
+}
+
+.yearLabel {
+	cursor: pointer;  
+}
+
+.entity {
+	cursor: pointer;
+}
+
+#year-2014 { 
+  fill: red;
+  font-weight: bold;
+  font-size: 25px;
+}
