@@ -9,6 +9,12 @@
     fill:none;
 	stroke:#000;
 }
+.rect{
+    fill:#66A;
+}
+.x_text{
+    
+}
 .d3-tip {
     line-height: 1;
     font-weight: bold;

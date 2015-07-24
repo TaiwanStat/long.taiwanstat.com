@@ -43,7 +43,12 @@ d3.csv("year_data.csv",function(dataset){
     //console.log(dataset);
 });
 d3.csv("month_data.csv",function(dataset){
-    visual_rect(dataset);
+    var dataset_arr = d3.nest().key(function(d){
+        return d.month.substr(0,4);
+    }).entries(dataset);
+    console.log(dataset_arr);
+    var index = 0;
+    visual_rect(dataset_arr,index);
 })
 function visual_pie(dataset_arr){
     var arc_g = pie_g.selectAll("g").data(pie(dataset_arr[0])).enter()
@@ -80,22 +85,37 @@ function visual_pie(dataset_arr){
 
 
 }
-function visual_rect(dataset_arr){
-
+function visual_rect(dataset_arr,index){
+    data_arr = dataset_arr[index].values;
     var chart_width = $(".vis_div").width()+$(".info_div").width();
     var rect_svg = d3.select(".rect_div").append("svg")
     .attr("width",chart_width).attr("height",visual_width)
-    .append("g").attr("transform","translate(50,-50)");
-    var x_scale = d3.scale.linear().domain([0,13]).range([0,chart_width-50]);
+    .append("g").attr("transform","translate(100,-50)");
+    var x_scale = d3.scale.linear().domain([0,13]).range([0,chart_width-100]);
     var y_scale = d3.scale.linear().domain([0,800000]).range([0,visual_width-50]);
-    var x_axis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(14);
+    var x_axis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(0);
     var y_axis = d3.svg.axis().scale(y_scale).orient("left").ticks(10);
     rect_svg.append("g").attr("class","x_g")
-    .attr("transform","translate(50,"+(visual_width-50)+")").call(x_axis);
+    .attr("transform","translate(50,"+(visual_width-50)+")").call(x_axis)
+    .append("text");
     rect_svg.append("g").attr("class","y_g")
     .attr("transform","translate(50,0)").call(y_axis);
-    rect_svg.selectAll("rect").data(dataset_arr).enter()
-    .append("rect").attr("x",function(d){return x_scale(d)})
+    rect_svg.selectAll(".x_text").data(data_arr).enter().append("text").attr("class","x_text")
+    .attr("transform",function(d,i){return "translate("+(x_scale(i+1)-10)+","+(visual_width-20)+")";})
+    .text(function(d,i){return i+"月";});
+    var rect_g = rect_svg.selectAll(".rect_g").data(data_arr).enter()
+    .append("g").attr("class","rect_g")
+    rect_g//.selectAll("rect").data(data_arr).enter()
+    .append("rect").attr("class","rect").attr("x",function(d,i){return x_scale(i+1)-10;})
+    .attr("y",function(d){return visual_width-y_scale(d.總計);})
+    .attr("width",chart_width/15)
+    .attr("height",function(d){return y_scale(d.總計)-50;})
+    rect_g.append("text")
+    .attr("transform",function(d,i){return "translate("+x_scale(i+1)+",100)";})
+    .attr("fill","black")
+    .text(function(d,i){
+        return (i+1)+"月";
+    });
 }
 function info(dataset_arr,index){
     d3.selectAll(".info_p").remove();
