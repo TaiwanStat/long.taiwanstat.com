@@ -19,9 +19,10 @@ var tip = d3.tip().attr("class","d3-tip").offset(function() {
     return [this.getBBox().height / 2, 0]
 })
 .html(function(d){
+    var num = new Intl.NumberFormat('en-IN').format(d.data.val);
     var num1000 = parseInt(d.data.val/d.data.all_val*1000);
     var num_str = parseInt(num1000/10)+"."+num1000%100+"";
-    return d.value+"公噸,"+num_str+"%";
+    return d.data.key+":"+num+"公噸,"+num_str+"%";
 });
 pie_g.call(tip);
 d3.csv("year_data.csv",function(dataset){
@@ -38,10 +39,13 @@ d3.csv("year_data.csv",function(dataset){
         dataset_arr.push(data_arr);
     }
     console.log(dataset_arr);
-    visual(dataset_arr);
+    visual_pie(dataset_arr);
     //console.log(dataset);
 });
-function visual(dataset_arr){
+d3.csv("month_data.csv",function(dataset){
+    visual_rect(dataset);
+})
+function visual_pie(dataset_arr){
     var arc_g = pie_g.selectAll("g").data(pie(dataset_arr[0])).enter()
     .append("g").attr("class","arc_g");
     var arc_path = arc_g.append("path").attr("class","arc_path").attr("d",arc)
@@ -76,6 +80,23 @@ function visual(dataset_arr){
 
 
 }
+function visual_rect(dataset_arr){
+
+    var chart_width = $(".vis_div").width()+$(".info_div").width();
+    var rect_svg = d3.select(".rect_div").append("svg")
+    .attr("width",chart_width).attr("height",visual_width)
+    .append("g").attr("transform","translate(50,-50)");
+    var x_scale = d3.scale.linear().domain([0,13]).range([0,chart_width-50]);
+    var y_scale = d3.scale.linear().domain([0,800000]).range([0,visual_width-50]);
+    var x_axis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(14);
+    var y_axis = d3.svg.axis().scale(y_scale).orient("left").ticks(10);
+    rect_svg.append("g").attr("class","x_g")
+    .attr("transform","translate(50,"+(visual_width-50)+")").call(x_axis);
+    rect_svg.append("g").attr("class","y_g")
+    .attr("transform","translate(50,0)").call(y_axis);
+    rect_svg.selectAll("rect").data(dataset_arr).enter()
+    .append("rect").attr("x",function(d){return x_scale(d)})
+}
 function info(dataset_arr,index){
     d3.selectAll(".info_p").remove();
     d3.select(".info_div").selectAll("p").data(dataset_arr[index]).enter().append("p")
@@ -84,7 +105,8 @@ function info(dataset_arr,index){
             return d.val+"年";
         }
         else if (d.key=="總計") {
-            return d.key+"每年垃圾"+d.val+"公噸";
+            var num = new Intl.NumberFormat('en-IN').format(d.val);
+            return d.key+"每年垃圾"+num+"公噸";
         }
         else if (d.key=="平均每人每日垃圾產生量") {
             return d.key+":"+d.val+"公斤";
@@ -92,7 +114,7 @@ function info(dataset_arr,index){
     });
 }
 function change(dataset_arr,arc_path,arc_text,index,interval){
-    if(index == 14){
+    if(index == 13){
         clearTimeout(interval);
     }
     arc_path = arc_path.data(pie(dataset_arr[index]));
