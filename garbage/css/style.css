@@ -18,6 +18,26 @@
 .dropdown{
     height:40px;
 }
+.rect_0{
+    fill:#2ca02c;
+}
+.rect_1{
+    fill:#d62728
+}
+.rect_2{
+    fill:#9467bd
+}
+.rect_3{
+    fill:#8c564b
+}
+.rect_4{
+    fill:#e377c2
+}
+.rect_5{
+    fill:#7f7f7f
+}
+
+
 .d3-tip {
     line-height: 1;
     font-weight: bold;

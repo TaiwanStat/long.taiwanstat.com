@@ -25,20 +25,6 @@ var tip = d3.tip().attr("class","d3-tip").offset(function() {
     return d.data.key+":"+num+"公噸,"+num_str+"%";
 });
 pie_g.call(tip);
-var item = "總計";
-var y_scale = d3.scale.linear().domain([0,1000000]).range([visual_width-50,0]);
-$(".dropdown").dropdown({
-    onChange: function(text, value) {
-        item = value;
-        if(item=="總計"||item=="焚化"||item=="衛生掩埋"){
-            y_scale = d3.scale.linear().domain([0,1000000]).range([visual_width-50,0]);
-        }
-        else{
-            y_scale = d3.scale.linear().domain([0,300000]).range([visual_width-50,0]);
-        }
-        console.log(item);
-    }
-});
 d3.csv("year_data.csv",function(dataset){
     var dataset_arr=[];
     for(var index in dataset){ ////to change the obj into arr
@@ -107,7 +93,7 @@ function visual_rect(dataset_arr,index){
     .attr("width",chart_width).attr("height",visual_width)
     .append("g").attr("transform","translate(100,-50)");
     var x_scale = d3.scale.linear().domain([0,13]).range([0,chart_width-100]);
-
+    var y_scale = d3.scale.linear().domain([0,1000000]).range([visual_width-50,0]);
     var x_axis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(0);
     var y_axis = d3.svg.axis().scale(y_scale).orient("left").ticks(10);
     rect_svg.append("g").attr("class","x_g")
@@ -120,18 +106,37 @@ function visual_rect(dataset_arr,index){
     .text(function(d,i){return (i+1)+"月";});
     var rect_g = rect_svg.selectAll(".rect_g").data(data_arr).enter()
     .append("g").attr("class","rect_g")
-    rect_g//.selectAll("rect").data(data_arr).enter()
-    .append("rect").attr("class","rect").attr("x",function(d,i){return x_scale(i+1)-10;})
-    .attr("y",function(d){return y_scale(d[item]);})
-    .attr("width",chart_width/15)
-    .attr("height",function(d){return visual_width-y_scale(d[item])-50;})
+    var arr = ["總計","焚化","衛生掩埋","巨大垃圾回收再利用","廚餘回收","資源回收","其他"];
+    var position = [0,0,0,0,0,0,0,0,0,0,0,0];
+    var length = [0,0,0,0,0,0,0,0,0,0,0,0];
+    var ii = 0;
+    for (ii=0;ii<6;ii++){
+
+        rect_g//.selectAll("rect").data(data_arr).enter()
+        .append("rect").attr("class","rect_"+ii).attr("x",function(d,i){return x_scale(i+1)-10;})
+        .attr("y",function(d,i){
+            if(position[i]==0){
+                position[i] = y_scale(d[arr[ii]]);
+            }
+            else{
+                position[i] = length[i] + position[i];
+            }
+
+            return position[i];
+        })
+        .attr("width",chart_width/15)
+        .attr("height",function(d,i){
+            length[i] = visual_width-y_scale(d[arr[ii+1]])-50
+            return length[i];
+        })
+    }
     var interval = setInterval(function(){
         index = index + 1;
-        change_rect(dataset_arr,index+1,chart_width,interval);
+        change_rect(dataset_arr,index+1,chart_width,y_scale,interval);
     },2000);
 
 }
-function change_rect(dataset_arr,index,chart_width,interval){
+function change_rect(dataset_arr,index,chart_width,y_scale,interval){
     if(index == 13){
         clearTimeout(interval);
     }
@@ -139,9 +144,28 @@ function change_rect(dataset_arr,index,chart_width,interval){
     d3.selectAll(".y_g").transition().duration(700)
     .attr("transform","translate(50,0)").call(y_axis);
     var data_arr = dataset_arr[index].values;
-    d3.selectAll(".rect").data(data_arr).transition().duration(700)
-    .attr("y",function(d){return y_scale(d[item]);})
-    .attr("height",function(d){return visual_width-y_scale(d[item])-50;});
+    var arr = ["總計","焚化","衛生掩埋","巨大垃圾回收再利用","廚餘回收","資源回收","其他"];
+    var position = [0,0,0,0,0,0,0,0,0,0,0,0];
+    var length = [0,0,0,0,0,0,0,0,0,0,0,0];
+    var ii = 0;
+    for (ii=0;ii<6;ii++){
+
+        d3.selectAll(".rect_"+ii).data(data_arr).transition().duration(700)
+        .attr("y",function(d,i){
+            if(position[i]==0){
+                position[i] = y_scale(d[arr[ii]]);
+            }
+            else{
+                position[i] = length[i] + position[i];
+            }
+
+            return position[i];
+        })
+        .attr("height",function(d,i){
+            length[i] = visual_width-y_scale(d[arr[ii+1]])-50
+            return length[i];
+        })
+    }
 }
 function info(dataset_arr,index){
     d3.selectAll(".info_p").remove();
