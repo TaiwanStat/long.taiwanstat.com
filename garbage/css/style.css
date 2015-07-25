@@ -13,7 +13,10 @@
     fill:#66A;
 }
 .x_text{
-    
+
+}
+.dropdown{
+    height:40px;
 }
 .d3-tip {
     line-height: 1;

@@ -25,6 +25,20 @@ var tip = d3.tip().attr("class","d3-tip").offset(function() {
     return d.data.key+":"+num+"公噸,"+num_str+"%";
 });
 pie_g.call(tip);
+var item = "總計";
+var y_scale = d3.scale.linear().domain([0,1000000]).range([visual_width-50,0]);
+$(".dropdown").dropdown({
+    onChange: function(text, value) {
+        item = value;
+        if(item=="總計"||item=="焚化"||item=="衛生掩埋"){
+            y_scale = d3.scale.linear().domain([0,1000000]).range([visual_width-50,0]);
+        }
+        else{
+            y_scale = d3.scale.linear().domain([0,300000]).range([visual_width-50,0]);
+        }
+        console.log(item);
+    }
+});
 d3.csv("year_data.csv",function(dataset){
     var dataset_arr=[];
     for(var index in dataset){ ////to change the obj into arr
@@ -49,6 +63,7 @@ d3.csv("month_data.csv",function(dataset){
     console.log(dataset_arr);
     var index = 0;
     visual_rect(dataset_arr,index);
+
 })
 function visual_pie(dataset_arr){
     var arc_g = pie_g.selectAll("g").data(pie(dataset_arr[0])).enter()
@@ -92,7 +107,7 @@ function visual_rect(dataset_arr,index){
     .attr("width",chart_width).attr("height",visual_width)
     .append("g").attr("transform","translate(100,-50)");
     var x_scale = d3.scale.linear().domain([0,13]).range([0,chart_width-100]);
-    var y_scale = d3.scale.linear().domain([0,800000]).range([0,visual_width-50]);
+
     var x_axis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(0);
     var y_axis = d3.svg.axis().scale(y_scale).orient("left").ticks(10);
     rect_svg.append("g").attr("class","x_g")
@@ -101,21 +116,32 @@ function visual_rect(dataset_arr,index){
     rect_svg.append("g").attr("class","y_g")
     .attr("transform","translate(50,0)").call(y_axis);
     rect_svg.selectAll(".x_text").data(data_arr).enter().append("text").attr("class","x_text")
-    .attr("transform",function(d,i){return "translate("+(x_scale(i+1)-10)+","+(visual_width-20)+")";})
-    .text(function(d,i){return i+"月";});
+    .attr("transform",function(d,i){return "translate("+(x_scale(i+1)+chart_width/30)+","+(visual_width-20)+")";})
+    .text(function(d,i){return (i+1)+"月";});
     var rect_g = rect_svg.selectAll(".rect_g").data(data_arr).enter()
     .append("g").attr("class","rect_g")
     rect_g//.selectAll("rect").data(data_arr).enter()
     .append("rect").attr("class","rect").attr("x",function(d,i){return x_scale(i+1)-10;})
-    .attr("y",function(d){return visual_width-y_scale(d.總計);})
+    .attr("y",function(d){return y_scale(d[item]);})
     .attr("width",chart_width/15)
-    .attr("height",function(d){return y_scale(d.總計)-50;})
-    rect_g.append("text")
-    .attr("transform",function(d,i){return "translate("+x_scale(i+1)+",100)";})
-    .attr("fill","black")
-    .text(function(d,i){
-        return (i+1)+"月";
-    });
+    .attr("height",function(d){return visual_width-y_scale(d[item])-50;})
+    var interval = setInterval(function(){
+        index = index + 1;
+        change_rect(dataset_arr,index+1,chart_width,interval);
+    },2000);
+
+}
+function change_rect(dataset_arr,index,chart_width,interval){
+    if(index == 13){
+        clearTimeout(interval);
+    }
+    var y_axis = d3.svg.axis().scale(y_scale).orient("left").ticks(10);
+    d3.selectAll(".y_g").transition().duration(700)
+    .attr("transform","translate(50,0)").call(y_axis);
+    var data_arr = dataset_arr[index].values;
+    d3.selectAll(".rect").data(data_arr).transition().duration(700)
+    .attr("y",function(d){return y_scale(d[item]);})
+    .attr("height",function(d){return visual_width-y_scale(d[item])-50;});
 }
 function info(dataset_arr,index){
     d3.selectAll(".info_p").remove();
