@@ -77,14 +77,14 @@ function visual_pie(dataset_arr){
 
     var index = 0;
     info(dataset_arr,index);
-    var interval = setInterval(go,2000);
+    var interval = setInterval(go,1000);
     $(".pause_b").click(function(){
         clearTimeout(interval);
 
     })
     $(".play_b").click(function(){
         clearTimeout(interval);
-        interval = setInterval(go,2000);
+        interval = setInterval(go,1000);
     })
     function go(){
         index = index + 1;
@@ -143,14 +143,14 @@ function visual_rect(dataset_arr,index){
             return length[i];
         })
     }
-    var interval = setInterval(go,2000);
+    var interval = setInterval(go,1000);
     $(".pause_b").click(function(){
         clearTimeout(interval);
 
     })
     $(".play_b").click(function(){
         clearTimeout(interval);
-        interval = setInterval(go,2000);
+        interval = setInterval(go,1000);
     })
     function go(){
         index = index + 1;
