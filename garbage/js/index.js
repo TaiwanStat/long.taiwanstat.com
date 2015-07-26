@@ -87,12 +87,14 @@ function visual_pie(dataset_arr){
         interval = setInterval(go,1000);
     })
     function go(){
-        index = index + 1;
-        if(index == 13){
+        if(index >= 13){
             clearTimeout(interval);
         }
-        info(dataset_arr,index);
-        change(dataset_arr,arc_path,arc_text,index,interval);
+        else{
+            index = index + 1;
+            info(dataset_arr,index);
+            change(dataset_arr,arc_path,arc_text,index,interval);
+        }
     }
 
     //change(dataset_arr,arc_path);
@@ -153,11 +155,13 @@ function visual_rect(dataset_arr,index){
         interval = setInterval(go,1000);
     })
     function go(){
-        index = index + 1;
-        if(index == 12){
+        if(index >= 12){
             clearTimeout(interval);
         }
-        change_rect(dataset_arr,index,chart_width,y_scale,interval);
+        else{
+            index = index + 1;
+            change_rect(dataset_arr,index,chart_width,y_scale,interval);
+        }
     }
 
 
