@@ -13,27 +13,27 @@
     fill:#66A;
 }
 .x_text{
-
+    text-anchor:middle;
 }
 .dropdown{
     height:40px;
 }
-.rect_0{
+.bar_0{
     fill:#2ca02c;
 }
-.rect_1{
+.bar_1{
     fill:#d62728
 }
-.rect_2{
+.bar_2{
     fill:#9467bd
 }
-.rect_3{
+.bar_3{
     fill:#8c564b
 }
-.rect_4{
+.bar_4{
     fill:#e377c2
 }
-.rect_5{
+.bar_5{
     fill:#7f7f7f
 }
 

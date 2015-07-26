@@ -77,11 +77,24 @@ function visual_pie(dataset_arr){
 
     var index = 0;
     info(dataset_arr,index);
-    var interval = setInterval(function(){
+    var interval = setInterval(go,2000);
+    $(".pause_b").click(function(){
+        clearTimeout(interval);
+
+    })
+    $(".play_b").click(function(){
+        clearTimeout(interval);
+        interval = setInterval(go,2000);
+    })
+    function go(){
         index = index + 1;
+        if(index == 13){
+            clearTimeout(interval);
+        }
         info(dataset_arr,index);
         change(dataset_arr,arc_path,arc_text,index,interval);
-    },2000);
+    }
+
     //change(dataset_arr,arc_path);
 
 
@@ -91,32 +104,32 @@ function visual_rect(dataset_arr,index){
     var chart_width = $(".vis_div").width()+$(".info_div").width();
     var rect_svg = d3.select(".rect_div").append("svg")
     .attr("width",chart_width).attr("height",visual_width)
-    .append("g").attr("transform","translate(100,-50)");
+    var rect_g = rect_svg.append("g").attr("transform","translate(100,-50)");
     var x_scale = d3.scale.linear().domain([0,13]).range([0,chart_width-100]);
-    var y_scale = d3.scale.linear().domain([0,1000000]).range([visual_width-50,0]);
+    var y_scale = d3.scale.linear().domain([0,950000]).range([visual_width-50,0]);
     var x_axis = d3.svg.axis().scale(x_scale).orient("bottom").ticks(0);
     var y_axis = d3.svg.axis().scale(y_scale).orient("left").ticks(10);
     rect_svg.append("g").attr("class","x_g")
-    .attr("transform","translate(50,"+(visual_width-50)+")").call(x_axis)
+    .attr("transform","translate(100,"+(visual_width-50)+")").call(x_axis)
     .append("text");
     rect_svg.append("g").attr("class","y_g")
-    .attr("transform","translate(50,0)").call(y_axis);
+    .attr("transform","translate(100,0)").call(y_axis);
     rect_svg.selectAll(".x_text").data(data_arr).enter().append("text").attr("class","x_text")
-    .attr("transform",function(d,i){return "translate("+(x_scale(i+1)+chart_width/30)+","+(visual_width-20)+")";})
+    .attr("transform",function(d,i){return "translate("+(x_scale(i)+(chart_width-100)/28+100)+","+(visual_width-20)+")";})
     .text(function(d,i){return (i+1)+"月";});
-    var rect_g = rect_svg.selectAll(".rect_g").data(data_arr).enter()
-    .append("g").attr("class","rect_g")
+    var bar_g = rect_g.selectAll(".bar_g").data(data_arr).enter()
+    .append("g").attr("class","bar_g")
     var arr = ["總計","焚化","衛生掩埋","巨大垃圾回收再利用","廚餘回收","資源回收","其他"];
     var position = [0,0,0,0,0,0,0,0,0,0,0,0];
     var length = [0,0,0,0,0,0,0,0,0,0,0,0];
     var ii = 0;
     for (ii=0;ii<6;ii++){
 
-        rect_g//.selectAll("rect").data(data_arr).enter()
-        .append("rect").attr("class","rect_"+ii).attr("x",function(d,i){return x_scale(i+1)-10;})
+        bar_g//.selectAll("rect").data(data_arr).enter()
+        .append("rect").attr("class","bar_"+ii).attr("x",function(d,i){return x_scale(i);})
         .attr("y",function(d,i){
             if(position[i]==0){
-                position[i] = y_scale(d[arr[ii]]);
+                position[i] = y_scale(d[arr[ii]])+50;
             }
             else{
                 position[i] = length[i] + position[i];
@@ -124,25 +137,36 @@ function visual_rect(dataset_arr,index){
 
             return position[i];
         })
-        .attr("width",chart_width/15)
+        .attr("width",(chart_width-100)/14)
         .attr("height",function(d,i){
             length[i] = visual_width-y_scale(d[arr[ii+1]])-50
             return length[i];
         })
     }
-    var interval = setInterval(function(){
+    var interval = setInterval(go,2000);
+    $(".pause_b").click(function(){
+        clearTimeout(interval);
+
+    })
+    $(".play_b").click(function(){
+        clearTimeout(interval);
+        interval = setInterval(go,2000);
+    })
+    function go(){
         index = index + 1;
-        change_rect(dataset_arr,index+1,chart_width,y_scale,interval);
-    },2000);
+        if(index == 12){
+            clearTimeout(interval);
+        }
+        change_rect(dataset_arr,index,chart_width,y_scale,interval);
+    }
+
 
 }
-function change_rect(dataset_arr,index,chart_width,y_scale,interval){
-    if(index == 13){
-        clearTimeout(interval);
-    }
+function change_rect(dataset_arr,index,chart_width,y_scale){
+
     var y_axis = d3.svg.axis().scale(y_scale).orient("left").ticks(10);
     d3.selectAll(".y_g").transition().duration(700)
-    .attr("transform","translate(50,0)").call(y_axis);
+    .attr("transform","translate(100,0)").call(y_axis);
     var data_arr = dataset_arr[index].values;
     var arr = ["總計","焚化","衛生掩埋","巨大垃圾回收再利用","廚餘回收","資源回收","其他"];
     var position = [0,0,0,0,0,0,0,0,0,0,0,0];
@@ -150,10 +174,10 @@ function change_rect(dataset_arr,index,chart_width,y_scale,interval){
     var ii = 0;
     for (ii=0;ii<6;ii++){
 
-        d3.selectAll(".rect_"+ii).data(data_arr).transition().duration(700)
+        d3.selectAll(".bar_"+ii).data(data_arr).transition().duration(700)
         .attr("y",function(d,i){
             if(position[i]==0){
-                position[i] = y_scale(d[arr[ii]]);
+                position[i] = y_scale(d[arr[ii]])+50;
             }
             else{
                 position[i] = length[i] + position[i];
@@ -183,10 +207,8 @@ function info(dataset_arr,index){
         }
     });
 }
-function change(dataset_arr,arc_path,arc_text,index,interval){
-    if(index == 13){
-        clearTimeout(interval);
-    }
+function change(dataset_arr,arc_path,arc_text,index){
+
     arc_path = arc_path.data(pie(dataset_arr[index]));
     arc_path.transition().duration(700).attrTween("d",arcTween);
     arc_text = arc_text.data(pie(dataset_arr[index])).transition().duration(10).text(function(d) {
