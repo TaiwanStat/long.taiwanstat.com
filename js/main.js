@@ -37,7 +37,7 @@
 
 
 	$('body').prepend(str);
-	$('body').prepend(embed);
+	$('body').append(embed);
 	$('body').append(discussion);
 
 
