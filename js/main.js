@@ -28,8 +28,16 @@
 				discussion +='<div class="fb-comments" data-href="' + document.location.href + '" data-width="100%" data-numposts="8"></div>'
 				discussion += '</discussion>'
 
+	var embed = '<div style="margin-left:25px" id = "embed">'
+			embed += '<span>網頁嵌入碼：</span>'
+			embed += '<textarea style="width:80%;height:20px;resize:none;">'
+			embed += '<iframe src = "' + document.URL + '" width = "800" height = "600" frameborder = "0"></iframe>'
+			embed += '</textarea>'
+			embed += '</div>'
+
 
 	$('body').prepend(str);
+	$('body').prepend(embed);
 	$('body').append(discussion);
 
 
@@ -41,6 +49,13 @@
 	// initialise
 	headroom.init();
 
+	if(window.parent != window) {
+	    $("body").find("header").remove();
+	    $("body").find(".btn-sites").remove();
+	    $("body").find(".fb-plugin").remove();
+	    $("body").find("discussion").remove();
+	    $("body").find("#embed").remove();
+	}
 
 
 })(window, document)
