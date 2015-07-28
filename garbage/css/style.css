@@ -3,6 +3,10 @@
     font-family:MingLiU;
     font-weight: normal;
 }
+.info_p span{
+    color:red;
+    font-weight: bolder;
+}
 .x_g{
     fill:none;
 	stroke:#000;

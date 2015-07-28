@@ -197,20 +197,20 @@ function change_rect(dataset_arr,index,chart_width,y_scale){
     }
 }
 function info(dataset_arr,index){
-    d3.selectAll(".info_p").remove();
-    d3.select(".info_div").selectAll("p").data(dataset_arr[index]).enter().append("p")
-    .attr("fill","black").attr("class","info_p").text(function(d){
+
+    d3.map(dataset_arr[index],function(d){
         if(d.key=="year"){
-            return d.val+"年";
+            d3.select(".info_span1").text(d.val);
         }
         else if (d.key=="總計") {
             var num = new Intl.NumberFormat('en-IN').format(d.val);
-            return d.key+"每年垃圾"+num+"公噸";
+            d3.select(".info_span2").text(num);
         }
         else if (d.key=="平均每人每日垃圾產生量") {
-            return d.key+":"+d.val+"公斤";
+            d3.select(".info_span3").text(d.val);
         }
-    });
+    })
+
 }
 function change(dataset_arr,arc_path,arc_text,index){
 
