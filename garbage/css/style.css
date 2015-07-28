@@ -1,5 +1,7 @@
 .info_p{
     font-size: 2em;
+    font-family:MingLiU;
+    font-weight: normal;
 }
 .x_g{
     fill:none;
@@ -19,22 +21,22 @@
     height:40px;
 }
 .bar_0{
-    fill:#2ca02c;
+    fill:#FFBB66;
 }
 .bar_1{
-    fill:#d62728
+    fill:#FFDD55
 }
 .bar_2{
-    fill:#9467bd
+    fill:#FFFF77
 }
 .bar_3{
-    fill:#8c564b
+    fill:#DDFF77
 }
 .bar_4{
-    fill:#e377c2
+    fill:#BBFF66
 }
 .bar_5{
-    fill:#7f7f7f
+    fill:#66FF66
 }
 
 

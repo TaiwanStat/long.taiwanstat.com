@@ -1,7 +1,8 @@
 var visual_width = $(".vis_div").width();
 if(visual_width>400) visual_width=400;
 var r = visual_width/2;
-var color_scale = d3.scale.category10();
+//var color_scale = d3.scale.category10();
+var color_scale = d3.scale.ordinal().domain(d3.range(0,6)).range(["#FFA488","#FFBB66","#FFDD55","#FFFF77","#DDFF77","#BBFF66","#66FF66"]);
 var arc = d3.svg.arc().outerRadius(r).innerRadius(0);
 var pie = d3.layout.pie().sort(null).value(function(d){
     if((d.key != "year")&&(d.key != "總計")&&(d.key != "平均每人每日垃圾產生量")){
