@@ -28,19 +28,15 @@
 				discussion +='<div class="fb-comments" data-href="' + document.location.href + '" data-width="100%" data-numposts="8"></div>'
 				discussion += '</discussion>'
 
-	var embed = '<div style="margin-left:25px" id = "embed">'
-			embed += '<span>網頁嵌入碼：</span>'
-			embed += '<textarea style="width:80%;height:20px;resize:none;">'
-			embed += '<iframe src = "' + document.URL + '" width = "800" height = "600" frameborder = "0"></iframe>'
-			embed += '</textarea>'
-			embed += '</div>'
-
+	var embed = '<div id = "embed" class = "ui form" style="margin: 20px; width: 85%; float: left;">'
+			embed += '<div class = "field">'
+			embed += '<label style = "font-size: 38px; margin-bottom: 5px;">網頁嵌入碼</label>'
+			embed += '<input type = "text" style = "font-size: 15px" value = \'<iframe src = "' + document.URL + '" width = "800" height = "600" frameborder = "0"></iframe>\'>'
+			embed += '</div></div>'
 
 	$('body').prepend(str);
 	$('body').append(embed);
 	$('body').append(discussion);
-
-
 
   // grab an element
 	var myElement = document.querySelector("header");
@@ -56,6 +52,4 @@
 	    $("body").find("discussion").remove();
 	    $("body").find("#embed").remove();
 	}
-
-
 })(window, document)
