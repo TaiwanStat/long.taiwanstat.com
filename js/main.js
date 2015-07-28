@@ -29,7 +29,7 @@
 				discussion += '</discussion>'
 
 	var embed = '<div style="margin-left:25px;width:100%;float:left;" id = "embed">'
-			embed += '<span>網頁嵌入碼：</span>'
+			embed += '<span style="font-size: 25px">網頁嵌入碼：</span>'
 			embed += '<textarea style="width:80%;height:20px;resize:none;">'
 			embed += '<iframe src = "' + document.URL + '" width = "800" height = "600" frameborder = "0"></iframe>'
 			embed += '</textarea>'
