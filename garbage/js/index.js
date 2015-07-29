@@ -203,7 +203,7 @@ function info(dataset_arr,index){
             d3.select(".info_span_year").text(d.val);
         }
         else if (d.key=="總計") {
-            var num = new Intl.NumberFormat('en-IN').format(d.val);
+            var num = format(d.val);
             d3.select(".info_span_all").text(num);
         }
         else if (d.key=="平均每人每日垃圾產生量") {
@@ -211,6 +211,13 @@ function info(dataset_arr,index){
         }
     })
 
+}
+function format(number){
+    var number_head = parseInt(number/1000000);
+    var number_middle = parseInt(number%1000000/1000);
+    var number_tail = number%1000;
+    if(number_tail==19) number_tail="019";
+    return number_head+","+number_middle+","+number_tail;
 }
 function change(dataset_arr,arc_path,arc_text,index){
 
