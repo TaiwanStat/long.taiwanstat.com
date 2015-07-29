@@ -200,14 +200,14 @@ function info(dataset_arr,index){
 
     d3.map(dataset_arr[index],function(d){
         if(d.key=="year"){
-            d3.select(".info_span1").text(d.val);
+            d3.select(".info_span_year").text(d.val);
         }
         else if (d.key=="總計") {
             var num = new Intl.NumberFormat('en-IN').format(d.val);
-            d3.select(".info_span2").text(num);
+            d3.select(".info_span_all").text(num);
         }
         else if (d.key=="平均每人每日垃圾產生量") {
-            d3.select(".info_span3").text(d.val);
+            d3.select(".info_span_day").text(d.val);
         }
     })
 
