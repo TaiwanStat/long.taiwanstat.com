@@ -22,6 +22,10 @@ body, html {
     margin: 10px;
 }
 
+.fb-plugin {
+  margin: 20px;
+}
+
 discussion {
     float: left;
     width: 100%;
@@ -74,6 +78,10 @@ discussion {
 .mdl-card__supporting-text {
   height: 122px;
   overflow: hidden;
+}
+
+.share-btn {
+  color: #333;
 }
 
 .demo-card-wide > .mdl-card__title:hover {

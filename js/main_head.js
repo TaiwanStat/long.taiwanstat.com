@@ -23,16 +23,13 @@
 		str += '</nav>'
 		str += '</div>'
 
+	var mdl = '<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">'
+			mdl += '<script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>'
+			mdl += '<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">'
+
+	$('head').append(mdl);
+
 	$('#layout-header').prepend(str);
-
-
-  // grab an element
-	var myElement = document.querySelector("header");
-	// construct an instance of Headroom, passing the element
-	var headroom  = new Headroom(myElement);
-	// initialise
-	headroom.init();
-
 
 
 })(window, document)
