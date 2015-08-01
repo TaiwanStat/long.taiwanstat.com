@@ -1,0 +1,191 @@
+.movie_title { 
+	font: 30px Helvetica;
+}
+
+.summary { 
+	font: 18px Helvetica; 
+	padding-top: 5px; 
+	padding-bottom: 5px; 
+	padding-left: 10px; 
+	padding-right: 10px; 
+	background-color: "green"; 
+	z-index: 10; 
+}
+
+.movie { 
+	display: block;
+	position: relative; 
+	width: 1200px; 
+	height: 310px;
+}
+
+
+.cover_image { 
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 300px; 
+	height: 310px;
+	z-index: -10; 
+}
+
+.information_box { 
+	position: absolute;
+	top: 10px; 
+	left: 200px; 
+	width: 400px; 
+	height: 270px;
+	z-index: 50; 
+	border-radius: 15px;
+}
+
+.video_box {
+	position: absolute;
+	top: 20px;
+	left: 600px;
+	width: 400px; 
+	height: 250px;
+	z-index: 100; 
+	border-style: solid;
+	border-bottom: 2px #000;
+}
+
+.svg_canvas { 
+	z-index: 10;
+}
+
+.weekBoxOffice { 
+	z-index: 20;
+}
+
+.movie_title_english { 
+	margin-left: 25px; 
+}
+
+.taipeiBoxOffice { 
+	margin-left: 100px;
+}
+
+.totalBoxOffice { 
+	margin-left: 100px;
+}
+
+.debutDate { 
+	margin-left: 100px;
+}
+
+.fa.fa-play { 
+	display:inline; 
+}
+
+.fa.fa-home.fa-fw { 
+	display: inline; 
+}
+
+.fa.fa-bar-chart{ 
+	display: inline; 
+}
+
+.fa.fa-calendar { 
+	display: inline; 
+}
+
+.fa.fa-calendar-o { 
+	display:inline; 
+}
+.taipeiBoxText { 
+	font: 18px sans-serif;
+}
+
+.totalBoxText { 
+	font: 18px sans-serif;
+}
+
+.debutDateText { 
+	font: 18px sans-serif;
+}
+
+.weekCountText { 
+	font: 18px sans-serif; 
+}
+
+.rankText { 
+	font-size: 75px; 
+	font-family: cursive; 
+}
+
+#main_image1 { 
+	width: 300px; 
+	height: 300px; 
+}
+
+.movie_title { 
+	display: block; 
+	margin: 10px;
+	font: 30px Helvetica;
+}
+
+.english_title { 
+	display: block; 
+	margin: 10px;
+	font: 24px Helvetica;
+}
+
+.totalBoxOffice { 
+	display: block; 
+	margin-left: 100px; 
+	margin-top: 15px; 
+	margin-bottom: 15px;
+	font: 24px Helvetica;
+}
+
+.weekBoxOffice { 
+	display: block; 
+	margin-left: 100px; 
+	margin-top: 15px; 
+	margin-bottom: 15px;
+	font: 24px Helvetica;
+}
+
+.weekCount { 
+	display: block;
+	margin-left: 100px; 
+	margin-top: 15px; 
+	margin-bottom: 15px;
+	font: 24px Helvetica;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+#selectMenu { 
+	position: absolute; 
+	top: 20px; 
+	right: 20px; 
+}
