@@ -1,26 +1,29 @@
 "use strict";
 (function(window, document, undefined) {
 
-	var str = '<header>'
-		str += '<span id="stat-title">用數據看台灣  </span>'
+	var str = '<header class="mdl-layout__header">'
+		str += '<div class="mdl-layout__header-row">'
+		str += '<span class="mdl-layout-title"><img src="/images/assert/round-logo.png" id="round-logo"/>用數據看台灣</span>'
+		str += '<div class="mdl-layout-spacer"></div>'
+		str += '<nav class="mdl-navigation mdl-layout--large-screen-only">'
+		str += '<a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>'
+		str += '<a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>'
+		str += '<a class="mdl-navigation__link" href="http://taiwanstat.com/">用數據看台灣</a>'
+		str += '<a class="mdl-navigation__link" href="https://www.facebook.com/taiwanstat">Facebook 粉專</a>'
+		str += '</nav>'
+		str += '</div>'
 		str += '</header>'
-		str += '<div class="btn-sites">'
-		str += '<a href="http://real.taiwanstat.com/">'
-		str += '<div class="ui pink button">所有即時資料</div>'
-		str += '</a>'
-		str += '<a href="http://long.taiwanstat.com/">'
-		str += '<div class="ui pink button">所有統計資料</div>'
-		str += '</a>'
-		str += '<a href="http://taiwanstat.com/">'
-		str += '<div class="ui pink button">用數據看台灣官網</div>'
-		str += '</a>'
-		str += '<a href="https://www.facebook.com/taiwanstat">'
-		str += '<div class="ui pink button">Facebook 粉絲專頁</div>'
-		str += '</a>'
+		str += '<div class="mdl-layout__drawer">'
+		str += '<span class="mdl-layout-title"><img src="/images/assert/round-logo.png" id="round-logo"/>用數據看台灣</span>'
+		str += '<nav class="mdl-navigation">'
+		str += '<a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>'
+		str += '<a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>'
+		str += '<a class="mdl-navigation__link" href="http://taiwanstat.com/">用數據看台灣</a>'
+		str += '<a class="mdl-navigation__link" href="https://www.facebook.com/taiwanstat">Facebook 粉專</a>'
+		str += '</nav>'
 		str += '</div>'
 
-
-	$('body').prepend(str);
+	$('#layout-header').prepend(str);
 
 
   // grab an element

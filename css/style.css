@@ -1,23 +1,14 @@
 body, html {
-    margin: 0; 
-    padding: 0;
+  margin: 0; 
+  padding: 0;
 }
-.logo {
-    top: 5px;
-    position: relative;
-}
-
 .sites {
     margin: 10px;
 }
 
-.headroom {
-    padding: 10px;
-    font-size: 25px;
-    font-weight: 900;
-    background: #029B6C;
-    margin-bottom: 20px;
-    color: #FFF;
+#round-logo {
+  margin-right: 20px;
+  width: 30px;
 }
 
 .official {
@@ -30,6 +21,7 @@ body, html {
 .btn-sites .button{
     margin: 10px;
 }
+
 discussion {
     float: left;
     width: 100%;
@@ -41,6 +33,10 @@ discussion {
     margin-top: 10px;
 }
 
+.mdl-layout__header {
+  background-color: #029B6C;
+}
+
 .fb-comments, .fb-comments iframe[style], .fb-comments span {
    margin-top:10px;
    width: 95% !important;
@@ -50,5 +46,41 @@ discussion {
 
 }
 
+.layout-transparent .mdl-layout__header,
+.layout-transparent .mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+  color: #000;
+}
 
+.demo-card-wide.mdl-card {
+  width: 400px;
+  margin: 20px;
+  float: left;
+}
+
+.demo-card-wide > .mdl-card__title {
+  opacity: 0.8;
+  color: #000;
+  height: 176px;
+}
+
+.demo-card-wide > .mdl-card__title h2{
+  background-color: #333;
+  color: #FFF;
+  padding: 5px;
+}
+
+.mdl-card__supporting-text {
+  height: 122px;
+  overflow: hidden;
+}
+
+.demo-card-wide > .mdl-card__title:hover {
+  opacity: 1;
+}
+
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
 
