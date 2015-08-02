@@ -82,3 +82,5 @@ ga('send', 'pageview');
 
 - collabrate guidelines
 - support all charts
+- add footer
+- add email subscribe
