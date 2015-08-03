@@ -84,9 +84,17 @@ discussion {
   padding: 5px;
 }
 
+.mdl-layout__drawer-button i {
+  margin-top: 10px;
+}
+
 .mdl-card__supporting-text {
   height: 122px;
   overflow: hidden;
+}
+
+.mdl-mini-footer {
+  padding: 20px 16px !important;
 }
 
 .share-btn {
