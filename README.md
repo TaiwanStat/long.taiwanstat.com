@@ -85,6 +85,4 @@ ga('send', 'pageview');
 ## TODO
 
 - collabrate guidelines
-- support all charts
-- add footer
 - add email subscribe
