@@ -27,9 +27,15 @@
 			mdl += '<script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>'
 			mdl += '<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">'
 
-	$('head').append(mdl);
+	var footer = '<footer class="mdl-mini-footer" style="height: 50px;">'
+ 			footer += '<div class="mdl-mini-footer__right-section">'
+ 			footer += '合作提案、意見回饋歡迎來信至: <a href="mailto:contact@taiwanstat.com">contact@taiwanstat.com</a>'
+ 			footer += '</div>'
+ 			footer += '</footer'
 
+	$('head').append(mdl);
 	$('#layout-header').prepend(str);
+	$('#layout-header').append(footer);
 
 
 })(window, document)

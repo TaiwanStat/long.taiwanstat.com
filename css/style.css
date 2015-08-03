@@ -2,6 +2,11 @@ body, html {
   margin: 0; 
   padding: 0;
 }
+
+#main-content {
+  padding: 20px;
+}
+
 .sites {
     margin: 10px;
 }
@@ -9,6 +14,10 @@ body, html {
 #round-logo {
   margin-right: 20px;
   width: 30px;
+}
+
+#title {
+  margin: 30px;
 }
 
 .official {
@@ -38,7 +47,7 @@ discussion {
 }
 
 .mdl-layout__header {
-  background-color: #029B6C;
+  background-color: #029B6C !important;
 }
 
 .fb-comments, .fb-comments iframe[style], .fb-comments span {
