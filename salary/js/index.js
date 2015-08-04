@@ -53,7 +53,7 @@ d3.csv("salary.csv",function(data){ //the main part in this code ,including circ
         $("input[name='text']").prop("checked",false);
     });
     ////////////////////////////////////////////////////////////////////////////////
-
+    console.log(data); 
     var force;
     var circles;
     var gcircles;

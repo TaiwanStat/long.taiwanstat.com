@@ -1,0 +1,241 @@
+{
+    "TaggedPDF-doc": {
+        "xmpmeta": {
+            "RDF": {
+                "Description": [
+                    {
+                        "Producer": {
+                            "__prefix": "pdf",
+                            "__text": "Acrobat Distiller 7.0.5 (Windows)"
+                        },
+                        "_xmlns:pdf": "http://ns.adobe.com/pdf/1.3/",
+                        "_rdf:about": "",
+                        "__prefix": "rdf"
+                    },
+                    {
+                        "CreateDate": {
+                            "__prefix": "xmp",
+                            "__text": "2007-07-26T09:38:26+08:00"
+                        },
+                        "CreatorTool": {
+                            "__prefix": "xmp",
+                            "__text": "Acrobat PDFMaker 7.0.7 for Excel"
+                        },
+                        "ModifyDate": {
+                            "__prefix": "xmp",
+                            "__text": "2007-07-26T09:38:26+08:00"
+                        },
+                        "MetadataDate": {
+                            "__prefix": "xmp",
+                            "__text": "2007-07-26T09:38:26+08:00"
+                        },
+                        "_xmlns:xmp": "http://ns.adobe.com/xap/1.0/",
+                        "_rdf:about": "",
+                        "__prefix": "rdf"
+                    },
+                    {
+                        "format": {
+                            "__prefix": "dc",
+                            "__text": "xml"
+                        },
+                        "title": {
+                            "Alt": {
+                                "li": {
+                                    "_xml:lang": "x-default",
+                                    "__prefix": "rdf",
+                                    "__text": "<393630373234A4A4A470A5F8B77EBE50B0E2C342A1D0ABF6A6E6B77EA74FA4C02E786C73>"
+                                },
+                                "__prefix": "rdf"
+                            },
+                            "__prefix": "dc"
+                        },
+                        "creator": {
+                            "Seq": {
+                                "li": {
+                                    "__prefix": "rdf",
+                                    "__text": "MOEA"
+                                },
+                                "__prefix": "rdf"
+                            },
+                            "__prefix": "dc"
+                        },
+                        "_xmlns:dc": "http://purl.org/dc/elements/1.1/",
+                        "_rdf:about": "",
+                        "__prefix": "rdf"
+                    },
+                    {
+                        "DocumentID": {
+                            "__prefix": "xmpMM",
+                            "__text": "uuid:45e08bfc-89e3-4100-ad20-3e9daf93643e"
+                        },
+                        "InstanceID": {
+                            "__prefix": "xmpMM",
+                            "__text": "uuid:7fd53a1d-7506-424f-b995-d0f3f23ab0b0"
+                        },
+                        "_xmlns:xmpMM": "http://ns.adobe.com/xap/1.0/mm/",
+                        "_rdf:about": "",
+                        "__prefix": "rdf"
+                    },
+                    {
+                        "Company": {
+                            "__prefix": "pdfx",
+                            "__text": "MOEA"
+                        },
+                        "_xmlns:pdfx": "http://ns.adobe.com/pdfx/1.3/",
+                        "_rdf:about": "",
+                        "__prefix": "rdf"
+                    }
+                ],
+                "_xmlns:rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+                "__prefix": "rdf"
+            },
+            "_xmlns:x": "adobe:ns:meta/",
+            "_x:xmptk": "Adobe XMP Core 4.2.1-c041 52.342996, 2008/05/07-20:48:00        ",
+            "__prefix": "x"
+        },
+        "bookmark-tree": {
+            "bookmark": {
+                "destination": {
+                    "_structID": "LinkTarget_340"
+                },
+                "_title": "中小企業銷售額2999-08-01"
+            }
+        },
+        "Workbook": {
+            "Worksheet": {
+                "Table": {
+                    "TR": [
+                        {
+                            "TD": [
+                                "總計",
+                                "34,326,070",
+                                "10,241,215",
+                                "29.84"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　農、林、漁、牧業",
+                                "33,005",
+                                "14,441",
+                                "43.75"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　礦業及土石採取業",
+                                "53,745",
+                                "46,002",
+                                "85.59"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　製造業",
+                                "12,065,652",
+                                "3,800,347",
+                                "31.50"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　水電燃氣業",
+                                "570,797",
+                                "7,077",
+                                "1.24"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　營造業",
+                                "1,784,889",
+                                "1,149,408",
+                                "64.40"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　批發及零售業",
+                                "11,922,821",
+                                "3,831,226",
+                                "32.13"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　住宿及餐飲業",
+                                "316,444",
+                                "216,864",
+                                "68.53"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　運輸、倉儲及通信業",
+                                "1,381,874",
+                                "298,084",
+                                "21.57"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　金融及保險業",
+                                "3,842,357",
+                                "173,786",
+                                "4.52"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　不動產及租賃業",
+                                "785,058",
+                                "172,505",
+                                "21.97"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　專業、科學及技術服務業",
+                                "903,335",
+                                "234,321",
+                                "25.94"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　教育服務業",
+                                "5,319",
+                                "2,278",
+                                "42.84"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　醫療保健及社會福利服務業",
+                                "2,439",
+                                "1,360",
+                                "55.76"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　文化、運動及休閒服務業",
+                                "258,683",
+                                "79,649",
+                                "30.79"
+                            ]
+                        },
+                        {
+                            "TD": [
+                                "　其他服務業",
+                                "399,652",
+                                "213,864",
+                                "53.51"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

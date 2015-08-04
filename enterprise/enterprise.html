@@ -1,0 +1,111 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="UTF-8">
+	
+<link rel="stylesheet" href="style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+</head> 	
+
+<body> 
+
+<div class="container"> 
+    <div class="row"> 
+        <div class="col-lg-4">  
+            <div id="itemInformation"> 
+                <div class="itemInfo_child"> 
+                    <i class="fa fa-industry" id="industry_icon"></i> 
+                    <p id="occupationName"> 農、林、漁、牧業 </p>
+                </div> 
+                <div class="itemInfo_child"> 
+                    全部企業: <p id="totalEnterpriseInfo"> 6,435 </p> <p class="units"> (新台幣百萬元) </p>  
+                </div> 
+                <div class="itemInfo_child">
+                    中小企業: <p id="midSmallEnterpriseInfo"> 3,309 </p> <p class="units"> (新台幣百萬元) </p> 
+                </div> 
+                <div class="itemInfo_child"> 
+                    中小企業百分比: <p id="midSmallPercentage"> 51.42 </p> %
+                </div> 
+            </div> 
+            <div id="pieChart"></div> 
+        </div> 
+        <div class="col-lg-5 forceGraphSection"> 
+            <!-- <div id="optionPanel">
+                <div class="option_child"> <button id="button1" class="button"> 出口額 </button> </div>
+                <div class="option_child"><button id="button2" class="button"> 家數 </button></div>
+                <div class="option_child"><button id="button3" class="button"> 銷售額 </button></div>
+                <div class="option_child"><button id="button4" class="button"> 就業如數 </button></div>
+            </div> -->
+            <div>
+            <div>
+                <div>
+                    <div id="button1" class="switchButton"> 
+                        <button> 出口額 </button> 
+                    </div>
+                    <div id="button2" class="switchButton">
+                        <button> 家數 </button> 
+                    </div>
+                    <div id="button3" class="switchButton">
+                        <button> 銷售額 </button> 
+                    </div>
+                    <div id="button4" class="switchButton">
+                        <button> 就業數 </button> 
+                    </div>
+                </div>
+
+            </div>
+        </div>
+            <div id="chart" class="forceChart"></div> 
+        </div> 
+        <div class="col-lg-3 informationBox"> 
+            <div>
+                <div id="controlPanel"> 
+                   <button id="backwardButton" class="controlButton"> <i class="fa fa-backward"></i> </button> 
+                 <button id="forwardButton"  class="controlButton"> <i class="fa fa-forward"></i> </button> 
+            </div> 
+            <div id="occupationList"> </div> 
+
+        </div> 
+    </div> 
+</div> 
+
+
+<!-- <div id="controlPanel"> -->
+   <!--  <div id="start" class="ui button">
+        <i class="fa fa-play fa-2x"></i>
+    </div>
+    <div id="stop" class="ui button">
+       <i class="fa fa-stop fa-2x"></i>
+    </div> -->
+    
+  <!--   <div id="fast_forward"> -->
+    	<!--  <i id="fast_forward_button" class="fa fa-step-forward fa-2x"></i> -->
+       <!--  <button class="fast_forward_button" id="forward" onclick> 前進 </button>
+    </div> -->
+ <!--    <div id="fast_backward"> -->
+     	 <!-- <i id="fast_backward_button" class="fa fa-step-backward fa-2x"></i> -->
+       <!--   <button class="backward_button" id="backward" onclick> 後退 </button>
+    </div>
+</div> -->
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script type="text/javascript" src="chart.js" charset="UTF-8"></script>
+
+
+
+
+</body> 

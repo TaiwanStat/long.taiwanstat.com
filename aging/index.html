@@ -17,24 +17,14 @@
 	<link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
 	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	
 	<script src="/bower_components/semantic/dist/semantic.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 </head> 
 <body> 
 
-
-
-	<!-- <div class="column nine wide">
-		<div class="pickList"> -->
-		<!-- 	<input class="ui button" name="start_demo" value="start">幼年人口(0~14歲)</button> -->
-			<!-- <button class="ui button" tabindex="0">工作年齡人口(15~64歲)</button>
-			<button class="ui button" tabindex="0">老年人口(64歲以上)</button> -->
-	<!-- 	</div>
-
-	</div> -->
 	<div class="container">
 
 
@@ -52,8 +42,14 @@
 			<li class="description_detail"> 可以利用箭頭左和右來調時間前後 </li> 
 		</ul>
 		<br>
+		<form> 		
+			<input type="radio" name="mode" class="mode" value="young_population"> Young Population </input> 
+			<input type="radio" name="mode" class="mode" value="middle_population"> Middle-aged Population</input> 
+			<input type="radio" name="mode" class="mode" value="old_population" checked> Old Population </input> 
+		</form>  
+
 		<div id="chart"> </div> 
-		<script src="chart.js"> </script>
+		<script src="aging2.js"> </script>
 
 		<div id="detail_box"> 
 			<ul id="detail_information"> 
@@ -102,6 +98,26 @@
       }(document, 'script', 'facebook-jssdk'));
     </script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/headroom/0.7.0/headroom.min.js"></script>
-  <script src="/js/main.js"></script>
+  <script src="/js/main.js"></script> 
+  <script type="text/javascript"> 
+  pjax("form input", "#chart"); 
+  function pjax(inputs, content) { 
+  	d3.selectAll("inputs").on("click", function() { 
+  		history.pushState(this.href, this.textContent, this.href); 
+  		load(this.href); 
+  		d3.event.preventDefault(); 
+  	});
+  	function load(href) { 
+  		d3.html(href, function(fragment) { 
+  			var target = d3.select(content).node(); 
+  			target.parentNode.replaceChild(d3.select(fragment).select(content).node(), target); 
+  		pjax(links, content); 
+  	});
+  	}
+  	d3.select(window).on("popstate", function() { 
+  		if (d3.event.state) load(d3.event.state);
+  	});
+  	}
+  	</script> 
 
 </body> 

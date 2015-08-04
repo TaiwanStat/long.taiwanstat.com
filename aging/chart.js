@@ -170,7 +170,7 @@ function drawCircles(totalPopData, oldPopData, middlePopData, totalPopList, data
 		} 
 			else { break; }
 	}
-		update();
+		transitionYear(); 
 	}); 
 
 	var interval = 100; 
@@ -183,8 +183,6 @@ function drawCircles(totalPopData, oldPopData, middlePopData, totalPopList, data
 			if (yearIndex < 194) {}
 			else{clearTimeout(set_switch_year);}
 		}, interval);
-	
-
 	}
 			
 
@@ -240,19 +238,10 @@ function drawCircles(totalPopData, oldPopData, middlePopData, totalPopList, data
 
 	function update() {
 
-	// $(".title").text(""); 
-
 		d3.select(".title").text(formattedDateList[yearIndex]); 
-	// $("#total_population").text(Math.floor(rScale.invert(radius)).toLocaleString());
-	// $("#young_population").text(youngPopData[yearIndex][identification].toLocaleString()); 
-	// $("#middle_population").text(middlePopData[yearIndex][identification].toLocaleString());
-	// $("#old_population").text(Math.floor(yScale.invert(yCoordinate)).toLocaleString());
-	// $("#old_percentage").text(parseFloat(xScale.invert(xCoordinate)).toFixed(2) + "%");
 		showAnimation(yearIndex, totalPopData, oldPopData, oldPercentageData, data); 
 
 	}
-
-
 
 	function computeValue() { 
 
