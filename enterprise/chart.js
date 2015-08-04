@@ -82,11 +82,11 @@ function change() {
 
 function drawExportGraph(index) { 
 		
-	d3.json("中小企業出口額－按行業別分95.json", function(error, data95) { 
-		d3.json("中小企業出口額－按行業別分100.json", function(data100) { 
-			d3.json("中小企業出口額－按行業別分101.json", function(data101) { 
-				d3.json("中小企業出口額－按行業別分102.json", function(data102) { 
-					d3.json("中小企業出口額－按行業別分103.json", function(data103) {
+	d3.json("./中小企業出口額－按行業別分95.json", function(error, data95) { 
+		d3.json("./中小企業出口額－按行業別分100.json", function(data100) { 
+			d3.json("./中小企業出口額－按行業別分101.json", function(data101) { 
+				d3.json("./中小企業出口額－按行業別分102.json", function(data102) { 
+					d3.json("./中小企業出口額－按行業別分103.json", function(data103) {
 
 
 		var dataType = "dataExport"; 
@@ -112,10 +112,10 @@ function drawExportGraph(index) {
 
 function drawAmountGraph(index) { 
 
-	d3.json("中小企業家數－按行業別分95.json", function(data95) { 
-		d3.json("中小企業家數－按行業別分100.json", function(data100) { 
-			d3.json("中小企業家數－按行業別分102.json", function(data102) { 
-				d3.json("中小企業家數－按行業別分103.json", function(data103) {
+	d3.json("./中小企業家數－按行業別分95.json", function(data95) { 
+		d3.json("/中小企業家數－按行業別分100.json", function(data100) { 
+			d3.json("./中小企業家數－按行業別分102.json", function(data102) { 
+				d3.json("./中小企業家數－按行業別分103.json", function(data103) {
 
 
 		var dataType = "dataAmount"; 
@@ -142,10 +142,10 @@ function drawAmountGraph(index) {
 
 function drawGrossGraph(index) { 
 
-	d3.json("中小企業銷售額－按行業別分95.json", function(data95) { 
-		d3.json("中小企業銷售額－按行業別分100.json", function(data100) { 
-			d3.json("中小企業銷售額－按行業別分102.json", function(data102) { 
-				d3.json("中小企業銷售額－按行業別分103.json", function(data103) { 
+	d3.json("./中小企業銷售額－按行業別分95.json", function(data95) { 
+		d3.json("./中小企業銷售額－按行業別分100.json", function(data100) { 
+			d3.json("./中小企業銷售額－按行業別分102.json", function(data102) { 
+				d3.json("./中小企業銷售額－按行業別分103.json", function(data103) { 
 
 			var dataType = "dataGross";
 
@@ -168,10 +168,10 @@ function drawGrossGraph(index) {
 
 function drawEmploymentGraph() { 
 
-	d3.json("台灣地區中小企業就業人數95.json", function(data95) { 
-		d3.json("臺灣地區中小企業就業人數100.json", function(data100) { 
-			d3.json("臺灣地區中小企業就業人數102.json", function(data102) { 
-				d3.json("臺灣地區中小企業就業人數103.json", function(data103) { 
+	d3.json("./台灣地區中小企業就業人數95.json", function(data95) { 
+		d3.json("./臺灣地區中小企業就業人數100.json", function(data100) { 
+			d3.json("./臺灣地區中小企業就業人數102.json", function(data102) { 
+				d3.json("./臺灣地區中小企業就業人數103.json", function(data103) { 
 
 					console.log(cleanUpData(data103)); 
 

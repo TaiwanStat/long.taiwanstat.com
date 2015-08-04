@@ -1,0 +1,17 @@
+.xAxis { 
+	fill: none; 
+	stroke: #000; 
+	stroke-width: 1px; 
+	shape-rendering: crispEdges;
+}
+
+.xAxis text { 
+	display: none; 
+}
+
+.yAxis { 
+	fill: none; 
+	stroke: #000; 
+	stroke-width: 1px; 
+	shape-rendering: crispEdges;
+}
