@@ -2,9 +2,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta property="og:title" content="台灣各觀測站 103 年 PM2.5 歷史資訊">
-  <meta property="og:site_name" content="台灣各觀測站 103 年 PM2.5 歷史資訊">
-  <meta property="og:description" content="台灣各觀測站 103 年 PM2.5 歷史資訊">
+  <meta property="og:title" content="用數據看台灣 - 台灣各觀測站 103 年 PM2.5 歷史資訊">
+  <meta property="og:site_name" content="用數據看台灣 - 台灣各觀測站 103 年 PM2.5 歷史資訊">
+  <meta property="og:description" content="做了 PM2.5 空污即時系統後，近幾日商周、報紙有很多媒體都在報導有關空污的資訊。我們團隊很好奇台灣 103 年整年的空污狀況，於是把台灣北、中、南、東、離島的空品區資料做呈現。">
   <meta property="og:image" content="http://i.imgur.com/04AFcnA.png">
   <meta property="og:image:type" content="image/jpg">
   <meta property="og:image:width" content="300">
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" type="image/png" href="/favicon.ico" />
-  <title>台灣各觀測站 103 年 PM2.5 歷史資訊</title>
+  <title>用數據看台灣 - 台灣各觀測站 103 年 PM2.5 歷史資訊</title>
   <style>
     .day {
       fill: #fff;
@@ -60,55 +60,60 @@
   <link rel="stylesheet" href="./css/tipsy.css" type="text/css" />
 </head>
 <body>
-  <div class="container">
-    <h2>台灣 103 年各觀測站 PM2.5 狀況</h2>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header">
+    <main class="mdl-layout__content" id="main-content">
+        <h2 id="title">台灣 103 年各觀測站 PM2.5 狀況</h2>
 
-    <h3>相關連結：</h3>
-              
-    <a href="http://real.taiwanstat.com/pm2.5">
-        <div class="ui basic button">台灣即時空污 PM2.5</div>
-    </a>
-    <a href="http://real.taiwanstat.com/air">
-        <div class="ui basic button">台灣即時空污 PSI</div>
-    </a>
-    
-    <hr>
+        <h5>相關連結：</h5>
+                  
+        <a href="http://real.taiwanstat.com/pm2.5">
+            <div class="ui basic button">台灣即時空污 PM2.5</div>
+        </a>
+        <a href="http://real.taiwanstat.com/air">
+            <div class="ui basic button">台灣即時空污 PSI</div>
+        </a>
+        
+        <hr>
 
-    <div class="fb-plugin">
-      <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
-      <div class="fb-like" data-href="http://long.taiwanstat.com/pm2.5_map/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-    </div>
+        <div class="fb-plugin">
+          <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+          <div class="fb-like" data-href="http://long.taiwanstat.com/pm2.5_map/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        </div>
 
-    <h3>
-      快速選擇空品區
-      <select id="select-area">
-        <option value="中部空品區">中部空品區</option>
-        <option value="北部空品區">北部空品區</option>
-        <option value="宜蘭空品區">宜蘭空品區</option>
-        <option value="竹苗空品區">竹苗空品區</option>
-        <option value="花東空品區">花東空品區</option>
-        <option value="離島監測站">離島監測站</option>
-        <option value="雲嘉南空品區">雲嘉南空品區</option>
-      </select>
-    </h3>
+        <h3>
+          快速選擇空品區
+          <select id="select-area">
+            <option value="中部空品區">中部空品區</option>
+            <option value="北部空品區">北部空品區</option>
+            <option value="宜蘭空品區">宜蘭空品區</option>
+            <option value="竹苗空品區">竹苗空品區</option>
+            <option value="花東空品區">花東空品區</option>
+            <option value="離島監測站">離島監測站</option>
+            <option value="雲嘉南空品區">雲嘉南空品區</option>
+          </select>
+        </h3>
 
-    <div id="domain">
-    </div>
+        <div id="chart"></div>
 
-    <div class="remarker">
-      <p>備註：</p>
-      <ol>
-        <li>
-          每隔為一日，每日 24 小時資料做平均 （滑鼠移至每隔，可以看到當日的日期及值）
-        </li>
-        <li>
-          空污指標使用美國標準
-        </li>
-        <li>
-          資料來源：行政院環保署
-        </li>
-      </ol>
-    </div>
+        <div id="domain">
+        </div>
+
+        <div class="remarker">
+          <p>備註：</p>
+          <ol>
+            <li>
+              每隔為一日，每日 24 小時資料做平均 （滑鼠移至每隔，可以看到當日的日期及值）
+            </li>
+            <li>
+              空污指標使用美國標準
+            </li>
+            <li>
+              資料來源：行政院環保署
+            </li>
+          </ol>
+        </div>
+      </div>
+    </main>
   </div>
   <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -179,7 +184,7 @@
 
       d3.json("./filter/103_HOUR_00_20150324/103年 " + area + "/fs_name.json", function(err, fs_name) {
 
-        var svg = d3.select("body").selectAll("svg")
+        var svg = d3.select("#chart").selectAll("svg")
             .data(fs_name)
           .enter().append("svg")
             .attr("width", width)
@@ -261,7 +266,6 @@
     ga('send', 'pageview');
   </script>
   <div id="fb-root"></div>
-  <script src="/js/main.js"></script>
   <script>
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -273,8 +277,8 @@
   </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="/bower_components/semantic/dist/semantic.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/headroom/0.7.0/headroom.min.js"></script>
-  
+  <script src="/js/main.js"></script>
+  <script src="/js/main_head.js"></script>
 
 
 </body>

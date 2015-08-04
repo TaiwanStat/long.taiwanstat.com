@@ -1,0 +1,5865 @@
+{
+
+   "Header": {
+
+      "Table": {
+
+         "@Id": "B.2.8",
+
+         "@Name": "GDP依行業分(占GDP比重)",
+
+         "@Domain": "NI"
+
+      },
+
+      "Prepared": "2015-05-22T17:37:39.763+08:00",
+
+      "Sender": {
+
+         "@Name": "行政院主計總處",
+
+         "Contact": {
+
+            "@Name": "*",
+
+            "@Telephone": "*",
+
+            "@Fax": "*",
+
+            "@Email": "*"
+
+         }
+
+      }
+
+   },
+
+   "DataSet": [
+
+      {
+
+         "@ITEM": "GDP占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "100.00"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "GDP占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "100.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "100.00"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "農業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "1.45"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "1.55"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "1.68"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "1.60"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "1.72"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "1.67"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "1.70"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "1.88"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "農業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "1.43"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "1.61"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "1.30"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "1.46"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "1.41"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "1.69"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "1.31"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "1.79"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "1.62"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "1.96"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "1.47"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "1.68"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "1.47"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "1.81"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "1.48"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "1.62"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "1.55"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "1.87"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "1.54"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "1.91"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "1.54"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "1.86"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "1.64"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "1.64"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "1.60"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "1.83"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "1.59"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "1.78"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "2.01"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "2.02"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "1.68"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "1.82"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "1.64"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "工業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "34.04"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "32.09"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "31.99"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "33.99"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "33.02"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "32.75"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "33.20"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "34.09"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "工業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "30.93"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "33.81"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "35.75"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "35.34"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "31.20"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "32.75"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "33.27"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "31.15"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "29.45"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "31.65"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "33.34"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "33.28"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "32.60"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "34.86"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "35.38"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "33.11"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "33.56"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "33.58"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "33.71"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "31.23"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "31.33"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "32.93"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "34.63"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "32.07"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "31.60"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "33.66"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "35.17"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "32.33"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "32.11"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "34.62"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "35.82"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "33.74"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "34.64"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "服務業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "64.51"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "66.36"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "66.33"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "64.41"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "65.27"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "65.58"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "65.10"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "64.03"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "服務業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "67.63"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "64.58"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "62.94"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "63.20"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "67.38"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "65.56"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "65.42"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "67.07"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "68.93"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "66.39"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "65.19"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "65.04"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "65.93"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "63.33"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "63.14"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "65.26"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "64.89"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "64.54"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "64.75"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "66.86"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "67.13"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "65.21"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "63.74"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "66.29"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "66.80"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "64.51"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "63.24"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "65.89"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "65.89"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "63.36"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "62.49"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "64.44"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "63.72"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "礦業及土石採取業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "0.16"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "0.17"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "0.13"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "0.13"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "0.12"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "0.11"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "0.10"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "0.11"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "礦業及土石採取業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "0.14"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "0.16"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "0.16"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "0.19"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "0.19"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "0.16"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "0.15"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "0.17"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "0.15"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "0.14"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "0.12"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "0.13"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "0.13"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "0.12"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "0.12"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "0.15"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "0.12"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "0.12"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "0.11"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "0.14"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "0.11"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "0.10"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "0.09"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "0.12"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "0.11"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "0.10"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "0.09"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "0.12"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "0.10"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "0.10"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "0.09"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "0.14"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "0.11"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "製造業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "29.59"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "28.27"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "27.21"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "29.29"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "28.66"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "28.37"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "28.37"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "29.10"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "製造業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "26.49"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "29.17"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "31.06"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "31.31"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "27.44"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "29.23"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "29.36"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "27.06"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "24.69"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "26.74"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "28.20"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "28.93"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "28.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "30.25"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "30.28"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "28.60"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "29.03"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "29.09"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "29.20"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "27.34"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "27.05"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "29.04"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "29.80"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "27.58"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "26.86"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "29.06"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "29.96"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "27.59"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "26.99"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "29.69"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "30.39"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "29.25"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "29.47"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "電力及燃氣供應業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "1.02"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "0.31"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "1.47"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "1.30"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "0.88"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "0.93"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "1.35"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "1.54"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "電力及燃氣供應業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "1.07"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "1.04"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "1.32"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "0.67"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "0.31"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "-0.20"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "0.31"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "0.80"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "1.35"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "1.42"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "1.90"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "1.21"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "1.13"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "1.14"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "1.74"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "1.18"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "1.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "0.83"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "1.15"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "0.53"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "0.68"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "0.27"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "1.51"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "1.22"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "1.06"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "1.05"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "1.85"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "1.43"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "1.51"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "1.36"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "2.07"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "1.21"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "1.69"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "用水供應及污染整治業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "0.69"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "0.70"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "0.69"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "0.68"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "0.68"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "0.69"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "0.66"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "0.61"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "用水供應及污染整治業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "0.68"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "0.75"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "0.69"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "0.64"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "0.65"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "0.77"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "0.71"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "0.67"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "0.63"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "0.77"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "0.72"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "0.66"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "0.61"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "0.75"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "0.70"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "0.67"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "0.56"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "0.77"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "0.70"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "0.68"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "0.63"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "0.79"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "0.70"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "0.66"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "0.60"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "0.75"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "0.68"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "0.63"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "0.56"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "0.70"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "0.63"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "0.57"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "0.51"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "營造業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "2.57"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "2.65"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "2.48"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "2.60"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "2.68"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "2.65"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "2.71"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "2.73"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "營造業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "2.56"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "2.68"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "2.52"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "2.54"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "2.62"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "2.79"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "2.74"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "2.45"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "2.64"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "2.57"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "2.40"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "2.34"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "2.73"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "2.60"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "2.54"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "2.52"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "2.84"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "2.79"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "2.55"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "2.53"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "2.86"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "2.73"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "2.53"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "2.48"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "2.97"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "2.70"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "2.59"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "2.57"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "2.95"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "2.77"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "2.64"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "2.59"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "2.85"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "批發及零售業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "16.68"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "17.30"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "17.02"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "16.67"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "17.07"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "16.88"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "16.92"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "16.48"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "批發及零售業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "16.72"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "16.42"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "15.85"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "17.69"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "17.48"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "17.16"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "16.69"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "17.88"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "17.03"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "16.83"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "16.45"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "17.73"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "16.43"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "16.35"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "15.99"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "17.88"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "16.53"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "16.99"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "16.58"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "18.20"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "16.83"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "16.82"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "15.98"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "17.89"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "16.87"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "16.67"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "16.05"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "18.06"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "16.44"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "16.31"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "15.62"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "17.51"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "15.71"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "運輸及倉儲業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "3.01"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "2.92"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "2.79"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "3.01"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "2.78"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "2.87"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "2.81"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "2.88"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "運輸及倉儲業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "3.17"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "2.79"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "3.02"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "3.04"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "2.89"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "2.58"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "2.78"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "3.42"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "3.01"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "2.60"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "2.66"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "2.90"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "2.94"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "2.93"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "3.13"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "3.04"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "2.82"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "2.61"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "2.78"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "2.92"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "2.88"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "2.70"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "2.92"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "2.97"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "2.80"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "2.63"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "2.86"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "2.92"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "2.79"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "2.58"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "2.91"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "3.22"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "3.42"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "資訊及通訊傳播業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "3.21"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "3.34"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "3.44"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "3.26"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "3.23"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "3.18"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "3.07"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "2.92"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "資訊及通訊傳播業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "3.24"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "3.23"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "3.24"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "3.12"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "3.20"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "3.30"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "3.45"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "3.42"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "3.41"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "3.49"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "3.50"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "3.36"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "3.17"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "3.20"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "3.29"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "3.36"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "3.04"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "3.13"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "3.32"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "3.42"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "3.13"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "3.11"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "3.21"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "3.27"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "3.04"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "3.04"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "3.08"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "3.14"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "2.94"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "2.88"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "2.88"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "2.96"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "2.72"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "金融及保險業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "7.13"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "7.01"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "6.23"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "6.19"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "6.39"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "6.42"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "6.45"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "6.61"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "金融及保險業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "6.92"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "7.69"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "7.33"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "6.62"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "6.89"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "7.72"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "6.87"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "6.59"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "6.09"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "6.76"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "6.15"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "5.96"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "6.06"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "6.54"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "6.20"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "5.98"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "6.10"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "6.90"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "6.57"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "6.02"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "6.38"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "6.92"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "6.37"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "6.04"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "6.28"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "7.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "6.40"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "6.14"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "6.45"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "7.19"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "6.87"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "5.95"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "6.22"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "不動產及住宅服務業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "8.43"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "8.67"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "9.07"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "8.50"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "8.47"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "8.55"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "8.52"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "8.25"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "不動產及住宅服務業占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "8.57"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "8.71"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "8.06"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "8.42"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "8.32"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "8.79"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "8.49"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "9.06"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "8.96"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "9.37"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "8.91"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "9.05"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "8.54"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "8.51"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "8.12"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "8.84"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "8.27"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "8.54"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "8.14"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "8.92"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "8.28"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "8.66"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "8.18"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "9.08"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "8.45"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "8.64"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "8.08"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "8.91"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "8.24"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "8.37"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "7.81"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "8.59"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "7.86"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "公共行政及國防；強制性社會安全占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "7.16"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "7.60"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "7.76"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "7.35"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "7.37"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "7.41"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "7.05"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "6.79"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "公共行政及國防；強制性社會安全占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "8.63"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "7.01"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "6.90"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "6.23"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "8.44"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "7.15"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "7.62"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "7.18"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "9.36"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "7.55"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "7.70"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "6.59"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "8.61"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "6.98"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "7.28"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "6.58"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "8.26"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "6.97"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "7.36"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "6.86"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "8.77"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "7.13"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "7.11"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "6.66"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "8.47"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "6.86"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "6.69"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "6.24"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "8.27"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "6.53"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "6.45"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "6.00"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "7.79"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "其他占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "A",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007",
+
+                  "@OBS_VALUE": "18.90"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008",
+
+                  "@OBS_VALUE": "19.52"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009",
+
+                  "@OBS_VALUE": "20.02"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010",
+
+                  "@OBS_VALUE": "19.42"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011",
+
+                  "@OBS_VALUE": "19.96"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012",
+
+                  "@OBS_VALUE": "20.27"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013",
+
+                  "@OBS_VALUE": "20.28"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014(r)",
+
+                  "@OBS_VALUE": "20.10"
+
+               }
+
+            ]
+
+         }
+
+      },
+
+      {
+
+         "@ITEM": "其他占GDP比重(%)",
+
+         "SeriesProperty": {
+
+            "@FREQ": "Q",
+
+            "@SERIESTYPE": "原始值",
+
+            "Obs": [
+
+               {
+
+                  "@TIME_PERIOD": "2007Q1",
+
+                  "@OBS_VALUE": "20.38"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q2",
+
+                  "@OBS_VALUE": "18.71"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q3",
+
+                  "@OBS_VALUE": "18.54"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2007Q4",
+
+                  "@OBS_VALUE": "18.09"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q1",
+
+                  "@OBS_VALUE": "20.16"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q2",
+
+                  "@OBS_VALUE": "18.86"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q3",
+
+                  "@OBS_VALUE": "19.53"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2008Q4",
+
+                  "@OBS_VALUE": "19.53"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q1",
+
+                  "@OBS_VALUE": "21.06"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q2",
+
+                  "@OBS_VALUE": "19.79"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q3",
+
+                  "@OBS_VALUE": "19.83"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2009Q4",
+
+                  "@OBS_VALUE": "19.46"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q1",
+
+                  "@OBS_VALUE": "20.18"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q2",
+
+                  "@OBS_VALUE": "18.81"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q3",
+
+                  "@OBS_VALUE": "19.13"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2010Q4",
+
+                  "@OBS_VALUE": "19.59"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q1",
+
+                  "@OBS_VALUE": "19.87"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q2",
+
+                  "@OBS_VALUE": "19.41"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q3",
+
+                  "@OBS_VALUE": "19.99"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2011Q4",
+
+                  "@OBS_VALUE": "20.53"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q1",
+
+                  "@OBS_VALUE": "20.86"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q2",
+
+                  "@OBS_VALUE": "19.86"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q3",
+
+                  "@OBS_VALUE": "19.97"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2012Q4",
+
+                  "@OBS_VALUE": "20.39"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q1",
+
+                  "@OBS_VALUE": "20.88"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q2",
+
+                  "@OBS_VALUE": "19.68"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q3",
+
+                  "@OBS_VALUE": "20.09"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2013Q4",
+
+                  "@OBS_VALUE": "20.48"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q1",
+
+                  "@OBS_VALUE": "20.76"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q2",
+
+                  "@OBS_VALUE": "19.50"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q3",
+
+                  "@OBS_VALUE": "19.94"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2014Q4(r)",
+
+                  "@OBS_VALUE": "20.21"
+
+               },
+
+               {
+
+                  "@TIME_PERIOD": "2015Q1(p)",
+
+                  "@OBS_VALUE": "19.99"
+
+               }
+
+            ]
+
+         }
+
+      }
+
+   ]
+
+}

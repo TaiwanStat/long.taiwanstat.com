@@ -1,233 +1,211 @@
-<html>
-<head>
+<html><head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html" ;="" charset="utf-8">
-    <meta property="og:title" content="用數據看台灣">
-    <meta property="og:site_name" content="用數據看台灣">
-    <meta property="og:description" content="用數據看台灣">
+    <meta property="og:title" content="用數據看台灣 - 統計資料">
+    <meta property="og:site_name" content="用數據看台灣 - 統計資料">
+    <meta property="og:description" content="生長在台灣的我們，很少從一個宏觀的角度看整個台灣的經濟、法律、交通、教育... ，而我們相信數據可以幫我們更了解我們身長在的這片土地上的一切。">
     <meta property="og:image" content="http://i.imgur.com/04AFcnA.png">
     <meta property="og:image:type" content="image/jpg">
     <meta property="og:image:width" content="300">
     <meta property="og:image:height" content="300">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" href="/favicon.ico">
     <link rel="stylesheet" href="bower_components/semantic/dist/semantic.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
     <title>用數據看台灣 - 統計資料</title>
-
 </head>
 <body>
-  <div class="sites">
-    <div class="ui cards">
-          <div class="card">
-            <a class="image" href="./aging" target="_parent" onclick="pageOnclick()">
-              <img src="images/aging.png">
-            </a>
-            <div class="content">
-              <a class="header" href="./aging" target="_parent">1992 - 2015 台灣高齡化趨勢</a>
-              <div class="meta">
-                <span></span>
-              </div>
-              <div class="description">
-                <p>1992 - 2015 台灣高齡化趨勢</p>
-              </div>
-            </div>
-         </div>
-          <div class="card">
-            <a class="image" href="./salary" target="_parent" onclick="pageOnclick()">
-              <img src="images/salary.JPG">
-            </a>
-            <div class="content">
-              <a class="header" href="./salary" target="_parent">103年台灣受雇人員薪資比較</a>
-              <div class="meta">
-                <span></span>
-              </div>
-              <div class="description">
-                <p>103年台灣受雇人員薪資比較</p>
-              </div>
-            </div>
-         </div>
-	        <div class="card">
-          <a class="image" href="./hospital" target="_parent" onclick="pageOnclick()">
-            <img src="images/hospital.jpg">
-          </a>
-          <div class="content">
-            <a class="header" href="./hospital" target="_parent">102年台灣各縣市醫院數據統計</a>
-            <div class="meta">
-              <span></span>
-            </div>
-            <div class="description">
-              <p>102年台灣各縣市醫院數據統計</p>
-            </div>
-          </div>
-       </div>
 
-
-
-	        <div class="card">
-          <a class="image" href="./cancer" target="_parent" onclick="pageOnclick()">
-            <img src="images/cancer.png">
-          </a>
-          <div class="content">
-            <a class="header" href="./cancer" target="_parent">台灣1996-2012年癌症發生率</a>
-            <div class="meta">
-              <span></span>
-            </div>
-            <div class="description">
-              <p>台灣1996-2012年癌症發生率</p>
-            </div>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header">
+    <main class="mdl-layout__content">
+      <a class="image" href="./garbage/" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/garbage.png') center / cover;">
+            <h2 class="mdl-card__title-text">2007 - 2014 年台灣垃圾處理統計</h2>
           </div>
-       </div>
-
-
-	        <div class="card">
-          <a class="image" href="./unemployment" target="_parent" onclick="pageOnclick()">
-            <img src="images/unemployment.jpg">
-          </a>
-          <div class="content">
-            <a class="header" href="./unemployment" target="_parent">台灣1993至2014年失業數據</a>
-            <div class="meta">
-              <span></span>
-            </div>
-            <div class="description">
-              <p>台灣1993至2014年失業數據</p>
-            </div>
+          <div class="mdl-card__supporting-text">
+            台灣每年產生700萬噸以上的垃圾(一天2萬噸)，這麼大量的垃圾如何處理是一個重要的課題。究竟衛生掩埋、焚化、資源回收，哪個才是台灣垃圾處理最大宗？而2002年環保暑發佈了《垃圾回收再利用法》是否改變了台灣垃圾處理的方式？
           </div>
-       </div>
-
-        <div class="card">
-          <a class="image" href="./population" target="_parent" onclick="pageOnclick()">
-            <img src="images/population.png">
-          </a>
-          <div class="content">
-            <a class="header" href="./population" target="_parent">1991至2013台灣人口長條圖</a>
-            <div class="meta">
-              <span></span>
-            </div>
-            <div class="description">
-              <p>1991至2013台灣人口長條圖</p>
-            </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./gdp/" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/gdp.png') center / cover;">
+            <h2 class="mdl-card__title-text">2007 - 2014 年台灣 GDP</h2>
           </div>
-       </div>
-        <div class="card">
-          <a class="image" href="./obesity" target="_parent" onclick="pageOnclick()">
-            <img src="images/obesity.png">
-          </a>
-          <div class="content">
-            <a class="header" href="./obesity" target="_parent">台灣102年18歲以上過重及肥胖率</a>
-            <div class="meta">
-              <span></span>
-            </div>
-            <div class="description">
-              <p>台灣102年18歲以上過重及肥胖率</p>
-            </div>
+          <div class="mdl-card__supporting-text">
+            國內生產總值是國民經濟核算的核心指標。台灣近幾年的經濟到底好不好？以數據顯示，台灣的經濟雖然較去年 GDP 成長了3.37%。但你知道每年各行業別的變化嗎？就讓我們以近年的國內生產毛額趨勢來看看台灣近年來的經濟吧！！
           </div>
-       </div>
-        <div class="card">
-          <a class="image" href="./trade" target="_parent" onclick="pageOnclick()">
-            <img src="images/trade.png">
-          </a>
-          <div class="content">
-            <a class="header" href="./trade" target="_parent">台灣進出口國家排名</a>
-            <div class="meta">
-              <span></span>
-            </div>
-            <div class="description">
-              <p>台灣進出口國家排名</p>
-            </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./aging/" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/aging.png') center / cover;">
+            <h2 class="mdl-card__title-text">1992 - 2015 年台灣高齡化趨勢</h2>
           </div>
-       </div>
-        <div class="card">
-            <a class="image" href="./electric-consume" target="_parent" onclick="pageOnclick()">
-              <img src="images/electric_consume.png">
-            </a>
-            <div class="content">
-              <a class="header" href="./electric-consume" target="_parent">台灣行業別用電比例 (1998 ~ 2014 年)</a>
-              <div class="meta">
-                <span></span>
-              </div>
-              <div class="description">
-                <p>台灣行業別用電比例 (1998 ~ 2014 年)</p>
-              </div>
-            </div>
-         </div>
-         <div class="card">
-            <a class="image" href="./income" target="_parent" onclick="pageOnclick()">
-              <img src="images/income.png">
-            </a>
-            <div class="content">
-              <a class="header" href="./income" target="_parent">台灣富人所得統計(1977-2013)</a>
-              <div class="meta">
-                <span></span>
-              </div>
-              <div class="description">
-                <p>台灣富人所得視覺化(1977-2013)</p>
-              </div>
-            </div>
-         </div>
-        <div class="card">
-          <a class="image" href="./pm2.5_map/" target="_parent" onclick="pageOnclick()">
-            <img src="images/pm2.5.png">
-          </a>
-          <div class="content">
-            <a class="header" href="./pm2.5_map/" target="_parent">pm2.5 2013 年各觀測站資料</a>
-            <div class="meta">
-              <span></span>
-            </div>
-            <div class="description">
-              <p>pm2.5 2013 年各觀測站資料</p>
-            </div>
-            </div>
-         </div>
-        <div class="card">
-          <a class="image" href="./energy/" target="_parent" onclick="pageOnclick()">
-            <img src="images/energy.png">
-          </a>
-          <div class="content">
-            <a class="header" href="./energy/" target="_parent">台灣用電來源結構分析</a>
-            <div class="meta">
-              <span></span>
-            </div>
-            <div class="description">
-              <p>台灣用電來源結構分析</p>
-            </div>
-            </div>
-         </div>
-        <div class="card">
-          <a class="image" href="./price" target="_parent" onclick="pageOnclick()">
-            <img src="images/price.png">
-          </a>
-          <div class="content">
-            <a class="header" href="./price" target="_parent">台灣物價指數變化</a>
-            <div class="meta">
-              <span></span>
-            </div>
-            <div class="description">
-              <p>2010 到 2015 年台灣物價指數變化</p>
-            </div>
-            </div>
-         </div>
-	       <div class="card">
-          <a class="image" href="./deathrate" target="_parent" onclick="pageOnclick()">
-            <img src="images/deathrate.png">
-          </a>
-          <div class="content">
-            <a class="header" href="./deathrate" target="_parent">台灣主要死因死亡率變化</a>
-            <div class="meta">
-              <span></span>
-            </div>
-            <div class="description">
-              <p>1986年 到 2013 年台灣主要死因死亡率變化</p>
-            </div>
-            </div>
-         </div>
-    </div>
+          <div class="mdl-card__supporting-text">
+            你知道台灣各縣市從 1992 年到現在高齡化的情形是如何嗎？今日臺灣高齡化程度最高的地區是哪裡嗎？讓我們用 30 秒的動態圖表，讓你看到台灣這 20 年來的轉變吧！
+          </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./salary/" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/salary.png') center / cover;">
+            <h2 class="mdl-card__title-text">103年台灣受雇人員薪資比較</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            薪資與工時往往是人選擇工作所考慮的要素。但是你知道哪些行業薪水高嗎？哪些行業工時明顯和薪資不成比例呢？而在提倡性別平等的環境下，男女同工不同酬的情況又有多嚴重？我們視覺化了各大行業，讓大家更清楚看到各行業之間的差別，一起來看看吧!
+          </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./hospital/" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/hospital.jpg') center / cover;">
+            <h2 class="mdl-card__title-text">102 年台灣各縣市醫院數據統計</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            用數據看台灣團隊整理了政府開放的醫院的統計資料，希望大家一起從數據上同理醫療人員的辛苦與瞭解各縣市的醫療資源分配。註：由於原始資料還有許多細項，如欲瞭解更多細節可以點選資料來源連結，觀看更多資訊。
+          </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./electric-consume/" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/electric_consume.png') center / cover;">
+            <h2 class="mdl-card__title-text">台灣行業別用電比例 1998 ~ 2014 年</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            近年能源爭議不斷，我們盡可能把複雜的全台灣行業別用電及歷史資料用一張圖呈現。你知道你所在的行業佔的比例多少嗎？用電量在近十年二十年的變化又是什麼呢？
+          </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./cancer/" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/cancer.png') center / cover;">
+            <h2 class="mdl-card__title-text">台灣 1996 - 2012 年癌症發生率</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            你知道台灣全癌症發生率自從1996年至2012年增加了41.57%嗎？由於高齡化、生活型態改變、肥胖人口增加及癌症篩檢的推廣，使得台灣癌症發生人數仍持續在增加。根據國民健康署最新的癌症報告，2012年癌症新發人數為9萬6,694人，發生人數較2011年增加4,012人。
+          </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./population/" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/population.png') center / cover;">
+            <h2 class="mdl-card__title-text">1991 至 2013 台灣人口長條圖</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            平常我們可能只知道台灣總人口數的改變，也常聽見總人口約有兩千三百萬人，那麽到底台灣各地的人口變化如何呢？讓我們一起瞭解台灣歷年縣市人口的變化吧！
+          </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./trade/" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/trade.png') center / cover;">
+            <h2 class="mdl-card__title-text">台灣進出口國家排名</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            你知道哪些國家是台灣重要的貿易夥伴嗎？今年4月台灣進出口皆開始呈現衰退，而對外的貿易台灣卻是經濟的命脈。為了讓大家對於國際貿易更加了解，我們做了簡單的排行，大家一起來看看吧！
+          </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./obesity/" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/obesity.png') center / cover;">
+            <h2 class="mdl-card__title-text">台灣102年18歲以上過重及肥胖率</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            肥胖所帶來健康的威脅甚鉅，隨著即將面臨到國人體重增加的暑假高峰期，趕快跟著用數據看台灣團隊，一起來看看哪些城市最需要減減肥吧！
+          </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./unemployment" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/unemployment.jpg') center / cover;">
+            <h2 class="mdl-card__title-text">台灣 1993 至 2014 年失業數據</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            失業率是重要的經濟指標，與國家經濟穩定與人民的幸福息息相關。從數據上顯示至從2009失業率達5.85% 為20內最嚴重以來，失業率已經逐漸在下降。用數據看台灣以多元的圖表將台灣20年內的失業率資料詳細完整的呈獻給您！
+          </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./energy/" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/energy.png') center / cover;">
+            <h2 class="mdl-card__title-text">台灣用電來源結構分析</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            電的議題非常複雜，因為電力來源多。這個網站讓你對台灣的用電來源 “一目瞭然”。目前用電來源分為四大類水力、核能、火力、再生能源。在圓餅圖內點下四大類按詳細可進一步看到產自台電或非台電的比例，及場用電和淨發電量的比例。
+          </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./pm2.5_map/" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/pm2.5.png') center / cover;">
+            <h2 class="mdl-card__title-text">pm2.5 2013 年各觀測站資料</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            做了 PM2.5 空污即時系統後，近幾日商周、報紙有很多媒體都在報導有關空污的資訊。我們團隊很好奇台灣 103 年整年的空污狀況，於是把台灣北、中、南、東、離島的空品區資料做呈現。
+          </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./price" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/price.png') center / cover;">
+            <h2 class="mdl-card__title-text">台灣物價指數變化</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+             最近報紙在討論豬價的事情，我們團隊非常好奇 台灣物價指數今年二月相對於去年的二月到底有何變化。於是我們分析出了較去年同月漲幅前五類別與較去年同月跌幅前五類別，我們也製作了物價對價關係圖來讓每個人可以對每項物價做對照，哪些是同時項目漲價、哪些項目同時降價。
+          </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./income" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/income.png') center / cover;">
+            <h2 class="mdl-card__title-text">台灣富人所得統計(1977-2013)</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            在資本主義下，必然會產生貧富差距的問題，像是前幾年美國就有佔領華爾街的抗議活動 &lt;我們就是那99%的人&gt;，而近幾年在台灣社會似乎也開始關注了。為了讓大家了解台灣貧富差距的問題到了什麼地步，我們團隊視覺化了台灣的所得資料，讓大家可以用互動式的圖表來觀察貧富差距的問題。資料來源是世界高所得資料庫（world top income database，WTID）。
+          </div>
+          
+        </div>
+      </a>
+      <a class="image" href="./deathrate" target="_parent" onclick="pageOnclick()">
+        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class="mdl-card__title" style="background: url('images/deathrate.png') center / cover;">
+            <h2 class="mdl-card__title-text">1986 年到 2013 年台灣主要死因死亡率變化</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            惡性腫瘤一直是台灣歷年的主要死因，隨著醫療技術的發達，死亡率也隨之下降，但你知道有些死因的死亡率卻是不減反增嗎？一起來看看這幾年的死亡率變化吧！
+          </div>
+          
+        </div>
+      </a>
+    </main>
   </div>
+    
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="bower_components/semantic/dist/semantic.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/headroom/0.7.0/headroom.min.js"></script>
-  <script src="./js/main_cover.js"></script>
+  <script src="/js/main_head.js"></script>
+  <script src="/js/index_setting.js"></script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -237,6 +215,7 @@
     ga('create', 'UA-61023469-1', 'auto');
     ga('send', 'pageview');
   </script>
+  
 
-</body>
-</html>
+
+</body></html>

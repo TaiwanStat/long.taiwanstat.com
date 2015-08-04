@@ -1,123 +1,119 @@
 <!DOCTYPE html> 
 <html> 
-<head> 
-	<meta charset="utf-8"> 
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
-	<meta property="og:title" content="用數據看台灣 - 台灣高齡化趨勢">
-	<meta property="og:site_name" content="用數據看台灣 - 台灣高齡化趨勢">
-	<meta property="og:description" content="用數據看台灣 - 台灣高齡化趨勢">
-	<meta property="og:image" content="http://i.imgur.com/04AFcnA.png">
-	<meta property="og:image:type" content="image/jpg">
-	<meta property="og:image:width" content="300">
-	<meta property="og:image:height" content="300">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title> 用數據看台灣 - 台灣高齡化趨勢 </title> 
-	<link rel="stylesheet" href="style.css" type="text/css" media="all" />
-	<link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all" />
-	<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
-	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	
-	<script src="/bower_components/semantic/dist/semantic.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-</head> 
-<body> 
+	<head> 
+		<meta charset="utf-8"> 
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+		<meta property="og:title" content="用數據看台灣 - 台灣高齡化趨勢">
+		<meta property="og:site_name" content="用數據看台灣 - 台灣高齡化趨勢">
+		<meta property="og:description" content="你知道台灣各縣市從 1992 年到現在高齡化的情形是如何嗎？今日臺灣高齡化程度最高的地區是哪裡嗎？讓我們用 30 秒的動態圖表，讓你看到台灣這 20 年來的轉變吧！">
+		<meta property="og:image" content="http://i.imgur.com/04AFcnA.png">
+		<meta property="og:image:type" content="image/jpg">
+		<meta property="og:image:width" content="300">
+		<meta property="og:image:height" content="300">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" type="image/png" href="/favicon.ico" />
+		<title> 用數據看台灣 - 台灣高齡化趨勢 </title> 
+		<link rel="stylesheet" href="./style.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="/bower_components/semantic/dist/semantic.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+	</head> 
+	<body> 
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header">
+			<main class="mdl-layout__content" id="main-content">
+				<!-- your chart's container can only put here -->
+				<h2 id="title">台灣高齡化趨勢</h2>
+				<div class="fb-plugin">
+					<div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
 
-	<div class="container">
-
-
-	    <h1>台灣高齡化趨勢</h1>
-
-	    <div class="fb-plugin">
-	      <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
-
-	      <div class="fb-like" data-href="http://long.taiwanstat.com/aging/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-	    </div>
-	    <br>
-	    <h4 class="description_detail"> 使用提示 </h4>
-		<ul id="description_box"> 
-			<li class="description_detail"> 泡泡的大小代表縣市的人口之多寡 </li> 
-			<li class="description_detail"> 可以利用箭頭左和右來調時間前後 </li> 
-		</ul>
-		<br>
-		<form> 		
-			<input type="radio" name="mode" class="mode" value="young_population"> Young Population </input> 
-			<input type="radio" name="mode" class="mode" value="middle_population"> Middle-aged Population</input> 
-			<input type="radio" name="mode" class="mode" value="old_population" checked> Old Population </input> 
-		</form>  
-
-		<div id="chart"> </div> 
-		<script src="aging2.js"> </script>
-
-		<div id="detail_box"> 
-			<ul id="detail_information"> 
-				<li> 
-					<h2 id="cityName"> 人口數 / 桃園市 </h2> 	
-				</li> 
-				<li class="detail_item"> <p> <h3> 人口總計 </h3> </p> </li> 
-				<li class="detail_child" id="total_population"> 1,415,546 </li> 
-				<li class="detail_item"> <h3> 幼年人口(0 - 14歲) </h3></li> 
-				<li class="detail_child" id="young_population"> 397,639 </li> 
-				<li class="detail_item"> <h3 > 工作年齡人口(15 - 64歲) </h3> </li> 
-				<li class="detail_child" id="middle_population"> 925,999 </li> 
-				<li class="detail_item"> <h3> 老年人口(65歲以上) </h3> </li> 
-				<li class="detail_child" id="old_population"> 91,908 </li> 
-				<li class="detail_item"> <h3> 高齡化程度 </h3> </li>
-				<li class="detail_child" id="old_percentage"> 6.49% </li> 
-				<button class="startDemo_button" id="start_demo"> 開始 </button>
-				<button class="stopDemo_button" id="stop_demo"> 暫停 </button>
-				<button class="resetDemo_button" id="reset_demo"> 重新開始 </button>
-				
-			</ul> 
-
-			<!-- <button type="button" class="myButton" value="reset">Reset</button> -->
-		</div> 
-		<div id="chart_footer">
+					<div class="fb-like" data-href="http://long.taiwanstat.com/aging/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+				</div>
+				<br>
+				<h4 class="description_detail"> 使用提示 </h4>
+				<ul id="description_box"> 
+					<li class="description_detail"> 泡泡的大小代表縣市的人口之多寡 </li> 
+					<li class="description_detail"> 可以利用箭頭左和右來調時間前後 </li> 
+				</ul>
+				<br>
+				<form> 		
+					<input type="radio" name="mode" class="mode" value="young_population"> Young Population </input> 
+					<input type="radio" name="mode" class="mode" value="middle_population"> Middle-aged Population</input> 
+					<input type="radio" name="mode" class="mode" value="old_population" checked> Old Population </input> 
+				</form>  
+				<div id="chart"> </div> 
+				<script src="./aging2.js"> </script>
+				<div id="detail_box"> 
+					<ul id="detail_information"> 
+						<li> 
+							<h3 id="cityName"> 人口數 / 桃園市 </h3> 	
+						</li> 
+						<li class="detail_item"> <p> <h5> 人口總計 </h5> </p> </li> 
+						<li class="detail_child" id="total_population"> 1,415,546 </li> 
+						<li class="detail_item"> <h5> 幼年人口(0 - 14歲) </h5></li> 
+						<li class="detail_child" id="young_population"> 397,639 </li> 
+						<li class="detail_item"> <h5 > 工作年齡人口(15 - 64歲) </h5> </li> 
+						<li class="detail_child" id="middle_population"> 925,999 </li> 
+						<li class="detail_item"> <h5> 老年人口(65歲以上) </h5> </li> 
+						<li class="detail_child" id="old_population"> 91,908 </li> 
+						<li class="detail_item"> <h5> 百分比 </h5> </li>
+						<li class="detail_child" id="old_percentage"> 6.49% </li> 
+						<button class="startDemo_button" id="start_demo"> 開始 </button>
+						<button class="stopDemo_button" id="stop_demo"> 暫停 </button>
+						<button class="resetDemo_button" id="reset_demo"> 重新開始 </button>
+						
+					</ul> 
+				</div> 
+				<div id="chart_footer">
+				</div>
+			</main>
 		</div>
-	</div>
-	<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-61023469-1', 'auto');
-    ga('send', 'pageview');
+			ga('create', 'UA-61023469-1', 'auto');
+			ga('send', 'pageview');
 
-  </script>
+		</script>
 
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=600079286760117&version=v2.0";
-      fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/headroom/0.7.0/headroom.min.js"></script>
-  <script src="/js/main.js"></script> 
-  <script type="text/javascript"> 
-  pjax("form input", "#chart"); 
-  function pjax(inputs, content) { 
-  	d3.selectAll("inputs").on("click", function() { 
-  		history.pushState(this.href, this.textContent, this.href); 
-  		load(this.href); 
-  		d3.event.preventDefault(); 
-  	});
-  	function load(href) { 
-  		d3.html(href, function(fragment) { 
-  			var target = d3.select(content).node(); 
-  			target.parentNode.replaceChild(d3.select(fragment).select(content).node(), target); 
-  		pjax(links, content); 
-  	});
-  	}
-  	d3.select(window).on("popstate", function() { 
-  		if (d3.event.state) load(d3.event.state);
-  	});
-  	}
-  	</script> 
+	    <div id="fb-root"></div>
+	    <script>(function(d, s, id) {
+	      var js, fjs = d.getElementsByTagName(s)[0];
+	      if (d.getElementById(id)) return;
+	      js = d.createElement(s); js.id = id;
+	      js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=600079286760117&version=v2.0";
+	      fjs.parentNode.insertBefore(js, fjs);
+	      }(document, 'script', 'facebook-jssdk'));
+	    </script>
+	  	<script src="/js/main_head.js"></script>
+		<script src="/js/main.js"></script>
 
-</body> 
+		<script type="text/javascript"> 
+			pjax("form input", "#chart"); 
+				function pjax(inputs, content) { 
+			d3.selectAll("inputs").on("click", function() { 
+				history.pushState(this.href, this.textContent, this.href); 
+				load(this.href); 
+				d3.event.preventDefault(); 
+			});
+			function load(href) { 
+				d3.html(href, function(fragment) { 
+					var target = d3.select(content).node(); 
+					target.parentNode.replaceChild(d3.select(fragment).select(content).node(), target); 
+				pjax(links, content); 
+			});
+			}
+			d3.select(window).on("popstate", function() { 
+				if (d3.event.state) load(d3.event.state);
+			});
+			}
+		</script> 
+	</body> 
+</html>
