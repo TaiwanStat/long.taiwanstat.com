@@ -1,0 +1,15 @@
+{
+  "data": {
+    "page": [
+      {
+        "title": "2007 ~ 2014 年台灣垃圾處理統計",
+        "url": "garbage",
+        "link": "./garbage/",
+        "img": "images/garbage.png",
+        "description": "台灣每年產生 700 萬噸以上的垃圾(一天2萬噸)，這麼大量的垃圾如何處理是一個重要的課題。究竟衛生掩埋、焚化、資源回收，哪個才是台灣垃圾處理最大宗？而2002年環保暑發佈了《垃圾回收再利用法》是否改變了台灣垃圾處理的方式？"
+      }
+    ]
+  },
+  "layout": "./index.hbs",
+  "filename": "index.html"
+}

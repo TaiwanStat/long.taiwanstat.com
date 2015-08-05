@@ -1,14 +1,19 @@
-var lists = require('./lists.json');
+var lists = require('./sample_list.json');
 var partial_arr = ["./include/partials/header.js", "./include/partials/start.js", "./include/partials/end.js", "./include/partials/footer.js"];
+var post_arr = [];
 
-module.exports = [
-  lists,
-  {
+post_arr.push(lists);
+
+lists.data.page.forEach(function(p) {
+  post_arr.push({
     "data": {
-      "chart_description": lists.data.page[0],
+      "chart_description": p
     },
     "partials": partial_arr,
-    "layout": lists.data.page[0].link + "index.hbs",
-    "filename": lists.data.page[0].link + "index.html"
-  }
-]
+    "layout": p.link + "index.hbs",
+    "filename": p.link + "index.html"
+  })
+})
+
+
+module.exports = post_arr;
