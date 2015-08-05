@@ -1,81 +1,112 @@
-<!DOCTYPE html> 
-<html> 
-    <head> 
+<!DOCTYPE html>
+<html>
+    <head>
         <meta charset="UTF-8">
-        	
+        <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+        <meta property="og:title" content="用數據看台灣 - 台灣中小企業統計資料">
+        <meta property="og:site_name" content="用數據看台灣 - 台灣中小企業統計資料">
+        <meta property="og:description" content="">
+        <meta property="og:image" content="http://i.imgur.com/04AFcnA.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="300">
+        <meta property="og:image:height" content="300">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>用數據看台灣 - 台灣中小企業統計資料</title>
+        <link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all" />
         <link rel="stylesheet" href="style.css" type="text/css" media="all" />
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
+        <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     </head>
 
-    <body> 
-    <div class="container"> 
-        <div class="row"> 
-            <div class="col-lg-4">  
-                <div id="itemInformation"> 
-                    <div class="itemInfo_child"> 
-                        <i class="fa fa-industry" id="industry_icon"></i> 
-                        <p id="occupationName"> 農、林、漁、牧業 </p>
-                    </div> 
-                    <div class="itemInfo_child"> 
-                        全部企業: <p id="totalEnterpriseInfo"> 6,435 </p> <p class="units"> (新台幣百萬元) </p>  
-                    </div> 
-                    <div class="itemInfo_child">
-                        中小企業: <p id="midSmallEnterpriseInfo"> 3,309 </p> <p class="units"> (新台幣百萬元) </p> 
-                    </div> 
-                    <div class="itemInfo_child"> 
-                        中小企業百分比: <p id="midSmallPercentage"> 51.42 </p> %
-                    </div> 
-                </div> 
-                <div id="pieChart"></div> 
-            </div> 
-            <div class="col-lg-5 forceGraphSection"> 
-               
-                <div>
-                    <div>
-                        <div id="button1" class="switchButton"> 
-                            <button> 出口額 </button> 
-                        </div>
-                        <div id="button2" class="switchButton">
-                            <button> 家數 </button> 
-                        </div>
-                        <div id="button3" class="switchButton">
-                            <button> 銷售額 </button> 
-                        </div>
-                        <div id="button4" class="switchButton">
-                            <button> 就業數 </button> 
-                        </div>
-                    </div>
-
+    <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header">
+            <main class="mdl-layout__content" id="main-content">
+                <h2 id="title">台灣中小企業統計資料</h2>
+                <div class="fb-plugin">
+                    <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+                    <div class="fb-like" data-href="http://long.taiwanstat.com/enterprise" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
                 </div>
-                <div id="chart" class="forceChart"></div> 
-            </div> 
-            <div class="col-lg-3 informationBox"> 
-                <div>
-                    <div id="controlPanel"> 
-                       <button id="backwardButton" class="controlButton"> <i class="fa fa-backward"></i> </button> 
-                     <button id="forwardButton"  class="controlButton"> <i class="fa fa-forward"></i> </button> 
-                </div> 
-                <div id="occupationList"> </div> 
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div id="itemInformation">
+                            <div class="itemInfo_child">
+                                <i class="fa fa-industry" id="industry_icon"></i>
+                                <p id="occupationName"> 農、林、漁、牧業 </p>
+                            </div>
+                            <div class="itemInfo_child">
+                                全部企業: <p id="totalEnterpriseInfo"> 6,435 </p> <p class="units"> (新台幣百萬元) </p>
+                            </div>
+                            <div class="itemInfo_child">
+                                中小企業: <p id="midSmallEnterpriseInfo"> 3,309 </p> <p class="units"> (新台幣百萬元) </p>
+                            </div>
+                            <div class="itemInfo_child">
+                                中小企業百分比: <p id="midSmallPercentage"> 51.42 </p> %
+                            </div>
+                        </div>
+                        <div id="pieChart"></div>
+                    </div>
+                    <div class="col-lg-5 forceGraphSection">
 
-            </div> 
-        </div> 
-    </div> 
+                        <div>
+                            <div>
+                                <div id="button1" class="switchButton">
+                                    <button> 出口額 </button>
+                                </div>
+                                <div id="button2" class="switchButton">
+                                    <button> 家數 </button>
+                                </div>
+                                <div id="button3" class="switchButton">
+                                    <button> 銷售額 </button>
+                                </div>
+                                <div id="button4" class="switchButton">
+                                    <button> 就業數 </button>
+                                </div>
+                            </div>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+                        </div>
+                        <div id="chart" class="forceChart"></div>
+                    </div>
+                    <div class="col-lg-3 informationBox">
+                        <div>
+                            <div id="controlPanel">
+                               <button id="backwardButton" class="controlButton"> <i class="fa fa-backward"></i> </button>
+                             <button id="forwardButton"  class="controlButton"> <i class="fa fa-forward"></i> </button>
+                        </div>
+                        <div id="occupationList"> </div>
 
-    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-    <script type="text/javascript" src="chart.js" charset="UTF-8"></script>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+        <script type="text/javascript" src="chart.js" charset="UTF-8"></script>
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-61023469-1', 'auto');
+        ga('send', 'pageview');
+        </script>
+        <div id="fb-root"></div>
+        <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=600079286760117&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <script src="/js/main_head.js"></script>
+        <script src="/js/main.js"></script>
     </body>
 
-</html>  
+</html>
