@@ -1,53 +1,22 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang='zh-TW' ng-app="myApp" ng-controller="mainController as mainCtrl">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta property="og:image" content="http://i.imgur.com/04AFcnA.png">
-    <meta property="og:image:type" content="image/jpg">
-    <meta property="og:image:width" content="300">
-    <meta property="og:image:height" content="300">
-    <meta property="og:title" content="用數據看台灣 - 102 年台灣各縣市醫院數據統計">
-    <meta property="og:site_name" content="用數據看台灣 - 102 年台灣各縣市醫院數據統計">
-    <meta property="og:description" content="薪資與工時往往是人選擇工作所考慮的要素。但是你知道哪些行業薪水高嗎？哪些行業工時明顯和薪資不成比例呢？而在提倡性別平等的環境下，男女同工不同酬的情況又有多嚴重？我們視覺化了各大行業，讓大家更清楚看到各行業之間的差別，一起來看看吧!">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" href="/favicon.ico" />
-    <title>102 年台灣各縣市醫院數據統計</title>
-    <link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all" />
-
+<html><head>
+    <meta charset="utf-8"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" href="/favicon.ico"><meta property="og:title" content="用數據看台灣 - 102 年台灣各縣市醫院數據統計"><meta property="og:site_name" content="用數據看台灣 - 102 年台灣各縣市醫院數據統計"><meta property="og:description" content="用數據看台灣團隊整理了政府開放的醫院的統計資料，希望大家一起從數據上同理醫療人員的辛苦與瞭解各縣市的醫療資源分配。註：由於原始資料還有許多細項，如欲瞭解更多細節可以點選資料來源連結，觀看更多資訊。"><title>用數據看台灣 - 102 年台灣各縣市醫院數據統計</title><meta http-equiv="Content-Type" content="text/html" ;="" charset="utf-8"><meta property="og:image" content="http://i.imgur.com/04AFcnA.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="300"><meta property="og:image:height" content="300"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all"><link rel="stylesheet" href="/css/style.css" type="text/css" media="all"><script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script src="/bower_components/semantic/dist/semantic.min.js"></script>
     <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" type="text/css">
     <!-- my css -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">    
-    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="/bower_components/semantic/dist/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="./js/zhutil.min.js"></script>
   </head>
   <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header">
-      <main class="mdl-layout__content" id="main-content">
-  
-      <h2 id="title">102年台灣各縣市醫院數據統計</h2>
-
-
-      <div class="fb-plugin">
-        <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
-
-        <div class="fb-like" data-href="http://long.taiwanstat.com/hospital/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-      </div>
-      <br/> 
-      <div id = "data_source">數據出處: 
-        <a href = "http://data.gov.tw/node/6474" target="_blank">醫院病床統計</a>,
-        <a href = "http://data.gov.tw/node/6473" target="_blank">醫院人力統計數</a>
-        <a href = "http://data.moi.gov.tw/MoiOD/default/Index.aspx" target="_blank">內政部</a>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header"><main class="mdl-layout__content" id="main-content"><h2 id="title">102 年台灣各縣市醫院數據統計</h2><div class="fb-plugin"><div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false"></div><div class="fb-like" data-href="http://long.taiwanstat.com/hospital" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></div>      <br>
+      <div id="data_source">數據出處:
+        <a href="http://data.gov.tw/node/6474" target="_blank">醫院病床統計</a>,
+        <a href="http://data.gov.tw/node/6473" target="_blank">醫院人力統計數</a>
+        <a href="http://data.moi.gov.tw/MoiOD/default/Index.aspx" target="_blank">內政部</a>
       </div>
       <div>
         地圖顏色深淺依據為病床與醫事人合計服務該縣市人口平均值。
-      </div><hr/>
+      </div><hr>
 
- 
+
     <svg id="map"></svg>
 
     <div class="data-container">
@@ -57,15 +26,12 @@
         <h5>醫院數量：<span ng-bind="obj.hospNumber"></span><i class="fa fa-hospital-o"></i></h5>
         <h5>病床總計：<span ng-bind="obj.hospBedNumber"></span><i class="fa fa-bed"></i></h5>
         <h5>醫事人員總計：<span ng-bind="obj.hospHumanNumber"></span><i class="fa fa-user-md"></i></h5>
-        <h5>縣市人口總計：<span ng-bind="obj.population"></span><i class="fa fa-users"></i></h5><hr/>
+        <h5>縣市人口總計：<span ng-bind="obj.population"></span><i class="fa fa-users"></i></h5><hr>
         <h5>平均一張病床需提供<span class="red" ng-bind="obj.hospBedRate"></span>人使用，</h5>
         <h5>平均一位醫事人員需服務<span class="red" ng-bind="obj.hospHumanRate"></span>人。</h5>
       </div>
     </div>
-
-
-	  <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-	  <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+    </main></div>    <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
     <!-- my script -->
@@ -73,29 +39,8 @@
     <script src="./bower_components/angular-route/angular-route.min.js"></script>
     <script src="./js/index.js"></script>
 
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-61023469-1', 'auto');ga('send', 'pageview');</script><div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=600079286760117&version=v2.0";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script><script src="/js/main_head.js"></script><script src="/js/main.js"></script>
+  
 
-      ga('create', 'UA-61023469-1', 'auto');
-      ga('send', 'pageview');
 
-    </script>
-
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=600079286760117&version=v2.0";
-      fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <script src="/js/main_head.js"></script>
-    <script src="/js/main.js"></script>
-
-  </body>
-
-</html>
+</body></html>

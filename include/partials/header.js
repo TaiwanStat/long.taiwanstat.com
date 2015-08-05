@@ -1,6 +1,8 @@
 module.exports= function (hbs) {
 
   var header_str = '<meta charset="utf-8">';
+  header_str += '<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">';
+  header_str += '<link rel="icon" type="image/png" href="/favicon.ico" />'
   header_str += '<meta property="og:title" content="用數據看台灣 - {{chart_description.title}}">'
   header_str += '<meta property="og:site_name" content="用數據看台灣 - {{chart_description.title}}">'
   header_str += '<meta property="og:description" content="{{chart_description.description}}">'
