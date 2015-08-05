@@ -1,5 +1,5 @@
 var lists = require('./lists.json');
-var partial_arr = ["./include/partials/header.js", "./include/partials/body_start.js", "./include/partials/footer.js"];
+var partial_arr = ["./include/partials/header.js", "./include/partials/start.js", "./include/partials/end.js", "./include/partials/footer.js"];
 
 module.exports = [
   lists,
