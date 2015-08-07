@@ -3,11 +3,11 @@ var margin = {top: 20, right: 30, bottom: 30, left: 80},
 	height = 530 - margin.top - margin.bottom; 
 
 var xScale = d3.scale.linear() 
-	.domain([0, 18])
+	.domain([0, 30])
 	.range([0, width]); 
 
 var yScale = d3.scale.linear() 
-	.domain([0, 600000])
+	.domain([0, 1000000])
 	.range([height, 0]); 
 
 var rScale = d3.scale.linear() 
@@ -35,7 +35,6 @@ var svg = d3.select("#chart").append("svg")
 var g = svg.append("g");
 
 d3.csv("taiwan_population-csv.csv", function(data) { 
-	
 
 	data.forEach(function(d) { 
 		d.year = parseInt(d.year) + 1911; 
@@ -59,7 +58,6 @@ d3.csv("taiwan_population-csv.csv", function(data) {
 		.attr("dy", "0.71em")
 		.attr("transform", "rotate(90)")
 		.text("人數(萬)");
-
 
 	CleanUpData(); 
 
@@ -85,8 +83,6 @@ function CleanUpData() {
 			d[cityName] = parseInt(d[cityName].split(",").join(""));
 		});
 	}
-
-	console.log(data); 
 
 	data.forEach(function(d) { 
 		d.year = parseInt(d.year) + 1911; 
@@ -135,8 +131,9 @@ function CleanUpData() {
 		oldPopData
 	]); 
 
-	drawInitialCircles(content, dateData, cityNames, totalPopList, 3)
+	drawInitialCircles(content, dateData, cityNames, totalPopList, 1)
 }); 
+
 
 }
 
@@ -218,7 +215,6 @@ function drawInitialCircles(content, dateData, cityNames, totalPopList, index) {
 		return colorScale(totalPopList[i]);
 	})
 	.on("mousemove", computeValue)
-	// .on("keydown", computeValue)
 	.on("mouseout", removePath);
 
 
@@ -285,7 +281,6 @@ function drawInitialCircles(content, dateData, cityNames, totalPopList, index) {
 	var radius = d3.select(this).attr("r"); 
 	var identification = d3.select(this).attr("id"); 
 	identification = identification.slice(1);
-	console.log(identification);
 
 	$("#cityName").text(cityNames[identification]);
 	$("#total_population").text(Math.floor(rScale.invert(radius)).toLocaleString());
