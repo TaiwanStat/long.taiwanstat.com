@@ -2,7 +2,12 @@ var margin = {top:20, right: 20, bottom: 250, left: 70}, 	//////units: 十億 --
 	width = 900 - margin.right - margin.left, 
 	height = 700 - margin.top - margin.bottom; 
 
-var colorScale = d3.scale.category20(); 
+var colorScale = ["#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c",
+ "#98df8a", "#d62728", "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94", 
+ "#e377c2", "#f7b6d2", "#7f7f7f", "#c7c7c7", "#bcbd22", "#dbdb8d", "#17becf", 
+ "#9edae5", "#3182bd", "#6baed6", "#9ecae1", "#c6dbef", "#e6550d", "#fd8d3c", 
+ "#fdae6b", "#fdd0a2", "#31a354", "#74c476", "#a1d99b", "#c7e9c0", "#756bb1", 
+ "#9e9ac8", "#bcbddc"];
 
 var xScale = d3.scale.linear()
 	.range([0, width]); 
@@ -150,7 +155,7 @@ function writeList(nestedData) {
 		.attr("cx", -10)
 		.attr("cy", -5)
 		.attr("r", 5)
-		.attr("fill", function(d) { return colorScale(d.key); }); 
+		.attr("fill", function(d, i) { return colorScale[i]; }); 
 
 	itemText.append("text") 
 		.attr("class", "itemName")
@@ -201,7 +206,7 @@ function drawLineGraph(nestedData, taxationList) {
 		.attr("d", function(d) { 
 			return line(d.values);
 		})
-		.style("stroke", function(d) { return colorScale(d.name); }); 
+		.style("stroke", function(d, i) { return colorScale[i]; }); 
 }	
 
 function drawInitialPieChart(nestedData, dateList, taxationList) { 
@@ -246,7 +251,7 @@ function drawInitialPieChart(nestedData, dateList, taxationList) {
 		.attr("transform", "translate(" + outerRadius + ", " + outerRadius + ")");
 
 	var path = arcs.append("path")
-		.attr("fill", function(d, i) { return colorScale(i); })
+		.attr("fill", function(d, i) { return colorScale[i]; })
 		.each( function(d) { this._current = d; })
 		.attr("d", arc); 
 }
