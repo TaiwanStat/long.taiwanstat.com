@@ -1,0 +1,146 @@
+.xAxis { 
+	fill: none; 
+	stroke-width: 1px;
+	stroke: #000; 
+	shape-rendering: crispEdges;
+}
+
+.xAxis path { 
+	display: none; 
+}
+
+.xAxis text { 
+	display: none; 
+}	
+
+.yAxis { 
+	fill: none; 
+	stroke-width: 1px;
+	stroke: #000; 
+	shape-rendering: crispEdges;
+}
+
+.yAxis text { 
+	font: 14px sans-serif;
+
+}
+
+.area.above {
+  fill: rgb(252,141,89);
+}
+
+.area.below {
+  fill: rgb(145,207,96);
+}
+
+.line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+#chart { 
+	float: left; 
+}
+
+.area_mask { 
+	opacity: 0;
+}
+
+#information_box {
+	float:left;  
+	width: 330px; 
+	height: 500px;
+}
+
+.info_child { 
+	width: 200px; 
+	adding-left: 50px; 
+	padding-right: 130px;
+}
+
+#first_child { 
+	font: 28px Arial;
+	color: red; 
+	text-align: left;
+	padding-left: 20px;
+	display: inline;
+	padding-bottom: 15px; 
+}
+
+#calendar_icon { 
+	display: inline;
+}
+
+#yearText { 
+	display:inline; 
+	color: black;
+	font-size: 30px;
+}
+
+#second_child { 
+	font: 18px Arial; 
+	color: blue;
+	display: inline; 
+}
+
+#third_child { 
+	font: 18px  Arial; 
+	color: #037C99;
+	display: inline; 
+}
+
+#fourth_child { 
+	font: 18px Arial; 
+	color: green;
+	display: inline; 
+}
+
+#fifth_child { 
+	font: 18px Arial; 
+	color: #00B43D;
+	display: inline; 
+}
+
+#sixth_child { 
+	font: 18px Arial; 
+	color: orange;
+	display: inline; 
+}
+
+#last_child { 
+	font: 18px Arial; 
+	color: #D58D00;
+	display: inline; 
+}
+
+table, th, td {
+    border: 1px solid #9C9C9C;
+    border-collapse: collapse;
+}
+
+.fa { 
+	color:black;
+	margin-right: 10px;
+}
+
+tr { 
+	width: 300px;
+	height: 70px; 
+}
+
+tr:nth-child(even) {
+    background-color: #DADADA;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.childText { 	
+	font: 26px Arial; 
+	color: #000; 
+	display: inline;
+	text-align: right;
+}
+
