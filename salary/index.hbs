@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+  {{> header}}
+  <link rel="stylesheet" href="./css/style.css" type="text/css" media="all" />
+</head>
+
+<body>
+  {{> start}}
+      <ul>
+        <li>
+          <div class="data-src">資料來源 : <a href="http://win.dgbas.gov.tw/dgbas04/bc5/EarningAndProductivity/Default.aspx">薪資及生產力統計資料</a></div>
+        </li>
+        <li>
+          資料為2014年
+        </li>
+        <li>
+          人數單位:人
+        </li>
+        <li>
+          薪資單位:元/月
+        </li>
+        <li>
+          工時單位:小時/月
+        </li>
+        <li>
+          時薪單位:元/小時
+        </li>
+        <li>
+          圓圈大小反映該項目的資料大小
+        </li>
+      </ul>
+      <div class="ui basic header segment">
+      </div>
+      <div class="ui stackable page grid center aligned">
+        <div class="column nine wide">
+          <div class="ui fluid 4 buttons basic">
+            <div class="ui button people" tabindex="0">人數</div>
+            <div class="ui button" tabindex="0">薪資</div>
+            <div class="ui button" tabindex="0">工時</div>
+            <div class="ui button" tabindex="0">時薪</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui basic main segment">
+        <div class="ui stackable  grid center aligned">
+          <div class="one wide column">
+          </div>
+          <div class="detail four wide column">
+            <div class="jobdiv">
+              <h2 class="job ui header">
+                <h4 class="ui header type">
+                </h4>
+              </h2>
+            </div>
+            <div class="numbers">
+            </div>
+            <div class="salary">
+            </div>
+            <div class="time">
+            </div>
+            <div class="sa_time">
+            </div>
+          </div>
+          <div class="visual eight wide column">
+
+          </div>
+          <div class="three wide column">
+            <div class="checkbox">
+              <input type="checkbox" name="sort">
+              <label>排序</label>
+              <br>
+              <input type="checkbox" name="text">
+              <label>行業名稱</label>
+            </div>
+            <div class="ui search">
+              <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="行業名稱..." onclick="javascript: this.value =''">
+              </div>
+            <div class="results"></div>
+          </div>
+            <div class ="colorinfo">
+            </div>
+          </div>
+        </div>
+      </div>
+  {{> end}}
+
+  <script src="js/index.js"></script>
+  {{> footer}}
+</body>
+
+</html>

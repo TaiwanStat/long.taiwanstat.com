@@ -1,0 +1,50 @@
+<html>
+  <head>
+    {{> header}}
+
+    <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" type="text/css">
+    <!-- my css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="./js/zhutil.min.js"></script>
+  </head>
+  <body ng-app="myApp" ng-controller="mainController as mainCtrl">
+    {{> start}}
+      <br/>
+      <div id = "data_source">數據出處:
+        <a href = "http://data.gov.tw/node/6474" target="_blank">醫院病床統計</a>,
+        <a href = "http://data.gov.tw/node/6473" target="_blank">醫院人力統計數</a>
+        <a href = "http://data.moi.gov.tw/MoiOD/default/Index.aspx" target="_blank">內政部</a>
+      </div>
+      <div>
+        地圖顏色深淺依據為病床與醫事人合計服務該縣市人口平均值。
+      </div><hr/>
+
+
+    <svg id="map"></svg>
+
+    <div class="data-container">
+      <h5 class="data-note">請點選地圖，以顯示資訊。</h5>
+      <div class="country" ng-repeat="obj in data" ng-class="obj.country + '1'">
+        <h3 ng-bind="obj.country"></h3>
+        <h5>醫院數量：<span ng-bind="obj.hospNumber"></span><i class="fa fa-hospital-o"></i></h5>
+        <h5>病床總計：<span ng-bind="obj.hospBedNumber"></span><i class="fa fa-bed"></i></h5>
+        <h5>醫事人員總計：<span ng-bind="obj.hospHumanNumber"></span><i class="fa fa-user-md"></i></h5>
+        <h5>縣市人口總計：<span ng-bind="obj.population"></span><i class="fa fa-users"></i></h5><hr/>
+        <h5>平均一張病床需提供<span class="red" ng-bind="obj.hospBedRate"></span>人使用，</h5>
+        <h5>平均一位醫事人員需服務<span class="red" ng-bind="obj.hospHumanRate"></span>人。</h5>
+      </div>
+    </div>
+    {{> end}}
+    <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+    <!-- my script -->
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <script src="./bower_components/angular-route/angular-route.min.js"></script>
+    <script src="./js/index.js"></script>
+
+    {{> footer}}
+
+  </body>
+
+</html>

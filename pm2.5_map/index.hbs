@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+  {{> header}}
+  <link rel="stylesheet" href="./style.css" type="text/css" />
+  <link rel="stylesheet" href="./css/tipsy.css" type="text/css" />
+</head>
+<body>
+  {{> start}}
+
+      <h5>相關連結：</h5>
+
+      <a href="http://real.taiwanstat.com/pm2.5">
+          <div class="ui basic button">台灣即時空污 PM2.5</div>
+      </a>
+      <a href="http://real.taiwanstat.com/air">
+          <div class="ui basic button">台灣即時空污 PSI</div>
+      </a>
+
+      <hr>
+
+      <div class="fb-plugin">
+        <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+        <div class="fb-like" data-href="http://long.taiwanstat.com/pm2.5_map/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+
+      <h3>
+        快速選擇空品區
+        <select id="select-area">
+          <option value="中部空品區">中部空品區</option>
+          <option value="北部空品區">北部空品區</option>
+          <option value="宜蘭空品區">宜蘭空品區</option>
+          <option value="竹苗空品區">竹苗空品區</option>
+          <option value="花東空品區">花東空品區</option>
+          <option value="離島監測站">離島監測站</option>
+          <option value="雲嘉南空品區">雲嘉南空品區</option>
+        </select>
+      </h3>
+
+      <div id="chart"></div>
+
+      <div id="domain">
+      </div>
+
+      <div class="remarker">
+        <p>備註：</p>
+        <ol>
+          <li>
+            每隔為一日，每日 24 小時資料做平均 （滑鼠移至每隔，可以看到當日的日期及值）
+          </li>
+          <li>
+            空污指標使用美國標準
+          </li>
+          <li>
+            資料來源：行政院環保署
+          </li>
+        </ol>
+      </div>
+    </div>
+  {{> end}}
+  <script type='text/javascript' src='./js/jquery.tipsy.js'></script>
+  <script type='text/javascript' src='./script.js'></script>
+
+  {{> footer}}
+
+
+</body>
+
+
+
+

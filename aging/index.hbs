@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {{> header}}
+    <link rel="stylesheet" href="./style.css" type="text/css" media="all" />
+
+  </head>
+  <body>
+    {{> start}}
+      <br>
+      <h4 class="description_detail"> 使用提示 </h4>
+      <ul id="description_box">
+        <li class="description_detail"> 泡泡的大小代表縣市的人口之多寡 </li>
+        <li class="description_detail"> 可以利用箭頭左和右來調時間前後 </li>
+      </ul>
+      <br>
+      <form>
+        <input type="radio" name="mode" class="mode" value="young_population"> 幼年人口 </input>
+        <input type="radio" name="mode" class="mode" value="middle_population"> 中年人口 </input>
+        <input type="radio" name="mode" class="mode" value="old_population" checked> 老年人口 </input>
+      </form>
+      <div id="chart"> </div>
+      <script src="./aging2.js"> </script>
+      <div id="detail_box">
+        <ul id="detail_information">
+          <li>
+            <h3 id="cityName"> 人口數 / 桃園市 </h3>
+          </li>
+          <li class="detail_item"> <p> <h5> 人口總計 </h5> </p> </li>
+          <li class="detail_child" id="total_population"> 1,415,546 </li>
+          <li class="detail_item"> <h5> 幼年人口(0 - 14歲) </h5></li>
+          <li class="detail_child" id="young_population"> 397,639 </li>
+          <li class="detail_item"> <h5 > 工作年齡人口(15 - 64歲) </h5> </li>
+          <li class="detail_child" id="middle_population"> 925,999 </li>
+          <li class="detail_item"> <h5> 老年人口(65歲以上) </h5> </li>
+          <li class="detail_child" id="old_population"> 91,908 </li>
+          <li class="detail_item"> <h5> 百分比 </h5> </li>
+          <li class="detail_child" id="old_percentage"> 6.49% </li>
+          <button class="startDemo_button" id="start_demo"> 開始 </button>
+          <button class="stopDemo_button" id="stop_demo"> 暫停 </button>
+          <button class="resetDemo_button" id="reset_demo"> 重新開始 </button>
+
+        </ul>
+      </div>
+      <div id="chart_footer">
+      </div>
+    {{> end}}
+    {{> footer}}
+
+    <script type="text/javascript">
+      pjax("form input", "#chart");
+        function pjax(inputs, content) {
+      d3.selectAll("inputs").on("click", function() {
+        history.pushState(this.href, this.textContent, this.href);
+        load(this.href);
+        d3.event.preventDefault();
+      });
+      function load(href) {
+        d3.html(href, function(fragment) {
+          var target = d3.select(content).node();
+          target.parentNode.replaceChild(d3.select(fragment).select(content).node(), target);
+        pjax(links, content);
+      });
+      }
+      d3.select(window).on("popstate", function() {
+        if (d3.event.state) load(d3.event.state);
+      });
+      }
+    </script>
+  </body>
+</html>

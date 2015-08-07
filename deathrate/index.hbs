@@ -1,0 +1,43 @@
+<html>
+<head>
+  {{> header}}
+  <link rel=stylesheet type="text/css" href="style.css">
+</head>
+
+<body>
+  {{> start}}
+    <ul>
+      <li>
+         <div class="data-src">資料來源 : <a href="http://www.stat.gov.tw/mp.asp?mp=4">中華民國統計資訊網</a></div>
+      </li>
+      <li>
+          目前資料為1986年至2013年
+      </li>
+      <li>
+          敗血症及慢性下呼吸道疾病資料從2008開始
+      </li>
+    </ul>
+    <div id="chart">
+    </div>
+    <div id="menu">
+      <p>單位：(人/每十萬人)</p>
+      <p><input type="checkbox" name="all" value="全選" onclick="checkAll()"><label>全選</label></p>
+      <p><input type="checkbox" name="death[]" value="所有死因" onclick="createPath(value)"><label>所有死因</label><text></text></p>
+      <p><input type="checkbox" name="death[]" value="惡性腫瘤" onclick="createPath(value)"><label>惡性腫瘤</label><text></text></p>
+      <p><input type="checkbox" name="death[]" value="心臟疾病" onclick="createPath(value)"><label>心臟疾病</label><text></text></p>
+      <p><input type="checkbox" name="death[]" value="腦血管疾病" onclick="createPath(value)"><label>腦血管疾病</label><text></text></p>
+      <p><input type="checkbox" name="death[]" value="糖尿病" onclick="createPath(value)"><label>糖尿病</label><text></text></p>
+      <p><input type="checkbox" name="death[]" value="事故傷害" onclick="createPath(value)"><label>事故傷害</label><text></text></p>
+      <p><input type="checkbox" name="death[]" value="肺炎" onclick="createPath(value)"><label>肺炎</label><text></text></p>
+      <p><input type="checkbox" name="death[]" value="慢性肝病及肝硬化" onclick="createPath(value)"><label>慢性肝病及肝硬化</label><text></text></p>
+      <p><input type="checkbox" name="death[]" value="腎炎、腎徵候群及腎性病變" onclick="createPath(value)"><label>腎炎、腎徵候群及腎性病變</label><text></text></p>
+      <p><input type="checkbox" name="death[]" value="自殺" onclick="createPath(value)"><label>自殺</label><text></text></p>
+      <p><input type="checkbox" name="death[]" value="高血壓性疾病" onclick="createPath(value)"><label>高血壓性疾病</label><text></text></p>
+      <p><input type="checkbox" name="death[]" value="慢性下呼吸道疾病" onclick="createPath(value)"><label>慢性下呼吸道疾病</label><text></text></p>
+      <p><input type="checkbox" name="death[]" value="敗血症" onclick="createPath(value)"><label>敗血症</label><text></text></p>
+    </div>
+    <script src="chart.js"></script>
+  {{> end}}
+</body>
+
+</html>

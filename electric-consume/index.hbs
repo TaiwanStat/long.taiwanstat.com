@@ -1,0 +1,70 @@
+<html>
+  <head>
+    {{> header}}
+    <link rel="stylesheet" href="css/index.css" type="text/css" media="all" />
+  </head>
+  <body  ng-app="UiCtrl">
+    {{> start}}
+      <div class="ui basic main segment">
+        <div class="note">
+          <ul>
+            <li class="data-src">資料來源：<a href="http://www.taipower.com.tw/content/govern/govern01.aspx?MType=5&MSType=20">台電統計資料</a></li>
+            <li>註：電燈用電量不列入此圖的計算</li>
+            <li style="color:red;">點擊圖中區塊可觀察子項目</li>
+          </ul>
+        </div>
+
+        <div class="control panels" ng-controller="YearCtrl" id="YearCtrl">
+          <div class="year control panel">
+            <div class="ui compact icon year control left button" ng-click="nextPage(-1)">
+              <i class="year caret left icon"></i>
+            </div>
+
+            <div class="ui horizontal year control statistic">
+              <div class="value">\{{ year }}</div>
+              <div class="label">年</div>
+            </div>
+
+            <div class="ui compact icon year right control button" ng-click="nextPage(1)">
+              <i class="year caret right icon"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui stackable grid">
+          <div class="eleven wide column">
+            <div class="plot"></div>
+          </div>
+          <div class="five wide column" ng-controller="InfoCtrl" id="InfoCtrl">
+            <h1 class="ui current header">\{{ current }}</h1>
+
+            <h1 class="ui orange header">總用電量</h1>
+            <div class="ui horizontal statistic">
+              <div class="value">
+                \{{ value }}
+              </div>
+              <div class="label">
+                百萬度
+              </div>
+            </div><br>
+
+            <h1 class="ui blue header">佔全體比例</h1>
+            <div class="ui horizontal statistic">
+              <div class="value">
+                \{{ percent }}
+              </div>
+              <div class="label">
+                %
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    {{> end}}
+    <script src="js/angular.min.js"></script>
+    <script src="js/index.js"></script>
+    {{> footer}}
+
+  </body>
+</html>

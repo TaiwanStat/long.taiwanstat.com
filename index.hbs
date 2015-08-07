@@ -10,7 +10,7 @@
     <meta property="og:image:width" content="300">
     <meta property="og:image:height" content="300">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -25,7 +25,7 @@
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header">
     <main class="mdl-layout__content">
       {{# each page }}
-      <a class="image" href="{{link}}" target="_parent" onclick="pageOnclick()">
+      <a class="image" href="./{{url}}/" target="_parent" onclick="pageOnclick()">
         <div class="mdl-card mdl-shadow--2dp demo-card-wide">
           <div class="mdl-card__title" style="background: url('{{img}}') center / cover;">
             <h2 class="mdl-card__title-text">{{title}}</h2>
@@ -33,13 +33,13 @@
           <div class="mdl-card__supporting-text">
             {{description}}
           </div>
-          
+
         </div>
       </a>
       {{/each}}
     </main>
   </div>
-    
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="bower_components/semantic/dist/semantic.min.js"></script>
   <script src="/js/main_head.js"></script>
@@ -53,6 +53,6 @@
     ga('create', 'UA-61023469-1', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </body>
 </html>

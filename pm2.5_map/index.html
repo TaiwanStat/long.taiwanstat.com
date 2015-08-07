@@ -1,288 +1,66 @@
-<!DOCTYPE html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta property="og:title" content="用數據看台灣 - 台灣各觀測站 103 年 PM2.5 歷史資訊">
-  <meta property="og:site_name" content="用數據看台灣 - 台灣各觀測站 103 年 PM2.5 歷史資訊">
-  <meta property="og:description" content="做了 PM2.5 空污即時系統後，近幾日商周、報紙有很多媒體都在報導有關空污的資訊。我們團隊很好奇台灣 103 年整年的空污狀況，於是把台灣北、中、南、東、離島的空品區資料做呈現。">
-  <meta property="og:image" content="http://i.imgur.com/04AFcnA.png">
-  <meta property="og:image:type" content="image/jpg">
-  <meta property="og:image:width" content="300">
-  <meta property="og:image:height" content="300">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" href="/favicon.ico" />
-  <title>用數據看台灣 - 台灣各觀測站 103 年 PM2.5 歷史資訊</title>
-  <style>
-    .day {
-      fill: #fff;
-      stroke: #ccc;
-    }
-
-    .month {
-      fill: none;
-      stroke: #000;
-      stroke-width: 2px;
-    }
-
-    html {
-        background: #eee;
-        font-family: 'Noto Sans', 'sans-serif', 'Microsoft Jhenghei'; 
-        width: 100%;
-        height: 100%;
-    }
-    body {
-        margin: auto;
-        margin-top: 30px;
-    }
-    a {
-        color: #337ab7;
-        text-decoration: blink;
-    }
-    h5 {
-        margin: 15x;
-    }
-
-    .valueTip {
-      padding: 5px;
-      background-color: #000;
-      color: #FFF;
-    }
-
-    .container {
-      margin: 20px;
-    }
-
-
-  </style>
-  <link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all" />
-  <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
-  <link rel="stylesheet" href="./css/tipsy.css" type="text/css" />
+<html><head>
+  <meta charset="utf-8"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" href="/favicon.ico"><meta property="og:title" content="用數據看台灣 - pm2.5 2013 年各觀測站資料"><meta property="og:site_name" content="用數據看台灣 - pm2.5 2013 年各觀測站資料"><meta property="og:description" content="做了 PM2.5 空污即時系統後，近幾日商周、報紙有很多媒體都在報導有關空污的資訊。我們團隊很好奇台灣 103 年整年的空污狀況，於是把台灣北、中、南、東、離島的空品區資料做呈現。"><title>用數據看台灣 - pm2.5 2013 年各觀測站資料</title><meta http-equiv="Content-Type" content="text/html" ;="" charset="utf-8"><meta property="og:image" content="http://i.imgur.com/04AFcnA.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="300"><meta property="og:image:height" content="300"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all"><link rel="stylesheet" href="/css/style.css" type="text/css" media="all"><script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script src="/bower_components/semantic/dist/semantic.min.js"></script>  <link rel="stylesheet" href="./style.css" type="text/css">
+  <link rel="stylesheet" href="./css/tipsy.css" type="text/css">
 </head>
 <body>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header">
-    <main class="mdl-layout__content" id="main-content">
-        <h2 id="title">台灣 103 年各觀測站 PM2.5 狀況</h2>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header"><main class="mdl-layout__content" id="main-content"><h2 id="title">pm2.5 2013 年各觀測站資料</h2><div class="fb-plugin"><div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false"></div><div class="fb-like" data-href="http://long.taiwanstat.com/pm2.5_map" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></div>
+      <h5>相關連結：</h5>
 
-        <h5>相關連結：</h5>
-                  
-        <a href="http://real.taiwanstat.com/pm2.5">
-            <div class="ui basic button">台灣即時空污 PM2.5</div>
-        </a>
-        <a href="http://real.taiwanstat.com/air">
-            <div class="ui basic button">台灣即時空污 PSI</div>
-        </a>
-        
-        <hr>
+      <a href="http://real.taiwanstat.com/pm2.5">
+          <div class="ui basic button">台灣即時空污 PM2.5</div>
+      </a>
+      <a href="http://real.taiwanstat.com/air">
+          <div class="ui basic button">台灣即時空污 PSI</div>
+      </a>
 
-        <div class="fb-plugin">
-          <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
-          <div class="fb-like" data-href="http://long.taiwanstat.com/pm2.5_map/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-        </div>
+      <hr>
 
-        <h3>
-          快速選擇空品區
-          <select id="select-area">
-            <option value="中部空品區">中部空品區</option>
-            <option value="北部空品區">北部空品區</option>
-            <option value="宜蘭空品區">宜蘭空品區</option>
-            <option value="竹苗空品區">竹苗空品區</option>
-            <option value="花東空品區">花東空品區</option>
-            <option value="離島監測站">離島監測站</option>
-            <option value="雲嘉南空品區">雲嘉南空品區</option>
-          </select>
-        </h3>
-
-        <div id="chart"></div>
-
-        <div id="domain">
-        </div>
-
-        <div class="remarker">
-          <p>備註：</p>
-          <ol>
-            <li>
-              每隔為一日，每日 24 小時資料做平均 （滑鼠移至每隔，可以看到當日的日期及值）
-            </li>
-            <li>
-              空污指標使用美國標準
-            </li>
-            <li>
-              資料來源：行政院環保署
-            </li>
-          </ol>
-        </div>
+      <div class="fb-plugin">
+        <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+        <div class="fb-like" data-href="http://long.taiwanstat.com/pm2.5_map/" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
       </div>
-    </main>
-  </div>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type='text/javascript' src='./js/jquery.tipsy.js'></script>
-  <script>
 
-    $("#select-area").change(function() {
-      $('svg').remove();
-      drew_pic($(this).val());
-    })
+      <h3>
+        快速選擇空品區
+        <select id="select-area">
+          <option value="中部空品區">中部空品區</option>
+          <option value="北部空品區">北部空品區</option>
+          <option value="宜蘭空品區">宜蘭空品區</option>
+          <option value="竹苗空品區">竹苗空品區</option>
+          <option value="花東空品區">花東空品區</option>
+          <option value="離島監測站">離島監測站</option>
+          <option value="雲嘉南空品區">雲嘉南空品區</option>
+        </select>
+      </h3>
 
-    drew_pic("中部空品區")
+      <div id="chart"></div>
 
-    var width = 960,
-        height = 156,
-        cellSize = 17; // cell size
+      <div id="domain">
+      </div>
 
-    var day = d3.time.format("%w"),
-        week = d3.time.format("%U"),
-        format = d3.time.format("%Y/%m/%d");
+      <div class="remarker">
+        <p>備註：</p>
+        <ol>
+          <li>
+            每隔為一日，每日 24 小時資料做平均 （滑鼠移至每隔，可以看到當日的日期及值）
+          </li>
+          <li>
+            空污指標使用美國標準
+          </li>
+          <li>
+            資料來源：行政院環保署
+          </li>
+        </ol>
+      </div>
+    </main></div>
+  <script src="/js/main_head.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-61023469-1', 'auto');ga('send', 'pageview');</script><div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=600079286760117&version=v2.0";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>  <script type="text/javascript" src="./js/jquery.tipsy.js"></script>
+  <script type="text/javascript" src="./script.js"></script>
 
-    var color = d3.scale.linear()
-        .domain([0, 12, 35, 55, 150, 250])
-        .range(["#70bf48", "#fbe20b", "#f08c36", "#e12f2b", "#c13f89", "#954731"]);
-
-    var domain = d3.scale.linear()
-        .domain([0, 12, 35, 55, 150, 250])
-        .range([0, 50, 100, 150, 200, 250])
-
-    var xAxis = d3.svg.axis()
-      .scale(domain)
-      .tickValues(domain.domain())
-      .orient("bottom");
-
-    var domain_svg = d3.select('#domain')
-      .append("svg")
-      .attr("height", 100)
-      .attr("width", 500)
-
-    var g = domain_svg
-      .append("g")
-      .attr("class", "key")
-      .attr("transform", "translate(40,40)");
-
-    g.call(xAxis).append("text")
-      .attr("class", "caption")
-      .attr("y", -10)
-      .text("美國空污標準");
-
-    g.selectAll("rect")
-      .data(["#70bf48", "#fbe20b", "#f08c36", "#e12f2b", "#c13f89", "#954731"])
-      .enter().append("rect")
-      .attr("height", 10)
-      .attr("x", function(d, i) { return 50 * i; })
-      .attr("y", -3)
-      .attr("width", 50)
-      .style("fill", function(d) { return d; });
-
-    var tooltip = d3.select("body")
-      .append("div")
-      .attr("class", "valueTip")
-      .style("position", "absolute")
-      .style("z-index", "10")
-      .style("visibility", "hidden")
-    
-
-    function drew_pic(area) {
-
-      d3.json("./filter/103_HOUR_00_20150324/103年 " + area + "/fs_name.json", function(err, fs_name) {
-
-        var svg = d3.select("#chart").selectAll("svg")
-            .data(fs_name)
-          .enter().append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .attr("class", "RdYlGn")
-            .attr("id", function(d) { return 'region-' + d;})
-          .append("g")
-            .attr("transform", "translate(" + ((width - cellSize * 53) / 2) + "," + (height - cellSize * 7 - 1) + ")");
-
-        svg.append("text")
-            .attr("transform", "translate(," + cellSize * 3.5 + ")rotate(0)")
-            .style("text-anchor", "start")
-            .attr("x", "-10")
-            .attr("y", "-10")
-            .text(function(d) { return d; });
-
-        var rect = svg.selectAll(".day")
-            .data(function(d) { return d3.time.days(new Date(2014, 0, 1), new Date(2015, 0, 1)); })
-          .enter().append("rect")
-            .attr("class", "day")
-            .attr("width", cellSize)
-            .attr("height", cellSize)
-            .attr("x", function(d) { return week(d) * cellSize; })
-            .attr("y", function(d) { return day(d) * cellSize; })
-            .datum(format);
-
-        rect.append("title")
-            .text(function(d) { return d; });
-
-        svg.selectAll(".month")
-            .data(function(d) { return d3.time.months(new Date(2014, 0, 1), new Date(2015, 0, 1)); })
-          .enter().append("path")
-            .attr("class", "month")
-            .attr("d", monthPath);
-
-
-        d3.json("./filter/103_HOUR_00_20150324/103年 " + area + "/fs_path.json", function(error, fs_path) {
-          fs_path.forEach(function(path, i) {
-
-            d3.json(path, function(err, json) {
-              var data = d3.nest()
-                .key(function(d) { return d["日期"]; })
-                .rollup(function(d) { return d[0].sum; })
-                .map(json);
-                
-              d3.selectAll('#region-' + fs_name[i] + ' .day')
-                  .filter(function(d) { return d in data; })
-                  .style("fill", function(d) {return color(data[d])})
-                  .attr("original-title", function(d) {return d + ": " + data[d].toFixed(2); })
-                .select("title")
-                  .text(function(d) {return d + ": " + data[d]; })
-            })
-          })
-        })
-        $(function() {
-          $('.day').tipsy({gravity: $.fn.tipsy.autoNS});
-        });
-      })
-
-      function monthPath(t0) {
-        var t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
-            d0 = +day(t0), w0 = +week(t0),
-            d1 = +day(t1), w1 = +week(t1);
-        return "M" + (w0 + 1) * cellSize + "," + d0 * cellSize
-            + "H" + w0 * cellSize + "V" + 7 * cellSize
-            + "H" + w1 * cellSize + "V" + (d1 + 1) * cellSize
-            + "H" + (w1 + 1) * cellSize + "V" + 0
-            + "H" + (w0 + 1) * cellSize + "Z";
-      }
-    }
-  </script>
-
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-61023469-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <div id="fb-root"></div>
-  <script>
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=600079286760117&version=v2.0";
-      fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-  </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="/bower_components/semantic/dist/semantic.min.js"></script>
   <script src="/js/main.js"></script>
-  <script src="/js/main_head.js"></script>
-
-
-</body>
 
 
 
 
+
+
+</body></html>

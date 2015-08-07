@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {{> header}}
+    <script src="./zhutil.min.js"></script>
+    <link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+  </head>
+  <body>
+    {{> start}}
+        <div id="chart"> </div>
+          <form>
+            <label><input type="radio" name="mode" value="grouped">分群 </input></label>
+            <label><input type="radio" name="mode" value="stacked"checked>堆疊 </input></label>
+          </form>
+        </div>
+    {{> end}}
+
+    <script src="chart_by_occupation.js"></script>
+    {{> footer}}
+  </body>
+
+</html>

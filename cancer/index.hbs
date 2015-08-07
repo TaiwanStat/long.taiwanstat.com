@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {{> header}}
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    {{> start}}
+      <br>
+
+      <!-- my content  -->
+      <div class="data_container ui grid">
+        <p>
+          你知道台灣全癌症發生率自從1996年至2012年增加了41.57%嗎？<br>
+          由於高齡化、生活型態改變、肥胖人口增加及癌症篩檢的推廣，使得台灣癌症發生人數仍持續在增加。根據國民健康署最新的癌症報告，2012年癌症新發人數為9萬6,694人，發生人數較2011年增加4,012人。<br>
+          這顯示癌症時鐘持續快轉，2012年每5分鐘26秒就有1人罹癌，比前一年快了14秒。從人口標準化發生率資料來看，國人每10萬人中約有300人被診斷為癌症，即約每333位國人就有1人罹癌。<br>
+          趕快跟著"用數據看台灣"的團隊一起探討這些驚人的癌症發生率變化吧！
+        </p>
+        <p> 數據出處：<a href = "http://data.gov.tw/node/6399" target="_blank">癌症發生統計</a> </p>
+
+
+        <div class="ui warning message">
+          <div class="header">
+            <strong>族群資料:</strong>
+            <span id = "gender"></span>&nbsp;&nbsp;
+            <span id = "county"></span>&nbsp;&nbsp;
+            <span id = "cancer"></span><br>
+            發生率(每10萬人):
+            <span id = "oldest_happen_rate"></span>
+            <span id = "newest_happen_rate"></span>
+
+          </div>
+        </div>
+
+
+
+        <div class = "row">
+          <div class = "graph"></div>
+        </div>
+
+        <div class="ui grid">
+        <div class="ui three column stackable grid">
+        <div class = "three column row" id = "user_form">
+
+          <div class = "three wide column">
+            <h3>選擇癌症類別</h3>
+            <div class = "content">
+            <div id = "form3"></div>
+            </div>
+          </div>
+
+          <div class = "three wide column">
+            <h3>選擇性別</h3>
+            <div class = "content">
+              <div id = "form1"></div>
+            </div>
+          </div>
+
+          <div class = "three wide column">
+            <h3>選擇台灣縣市</h3>
+            <div class = "content">
+            <div id = "form2"></div>
+            </div>
+          </div>
+
+        </div>
+        </div>
+        </div>
+
+        <div class="ui red message">
+
+          <div class="header">
+            選擇族群資料:
+            <span id = "selected_gender"></span> &nbsp;&nbsp;
+            <span id = "selected_county"></span>&nbsp;&nbsp;
+            <span id = "selected_cancer"></span><br>
+            發生率(每10萬人):
+            <span id = "selected_oldest_happen_rate"></span>
+            &nbsp;<i class="long arrow right icon"></i>&nbsp;
+            <span id = "selected_newest_happen_rate"></span><br>
+            發生率變化:
+            <span id = "rate_text"></span>
+            <span id = "rate_change"></span>
+          </div>
+        </div>
+
+        <br>
+        <br>
+
+      </div>
+
+    {{> end}}
+      <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+      <!-- my script -->
+      <script src="./js/index.js"></script>
+    {{> footer}}
+  </body>
+
+</html>
+
+
+
+

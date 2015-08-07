@@ -1,0 +1,44 @@
+<html>
+    <head>
+        {{> header}}
+        <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    </head>
+    <body>
+        <script src="../price/js/d3-tip.js"></script>
+        <script src="http://d3js.org/topojson.v1.min.js"></script>
+        {{> start}}
+            <div class="ui basic main segment">
+                <div class="ui head basic segment">
+                  <h1 class="ui header"><span id="year_population"></span>台灣人口長條圖</h1>
+                </div>
+
+                <div class="control panels">
+                    <div class="ui icon buttons">
+                        <div id="start" class="ui button">
+                            <i class="play icon"></i>
+                        </div>
+                        <div id="stop" class="ui button">
+                            <i class="pause icon"></i>
+                        </div>
+                        <div id="restart" class="ui button">
+                            <i class="reply icon"></i>
+                        </div>
+                    </div>
+                    <p>
+                    <div id="prev" class="ui left button">
+                        <i class="caret left icon"></i>
+                    </div>
+                    <i class="large calendar icon"></i>
+                    <div id="next" class="ui right button">
+                        <i class="caret right icon"></i>
+                    </div>
+                    <p>
+                    <label><input type="checkbox">排序</label>
+                </div>
+                <div id="content"></div>
+            </div>
+        {{> end}}
+        <script src="index.js"></script>
+        {{> footer}}
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+<head>
+  {{> header}}
+  <link rel="stylesheet" href="./css/style.css" type="text/css" media="all" />
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+</head>
+
+<body>
+  {{> start}}
+    <ul>
+      <li>
+        <div class="data-src">資料來源 : <a href="http://statdb.dgbas.gov.tw/pxweb/Dialog/statfile9L.asp">總體統計資料庫</a></div>
+      </li>
+      <li>
+        資料年份：2001~2014(長條圖只到2013)
+      </li>
+    </ul>
+    <div class="ui stackable middle aligned two column grid">
+      <div class="row">
+
+
+        <div class="column center aligned vis_div">
+          <div class="ui icon buttons ">
+            <button class="ui button play_b">
+              <i class="play icon"></i>
+            </button>
+            <button class="ui button pause_b">
+              <i class="pause icon"></i>
+            </button>
+          </div>
+
+
+        </div>
+        <div class="ui header column left aligned info_div">
+          <p class="info_p">
+            <span class="info_span_year"></span>
+            年
+          </p>
+          <p class="info_p">
+            總計每年垃圾
+            <span class="info_span_all"></span>
+            噸
+          </p>
+          <p class="info_p">
+            平均每人每日垃圾產生量
+            <span class="info_span_day"></span>
+            公斤
+          </p>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="two column rect_div">
+
+        </div>
+
+      </div>
+    </div>
+
+  {{> end}}
+  <script src="js/index.js"></script>
+  {{> footer}}
+</body>
+</html>
