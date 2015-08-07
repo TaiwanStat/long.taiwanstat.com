@@ -1,0 +1,99 @@
+<html>
+  <head>
+    {{> header}}
+    <link rel="stylesheet" href="css/index.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/visual.css" type="text/css" media="all" />
+  </head>
+  <body>
+    {{> start}}
+        <div class="ui basic main segment">
+          <div class="ui head basic segment">
+            <h1 class="ui header">時間</h1>
+          </div>
+
+          <div class="control panels">
+            <div class="year control panel">
+              <div class="ui compact icon year control left button">
+                <i class="year caret left icon"></i>
+              </div>
+
+              <div class="ui horizontal year control statistic">
+                <div class="value"></div>
+                <div class="label">年</div>
+              </div>
+
+              <div class="ui compact icon year right control button">
+                <i class="year caret right icon"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="ui yearDetail basic segment">
+
+            <div class="ui stackable grid">
+              <div class="ten wide column">
+                <div class="plot"></div>
+                <br>
+                <div class="note">
+                  <ul>
+                    <li class='hightlight'>點擊圖中圓形可以對其放大，並顯示其資料。</li>
+                    <li>圖中圓形大小代表各族群所得佔總所得的比例。</li>
+                    <li>WTID提供之資料為1977至2013。</li>
+                    <li class="data-src">資料來源：<a href="http://topincomes.parisschoolofeconomics.eu/">WTID</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="six wide column">
+                <h1 class="ui focus green header"></h1>
+
+                <div class="ui focus small statistics">
+
+                  <h3 class="ui attribute blue header">總年收入值</h3>
+                  <div class="ui horizontal statistic">
+                    <div class="raw value"></div>
+                    <div class="raw label">
+                      億元(新臺幣)
+                    </div>
+                  </div><br><br><br>
+
+                  <h3 class="ui attribute yellow header">每人平均年收入</h3>
+                  <div class="ui horizontal statistic">
+                    <div class="mean value"></div>
+                    <div class="label">
+                      萬元(新臺幣)
+                    </div>
+                  </div><br><br><br>
+
+                  <h3 class="ui attribute red header">所得佔全部比例</h3>
+                  <div class="ui horizontal statistic">
+                    <div class="percent value"></div>
+                    <div class="label">
+                      %
+                    </div>
+                  </div><br><br><br>
+
+                  <h3 class="ui attribute header">子項目</h3>
+                  <table class="ui table">
+                    <thead>
+                      <tr>
+                        <th>項目</th>
+                        <th>每人平均年收入</th>
+                        <th>所得佔全部比例</th>
+                      </tr>
+                    </thead>
+                    <tbody class="tbody">
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+        </div>
+    {{> end}}
+
+    <script src="js/visual.js"></script>
+    <script src="js/script.js"></script>
+    {{> footer}}
+
+  </body>
+</html>

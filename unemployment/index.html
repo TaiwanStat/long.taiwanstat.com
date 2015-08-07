@@ -1,0 +1,156 @@
+<html><head>
+    <meta charset="utf-8"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" href="/favicon.ico"><meta property="og:title" content="用數據看台灣 - 台灣 1993 至 2014 年失業數據"><meta property="og:site_name" content="用數據看台灣 - 台灣 1993 至 2014 年失業數據"><meta property="og:description" content="失業率是重要的經濟指標，與國家經濟穩定與人民的幸福息息相關。從數據上顯示至從2009失業率達5.85% 為20內最嚴重以來，失業率已經逐漸在下降。用數據看台灣以多元的圖表將台灣20年內的失業率資料詳細完整的呈獻給您！"><title>用數據看台灣 - 台灣 1993 至 2014 年失業數據</title><meta http-equiv="Content-Type" content="text/html" ;="" charset="utf-8"><meta property="og:image" content="http://i.imgur.com/04AFcnA.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="300"><meta property="og:image:height" content="300"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css" media="all"><link rel="stylesheet" href="/css/style.css" type="text/css" media="all"><script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script src="/bower_components/semantic/dist/semantic.min.js"></script>    <!-- my css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/c3.css">
+  </head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header"><main class="mdl-layout__content" id="main-content"><h2 id="title">台灣 1993 至 2014 年失業數據</h2><div class="fb-plugin"><div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false"></div><div class="fb-like" data-href="http://long.taiwanstat.com/unemployment" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></div>      <p id="data_source">數據出處:
+        <a href="http://data.gov.tw/node/6640" target="_blank">人力資源調查縣市別失業率</a>,
+        <a href="http://data.gov.tw/node/6798" target="_blank">人力資源調查失業人數</a>,
+        <a href="http://data.gov.tw/node/6637" target="_blank">人力資源調查失業率</a>
+      </p>
+        <br><br>
+
+        <!-- instructions -->
+        <div class="ui grid">
+        <div class="ui icon message">
+        <div class="ui three column  stackable grid">
+
+
+          <div class="column">
+            <i class="star icon"></i>
+            <div class="content">
+              <div class="header">
+                長條時間軸線
+              </div>
+              <li>
+                點擊年份觀看各年數據
+              </li>
+              <li>
+              年份背景色象徵各年總失業率
+              </li>
+              <li>
+                點擊播放動畫觀看台灣近20年失業率變化
+              </li>
+            </div>
+          </div>
+
+          <div class="column">
+            <i class="star icon"></i>
+            <div class="content">
+              <div class="header">
+                地圖及圓餅圖
+              </div>
+              <li>
+                鼠標移至各縣市上觀看各縣市失業率
+              </li>
+              <li>
+                鼠標移至圓餅圖上觀看各群組失業人數
+              </li>
+              <li>
+                點擊圓餅圖的各群組備註可隱藏/顯示群組資料
+              </li>
+            </div>
+          </div>
+
+          <div class="column">
+            <i class="star icon"></i>
+            <div class="content">
+              <div class="header">
+                長線圖
+              </div>
+              <li>
+                在長線圖上可使用鼠標滑輪放大/縮小圖表
+              </li>
+              <li>
+                點擊長線圖的各群組備註可隱藏/顯示群組資料
+              </li>
+              <li>
+                鼠標移至長線圖的各群組備註可加重顯示群組資料
+              </li>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        <br>
+        <br>
+
+
+
+        <div class="ui stackable grid">
+
+          <div class="sixteen wide column">
+            <div class="ui black buttons button_role"> </div>
+          </div>
+
+          <div class="right floated left aligned five wide column">
+            <div class="ui primary button" id="play_button" style="font-size: 23px"><i class="play icon"></i>播放數據動畫</div>
+          </div>
+
+          <div class="seven wide column">
+           <h1><div id="curr_year" style="font-size: 35px"></div></h1>
+          </div>
+
+          <div class="eleven wide column">
+            <h2>
+              <span id="total_pop_unemployed"></span>&nbsp;
+              <span id="total_unemployment_rate"></span>
+            </h2>
+          </div>
+          <br>
+
+
+          <div class="map eight wide column">
+            <div class="tw_map_svg"></div>
+          </div>
+
+          <div class="eight wide column">
+            <div class="ui stackable grid">
+              <div class="row" style="padding-bottom: 0px;">
+                <div class="pie_chart1 eight wide column">
+                  <h3>性別圓餅圖</h3>
+                  <div id="pie_chart1"></div>
+                </div>
+                <div class="eight wide column pie_chart3">
+                  <h3>學歷圓餅圖</h3>
+                  <div id="pie_chart3"></div>
+                </div>
+              </div>
+              <div class="pie_chart2 thirteen wide column" style="padding: 0px;">
+                <h3>年齡圓餅圖</h3>
+                <div id="pie_chart2"></div>
+              </div>
+             </div>
+          </div>
+
+
+          <!-- line chart section -->
+          <div class="sixteen wide column">
+            <div id="line_chart"></div>
+          </div>
+
+          <div class="five wide column ">
+            <div class="ui yellow button" id="transform_bar">切換成長條圖顯示</div>
+          </div>
+          <div class="eight wide column last">
+            <div class="ui green button" id="gender_button">隱藏性別資料</div>
+            <div class="ui green button" id="age_button">隱藏年齡資料</div>
+            <div class=" center floated ui green button" id="education_button">隱藏學歷資料</div>
+          </div>
+
+        </div>
+    </main></div><script src="/js/main_head.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-61023469-1', 'auto');ga('send', 'pageview');</script><div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=600079286760117&version=v2.0";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+    <!-- my script -->
+    <script src="./js/index.js"></script>
+    <script src="./js/c3.min.js"></script>
+    <script src="/js/main.js"></script>
+  
+
+
+
+
+</body></html>

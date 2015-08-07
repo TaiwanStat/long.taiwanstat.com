@@ -1,129 +1,120 @@
 <html>
   <head>
     {{> header}}
-
+    <link href="css/index.css" rel="stylesheet" type="text/css"/>
   </head>
-  <body>
+  <body ng-app="UiCtrl">
     <script src="js/visual.js" type="text/javascript"></script> 
 
     {{> start}}
-        <div class="ui basic main segment">
+      <div class="ui basic main segment">
 
-          <h3>相關連結：</h3>
+        <h3>相關連結：</h3>
 
-            <a href="http://real.taiwanstat.com/power">
-                <div class="ui basic button">台灣即時用電資訊</div>
-            </a>
-          <hr>
+          <a href="http://real.taiwanstat.com/power">
+              <div class="ui basic button">台灣即時用電資訊</div>
+          </a>
+        <hr>
 
-          <!-- <div class="ui stackable two column grid">
-            <div class="column">
-              <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
-            </div>
-            <div class="column">
-              <div class="fb-like" data-href="http://long.taiwanstat.com/energy/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-            </div>
-          </div> -->
+        <br>
 
-          <br>
-
-          <div class="ui head basic segment">
-            <h2 class="ui header">時間</h2>
-          </div>
-
-          <div class="control panels">
-            <div class="year control panel">
-              <div class="ui compact icon year control left button">
-                <i class="year caret left icon"></i>
-              </div>
-
-              <div class="ui horizontal year control statistic">
-                <div class="value"></div>
-                <div class="label">年</div>
-              </div>
-
-              <div class="ui compact icon year right control button">
-                <i class="year caret right icon"></i>
-              </div>
-            </div>
-          </div>
-
-          <div class="ui segment">
-            <div class="ui stackable grid">
-
-              <div class="ten wide column">
-                <div class="plot"></div>
-                <div class="note">
-                  <ul>
-                    <li class="data-src">資料來源：<a href="http://web3.moeaboe.gov.tw/">經濟部能源局</a></li>
-                    <li>此圖以互動式的方式呈現台灣各種發電量的原始值及所佔比例。</li>
-                    <li>使用者可自行調整時間及選擇各項目詳細觀察之。</li>
-                    <li>各項目詳細採用原始資料之結構，例如是否為台電生產、發電方式。</li>
-                    <li>能源局提供之資料為1998至2013。</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="six wide column">
-
-                <div class="ui basic curSelect segment">
-                  <div class="ui breadcrumb">
-                    <div class="active section">全部</div>
-                    <i class="right chevron icon divider"></i>
-                  </div>
-
-                  <h1 class="ui curSelect header"></h1>
-
-                  <div class="ui curSelect small statistics">
-                    <div class="statistic">
-                      <div class="raw value"></div>
-                      <div class="left label">
-                        百萬度
-                      </div>
-                    </div>
-                    <div class="statistic">
-                      <div class="percent value"></div>
-                      <div class="left label">
-                        所佔百分率(%)
-                      </div>
-                    </div>
-
-                  </div>
-                  <div class="ui curSelect teal button">詳細</div>
-                  <br><br><br>
-                  <h3 class="ui red header" style="font-weight:bold;">*點擊圓餅圖來顯示其他部分</h3>
-                </div>
-
-                <h2 class="ui header">合計</h2>
-
-                <div class="ui horizontal total small statistic">
-                  <div class="value"></div>
-                  <div class="label">
-                    百萬度
-                  </div>
-                </div>
-
-                <table class="ui table">
-                  <thead>
-                    <tr>
-                      <th>項目</th>
-                      <th>原始值</th>
-                      <th>比例</th>
-                    </tr>
-                  </thead>
-                  <tbody class="piechart tbody">
-                  </tbody>
-                </table>
-
-              </div>
-
-            </div>
-          </div>
-
+        <div class="ui head basic segment">
+          <h2 class="ui header">時間</h2>
         </div>
+
+        <div class="control panels">
+          <div class="year control panel">
+            <div class="ui compact icon year control left button">
+              <i class="year caret left icon"></i>
+            </div>
+
+            <div class="ui horizontal year control statistic">
+              <div class="value"></div>
+              <div class="label">年</div>
+            </div>
+
+            <div class="ui compact icon year right control button">
+              <i class="year caret right icon"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui segment">
+          <div class="ui stackable grid">
+
+            <div class="ten wide column">
+              <div class="plot"></div>
+              <div class="note">
+                <ul>
+                  <li class="data-src">資料來源：<a href="http://web3.moeaboe.gov.tw/">經濟部能源局</a></li>
+                  <li>此圖以互動式的方式呈現台灣各種發電量的原始值及所佔比例。</li>
+                  <li>使用者可自行調整時間及選擇各項目詳細觀察之。</li>
+                  <li>各項目詳細採用原始資料之結構，例如是否為台電生產、發電方式。</li>
+                  <li>能源局提供之資料為1998至2013。</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="six wide column">
+
+              <div class="ui basic curSelect segment">
+                <div class="ui breadcrumb">
+                  <div class="active section">全部</div>
+                  <i class="right chevron icon divider"></i>
+                </div>
+
+                <h1 class="ui curSelect header"></h1>
+
+                <div class="ui curSelect small statistics">
+                  <div class="statistic">
+                    <div class="raw value"></div>
+                    <div class="left label">
+                      百萬度
+                    </div>
+                  </div>
+                  <div class="statistic">
+                    <div class="percent value"></div>
+                    <div class="left label">
+                      所佔百分率(%)
+                    </div>
+                  </div>
+
+                </div>
+                <div class="ui curSelect teal button">詳細</div>
+                <br><br><br>
+                <h3 class="ui red header" style="font-weight:bold;">*點擊圓餅圖來顯示其他部分</h3>
+              </div>
+
+              <h2 class="ui header">合計</h2>
+
+              <div class="ui horizontal total small statistic">
+                <div class="value"></div>
+                <div class="label">
+                  百萬度
+                </div>
+              </div>
+
+              <table class="ui table">
+                <thead>
+                  <tr>
+                    <th>項目</th>
+                    <th>原始值</th>
+                    <th>比例</th>
+                  </tr>
+                </thead>
+                <tbody class="piechart tbody">
+                </tbody>
+              </table>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     {{> end}}
     <script src='./script.js' type="text/javascript"></script>
-    {{＞ footer}}
+    {{> footer}}
 
   </body>
 </html>

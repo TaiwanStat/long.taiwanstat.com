@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     {{> header}}
@@ -8,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="./js/zhutil.min.js"></script>
   </head>
-  <body>
+  <body ng-app="myApp" ng-controller="mainController as mainCtrl">
     {{> start}}
       <br/>
       <div id = "data_source">數據出處:
