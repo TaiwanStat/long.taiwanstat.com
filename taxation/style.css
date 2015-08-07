@@ -1,3 +1,6 @@
+#chart { 
+	float: left; 
+}
 .xAxis { 
 	fill: none; 
 	stroke: #000; 
@@ -15,3 +18,60 @@
 	stroke-width: 1px; 
 	shape-rendering: crispEdges;
 }
+
+.yearLabel { 
+	font: 50px Helvetica Neue;
+	color: #666;
+}
+
+.area_mask { 
+	opacity: 0;
+}
+
+#sidebar { 
+	width: 320px; 
+	height: 450px;
+	float:left;
+}
+
+#pieChart { 
+	width: 300px; 
+	height: 300px; 
+	position: absolute; 
+	top: 20px; 
+	right: 20px;
+}
+
+#date_variable { 
+	display: inline; 
+}
+
+#total_variable { 
+	display: inline; 
+}
+
+.information_box_child { 
+	margin-top: 5px; 
+	margin-bottom: 15px; 	
+	padding-bottom: 15px;
+	border-bottom: 1px solid #000;
+}
+
+.line { 
+	fill: none; 
+	stroke-width: 1px;
+	opacity: 0.5;
+}
+
+.itemText { 
+	cursor: pointer;
+}
+
+.itemName { 
+	font-size: 14px;
+}
+
+.itemValue { 
+	padding-left: 40px;
+}
+
