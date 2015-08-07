@@ -7,7 +7,8 @@ Please only use `gh-pages` for main html page
 - [Develop](#develop)
   - [Prerequisite](#prerequisite)
   - [install](#install)
-  - [run](#run)
+  - [Twstat cli tool](#cli)
+  - [Run canner -core](#run)
 - [Guidelines](#guidelines)
   - [Open a new project](#open-a-new-project)
   - [Setup new project](#setup-new-project)
@@ -26,6 +27,12 @@ Install `canner-core`
 ```
 sudo npm install -g canner-core
 ```
+
+#### Twstata-cli
+
+A cli tool for taiwanstat.
+
+[See details and docs](https://github.com/TaiwanStat/twstat-cli)
 
 #### Run
 
