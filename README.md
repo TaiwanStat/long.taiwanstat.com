@@ -5,7 +5,7 @@ Please only use `gh-pages` for main html page
 ## Table of content
 
 - [Develop](#develop)
-  - [Prerequiste](#prerequiste)
+  - [Prerequisite](#prerequisite)
   - [install](#install)
   - [run](#run)
 - [Guidelines](#guidelines)
