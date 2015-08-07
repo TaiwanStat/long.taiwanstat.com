@@ -17,5 +17,4 @@ lists.data.page.forEach(function(p) {
   })
 })
 
-
 module.exports = post_arr;
