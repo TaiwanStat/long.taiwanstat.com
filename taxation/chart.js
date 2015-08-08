@@ -1,13 +1,17 @@
 var margin = {top:20, right: 20, bottom: 250, left: 70}, 	//////units: 十億 ---> 兆
-	width = 900 - margin.right - margin.left, 
+	width = 880 - margin.right - margin.left, 
 	height = 700 - margin.top - margin.bottom; 
 
-var colorScale = ["#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c",
+var colorScale = ["#1f77b4", "#3B457F", "#ff7f0e", "#ffbb78", "#2ca02c",
  "#98df8a", "#d62728", "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94", 
  "#e377c2", "#f7b6d2", "#7f7f7f", "#c7c7c7", "#bcbd22", "#dbdb8d", "#17becf", 
  "#9edae5", "#3182bd", "#6baed6", "#9ecae1", "#c6dbef", "#e6550d", "#fd8d3c", 
  "#fdae6b", "#fdd0a2", "#31a354", "#74c476", "#a1d99b", "#c7e9c0", "#756bb1", 
  "#9e9ac8", "#bcbddc"];
+
+var colorScale2 = ["#1f77b4", "#aec7e8"]; //// colors for big titles
+
+var colorScale3 = ["#1f77b4", "#3B457F", "#ff7f0e"]; //// colors for rank titles
 
 var xScale = d3.scale.linear()
 	.range([0, width]); 
@@ -23,7 +27,14 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis() 
 	.scale(yScale)
 	.orient("left")
-	.tickFormat(function(d) { return d/100000000 + "千億"; }); 
+	.tickFormat(function(d) { 
+		if (d/10000000 == 10) { 
+			return d/100000000 + "千億";
+		}
+		else { 
+			return d/10000000 + "百億"; 
+		}
+	}); 
 
 var line = d3.svg.line() 
 	.interpolate("basis")
@@ -47,7 +58,7 @@ var svg = d3.select("#chart").append("svg")
 	.attr("transform", "translate(" + margin.left + "," + margin.top + ")"); 
 
 var pie_width = 300; 
-var pie_height = 300; 
+var pie_height = 600; 
 
 var pieChartSVG = d3.select("#pieChart").append("svg")
 	.attr("class", "pieChart")
@@ -136,6 +147,10 @@ function writeList(nestedData) {
 		nestedData[i].values[0]=d3.entries(nestedData[i].values[0]);
 	}
 
+	console.log(nestedData);
+
+	var bigTitles = nestedData[0].values[0].splice(0, 2); 
+	
 	var itemText = svg.selectAll("g.itemText")
 		.data(nestedData[0].values[0]) /////index
 		.enter() 
@@ -143,7 +158,7 @@ function writeList(nestedData) {
 		.attr("class", "itemText")
 		.attr("id", function(d) { return d.key + "Text"; })
 		.attr("transform", function(d, i) { return "translate("
-			 + (Math.floor(i/9) * 227 - 55) + ", " + (480 + i%9 * 25) + ")"; })
+			 + (Math.floor(i/7) * 224 - 55) + ", " + (480 + i%7 * 25) + ")"; })
 		.on("click", function() { 
 			var textIdentification = d3.select(this).attr('id');
 			var identification = textIdentification.slice(0, textIdentification.length - 4); 
@@ -155,7 +170,7 @@ function writeList(nestedData) {
 		.attr("cx", -10)
 		.attr("cy", -5)
 		.attr("r", 5)
-		.attr("fill", function(d, i) { return colorScale[i]; }); 
+		.attr("fill", function(d, i) { return colorScale[i+2]; }); 
 
 	itemText.append("text") 
 		.attr("class", "itemName")
@@ -165,6 +180,34 @@ function writeList(nestedData) {
 	itemText.append("text") 
 		.attr("class", "itemValue")
 		.attr("x", 130); 
+
+	var bigTitles = pieChartSVG.selectAll("g.titleText")
+		.data(bigTitles)
+		.enter() 
+		.append("g") 
+		.attr("class", "titleText")
+		.attr("id", function(d) { return d.key + "Text"; })
+		.attr("transform", function(d, i) { return "translate(" + 40 + ", " + (400 + 100 * i) + ")";}); 
+
+	bigTitles.append("rect")
+		.attr("class", "itemRect")
+		.attr("x", 0)
+		.attr("y", 0)
+		.attr("width", 45)
+		.attr("height", 45)
+		.attr("fill", function(d, i) { return colorScale2[i]; });
+
+	bigTitles.append("text")
+		.attr("class", "bigTitlesText")
+		.attr("id", function(d, i) { return "title" + i; })
+		.attr("x", 60)
+		.attr("y", 30)
+		.text(function(d) { return d.key + ":"; });
+
+	bigTitles.append("text") 
+		.attr("class", "bigTitlesValue")
+		.attr("x",70)
+		.attr("y", 60); 
 }
 
 function drawLineGraph(nestedData, taxationList) {
@@ -196,6 +239,7 @@ function drawLineGraph(nestedData, taxationList) {
 		};
 	});
 
+	console.log(taxations[2]);
 	var taxationItem = svg.selectAll(".taxationType")
 		.data(taxations)
 		.enter().append("g"); 
@@ -211,6 +255,7 @@ function drawLineGraph(nestedData, taxationList) {
 
 function drawInitialPieChart(nestedData, dateList, taxationList) { 
 
+	console.log(nestedData);
 	var taxationData = []; 
 
 	for (var m = 0; m < dateList.length; m++) { 
@@ -229,7 +274,7 @@ function drawInitialPieChart(nestedData, dateList, taxationList) {
 	}
 
 	var pie_width = 300; 
-	var pie_height = 300; 
+	var pie_height = 600; 
 
 	var innerRadius = 0, 
 		outerRadius = (pie_width - 20) / 2;
@@ -243,20 +288,30 @@ function drawInitialPieChart(nestedData, dateList, taxationList) {
 
 	taxationData[0]["_"][0].shift(); 
 
+	var bigParts = taxationData[0]["_"][0].splice(0, 2);
+
+	var pieChartTitle = d3.select(".pieChart").append("text")
+		.attr("class", "pieChartTitle")
+		.attr("x", 30)
+		.attr("y", 30)
+		.text("全部稅收之圓餅圖"); 
+
 	var arcs = d3.select(".pieChart").selectAll("g.arc")
 		.data(pie(taxationData[0]["_"][0]))
 		.enter() 
 		.append("g") 
 		.attr("class", "arc")
-		.attr("transform", "translate(" + outerRadius + ", " + outerRadius + ")");
+		.attr("transform", "translate(" + outerRadius + ", " + (outerRadius + 75) + ")");
 
 	var path = arcs.append("path")
-		.attr("fill", function(d, i) { return colorScale[i]; })
+		.attr("fill", function(d, i) { return colorScale[i+2]; })
 		.each( function(d) { this._current = d; })
 		.attr("d", arc); 
 }
 
 function rectInteract(that, data) {
+
+	var bitItemData = []; 
 
 	d3.select(".yearPath").remove(); 
 
@@ -279,20 +334,29 @@ function rectInteract(that, data) {
 			theItem = data[i]; 
 		}
 	} 
-
+ 
 	if (typeof(theItem) == 'undefined') {}
 	else {
-		$(".yearLabel").text("民國" + (theItem.key.getFullYear() - 1911) + "年" + (theItem.key.getMonth() + 1) + "月"); 
-		transitionPieChart(theItem); 
+		$(".yearLabel").text("民國" + (theItem.key.getFullYear() - 1911) + "年" + (theItem.key.getMonth() + 1) + "月");
+		var bigItemValues = theItem.values[0].slice(0, 2); 
+		var copyList = theItem.values[0].slice(2); 
+		transitionPieChart(copyList); 
 
-		console.log(theItem);
 		d3.selectAll(".itemValue")
-			.data(theItem.values[0])
-			.text(function(d) { return parseFloat(d.value/10000000).toFixed(3) + "百億"; }); 
+			.data(copyList)
+			.text(function(d) { return parseFloat(d.value/100000).toFixed(3) + "億"; }); 
+
+		d3.selectAll(".bigTitlesValue")
+			.data(bigItemValues)
+			.text(function(d) { return parseInt(d.value + "000").toLocaleString(); }); 
+
+
 	}	
 }
 
-function transitionPieChart(theItem) { 
+function transitionPieChart(copyList) { 
+
+	console.log(copyList);
 
 	var arc = d3.svg.arc() 
 		.innerRadius(0)
@@ -302,16 +366,13 @@ function transitionPieChart(theItem) {
 		.value(function(d) { return d; });
 
 	var ratioValues = []; 
-
-	if (typeof(theItem) == 'undefined') {}
-	else { 
-		var ratio = theItem.values[0]; //// list of taxations and ratios
-		for (var i = 0; i < ratio.length; i++) { 
-			if (ratio[i].value == "          －") { 
-				ratio[i].value = 0; 
-			}
-			ratioValues.push(ratio[i].value);
+	
+	for (var i = 0; i < copyList.length; i++) { 
+		if (copyList[i].value == "          －") { 
+			copyList[i].value = 0; 
 		}
+		ratioValues.push(copyList[i].value);
+	}
 
 	pieChartSVG.selectAll("path").data(pie(ratioValues))
 		.transition()
@@ -324,16 +385,17 @@ function transitionPieChart(theItem) {
         return function(t) { return arc(i(t));};
 	    }     
 	}
-}
+
 
 function lineInteract(identification, textIdentification) { 
 
 	if($("#" + identification + "").attr("display") != 'none') { 
 		$("#" + identification + "").attr("display", 'none'); 
-		$("#" + textIdentification + ".itemName" + "").attr("opacity", 0);
+		$("#" + (identification + "Text") + "").attr("opacity", 0.5); 
 	} 
 	else { 
 		$("#" + identification + "").attr("display", true);
+		$("#" + (identification + "Text") + "").attr("opacity", 1); 
 	}
 }
 

@@ -30,16 +30,14 @@
 
 #sidebar { 
 	width: 320px; 
-	height: 450px;
+	height: 600px;
 	float:left;
 }
 
 #pieChart { 
 	width: 300px; 
-	height: 300px; 
-	position: absolute; 
-	top: 20px; 
-	right: 20px;
+	height: 600px; 
+	float: left;
 }
 
 #date_variable { 
@@ -67,6 +65,10 @@
 	cursor: pointer;
 }
 
+.itemText:hover { 
+	fill: red; 
+}
+
 .itemName { 
 	font-size: 14px;
 }
@@ -74,4 +76,21 @@
 .itemValue { 
 	padding-left: 40px;
 }
+
+.bigTitlesText { 
+	font: 28px Helvetica;
+}
+
+.titleText { 
+	cursor: pointer;
+}
+
+.bigTitlesValue { 
+	font: 18px Arial;
+}
+
+.pieChartTitle { 
+	font: 30px Arial;
+}
+
 
