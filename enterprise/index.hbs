@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+  {{> header}}
+    <!-- my js & css -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  {{> start}}
+    <!-- my charts -->
+    <div class="row">
+      <div class="col-lg-4">
+          <div id="itemInformation">
+              <div class="itemInfo_child">
+                  <i class="fa fa-industry" id="industry_icon"></i>
+                  <p id="occupationName"> 農、林、漁、牧業 </p>
+              </div>
+              <div class="itemInfo_child">
+                  全部企業: <p id="totalEnterpriseInfo"> 6,435 </p> <p class="units"> (新台幣百萬元) </p>
+              </div>
+              <div class="itemInfo_child">
+                  中小企業: <p id="midSmallEnterpriseInfo"> 3,309 </p> <p class="units"> (新台幣百萬元) </p>
+              </div>
+              <div class="itemInfo_child">
+                  中小企業百分比: <p id="midSmallPercentage"> 51.42 </p> %
+              </div>
+          </div>
+          <div id="pieChart"></div>
+      </div>
+      <div class="col-lg-5 forceGraphSection">
+
+          <div>
+              <div>
+                  <div id="button1" class="switchButton">
+                      <button> 出口額 </button>
+                  </div>
+                  <div id="button2" class="switchButton">
+                      <button> 家數 </button>
+                  </div>
+                  <div id="button3" class="switchButton">
+                      <button> 銷售額 </button>
+                  </div>
+                  <div id="button4" class="switchButton">
+                      <button> 就業數 </button>
+                  </div>
+              </div>
+
+          </div>
+          <div id="chart" class="forceChart"></div>
+      </div>
+      <div class="col-lg-3 informationBox">
+          <div>
+              <div id="controlPanel">
+                 <button id="backwardButton" class="controlButton"> <i class="fa fa-backward"></i> </button>
+               <button id="forwardButton"  class="controlButton"> <i class="fa fa-forward"></i> </button>
+          </div>
+          <div id="occupationList"> </div>
+
+      </div>
+    </div>
+  {{> end}}
+    <!-- my js & css -->
+  <script type="text/javascript" src="chart.js" charset="UTF-8"></script>
+  {{> footer}}
+</body>
