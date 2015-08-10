@@ -1,3 +1,6 @@
+.chart{
+    overflow:auto;
+}
 .xAxis path{
     fill:none;
     stroke:#000;
