@@ -109,3 +109,11 @@ discussion {
   color: #fff;
 }
 
+/* mobile phone */
+@media all and (max-width: 650px) {
+  .demo-card-wide.mdl-card {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
