@@ -1,3 +1,6 @@
+html{
+    overflow-x: auto;
+}
 circle{
     opacity:0.8;
     cursor:auto;
