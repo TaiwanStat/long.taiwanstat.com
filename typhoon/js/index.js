@@ -1,6 +1,6 @@
 var margin = {top:20,right:0,left:50,bottom:0}
 var width = $(".chart").width();
-var height = 1400,regHeight = height;
+var height = 2200,regHeight = height;
 var yScaleMin = 1957;//new Date(1957,0,1);
 var yScaleMax = 2016;//new Date(2016,0,1);
 var xScaleMin = new Date(2015,0,1);
@@ -9,10 +9,10 @@ var yScale = d3.scale.linear().domain([yScaleMax,yScaleMin]).range([0,height-mar
 var rScale = d3.scale.linear().range([0,width/15]).domain([0,600]);
 var xScale = d3.time.scale().range([0,width-margin.right-margin.left]).domain([xScaleMin,xScaleMax]);
 var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickFormat(function(d){return d;});
-var xAxis = d3.svg.axis().scale(xScale).orient("top").ticks(3);
+var xAxis = d3.svg.axis().scale(xScale).orient("top").ticks(5);
 var svg = d3.select(".chart").append("svg")
     .attr("width",width).attr("height",height);
-var zoom = d3.behavior.zoom().on("zoom",redraw).scaleExtent([0.5,10]);
+var zoom = d3.behavior.zoom().on("zoom",redraw).scaleExtent([0.2,2]);
 var tip = d3.tip()
   .attr('class', 'd3-tip')
   .html(function(d) {
