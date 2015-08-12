@@ -1,15 +1,15 @@
 var margin = {top:20,right:0,left:50,bottom:0}
 var width = $(".chart").width();
-var height = 800,regHeight = height;
+var height = 1400,regHeight = height;
 var yScaleMin = 1957;//new Date(1957,0,1);
 var yScaleMax = 2016;//new Date(2016,0,1);
 var xScaleMin = new Date(2015,0,1);
 var xScaleMax = new Date(2015,11,30);
 var yScale = d3.scale.linear().domain([yScaleMax,yScaleMin]).range([0,height-margin.top-margin.bottom]);
-var rScale = d3.scale.linear().range([0,width/10]).domain([0,600]);
+var rScale = d3.scale.linear().range([0,width/15]).domain([0,600]);
 var xScale = d3.time.scale().range([0,width-margin.right-margin.left]).domain([xScaleMin,xScaleMax]);
-var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickFormat(function(d){console.log(d);return d;});
-var xAxis = d3.svg.axis().scale(xScale).orient("top").ticks(6);
+var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).tickFormat(function(d){return d;});
+var xAxis = d3.svg.axis().scale(xScale).orient("top").ticks(3);
 var svg = d3.select(".chart").append("svg")
     .attr("width",width).attr("height",height);
 var zoom = d3.behavior.zoom().on("zoom",redraw).scaleExtent([0.5,10]);
@@ -41,12 +41,59 @@ d3.csv("typhoon.csv",function(dataset){
     visual(dataset);
 })
 d3.select(".chart svg").call(zoom).call(tip).on(".drag", null);
-//rule();
+rule();
 function rule(){
-    var width = $(".rule").;
-    var height;
-    d3.select(".rule").append("svg")
-}
+    var width = $(".rRule").width();
+    var text = 50;
+    var rectHeight = 30;
+    var height = (2*rScale(600)+text)*3;
+    var svg = d3.select(".rRule").append("svg").attr({
+        "width":width,
+        "height":height,
+    })
+    var data = [100,300,600];
+
+    //create rRule
+
+    svg.selectAll("circle").data(data).enter().append("circle").attr({
+        r:function(d){return rScale(d);},
+        cx:width/2,
+        cy:function(d,i){
+            return (height/3)*(i+1)-rScale(600)
+        },
+    });
+    svg.selectAll("text").data(data).enter().append("text").attr({
+        x:width/2,
+        y:function(d,i){return height/3*i+text;},
+    }).text(function(d){return "暴風半徑"+d+"公里";})
+
+    //create colorRule
+
+    svg = d3.select(".colorRule").append("svg").attr({
+        "width":width,
+        "height":10*rectHeight+text,
+    })
+    data = [10,20,30,40,50,60,70,80,90,100];
+    svg.selectAll("rect").data(data).enter().append("rect").attr({
+        x:width/4,
+        y:function(d,i){
+            return text+i*rectHeight;
+        },
+        width:width/4,
+        height:rectHeight,
+        fill:function(d){
+            color = parseFloat(255-3*d)
+            return d3.rgb(100,color,color);
+        }
+    })
+    svg.selectAll("text").data(data).enter().append("text").attr({
+        x:width/2,
+        y:function(d,i){
+            return text+(i+1)*rectHeight-rectHeight/4
+        },
+    }).text(function(d){return "風速每秒"+d+"公尺";})
+
+    }
 function redraw(){
     height = regHeight*zoom.scale();
     svg.attr("height",height);
@@ -88,8 +135,8 @@ function visual(dataset){
                 return xScale(date);
             },
             fill:function(d){
-                color = parseFloat(1-d["近臺近中心最大風速(m/s)"]*0.01)
-                return d3.hsl(200,color,color);
+                color = parseFloat(255-3*d["近臺近中心最大風速(m/s)"])
+                return d3.rgb(100,color,color);
             },
         })
     d3.selectAll(".node").append("circle")
@@ -113,11 +160,6 @@ function visual(dataset){
                 var day = parseInt(d.警報期間.substr(8,2));
                 var date = new Date(2015,month,day);
                 return xScale(date);
-            },
-            fill:function(d){
-                //color = parseFloat(d["近臺近中心最大風速(m/s)"]*0.01)
-                //return d3.hsl(200,color,color);
-                return "#ff80e5";
             },
         })
 }
