@@ -2,12 +2,6 @@
   "data": {
     "page": [
       {
-        "title": "台灣中小企業統計資料",
-        "url": "enterprise",
-        "img": "images/enterprise.png",
-        "description": "台灣中小企業統計資料"
-      },
-      {
         "title": "民國 63 ~ 104 年全國實徵淨額---按稅目別分",
         "url": "taxation",
         "img": "images/taxation.png",
