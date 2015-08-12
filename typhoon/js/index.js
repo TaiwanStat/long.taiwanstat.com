@@ -1,5 +1,6 @@
 var margin = {top:20,right:0,left:50,bottom:0}
 var width = $(".chart").width();
+if (width<400) width=600;
 var height = 2200,regHeight = height;
 var yScaleMin = 1957;//new Date(1957,0,1);
 var yScaleMax = 2016;//new Date(2016,0,1);
@@ -44,6 +45,7 @@ d3.select(".chart svg").call(zoom).call(tip).on(".drag", null);
 rule();
 function rule(){
     var width = $(".rRule").width();
+    if (width<400) width = 400;
     var text = 50;
     var rectHeight = 30;
     var height = (2*rScale(600)+text)*3;
