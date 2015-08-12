@@ -2,6 +2,12 @@
   "data": {
     "page": [
       {
+        "title": "臺灣歷年有發警報颱風統計",
+        "url": "typhoon",
+        "img": "images/typhoon.png",
+        "description": "颱風對台灣的影響很大，是水資源的重要來源，但也可能造成重大的災情，來看看歷年侵台的颱風吧！"
+      },
+      {
         "title": "民國 63 ~ 104 年全國實徵淨額---按稅目別分",
         "url": "taxation",
         "img": "images/taxation.png",
