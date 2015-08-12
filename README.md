@@ -22,12 +22,6 @@ Install `canner-core`
 - npm
 - nodejs
 
-#### Install
-
-```
-sudo npm install -g canner-core
-```
-
 #### Twstat-cli
 
 A cli tool for taiwanstat.
@@ -39,13 +33,13 @@ A cli tool for taiwanstat.
 Build the project once:
 
 ```
-canner-core build chart-item.js
+twstat chart-item.js
 ```
 
 Keep watching the project rebuild when it modified:
 
 ```
-canner-core watch chart-item.js
+twstat chart-item.js -w
 ```
 
 ## GuideLines
