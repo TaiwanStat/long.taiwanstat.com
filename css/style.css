@@ -1,5 +1,5 @@
 body, html {
-  margin: 0; 
+  margin: 0;
   padding: 0;
 }
 
@@ -67,7 +67,7 @@ discussion {
 }
 
 .demo-card-wide.mdl-card {
-  width: 400px;
+  width: 30%;
   margin: 10px;
   float: left;
 }
