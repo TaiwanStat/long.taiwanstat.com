@@ -1,6 +1,6 @@
 var margin = {top: 20, right: 30, bottom: 20, left: 50}, 
 	height = 500 - margin.top - margin.bottom, 
-	width = 900 - margin.right - margin.left; 
+	width = 880 - margin.right - margin.left; 
 
 var parser = d3.time.format("%Y/%m").parse; 
 var colorScale = d3.scale.category20(); 
