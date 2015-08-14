@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+  {{> header}}
+  <link rel="stylesheet" href="./style.css" type="text/css" />
+</head>
+<body>
+  {{> start}}
+  	<div id="container"> 
+  		<div id="chart_container"> 
+  			<select id="year_options" onchange="specifyYear()" disabled="true"> 
+  				<option value="1998"> 1998</option>
+  				<option value="1999"> 1999</option>
+  				<option value="2000"> 2000</option>
+  				<option value="2001"> 2001</option>
+  				<option value="2002"> 2002</option>
+  				<option value="2003"> 2003</option>
+  				<option value="2004"> 2004</option>
+  				<option value="2005"> 2005</option>
+  				<option value="2006"> 2006</option>
+  				<option value="2007"> 2007</option>
+  				<option value="2008"> 2008</option>
+  				<option value="2009"> 2009</option>
+  				<option value="2010"> 2010</option>
+  				<option value="2011"> 2011</option>
+  				<option value="2012"> 2012</option>
+  				<option value="2013"> 2013</option>
+  				<option value="2014"> 2014</option>
+  				<option value="2015"> 2015</option>
+          <option value="all"> 1998 ~ 2015 </option> 
+  			</select> 
+  			<form id="checkbox_option"> 
+  				<input type="checkbox" name="mode" value="ruler"> Ruler<br>
+  			</form> 
+  			<div id="chart"> </div> 
+  			<div class="slider"> </div> 
+  		</div> 
+  		<div id="information_box"> 
+  			<div class="information_child" id="stockCompany"> 
+				<p class="header" id="header1">上市公司</p> 
+				<!-- <p class="detail"> 上市公司家數 </p> 
+				<p class="detail"> 上市公司資本額 </p> 
+				<p class="detail"> 上市公司資本額成長率 </p> 
+				<p class="detail"> 上市公司面值 </p>
+				<p class="detail"> 上市公司市值 </p> -->
+			</div>  
+			<div class="information_child" id="listCompany"> 
+			<p class="header" id="header2">上櫃公司</p> 
+				<!-- <p class="detail"> 上櫃公司家數 </p> 
+				<p class="detail"> 上櫃公司資本額 </p> 
+				<p class="detail"> 上櫃公司資本額成長率 </p> 
+				<p class="detail"> 上櫃公司面值 </p>
+				<p class="detail"> 上櫃公司市值 </p> -->
+			</div>  
+			<div class="information_child" id="pre-list"> 
+			<p class="header" id="header3">未上市未上櫃公司</p> 
+				<!-- <p class="detail"> 未上市未上櫃公司家數 </p> 
+				<p class="detail">未上市未上櫃公司資本額 </p>  -->
+			</div>  
+  		</div> 
+  	</div> 
+
+	<script type="text/javascript" src="./chart.js" charset="UTF-8"></script>
+  {{> end}}
+    <!-- my js & css -->
+  {{> footer}}
+</body>

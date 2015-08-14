@@ -2,6 +2,30 @@
   "data": {
     "page": [
       {
+        "title": "民國 92 ~ 104 年外資投資台灣",
+        "url": "foreign_invest",
+        "img": "images/foreign_invest.png",
+        "description": "你知道外資投入台灣市場在近年有什麼發展？在外資佔台灣股市連年有買超的情況。台灣股市的未來會是如何呢？讓我們來為台灣經濟一起加油吧！"
+      },
+      {
+        "title": "民國 92 ~ 104 年集中市場投資狀況 ",
+        "url": "stock",
+        "img": "images/stock.png",
+        "description": "最近台幣貶值嚴重，究竟禍因是什麼？投資人的信心？政府的政策？還是其他國的牽連影響？"
+      },
+      {
+        "title": "民國 65 ~ 104 年政府歲入歲出狀況",
+        "url": "revenue",
+        "img": "images/revenue.png",
+        "description": "台灣政府不論執政黨為誰，歲入大於歲出之年了了無幾。歷年來歲出遠大於歲入，餘絀連年為負。這一切對台灣的影響會如何？"
+      },
+      {
+        "title": "company",
+        "url": "company",
+        "img": "images/test.png",
+        "description": "ipo"
+      },
+      {
         "title": "民國 63 ~ 104 年全國實徵淨額---按稅目別分",
         "url": "taxation",
         "img": "images/taxation.png",
@@ -103,7 +127,6 @@
         "img": "images/deathrate.png",
         "description": "惡性腫瘤一直是台灣歷年的主要死因，隨著醫療技術的發達，死亡率也隨之下降，但你知道有些死因的死亡率卻是不減反增嗎？一起來看看這幾年的死亡率變化吧！"
       }
-
     ]
   },
   "layout": "./index.hbs",

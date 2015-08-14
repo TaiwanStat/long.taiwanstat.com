@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+  {{> header}}
+	<link rel="stylesheet" href="./style.css" type="text/css" />    
+	</head>
+<body>
+  {{> start}}
+  	<div id="container"> 
+  		<select id="options" onchange="specifyYear(this)"> 
+  			<option value="境外外國機構投資人(FINI)-申請登記件數(件)">境外外國機構投資人-申請登記件數</option>
+  			<option value="境外外國機構投資人(FINI)-完成登記件數(件)">境外外國機構投資人-完成登記件數</option>
+  			<option value="境外外國機構投資人(FINI)-累積匯入淨額(億美元)">境外外國機構投資人-累積匯入淨額</option>
+  			<option value="境外華僑及外國自然人(FIDI)-申請登記件數(件)">境外華僑及外國自然人-申請登記件數</option>
+  			<option value="境外華僑及外國自然人(FIDI)-完成登記件數(件)">境外華僑及外國自然人-完成登記件數</option>
+  			<option value="境外華僑及外國自然人(FIDI)-累積匯入淨額(億美元)">境外華僑及外國自然人-累積匯入淨額</option>
+  			<option value="外資投入我國股市-總完成登記件數(件)">外資投入我國股市-總完成登記件數</option>
+  			<option value="外資投入我國股市-總累積匯入淨額(億美元)">外資投入我國股市-總累積匯入淨額</option>
+  			<option value="外資持有股票市值占總市值比例(％)">外資持有股票市值占總市值比例</option>
+  		</select>	
+ 		<div id="chart"> </div> 
+ 		<div id="info_box">  
+       <p id="hint_description">*用左右箭頭可以觀看個月之數據</p> 
+   </div> 
+ 	</div> 
+   	<script type="text/javascript" src="./chart.js" charset="UTF-8"></script>
+  {{> end}}
+    <!-- my js & css -->
+  {{> footer}}
+</body>

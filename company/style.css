@@ -1,0 +1,122 @@
+#chart_container { 
+    float: left;
+}
+
+#checkbox_option { 
+    display: inline;
+}
+
+.slider {
+  position: relative;
+  top: 40px;
+  left: 40px;
+  height: 100px; 
+}
+
+.slider-tray {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  border: solid 1px #ccc;
+  border-top-color: #aaa;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.slider-handle {
+  position: absolute;
+  top: 3px;
+}
+
+.slider-handle-icon {
+  width: 14px;
+  height: 14px;
+  border: solid 1px #aaa;
+  position: absolute;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  top: -7px;
+  left: -7px;
+}
+
+.xAxis { 
+  fill: none; 
+  stroke-width: 1px; 
+  stroke: #000; 
+  shapeRendering: crispEdges;
+}
+
+/*.xAxis text { 
+  display: none; 
+}*/
+
+.xAxis path { 
+  display: none; 
+}
+
+.yAxis { 
+  fill: none; 
+  stroke-width: 1px; 
+  stroke: #000; 
+  shapeRendering: crispEdges;
+}
+
+.line { 
+    fill: none; 
+    stroke-width: 3px;
+}
+
+#information_box { 
+    float: left; 
+}
+
+.information_child { 
+    width: 250px; 
+    height: 190px;
+}
+
+.header {   
+    font: 30px Arial; 
+}
+
+#header1 { 
+    margin-bottom: 8px;
+}
+
+#header2 { 
+    margin-bottom: 8px;
+}
+
+.detail { 
+    position:relative; 
+    margin-bottom: 5px; 
+    margin-top: 5px;
+    margin-left: 25px;
+}
+
+.interactiveRect { 
+    opacity: 0;
+}
+
+.stockRect { 
+    cursor: pointer;
+    stroke: 2px; 
+}
+
+
+.listRect { 
+    cursor: pointer; 
+     stroke: 2px; 
+}
+
+.prelistRect { 
+    cursor: pointer; 
+    stroke: 2px; 
+}
+
+
+
+
+
