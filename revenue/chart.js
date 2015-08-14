@@ -63,7 +63,7 @@ d3.csv("revenue.csv", function(data) {
 	var keys = d3.keys(nestedData[0].values[0]).filter(function(d) { return d != "年度"; });
 
 	var hintBox = info_box.selectAll("g.hintBox")
-		.data(["之比例為 1 px: 一千六百億", "之比例為1px: 0.12", "之比例為1px: 二十四億"])
+		.data(["之比例為 1 px: 一百六十億", "之比例為 1 px: 0.12", "之比例為 1 px: 二點四億"])
 		.enter()
 		.append("g")
 		.attr("class", "hintBox")
@@ -205,7 +205,6 @@ function rectInteract(that, data) {
 		.attr("x2", xScale(year))
 		.attr("y2", height);
 
-	console.log(data);
 	for (var i = 0; i < data.length; i++) {
 
 		if(Math.floor(xCoordinate) == Math.floor(xScale(data[i].key))) {
@@ -242,12 +241,26 @@ function update(data) {
 
 		var	dataArray = d3.entries(data.values[0]).filter(function(d) { return d.key != "年度"; });
 
+		function numberFormat(number, decimals, decPoint, thousandsSep) {
+	    decimals = isNaN(decimals) ? 2 : Math.abs(decimals);
+	    decPoint = (decPoint === undefined) ? '.' : decPoint;
+	    thousandsSep = (thousandsSep === undefined) ? ',' : thousandsSep;
+
+	    var sign = number < 0 ? '-' : '';
+	    number = Math.abs(+number || 0);
+
+	    var intPart = parseInt(number.toFixed(decimals), 10) + '';
+	    var j = intPart.length > 3 ? intPart.length % 3 : 0;
+
+	    return sign + (j ? intPart.substr(0, j) + thousandsSep : '') + intPart.substr(j).replace(/(\d{3})(?=\d)/g, '$1' + thousandsSep) + (decimals ? decPoint + Math.abs(number - intPart).toFixed(decimals).slice(2) : '');
+	  };
+
 		var rects = info_box.selectAll(".dataText")
 			.data(dataArray)
 			.enter()
 			.append("text")
 			.attr("class", "dataText")
-			.attr("x", 200)
+			.attr("x", 180)
 			.attr("y", function(d, i) { return 100 + 40 * i; })
 			.text(function(d, i) {
 				if (isNaN(d.value)) {
@@ -257,7 +270,7 @@ function update(data) {
 					if ( i == 1 || i == 3 || i == 5)
 						return parseFloat(d.value).toFixed(1) + ' %';
 					else
-						return zhutil.annotate(parseInt(d.value));
+						return numberFormat(parseInt(d.value * 10000));
 				}
 			});
 
