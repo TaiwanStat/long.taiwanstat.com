@@ -1,0 +1,36 @@
+.xAxis { 
+	fill: none; 
+	stroke-width: 1px; 
+	stroke: #000;
+}
+
+.yAxis { 
+	fill: none; 
+	stroke-width: 1px; 
+	stroke: #000;
+}
+
+.line { 
+	fill: none; 
+	stroke-width: 2px;
+}
+
+#chart { 
+	float: left; 
+}
+
+#info_box { 
+	float: left;
+}
+
+.info_boxAxis { 
+	fill: none; 
+	stroke-width: 1px; 
+	stroke: #000;
+}
+
+.xTracer { 
+	fill: none; 
+	stroke-width: 1px;
+	stroke: #000; 
+}

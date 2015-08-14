@@ -43,6 +43,10 @@
 	float: left; 
 }
 
+#info_box { 
+	float: left; 
+}
+
 .area_mask { 
 	opacity: 0;
 }
@@ -138,9 +142,15 @@ tr:nth-child(odd) {
 }
 
 .childText { 	
-	font: 26px Arial; 
+	font: 14px Arial; 
 	color: #000; 
 	display: inline;
 	text-align: right;
+}
+
+.dataText { 
+	font: 14px Helvetica;
+	fill: #AAA;
+	z-index: 1000000;
 }
 
