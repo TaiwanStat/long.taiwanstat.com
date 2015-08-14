@@ -1,0 +1,16 @@
+path{
+    fill:none
+}
+.xAxis path{
+    stroke:#000;
+}
+.yAxis path{
+    stroke:#000;
+}
+.line{
+    stroke-width:2px;
+}
+.line:hover{
+    stroke-width:4px;
+    stroke:#000;
+}

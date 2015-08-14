@@ -2,6 +2,12 @@
   "data": {
     "page": [
       {
+        "title": "medical_personnel",
+        "url": "medical_personnel",
+        "img": "images/medical_personnel.png",
+        "description": "Project description"
+      },
+      {
         "title": "臺灣歷年有發警報颱風統計",
         "url": "typhoon",
         "img": "images/typhoon.png",
