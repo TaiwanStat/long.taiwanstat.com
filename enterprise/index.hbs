@@ -2,65 +2,37 @@
 <head>
   {{> header}}
     <!-- my js & css -->
-    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="./style.css" type="text/css" />
 </head>
 <body>
   {{> start}}
-    <!-- my charts -->
-
-    <!-- data: http://data.gov.tw/node/5972 -->
-    <div class="row">
-        <div class="col-lg-4">
-            <div id="itemInformation">
-                <div class="itemInfo_child">
-                    <i class="fa fa-industry" id="industry_icon"></i>
-                    <p id="occupationName"> 農、林、漁、牧業 </p>
-                </div>
-                <div class="itemInfo_child">
-                    全部企業: <p id="totalEnterpriseInfo"> 6,435 </p> <p class="units"> (新台幣百萬元) </p>
-                </div>
-                <div class="itemInfo_child">
-                    中小企業: <p id="midSmallEnterpriseInfo"> 3,309 </p> <p class="units"> (新台幣百萬元) </p>
-                </div>
-                <div class="itemInfo_child">
-                    中小企業百分比: <p id="midSmallPercentage"> 51.42 </p> %
-                </div>
-            </div>
-            <div id="pieChart"></div>
-        </div>
-        <div class="col-lg-5 forceGraphSection">
-
-            <div>
-                <div>
-                    <div id="button1" class="switchButton">
-                        <button> 出口額 </button>
-                    </div>
-                    <div id="button2" class="switchButton">
-                        <button> 家數 </button>
-                    </div>
-                    <div id="button3" class="switchButton">
-                        <button> 銷售額 </button>
-                    </div>
-                    <div id="button4" class="switchButton">
-                        <button> 就業數 </button>
-                    </div>
-                </div>
-
-            </div>
-            <div id="chart" class="forceChart"></div>
-        </div>
-        <div class="col-lg-3 informationBox">
-            <div>
-                <div id="controlPanel">
-                   <button id="backwardButton" class="controlButton"> <i class="fa fa-backward"></i> </button>
-                 <button id="forwardButton"  class="controlButton"> <i class="fa fa-forward"></i> </button>
-            </div>
-            <div id="occupationList"> </div>
-
-        </div>
+    <div class="btn-group">
+      <button class="mdl-button mdl-js-button mdl-button--raised">
+        102 年中小企業家數
+      </button>
+      <button class="mdl-button mdl-js-button mdl-button--raised">
+        103 年中小企業家數
+      </button>
     </div>
-  {{> end}}
+    <div id="chart"> </div>
+    <div id="info_box">
+      <h3 id="title-corp">請移到圖表中看資訊</h3>
+      <ul>
+        <li>
+          <h5>中小企業家數：<span id="sm-count">請移到圖表中看資訊</span></h5>
+        </li>
+        <li>
+          <h5>大企業家數： <span id="l-count">請移到圖表中看資訊</span></h5>
+        </li>
+        <li>
+          <h5>總企業家數：<span id="all-count">請移到圖表中看資訊</span></h5>
+        </li>
+      </ul>
+
+    </div>
+    <script type="text/javascript" src="./chart.js" charset="UTF-8"></script>
+
+   {{> end}}
     <!-- my js & css -->
-  <script type="text/javascript" src="chart.js" charset="UTF-8"></script>
   {{> footer}}
 </body>
