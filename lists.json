@@ -2,12 +2,11 @@
   "data": {
     "page": [
       {
-<<<<<<< HEAD
         "title": "medical_personnel",
         "url": "medical_personnel",
         "img": "images/medical_personnel.png",
         "description": "Project description"
-======},
+      },
       {
         "title": "民國 92 ~ 104 年集中市場投資狀況",
         "url": "stock",
@@ -19,7 +18,6 @@
         "url": "revenue",
         "img": "images/revenue.png",
         "description": "台灣政府不論執政黨為誰，歲入大於歲出之年了了無幾。歷年來歲出遠大於歲入，餘絀連年為負。這一切對台灣的影響會如何？"
->>>>>>> 35d2d74228d0f8bb927d403bbb3382f4ddcd8860
       },
       {
         "title": "臺灣歷年有發警報颱風統計",
