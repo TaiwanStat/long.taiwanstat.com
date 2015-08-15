@@ -1,6 +1,6 @@
 var margin = {top:20,left:70,right:30,bottom:40},
     width = $("#chart").width()<400?400:$("#chart").width(),
-    height = width*0.6;
+    height = width*0.5;
 var xScale = d3.scale.linear().range([0,width-margin.left-margin.right]).domain([87,104]);
 var yScale = d3.scale.linear().range([height-margin.top-margin.bottom,0]);
 var domainMax=30000;
