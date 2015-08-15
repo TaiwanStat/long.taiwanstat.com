@@ -8,9 +8,12 @@ path{
     stroke:#000;
 }
 .line{
-    stroke-width:2px;
+    stroke-width:3px;
 }
 .line:hover{
     stroke-width:4px;
     stroke:#000;
+}
+.pointer{
+    pointer-events: none;
 }

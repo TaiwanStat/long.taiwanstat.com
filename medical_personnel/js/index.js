@@ -30,7 +30,7 @@ var personnelArray = ["總計","醫師","中醫師","牙醫師","藥師","醫事
     ,"營養師","物理治療師","物理治療生","職能治療師","職能治療生","臨床心理師"
     ,"諮商心理師","呼吸治療師","語言治療師","聽力師","牙體技術師","牙體技術生"];
 d3.csv("all.csv",function(data){
-    visual(data);
+    init(data);
 })
 $(".button").click(changeData);
 function changeData(event){
@@ -58,23 +58,7 @@ function changeData(event){
     info_svg.selectAll("text").remove();
     info_svg.selectAll("rect").remove();
     d3.csv(dataName,function(data){
-        for(var i = 0;i<personnelArray.length;i++){
-            target = personnelArray[i];
-            g.append("path").datum(data).attr("class","line "+target).attr("d",line)
-                .attr("stroke",d3.hsl(i*15,0.6,0.5))
-            info_svg.append("rect").attr({
-                y:i*17,
-                width:10,
-                height:10,
-                fill:function(){color=i*15;return d3.hsl(color,0.6,0.5)}
-            })
-            info_svg.datum(data).append("text").attr({
-                "data-name":target,
-                x:15,
-                y:i*17+17/2,
-                "font-size":12,
-            }).text(target)
-        }
+        visual(data);
     })
 
 }
@@ -91,34 +75,18 @@ function drawPointer(){
         var target = $(this).attr("data-name");
         var year = Math.round(xScale.invert(x))
         var data = d3.select("path."+target).datum()
-        console.log(data)
         var number = data[year-88][target]
         return target+":"+number;
     })
 }
-function visual(data){
+function init(data){
     yScale.domain([0,domainMax])
     svg.append("g").attr("transform","translate("+margin.left+","+margin.top+")")
         .attr("class","yAxis").call(yAxis);
     svg.append("g").attr("transform","translate("+margin.left+","+(height-margin.bottom)+")")
         .attr("class","xAxis").call(xAxis);
-    for(var i = 0;i<personnelArray.length;i++){
-        target = personnelArray[i];
-        g.append("path").datum(data).attr("class","line "+target).attr("d",line)
-            .attr("stroke",function(d){color=i*15;return d3.hsl(color,0.6,0.5)})
-        info_svg.append("rect").attr({
-            y:i*17,
-            width:10,
-            height:10,
-            fill:function(){color=i*15;return d3.hsl(color,0.6,0.5)}
-        })
-        info_svg.datum(data).append("text").attr({
-            "data-name":target,
-            x:15,
-            y:i*17+17/2,
-            "font-size":12,
-        }).text(target)
-    }
+    visual(data);
+
     g.append("line").attr("class","pointer").attr({
         x1:xScale(88),
         y1:yScale(0),
@@ -127,6 +95,30 @@ function visual(data){
         stroke:"grey",
         "stroke-width":1
     })
+}
+function visual(data){
+    for(var i = 0;i<personnelArray.length;i++){
+        target = personnelArray[i];
+        g.append("path").datum(data).attr("class","line "+target).attr("d",line)
+            .attr("data-name",target)
+            .attr("stroke",function(d){color=i*15;return d3.hsl(color,0.6,0.5)})
+            .on("mouseover",function(){info_svg.select("text."+$(this).attr("data-name")).attr("fill","red")})
+            .on("mouseout",function(){info_svg.selectAll("text").attr("fill","#000")})
+        info_svg.append("rect").attr({
+            y:i*17,
+            width:10,
+            height:10,
+            fill:function(){color=i*15;return d3.hsl(color,0.6,0.5)}
+        })
+        info_svg.datum(data).append("text").attr({
+            class:target,
+            "data-name":target,
+            x:15,
+            y:i*17+17/2,
+            "font-size":12,
+        }).text(target)
+        .on("mouseover",function(){$("path."+$(this).attr("data-name")).mouseover()})
+    }
 }
 function redraw(){
     yScale.domain([0,domainMax/zoom.scale()/zoom.scale()])
