@@ -1,4 +1,4 @@
-var margin = {top: 20, right: 30, bottom: 20, left: 50}, 
+var margin = {top: 20, right: 20, bottom: 20, left: 50}, 
 	height = 500 - margin.top - margin.bottom, 
 	width = 900 - margin.right - margin.left; 
 
@@ -36,7 +36,7 @@ var info_box = d3.select("#info_box").append("svg")
 	.attr("height", info_box_height); 
 
 var globalData;
-var dataType = "集中市場股票交易-總成交值"; 
+var dataType = "集中市場股票交易-總成交值(十億股)"; 
 var domain = [0, 4950]; 
 
 d3.csv("taiwan_invest.csv", function(data) { 
@@ -52,7 +52,7 @@ d3.csv("taiwan_invest.csv", function(data) {
 
 	yScale.domain([0, d3.max(data, function(year) { 
 		return d3.max(year, function(month) { 
-			return parseInt(month["集中市場股票交易-總成交值"]); }); })]);
+			return parseInt(month["集中市場股票交易-總成交值(十億股)"]); }); })]);
 
 	g.append("rect") 
 		.attr("class", "interactiveRect")
@@ -71,7 +71,7 @@ d3.csv("taiwan_invest.csv", function(data) {
 	var line = d3.svg.line() 
 	.interpolate("basis")
 	.x(function(d) { return xScale(d["年月"]); })
-    .y(function(d) { return yScale(d["集中市場股票交易-總成交值"]); }); 
+    .y(function(d) { return yScale(d["集中市場股票交易-總成交值(十億股)"]); }); 
 
 	var lineGroups = svg.selectAll("g.lineGroup")
 		.data(data) 
@@ -144,6 +144,24 @@ d3.csv("taiwan_invest.csv", function(data) {
 		.attr("y1", 0)
 		.attr("x2", 0)
 		.attr("y2", height); 
+
+	svg.append("text") 
+		.attr("class", "labelText")
+		.attr("y", -3)
+		.attr("transform", "rotate(90)")
+		.text("集中市場股票交易-總成交值(十億股)"); 
+
+	svg.append("text") 
+		.attr("class", "labelText")
+		.attr("x", 790)
+		.attr("y", 455)
+		.text("月份"); 
+
+	svg.append("text") 
+		.attr("class", "labelText")
+		.attr("x", 500)
+		.attr("y", 500)
+		.text("月份");
 
 	var monthList = d3.range(1, 13); 
 
@@ -280,6 +298,8 @@ function removePath(that) {
 function specifyYear(sel) { 
 
 	var value = sel.value; 
+
+	d3.select(".yAxisLabelText").text(value);
 
 	var yScaleMax = d3.max(globalData, function(year) { 
 		return d3.max(year, function(month) { 

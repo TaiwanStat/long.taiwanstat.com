@@ -53,6 +53,10 @@
 	font: 12px sans-serif;
 }
 
-#hint_description { 
+.labelText {
+	font: 16px sans-serif;
+	font-style: bold;
+}
+#heavy_hint{ 
 	color: red;
 }
