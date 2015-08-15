@@ -33,7 +33,49 @@ d3.csv("all.csv",function(data){
     visual(data);
 })
 $(".button").click(changeData);
-function changeData(){
+function changeData(event){
+    var dataName;
+    if(this.value=="所有醫事人員"){
+        domainMax = 30000;
+        dataName = "all.csv";
+        personnelArray = ["總計","醫師","中醫師","牙醫師","藥師","醫事檢驗師","護理師"
+            ,"護士","助產師","助產士","鑲牙生","藥劑生","醫事檢驗生","醫事放射師","醫事放射士"
+            ,"營養師","物理治療師","物理治療生","職能治療師","職能治療生","臨床心理師"
+            ,"諮商心理師","呼吸治療師","語言治療師","聽力師","牙體技術師","牙體技術生"];
+    }
+    else{
+        domainMax = 1600;
+        dataName = "doctor.csv";
+        personnelArray = ["總計","家庭醫學科","內科","外科","兒科","婦產科","骨科","神經科"
+            ,"神經外科","泌尿科","耳鼻喉科","眼科","皮膚科","精神科","復健科","麻醉科"
+            ,"放射線診斷","放射線腫瘤","放射線核醫","急診醫學科"
+            ,"解剖病理","臨床病理","核子醫學科","整形外科"
+            ,"口腔顎面外科","口腔病理科","職業醫學科","齒顎矯正科"]
+    }
+    yScale.domain([0,domainMax]);
+    d3.select(".yAxis").transition().duration(500).call(yAxis);
+    g.selectAll("path").remove();
+    info_svg.selectAll("text").remove();
+    info_svg.selectAll("rect").remove();
+    d3.csv(dataName,function(data){
+        for(var i = 0;i<personnelArray.length;i++){
+            target = personnelArray[i];
+            g.append("path").datum(data).attr("class","line "+target).attr("d",line)
+                .attr("stroke",d3.hsl(i*15,0.6,0.5))
+            info_svg.append("rect").attr({
+                y:i*17,
+                width:10,
+                height:10,
+                fill:function(){color=i*15;return d3.hsl(color,0.6,0.5)}
+            })
+            info_svg.datum(data).append("text").attr({
+                "data-name":target,
+                x:15,
+                y:i*17+17/2,
+                "font-size":12,
+            }).text(target)
+        }
+    })
 
 }
 function drawPointer(){
@@ -49,6 +91,7 @@ function drawPointer(){
         var target = $(this).attr("data-name");
         var year = Math.round(xScale.invert(x))
         var data = d3.select("path."+target).datum()
+        console.log(data)
         var number = data[year-88][target]
         return target+":"+number;
     })
