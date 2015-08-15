@@ -29,7 +29,7 @@
 
 	var footer = '<footer class="mdl-mini-footer">'
  			footer += '<div class="mdl-mini-footer__right-section">'
- 			footer += '合作提案、意見回饋歡迎來信至: <a href="mailto:contact@taiwanstat.com">contact@taiwanstat.com</a>'
+ 			footer += '商業合作提案、意見回饋歡迎來信至: <a href="mailto:contact@taiwanstat.com">contact@taiwanstat.com</a>'
  			footer += '</div>'
  			footer += '</footer'
 
