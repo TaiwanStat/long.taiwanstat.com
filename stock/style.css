@@ -1,0 +1,62 @@
+#chart { 
+	float: left; 
+}
+
+#info_box { 
+	float: left; 
+}
+
+.xAxis path, 
+.xAxis line { 
+	fill: none; 
+	stroke-width: 1px;
+	stroke: #000;
+}	
+
+.xAxis text { 
+	display: none; 
+}
+
+.yAxis { 
+	fill: none; 
+	stroke-width: 1px;
+	stroke: #000;
+}
+
+.yearLabel { 
+	cursor: pointer;
+}
+
+.line { 
+	fill: none; 
+	stroke: #000;
+	stroke-width: 2px;
+}
+
+.interactiveRect { 
+	opacity: 0;
+}
+
+.info_xAxis { 
+	fill: none; 
+	stroke-width: 1px; 
+	stroke:#000;
+}
+
+.xTracer { 
+	fill: none; 
+	stroke-width: 1px;
+	stroke: #000; 
+}
+
+.yAxisLabel { 
+	font: 12px sans-serif;
+}
+
+.labelText {
+	font: 16px sans-serif;
+	font-style: bold;
+}
+#heavy_hint{ 
+	color: red;
+}

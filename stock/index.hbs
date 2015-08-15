@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+  {{> header}}
+    <link rel="stylesheet" href="./style.css" type="text/css" />
+</head>
+<body>
+  {{> start}}
+    <ul> 
+        <li> 以下線條為 2003 ~ 2015 年在台灣股票交易各方面之比較 </li> 
+        <li id="heavy_hint"> 用鍵盤左右可以觀看個月份之表現 (在右側以長條圖來表示) </li> 
+    </ul> 
+  	<div id="container"> 
+  		<select id="options" onchange="specifyYear(this)"> 
+  			<option value="集中市場股票交易-總成交值(十億股)">集中市場-總成交值</option>
+  			<option value="集中市場股票交易-成交量(十億股)">集中市場-成交量</option>
+  			<option value="集中市場股票交易-日平均值(十億元)">集中市場-日平均值</option>
+  			<option value="集中市場股票交易-交易日數(日)">集中市場-交易日數</option>
+  			<option value="集中市場股票交易-交易所股價指數(月平均)(指數)">集中市場-交易所股價指數</option>
+  			<option value="集中市場股票交易-交易人數(人)">集中市場-交易人數(人)</option>
+  		</select>	
+ 	  	<div id="chart"> </div> 
+  		<div id="info_box"> </div> 
+  	</div>
+   	<script type="text/javascript" src="./chart.js" charset="UTF-8"></script>
+  {{> end}}
+    <!-- my js & css -->
+  {{> footer}}
+</body>

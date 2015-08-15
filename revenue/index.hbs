@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+  {{> header}}
+    <!-- my js & css -->
+    <link rel="stylesheet" href="./style.css" type="text/css" />
+</head>
+<body>
+  {{> start}}
+    <ul>
+      <li>黑色的線：歲入淨額</li>
+      <li>橘色的區域：歲出淨額 減 歲入淨額，所以此區塊越大代表負債越多。</li>
+      <li>X 軸：年份</li>
+      <li>Y 軸：錢（台幣）</li>
+      <li style="color: red;">滑鼠移至圖表即可看當下的歲入、歲出之數值</li>
+    </ul>
+  	<div id="chart"> </div>
+  	<div id="info_box"> </div>
+    <script type="text/javascript" src="./zhutil.min.js" charset="UTF-8"></script>
+   	<script type="text/javascript" src="./chart.js" charset="UTF-8"></script>
+
+   {{> end}}
+    <!-- my js & css -->
+  {{> footer}}
+</body>
