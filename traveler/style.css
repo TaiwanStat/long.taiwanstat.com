@@ -1,0 +1,16 @@
+path{
+    fill:none;
+    
+}
+.xAxis{
+    stroke:none;
+}
+.xAxis path{
+    stroke:#000;
+}
+.yAxis{
+    stroke:none;
+}
+.yAxis path{
+    stroke:#000;
+}
