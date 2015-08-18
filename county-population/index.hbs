@@ -7,10 +7,11 @@
     </head>
     <body>
         <script src="../price/js/d3-tip.js"></script>
+        <script src="./zhutil.min.js"></script>
         <script src="http://d3js.org/topojson.v1.min.js"></script>
         {{> start}}
         <div class="ui basic main segment">
-            <h2 class="ui header"><span id="year_population"></span>台灣人口地圖</h2>
+            <h2 class="ui header"><span class="year_population"></span>台灣人口地圖</h2>
             <div class="control panels">
                 <div class="ui icon buttons">
                     <div id="start" class="ui button">
@@ -27,6 +28,7 @@
                 <div id="prev" class="ui left button">
                     <i class="caret left icon"></i>
                 </div>
+                <span class="year_population"></span>
                 <i class="large calendar icon"></i>
                 <div id="next" class="ui right button">
                     <i class="caret right icon"></i>

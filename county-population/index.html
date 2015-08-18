@@ -4,9 +4,10 @@
     </head>
     <body>
         <script src="../price/js/d3-tip.js"></script>
+        <script src="./zhutil.min.js"></script>
         <script src="http://d3js.org/topojson.v1.min.js"></script>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header"><main class="mdl-layout__content" id="main-content"><h2 id="title">1991 ~ 2013 台灣人口動態變遷狀況</h2><div class="fb-plugin"><div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false"></div><div class="fb-like" data-href="http://long.taiwanstat.com/county-population" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></div>        <div class="ui basic main segment">
-            <h2 class="ui header"><span id="year_population"></span>台灣人口地圖</h2>
+            <h2 class="ui header"><span class="year_population"></span>台灣人口地圖</h2>
             <div class="control panels">
                 <div class="ui icon buttons">
                     <div id="start" class="ui button">
@@ -23,6 +24,7 @@
                 </p><div id="prev" class="ui left button">
                     <i class="caret left icon"></i>
                 </div>
+                <span class="year_population"></span>
                 <i class="large calendar icon"></i>
                 <div id="next" class="ui right button">
                     <i class="caret right icon"></i>
