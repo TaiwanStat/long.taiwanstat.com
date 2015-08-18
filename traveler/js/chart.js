@@ -1,3 +1,4 @@
+/** @jsx React.DOM */ 
 var colorScale = d3.scale.category10();
 var width = 800;
 var height = width*0.6;
@@ -12,7 +13,6 @@ var tip = d3.tip().attr('class', 'd3-tip')
         var y = d3.mouse(this)[1];
         var year = Math.round(xScale.invert(x));
         var index = d.length-1-(d[d.length-1].year-year);
-        console.log(index)
         var str = "";
         var j = 0;
         d3.select(".pointer").attr({
@@ -29,7 +29,7 @@ var tip = d3.tip().attr('class', 'd3-tip')
     .offset(function(){
         return [this.getBBox().height/2-30,-this.getBBox().width/2+100]
     });
-var Chart = React.createClass({
+var Chart = React.createClass({displayName: "Chart",
     componentDidMount:function(){
         var data = this.props.data;
         d3.select("#svg").call(tip);
@@ -57,7 +57,7 @@ var Chart = React.createClass({
     createPath:function(){
         var target;
         var line = d3.svg.line().interpolate("basis")
-            .x(function(d){console.log(d[target]);return xScale(d.year);})
+            .x(function(d){return xScale(d.year);})
             .y(function(d){return d[target]=="-"?yScale(0):yScale(d[target]);});
         var targets = [];
         for(var i in this.props.data[0]){
@@ -69,7 +69,7 @@ var Chart = React.createClass({
                 target = i;
                 var d=line(this.props.data);
                 return(
-                    <path d={d} stroke={colorScale(index)}></path>
+                    React.createElement("path", {d: d, stroke: colorScale(index)})
                 )
             }.bind(this)
         )
@@ -85,24 +85,24 @@ var Chart = React.createClass({
         d3.select(".yAxis").transition().duration(500).call(yAxis);
         d3.select(".lineChart rect").datum(data)
         return(
-            <svg id="svg" width={width} height={height}>
-                <g className="lineChart" transform={"translate("+margin.left+","+margin.top+")"}>
-                    {this.createPath()}
-                </g>
-            </svg>
+            React.createElement("svg", {id: "svg", width: width, height: height},
+                React.createElement("g", {className: "lineChart", transform: "translate("+margin.left+","+margin.top+")"},
+                    this.createPath()
+                )
+            )
         )
     }
 })
-var Button = React.createClass({
+var Button = React.createClass({displayName: "Button",
     render:function(){
         return(
-            <button className="ui button" value={this.props.value} onClick={this.props.onClick}>
-                {this.props.value}
-            </button>
+            React.createElement("button", {className: "ui button", value: this.props.value, onClick: this.props.onClick},
+                this.props.value
+            )
         )
     }
 })
-var Content = React.createClass({
+var Content = React.createClass({displayName: "Content",
     getInitialState:function(){
         return{
             buttonValue:["來台旅客人數(依目的)","來台旅客人數(依地區)","出國旅客人數(依地區)"],
@@ -134,23 +134,23 @@ var Content = React.createClass({
 
     createButton:function(){
         return this.state.buttonValue.map(function(i){
-                return (<Button value={i} onClick={this.clickHandler}></Button>)
+                return (React.createElement(Button, {value: i, onClick: this.clickHandler}))
             }.bind(this)
         )
     },
     render:function(){
         return(
-            <div>
-                <div className="ui vertical segment">
-                    {this.createButton()}
-                </div>
-                <div id="chart" className="ui vertical segment">
-                    <Chart data={this.state.data}></Chart>
-                </div>
-            </div>
+            React.createElement("div", null,
+                React.createElement("div", {className: "ui vertical segment"},
+                    this.createButton()
+                ),
+                React.createElement("div", {id: "chart", className: "ui vertical segment"},
+                    React.createElement(Chart, {data: this.state.data})
+                )
+            )
         )
     }
 })
 d3.csv("inByWhy.csv",function(data){
-    React.render(<Content data={data}/>,document.getElementById("content"));
+    React.render(React.createElement(Content, {data: data}),document.getElementById("content"));
 })
