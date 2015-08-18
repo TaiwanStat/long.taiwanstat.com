@@ -1,6 +1,9 @@
 path{
     fill:none;
-    
+
+}
+.lineChart path{
+    stroke-width:3px;
 }
 .xAxis{
     stroke:none;

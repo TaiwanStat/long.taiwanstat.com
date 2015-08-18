@@ -29,13 +29,21 @@ var personnelArray = ["總計","醫師","中醫師","牙醫師","藥師","醫事
     ,"護士","助產師","助產士","鑲牙生","藥劑生","醫事檢驗生","醫事放射師","醫事放射士"
     ,"營養師","物理治療師","物理治療生","職能治療師","職能治療生","臨床心理師"
     ,"諮商心理師","呼吸治療師","語言治療師","聽力師","牙體技術師","牙體技術生"];
-d3.csv("all.csv",function(data){
+var dataName = "all.csv";
+d3.csv(dataName,function(data){
     init(data);
 })
 $(".button").click(changeData);
-function changeData(event){
-    var dataName;
-    if(this.value=="所有醫事人員"){
+function changeData(){
+    if((this.value=="所有醫事人員"&&dataName=="all.csv")||(this.value=="各科醫師"&&dataName=="doctor.csv")){
+        yScale.domain([0,domainMax])
+        d3.select("g.yAxis").transition().duration(500).call(yAxis);
+        for(var i = 0;i<personnelArray.length;i++){
+            target = personnelArray[i];
+            d3.selectAll("path."+target).transition().duration(500).attr("d",line);
+        }
+    }
+    else if(this.value=="所有醫事人員"){
         domainMax = 30000;
         dataName = "all.csv";
         personnelArray = ["總計","醫師","中醫師","牙醫師","藥師","醫事檢驗師","護理師"
