@@ -17,7 +17,7 @@ var tip = d3.tip()
   	.offset([-10, 0])
   	.html(function(d) {
 		var count_district = districtName.indexOf(d.properties.TOWNNAME.trim());
-    	return townValue[count_district];
+    	return d.properties.TOWNNAME.trim() + ' : ' + zhutil.annotate(+townValue[count_district]);
   	});
 
 var svg = d3.select('#content')
@@ -204,7 +204,8 @@ d3.json("population.json", function(error, population_data) {
 				.tickValues(x.domain())
 				.orient("bottom");
 
-			d3.select("#year_population").html(+year[count] + 1911);
+			d3.selectAll(".year_population").html(+year[count] + 1911);
+
 			svg.selectAll('path.town')
 				.data(topo.features)
 				.attr("class", function(d) {

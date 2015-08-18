@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  {{> header}}
+ 	<link rel="stylesheet" href="./style.css" type="text/css" />
+ 	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+</head>
+<body>
+  {{> start}}
+ 	<button value="本年度預算數收入"> 
+ 		<label>本年度預算數收入</label> 
+ 	</button>
+ 	<button value="本年度預算數支出"> 
+ 		<label>本年度預算數支出</label> 
+ 	</button>
+ 	<button value="上年度預算數收入"> 
+ 		<label>上年度預算數收入</label> 
+ 	</button>
+ 	<button value="上年度預算數支出"> 
+ 		<label>上年度預算數支出</label> 
+ 	</button>
+ 	<button value="本年度與上年度比較收入"> 
+ 		<label>本年度與上年度比較收入</label> 
+ 	</button>
+ 	<button value="本年度與上年度比較支出"> 
+ 		<label>本年度與上年度比較支出</label> 
+ 	</button>
+ 	<h3 id"mode_p">現在顯示: <span id="mode">本年度預算數收入</span> </h3> 
+
+  	<div id="container"> 
+	  	<div id="chart"> </div>
+	  	<div id="barChart"> </div> 
+	</div>
+    <script type="text/javascript" src="./chart.js" charset="UTF-8"></script>
+  {{> end}}
+    <!-- my js & css -->
+  {{> footer}}
+</body>
