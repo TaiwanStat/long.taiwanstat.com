@@ -2,7 +2,7 @@ var colorScale = d3.scale.category10();
 var width = 800;
 var height = width*0.6;
 var margin = {top:20,left:100,bottom:70,right:20}
-var xScale = d3.scale.linear().domain([1998,2015]).range([0,width-margin.left-margin.right]);
+var xScale = d3.scale.linear().domain([1999,2014]).range([0,width-margin.left-margin.right]);
 var yScale = d3.scale.linear().domain([0,10000000]).range([height-margin.bottom-margin.top,0]);
 var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10);
 var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
@@ -27,7 +27,7 @@ var tip = d3.tip().attr('class', 'd3-tip')
 
     })
     .offset(function(){
-        return [d3.mouse(this)[1],d3.mouse(this)[0]-this.getBBox().width/2]
+        return [this.getBBox().height/2-30,-this.getBBox().width/2+100]
     });
 var Chart = React.createClass({
     componentDidMount:function(){
@@ -76,8 +76,8 @@ var Chart = React.createClass({
     },
     render:function(){
         var data = this.props.data;
-        var yearMin = parseInt(this.props.data[0].year)-1;
-        var yearMax = parseInt(this.props.data[this.props.data.length-1].year)+1;
+        var yearMin = parseInt(this.props.data[0].year);
+        var yearMax = parseInt(this.props.data[this.props.data.length-1].year);
         var personMax = this.props.data[this.props.data.length-1].合計;
         xScale.domain([yearMin,yearMax]);
         yScale.domain([0,personMax]);
