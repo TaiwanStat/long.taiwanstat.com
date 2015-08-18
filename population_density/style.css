@@ -1,0 +1,29 @@
+#graph { 
+	float: left; 
+	width: 500px; 
+	height: 700px; 
+}
+
+#chart { 
+	float: left; 
+	width: 700px; 
+	height: 500px;
+}
+
+.xAxis { 
+	fill: none; 
+	stroke-width: 1px; 
+	stroke: #000; 
+	shape-rendering: crispEdges;
+}
+
+.yAxis { 
+	fill: none; 
+	stroke-width: 1px; 
+	stroke: #000; 
+	shape-rendering: crispEdges;
+}
+
+#order { 
+	margin-left: 20px;
+}
