@@ -2,12 +2,6 @@
   "data": {
     "page": [
       {
-        "title": "近年台灣旅客統計",
-        "url": "traveler",
-        "img": "images/traveler.png",
-        "description": "近來到台灣各處玩，你有發現周遭的外國人愈來愈多嘛？那是因為近5年內來台旅客人數增加1倍!"
-      },
-      {
         "title": "1991 ~ 2013 台灣人口動態變遷狀況",
         "url": "county-population",
         "img": "images/county-population.png",
