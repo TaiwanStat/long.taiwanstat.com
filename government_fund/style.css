@@ -14,22 +14,22 @@
   stroke-width: 1.5px;
 }
 
-#chart { 
-	float: left; 
+#chart {
+	float: left;
 }
 
-#barChart { 
-	float: left; 
+#barChart {
+	float: left;
 }
 
-.xAxis { 
-	fill: none; 
-	stroke: #000; 
-	stroke-width: 1px; 
+.xAxis {
+	fill: none;
+	stroke: #000;
+	stroke-width: 1px;
 	shape-rendering: crispEdges;
 }
 
-.xAxis text { 
+.xAxis text {
 	font: 10px Arial;
 }
 
@@ -40,6 +40,7 @@
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   border-radius: 2px;
+  z-index: 1000;
 }
 
 /* Creates a small triangle extender for the tooltip */
@@ -62,6 +63,6 @@
   left: 0;
 }
 
-#mode { 
+#mode {
   color: red;
 }

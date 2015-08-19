@@ -16,7 +16,7 @@ var tip = d3.tip()
   	.attr('class', 'd3-tip')
   	.offset([-10, 0])
   	.html(function(d) {
-		var count_district = districtName.indexOf(d.properties.TOWNNAME.trim());
+			var count_district = districtName.indexOf(d.properties.TOWNNAME.trim());
     	return d.properties.TOWNNAME.trim() + ' : ' + zhutil.annotate(+townValue[count_district]);
   	});
 
@@ -96,12 +96,11 @@ d3.json("population.json", function(error, population_data) {
 				if(count_district >= 0){
 					return ("town " + color_class);
 				}else {
-					console.log(d.properties.TOWNNAME);
 					return "town RdYlGn";
 				}
 			})
-            .on('mouseover', tip.show)
-            .on('mouseout', tip.hide)
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
 
 		g.selectAll("rect")
 			.data(d3.range(11).map(function(d) { return "q" + d + "-11"; }))
@@ -193,6 +192,8 @@ d3.json("population.json", function(error, population_data) {
 				}
 			}
 
+
+
 			var color_scale = d3.scale.linear()
 				.domain([0, d3.max(townValue)]);
 			var x = d3.scale.linear()
@@ -206,6 +207,18 @@ d3.json("population.json", function(error, population_data) {
 
 			d3.selectAll(".year_population").html(+year[count] + 1911);
 
+			var tip = d3.tip()
+		  	.attr('class', 'd3-tip')
+		  	.offset([-10, 0])
+		  	.html(function(d) {
+					var count_district = districtName.indexOf(d.properties.TOWNNAME.trim());
+		    	return d.properties.TOWNNAME.trim() + ' : ' + zhutil.annotate(+townValue[count_district]);
+		  	});
+
+			tip.destroy();
+
+			svg.call(tip);
+
 			svg.selectAll('path.town')
 				.data(topo.features)
 				.attr("class", function(d) {
@@ -214,10 +227,11 @@ d3.json("population.json", function(error, population_data) {
     				if(count_district >= 0){
 	    				return ("town " + color_class);
 		    		}else {
-			    		console.log(d.properties.TOWNNAME)
 				    	return "town RdYlGn"
 				    }
 			    })
+				.on('mouseover', tip.show)
+      	.on('mouseout', tip.hide)
 
 			g.call(xAxis)
 
