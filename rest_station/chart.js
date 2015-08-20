@@ -142,6 +142,8 @@ d3.json("taiwan_topo.json", function(error, tw_topo_data) {
 
 		function drawGraph(item) { 
 
+			console.log(item); 
+
 			var map = item.map(function(d) { 
 				return {
 					date: d3.keys(d).slice(3, 15),
@@ -151,6 +153,8 @@ d3.json("taiwan_topo.json", function(error, tw_topo_data) {
 					siteName: d3.entries(d).slice(1, 2),
 				}
 			}); 	
+
+			console.log(map);
 
 			domainMax = d3.max(map, function(individual) { 
 					return d3.max(individual.values, function(d) { 

@@ -1,7 +1,6 @@
 {
   "data": {
     "page": [
-
       {
         "title": "rainfall",
         "url": "rainfall",
@@ -18,7 +17,7 @@
         "title": "currency",
         "url": "currency",
         "img": "images/currency.png",
-        "description": "Project description"
+        "description": "民國 92 ~ 104 年的貨幣發行情形。"
       },
       {
         "title": "民國 102 年政府基金資料",
