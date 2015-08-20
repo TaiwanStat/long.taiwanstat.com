@@ -1,11 +1,11 @@
-/** @jsx React.DOM */ 
+/** @jsx React.DOM */
 var colorScale = d3.scale.category10();
 var width = 800;
 var height = width*0.6;
 var margin = {top:20,left:100,bottom:70,right:20}
 var xScale = d3.scale.linear().domain([1999,2014]).range([0,width-margin.left-margin.right]);
 var yScale = d3.scale.linear().domain([0,10000000]).range([height-margin.bottom-margin.top,0]);
-var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10);
+var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
 var tip = d3.tip().attr('class', 'd3-tip')
     .html(function(d) {
@@ -20,7 +20,10 @@ var tip = d3.tip().attr('class', 'd3-tip')
             x2:x,
         })
         for(var i in d[index]){
-            str += ("<span style='color:"+colorScale(j-1)+"'>"+i+":"+d[index][i]+"</span>"+"<br>");
+            if(i === 'year')
+                str += ("<span style='color:"+colorScale(j-1)+"'>年 : "+d[index][i]+"</span>"+"<br>");
+            else
+                str += ("<span style='color:"+colorScale(j-1)+"'>"+i+" : "+d[index][i]+"</span>"+"<br>");
             j++;
         }
         return str
