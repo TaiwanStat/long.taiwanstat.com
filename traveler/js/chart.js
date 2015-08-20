@@ -39,9 +39,18 @@ var Chart = React.createClass({displayName: "Chart",
         d3.select("#svg").append("g")
             .attr("transform","translate("+margin.left+","+(height-margin.bottom)+")")
             .attr("class","xAxis").call(xAxis);
+        d3.select(".xAxis").append("text")
+            .attr("x",width-margin.right-margin.left)
+            .attr("y",margin.bottom/2)
+            .attr("text-anchor","end")
+            .text("單位：年");
         d3.select("#svg").append("g")
             .attr("transform","translate("+margin.left+","+margin.top+")")
             .attr("class","yAxis").call(yAxis);
+        d3.select(".yAxis").append("text")
+            .attr("y",margin.top/2)
+            .attr("x",-60)
+            .text("單位：人");
         d3.select(".lineChart").append("line").attr({
             class:"pointer",
             x1:0,
