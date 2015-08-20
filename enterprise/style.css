@@ -1,137 +1,78 @@
-#chart { 
-	width: 450px; 
-	height: 400px; 
+.x text{
+	transform: rotate(70deg);
+	y: 15;
+	text-anchor: start !important;
+	z-index: 100;
 }
 
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
 
-#controlPanel { 
-	position: absolute;
-	top: 30px; 
-	right: 10px; 
+rect {
+	opacity: 0.8;
+}
+
+#chart {
+	float: left;
+}
+
+#info_box {
+	width: 400px;
+	float: left;
+}
+
+#pie-chart {
+	width: 300px;
+}
+
+li {
 	height: 50px;
 }
 
-#itemInformation { 
-	margin-top: 70px;
-	margin-bottom: 50px; 
-	margin-left: 50px; 
-	display: inline; 
+li span {
+	color: blue;
+	font-size: 20px;
 }
 
-#occupationName { 
-	margin-top: 10px;
-	padding-top: 15px; 
-	display: inline;
-}
-.itemInfo_child { 
-	border-bottom: 1px solid #9297A5;
-	padding-top: 15px; 
-	padding-bottom: 15px; 
-	font-size: 20px; 
+.btn-group {
+	margin: 20px;
 }
 
-#industry_icon { 
-	display: inline; 
-}
-
-#totalEnterpriseInfo { 
-	display: inline; 
-}
-
-#midSmallEnterpriseInfo { 
-	display: inline; 
-}
-
-#midSmallPercentage { 
-	display: inline; 
-}
-
-#pieChart { 
-	margin-top: 40px; 
-	width: 380px; 
-	height: 380px;
-}
-
-.forceGraphSection { 
-	height: 800px; 
-}
-
-.yearBoard { 
-font: 300 90px Helvetica Neue;
-  fill: #666;
-  padding-left: 20px; 
-}
-
-.button {
-	display: inline; 
-}
-
-button { 
-	width: 110px; 
-	
-}
-.option_child { 
-	display: inline; 
-	height: 60px; 
-	width: 120px;
-	margin-left: 6px; 
-}
-
-.switchButton { 
-	display: inline; 
-}
-
-#controlPanel { 
-	position: absolute; 
-	bottom: 30px; 	
-}
-
-#optionPanel { 
-	position: absolute; 
-	left: 1px; 
-	width: 484px; 
-	height: 50px;
-}
-
-#forwardButton { 
-	height: 40px;
-	display: inline; 
-}
-
-#backwardButton { 
-	height: 40px;
-	display: inline; 
-}
-
-.informationBox { 
-	height: 600px; 
-}
-
-#occupationList { 
-	position: absolute; 
-	top: 100px; 
-	right:0px;
-	height: 450px;
-	width: 230px; 
-}
-
-.occupationItem { 
-	margin-bottom: 5px;
-	width: 230px; 
-	height: 30px;
-	
-}
-
-.occupationItemName { 
-	position: absolute; 
-	left: 15px; 
-}
-
-.occupationCircle { 
-	position: absolute; 
-	left: 5px; 
-
+.btn-group button {
+	margin: 10px;
 }
 
 
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  z-index: 2000;
+  border-radius: 2px;
+}
 
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}

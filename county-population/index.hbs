@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{> header}}
+
+        <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    </head>
+    <body>
+        <script src="./d3-tip.js"></script>
+        <script src="./zhutil.min.js"></script>
+        <script src="http://d3js.org/topojson.v1.min.js"></script>
+        {{> start}}
+        <ul>
+            <li>
+                資料來源：<a href="http://data.gov.tw/">政府資訊開放平台</a>
+            </li>
+        </ul>
+        <div class="ui basic main segment">
+            <h2 class="ui header"><span class="year_population"></span>台灣人口地圖</h2>
+            <div class="control panels">
+                <div class="ui icon buttons">
+                    <div id="start" class="ui button">
+                        <i class="play icon"></i>
+                    </div>
+                    <div id="stop" class="ui button">
+                        <i class="pause icon"></i>
+                    </div>
+                    <div id="restart" class="ui button">
+                        <i class="reply icon"></i>
+                    </div>
+                </div>
+                <p>
+                <div id="prev" class="ui left button">
+                    <i class="caret left icon"></i>
+                </div>
+                <span class="year_population"></span>
+                <i class="large calendar icon"></i>
+                <div id="next" class="ui right button">
+                    <i class="caret right icon"></i>
+                </div>
+            </div>
+          <div id="content"></div>
+        </div>
+      <script src="index.js"></script>
+      {{> end}}
+      {{> footer}}
+    </body>
+</html>

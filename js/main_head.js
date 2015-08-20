@@ -6,6 +6,7 @@
 		str += '<span class="mdl-layout-title"><a href="http://long.taiwanstat.com/" style="color: #FFF"><img src="/images/assert/round-logo.png" id="round-logo"/>用數據看台灣</a></span>'
 		str += '<div class="mdl-layout-spacer"></div>'
 		str += '<nav class="mdl-navigation mdl-layout--large-screen-only">'
+		str += '<a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>'
 		str += '<a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>'
 		str += '<a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>'
 		str += '<a class="mdl-navigation__link" href="http://taiwanstat.com/">開放資料分析部落格</a>'
@@ -16,6 +17,7 @@
 		str += '<div class="mdl-layout__drawer">'
 		str += '<span class="mdl-layout-title"><a href="http://long.taiwanstat.com/"><img src="/images/assert/round-logo.png" id="round-logo"/>用數據看台灣</a></span>'
 		str += '<nav class="mdl-navigation">'
+		str += '<a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>'
 		str += '<a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>'
 		str += '<a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>'
 		str += '<a class="mdl-navigation__link" href="http://taiwanstat.com/">開放資料分析部落格</a>'
@@ -29,7 +31,7 @@
 
 	var footer = '<footer class="mdl-mini-footer">'
  			footer += '<div class="mdl-mini-footer__right-section">'
- 			footer += '合作提案、意見回饋歡迎來信至: <a href="mailto:contact@taiwanstat.com">contact@taiwanstat.com</a>'
+ 			footer += '商業合作提案、客製化圖表、意見回饋歡迎來信至: <a href="mailto:contact@taiwanstat.com">contact@taiwanstat.com</a>'
  			footer += '</div>'
  			footer += '</footer'
 
