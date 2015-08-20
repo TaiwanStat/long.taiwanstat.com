@@ -1,12 +1,13 @@
 /** @jsx React.DOM */
-var colorScale = d3.scale.category10();
+var colorScale = d3.scale.category20();
 var width = 800;
 var height = width*0.6;
-var margin = {top:20,left:100,bottom:70,right:20}
+var margin = {top:60,left:100,bottom:70,right:20}
 var xScale = d3.scale.linear().domain([1999,2014]).range([0,width-margin.left-margin.right]);
 var yScale = d3.scale.linear().domain([0,10000000]).range([height-margin.bottom-margin.top,0]);
 var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(function(d){return d;});
 var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
+var zoom = d3.behavior.zoom();
 var tip = d3.tip().attr('class', 'd3-tip')
     .html(function(d) {
         var x = d3.mouse(this)[0];
@@ -30,12 +31,16 @@ var tip = d3.tip().attr('class', 'd3-tip')
 
     })
     .offset(function(){
-        return [this.getBBox().height/2-30,-this.getBBox().width/2+100]
+        return [this.getBBox().height/1.5,this.getBBox().width/2+100]
     });
+
+
 var Chart = React.createClass({displayName: "Chart",
     componentDidMount:function(){
         var data = this.props.data;
-        d3.select("#svg").call(tip);
+        zoom = d3.behavior.zoom().on("zoom",this.redraw).scaleExtent([1,5]).center([margin.left,height-margin.bottom]);
+        zoom.y(yScale);
+        d3.select("#svg").call(tip).call(zoom);
         d3.select("#svg").append("g")
             .attr("transform","translate("+margin.left+","+(height-margin.bottom)+")")
             .attr("class","xAxis").call(xAxis);
@@ -48,7 +53,7 @@ var Chart = React.createClass({displayName: "Chart",
             .attr("transform","translate("+margin.left+","+margin.top+")")
             .attr("class","yAxis").call(yAxis);
         d3.select(".yAxis").append("text")
-            .attr("y",margin.top/2)
+            .attr("y",-20)
             .attr("x",-60)
             .text("單位：人");
         d3.select(".lineChart").append("line").attr({
@@ -66,6 +71,24 @@ var Chart = React.createClass({displayName: "Chart",
         }).on("mousemove",tip.show);
 
     },
+    redraw:function(){
+        var personMax = this.props.data[this.props.data.length-1].合計;
+        if (personMax==undefined){personMax = this.props.data[this.props.data.length-1].中國大陸}
+        yScale.domain([0,personMax/zoom.scale()/zoom.scale()])
+        d3.select(".yAxis").transition().duration(500).call(yAxis);
+        //for(var i = 0;i<personnelArray.length;i++){
+        var target;
+        var line = d3.svg.line().interpolate("basis")
+            .x(function(d){return xScale(d.year);})
+            .y(function(d){return d[target]=="-"?yScale(0):yScale(d[target]);});
+        for(target in this.props.data[0]){
+            //target = personnelArray[i];
+            line = d3.svg.line().interpolate("basis")
+                .x(function(d){return xScale(d.year);})
+                .y(function(d){return d[target]=="-"?yScale(0):yScale(d[target]);});
+            d3.select("path."+target).transition().duration(500).attr("d",line(this.props.data));
+        }
+    },
     createPath:function(){
         var target;
         var line = d3.svg.line().interpolate("basis")
@@ -81,7 +104,7 @@ var Chart = React.createClass({displayName: "Chart",
                 target = i;
                 var d=line(this.props.data);
                 return(
-                    React.createElement("path", {d: d, stroke: colorScale(index)})
+                    React.createElement("path", {className:target,d: d, stroke: colorScale(index)})
                 )
             }.bind(this)
         )
@@ -91,6 +114,7 @@ var Chart = React.createClass({displayName: "Chart",
         var yearMin = parseInt(this.props.data[0].year);
         var yearMax = parseInt(this.props.data[this.props.data.length-1].year);
         var personMax = this.props.data[this.props.data.length-1].合計;
+        if (personMax==undefined){personMax = this.props.data[this.props.data.length-1].中國大陸}
         xScale.domain([yearMin,yearMax]);
         yScale.domain([0,personMax]);
         d3.select(".xAxis").transition().duration(500).call(xAxis);
@@ -114,10 +138,12 @@ var Button = React.createClass({displayName: "Button",
         )
     }
 })
+var filename="inByWhy.csv";
+
 var Content = React.createClass({displayName: "Content",
     getInitialState:function(){
         return{
-            buttonValue:["來台旅客人數(依目的)","來台旅客人數(依地區)","出國旅客人數(依地區)"],
+            buttonValue:["來台旅客人數(依目的)","來台旅客人數(依洲)","來台旅客人數(依主要國家)","出國旅客人數(依洲)","出國旅客人數(依主要國家)"],
             data:this.props.data
         }
     },
@@ -127,21 +153,30 @@ var Content = React.createClass({displayName: "Content",
     clickHandler:function(event,id){
         var dom = $("button[data-reactid='"+id+"']")[0];
         var index = this.state.buttonValue.indexOf(dom.value);
-        var filename;
+        var exFilename = filename;
         if(index == 0){
             filename = "inByWhy.csv";
         }
         else if(index == 1){
             filename = "inByPlace.csv";
         }
-        else{
+        else if (index ==2){
+            filename = "inByCountry.csv";
+        }
+        else if(index == 3){
             filename = "out.csv";
         }
-        d3.csv(filename,function(data){
-            this.setState({
-                data:data,
-            })
-        }.bind(this))
+        else{
+            filename = "outByCountry.csv";
+        }
+        if(exFilename==filename){}
+        else{
+            d3.csv(filename,function(data){
+                this.setState({
+                    data:data,
+                })
+            }.bind(this))
+        }
     },
 
     createButton:function(){
@@ -153,6 +188,13 @@ var Content = React.createClass({displayName: "Content",
     render:function(){
         return(
             React.createElement("div", null,
+                React.createElement("div", {className: "ui vertical segment message"},
+                    React.createElement("ul",null,
+                        React.createElement("li",null,"資料來源：",
+                            React.createElement("a",{href:"http://statdb.dgbas.gov.tw/pxweb/Dialog/statfile9L.asp"},"總體資料庫")
+                        )
+                    )
+                ),
                 React.createElement("div", {className: "ui vertical segment"},
                     this.createButton()
                 ),
