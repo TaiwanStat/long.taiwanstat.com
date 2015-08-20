@@ -24,10 +24,10 @@ var color = d3.scale.quantize()
 var colorScale = d3.scale.ordinal()
 	.domain(["臺東縣", "宜蘭縣", "臺北市", "雲林縣", "桃園縣",  "屏東縣", "臺中市", "臺南市", 
 	  "基隆市","南投縣", "澎湖縣", "苗栗縣","嘉義市", "新竹縣", "新北市", "花蓮縣", "高雄市",
-	  "彰化縣", "嘉義縣", "新竹市"])
+	  "彰化縣", "嘉義縣", "新竹市", "金門縣"])
 	.range(["#9edae5", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c", "#98df8a", "#d62728",
 			 "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94", "#e377c2", "#f7b6d2", 
-			 "#1f77b4", "#c7c7c7", "#bcbd22", "#dbdb8d", "#17becf", "#7f7f7f"]); 
+			 "#1f77b4", "#c7c7c7", "#bcbd22", "#dbdb8d", "#17becf", "#7f7f7f", "#ce6dbd"]); 
 
 var xScale = d3.scale.linear() 
 	.range([0, chart_width]); 
@@ -64,8 +64,7 @@ d3.json("taiwan_topo.json", function(error, tw_topo_data) {
    	topo.features[4].properties.name = "桃園縣"; 
 
     data = organize(data); 
-    console.log(data); 
-  
+    
     for (var i = 0; i < data.length; i++) { 
    		if (typeof(data[i][0]) == 'undefined') {}
    		else {
@@ -123,23 +122,27 @@ d3.json("taiwan_topo.json", function(error, tw_topo_data) {
         .datum(topomesh)
         .attr('d', path)
         .style('fill', 'none');
- 
 
     function organize(data) { 
-	    var dataArray = []; 
-		for( var i = 0; i < topo.features.length; i++ ) {
-	        var County_Name = topo.features[i].properties.name;
-	        console.log(County_Name);
-	        var result = [];
-	        for ( var m = 0; m < data.length; m++ ) { 
-	        	if (County_Name == data[m].區域別.slice(0, 3)) { 
-	        		result.push(data[m]); 
-	        	}
-	        }
-	        dataArray.push(result);
-	    }	
-	    return dataArray; 
-	}
+  	    var dataArray = []; 
+        var countyNames = []; 
+  		  for( var i = 0; i < topo.features.length; i++ ) {
+  	        countyNames.push(topo.features[i].properties.name);
+  	    }
+
+        countyNames[20] = "金門縣"; 
+
+        for (var i = 0; i < countyNames.length; i++) { 
+              var result = [];
+              for ( var m = 0; m < data.length; m++ ) { 
+              	if (countyNames[i] == data[m].區域別.slice(0, 3)) { 
+              		result.push(data[m]); 
+              	}
+              }
+          dataArray.push(result);
+        }
+    	  return dataArray; 
+	   }
 
 	chart.selectAll(".dataRect")
 		.data(theItem)
@@ -162,8 +165,6 @@ d3.json("taiwan_topo.json", function(error, tw_topo_data) {
 		var value = this.value; 
 		var rectColor = colorScale(value); 
 
-    d3.select("#mode").text(value);
-
 		for (var i = 0; i < data.length; i++) { 
    			if (typeof(data[i][0]) == 'undefined') {}
 	   		else {
@@ -172,6 +173,8 @@ d3.json("taiwan_topo.json", function(error, tw_topo_data) {
 	    		}
 	    	}
   		}
+
+      console.log(theItem);
 
   		var itemList = [];
   		for (var i = 0; i < theItem.length; i++) { 
