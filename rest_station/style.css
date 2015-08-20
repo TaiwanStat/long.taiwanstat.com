@@ -1,0 +1,35 @@
+#graph { 
+	float: left; 
+}
+
+#chart { 
+	float: left;
+}
+
+.xAxis { 
+	fill: none; 
+	stroke-width: 1px; 
+	stroke: #000; 
+	shape-rendering: crispEdges;
+}
+
+.yAxis { 
+	fill: none; 
+	stroke-width: 1px; 
+	stroke: #000; 
+	shape-rendering: crispEdges;
+}
+
+.line { 
+	fill: none; 
+}
+	
+.info { 
+	font: 50px Helvetica;
+}
+
+#description { 
+	display: inline;
+    font-family: 'Cardo',serif;
+    font-size: 1.5em;
+}

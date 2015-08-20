@@ -2,6 +2,24 @@
   "data": {
     "page": [
       {
+        "title": "rainfall",
+        "url": "rainfall",
+        "img": "images/rainfall.png",
+        "description": "Project description"
+      },
+      {
+        "title": "rest_station",
+        "url": "rest_station",
+        "img": "images/rest_station.png",
+        "description": "Project description"
+      },
+      {
+        "title": "currency",
+        "url": "currency",
+        "img": "images/currency.png",
+        "description": "Project description"
+      },
+      {
         "title": "民國 102 年政府基金資料",
         "url": "government_fund",
         "img": "images/government_fund.png",
