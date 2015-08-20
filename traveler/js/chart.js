@@ -5,7 +5,7 @@ var height = width*0.6;
 var margin = {top:20,left:100,bottom:70,right:20}
 var xScale = d3.scale.linear().domain([1999,2014]).range([0,width-margin.left-margin.right]);
 var yScale = d3.scale.linear().domain([0,10000000]).range([height-margin.bottom-margin.top,0]);
-var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(function(d){return d;});
 var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
 var tip = d3.tip().attr('class', 'd3-tip')
     .html(function(d) {
