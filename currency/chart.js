@@ -1,6 +1,6 @@
-var margin = {top: 20, right: 230, bottom: 60, left: 100}, 
+var margin = {top: 20, right: 230, bottom: 60, left: 70}, 
 	height = 500 - margin.top - margin.bottom, 
-	width = 1230 - margin.left - margin.right; 
+	width = 1200 - margin.left - margin.right; 
 
 var xScale = d3.scale.ordinal() 
 	.rangeRoundBands([0, width], 0.1); 
@@ -100,6 +100,17 @@ d3.csv("currency.csv", function(data) {
 		.attr("y", 10)
 		.attr("x", 20)
 		.text(function(d) { return d; }); 
+
+	$("input").on("change", change);
+
+	var modeTimeout = setTimeout(function() { 
+		d3.select("input[value=\"grouped\"]")
+		.property("checked", true).each(change); 
+	}, 2000); 
+
+	function change() { 
+		console.log('eh');
+	}
 
 
 

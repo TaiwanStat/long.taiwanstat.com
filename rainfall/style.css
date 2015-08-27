@@ -1,0 +1,21 @@
+#chart { 
+	float: left; 
+}
+
+#graph { 
+	float: left; 
+}
+
+.xAxis { 
+	fill: none; 
+	stroke: #000; 
+	stroke-width: 1px; 
+	shape-rendering: crispEdges;
+}
+
+.yAxis { 
+	fill: none; 
+	stroke: #000; 
+	stroke-width: 1px; 
+	shape-rendering: crispEdges;
+}

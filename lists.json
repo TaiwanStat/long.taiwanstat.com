@@ -2,6 +2,24 @@
   "data": {
     "page": [
       {
+        "title": "dengue-fever",
+        "url": "dengue-fever",
+        "img": "images/dengue-fever.png",
+        "description": "Project description"
+      },
+      {
+        "title": "salary-change",
+        "url": "salary-change",
+        "img": "images/salary-change.png",
+        "description": "Project description"
+      },
+      {
+        "title": "corporate_research",
+        "url": "corporate_research",
+        "img": "images/corporate_research.png",
+        "description": "Project description"
+      },
+      {
         "title": "rainfall",
         "url": "rainfall",
         "img": "images/rainfall.png",
@@ -43,12 +61,12 @@
         "img": "images/enterprise.png",
         "description": "中小企業在台灣是一個不可或缺的角色，有大半的台灣經濟都依賴著中小企業，我們整理了 102, 103 年中小企業家數的資料，讓你一覽台灣近況。"
       },
-	  {
+      {
         "title": "民國88 ~ 103年醫事人員核發執照人數",
         "url": "medical_personnel",
         "img": "images/medical_personnel.png",
         "description": "近年來醫病關係及醫護人員的不合理工作內容常常是媒體報導的對象，我們來看看近年醫護人員的人數吧！"
-	  },
+      },
       {
         "title": "民國 92 ~ 104 年集中市場投資狀況",
         "url": "stock",

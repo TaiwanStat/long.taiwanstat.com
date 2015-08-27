@@ -66,3 +66,7 @@
 #mode {
   color: red;
 }
+
+.loc_incident_count {
+  font: 70px Helvetica;
+}

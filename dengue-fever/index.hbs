@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+  {{> header}}
+    <link rel="stylesheet" href="./style.css" type="text/css" /> 
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+</head>
+<body>
+  {{> start}}
+   <script src="./zhutil.min.js"></script>
+   <div id="container"> 
+   		<div id="graph"> </div> 
+   		<div id="container_child"> 
+			<div class="control panels">
+            <div class="ui icon buttons">
+                <div id="start" class="ui button">
+                    <i class="play icon"></i>
+                </div>
+                <div id="stop" class="ui button">
+                    <i class="pause icon"></i>
+                </div>
+                <div id="restart" class="ui button">
+                    <i class="reply icon"></i>
+                </div>
+            </div>
+          	</div class="control panels"> 
+	            <div id="prev" class="ui left button">
+	                <i class="caret left icon"></i>
+	            </div>
+	            <span class="year_population"></span>
+	            <i class="large calendar icon"></i>
+	            <div id="next" class="ui right button">
+	                <i class="caret right icon"></i>
+	            </div>
+	        </div>
+            </div>
+	   		<div id="chart"> </div> 
+	   		<div id="yearScale"> </div>
+	   		<div class="slider"></div>
+	   	</div>
+   </div> 
+   <script type="text/javascript" src="./chart.js" charset="UTF-8"> </script> 
+   <script src="http://d3js.org/topojson.v1.min.js"></script>
+  {{> end}}
+    <!-- my js & css -->
+  {{> footer}}
+</body>
