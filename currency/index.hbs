@@ -2,9 +2,12 @@
 <head>
   {{> header}}
     <link rel="stylesheet" href="./style.css" type="css/text" />
+    <script src="./d3-tip.js"></script>
 </head>
 <body>
   {{> start}}
+  	<input type="radio" name="mode" value"stacked" checked> Stacked 
+  	<input type="radio" name="mode" value"grouped"> Grouped 
     <div id="chart"> </div> 
     <script type="text/javascript" src="./chart.js" charset="UTF-8"> </script> 
   {{> end}}

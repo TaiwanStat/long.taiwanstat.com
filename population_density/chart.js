@@ -47,7 +47,7 @@ var projection = d3.geo.mercator().center([121.675531, 24.41000]).scale(9000)
 	.translate([graph_width/1.25, graph_height/4]);
 
 var path = d3.geo.path()
-            .projection(projection);
+    .projection(projection);
 
 var dataType = "新北市";
 
