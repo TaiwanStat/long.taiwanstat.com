@@ -22,6 +22,8 @@
 	if(window.parent != window) {
 	    $("body").find(".fb-plugin").remove();
 	    $("body").find("discussion").remove();
-	    $("body").find("#embed").remove();
+		$("body").find("#embed").remove();
+		$("body").find("header").remove();
+	    $("body").find("footer").remove();
 	}
 })(window, document)
