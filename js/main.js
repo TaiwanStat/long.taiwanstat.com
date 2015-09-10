@@ -12,7 +12,7 @@
 
 	var embed = '<div id = "embed" class = "ui form" style="margin: 20px; width: 85%; float: left;">'
 			embed += '<div class = "field">'
-			embed += '<label style = "font-size: 38px; margin-bottom: 5px;">網頁嵌入碼</label>'
+			embed += '<label style = "font-size: 20px; margin-bottom: 5px;">網頁嵌入碼</label>'
 			embed += '<input type = "text" style = "font-size: 15px" value = \'<iframe src = "' + document.URL + '" width = "800" height = "600" frameborder = "0"></iframe>\'>'
 			embed += '</div></div>'
 
@@ -22,9 +22,35 @@
 	if(window.parent != window) {
 	    $("body").find(".fb-plugin").remove();
 	    $("body").find("discussion").remove();
-		$("body").find("#embed").remove();
-		$("body").find("header").remove();
-		$("body").find("footer").remove();
+	    $("body").find("#embed").remove();
+		  $("body").find("header").remove();
+		  $("body").find("footer").remove();
 	    $("body").append("<div id='background'></div>");
 	}
+
+  var window_width = $(window).width();
+
+  if(window_width < 400) {
+    $('.demo-card-wide').width((window_width -20) + 'px')
+  }
+
+	function author(ID) {
+    $.getJSON('/member.json', function(response) {
+      var authors = response.data.member;
+      console.log(authors);
+      for (var i in authors) {
+        console.log(authors[i].ID);
+        if (authors[i].ID == ID) {
+          var str = '<div class="author"><h4>About Author</h4>';
+              str += '<img src="' + authors[i].photo + '">';
+              str += '<div class="author-info"><h5>' + authors[i].name + '</h5></div>';
+              str +=  '</div>';
+
+          $('discussion').before(str);
+        }
+      }
+    });
+	}
+
+
 })(window, document)
