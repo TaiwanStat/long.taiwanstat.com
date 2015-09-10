@@ -108,7 +108,6 @@ discussion {
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
 }
-
 #background{
     position: fixed;
     top: 0;
@@ -124,6 +123,11 @@ discussion {
     filter:alpha(opacity=60);
     z-index:-10;
 }
+footer {
+  position:absolute;
+  bottom:0;
+  width: 100%;
+}
 
 /* mobile phone */
 @media all and (max-width: 650px) {
@@ -131,5 +135,11 @@ discussion {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
+  }
+  .footer_msg {
+    display: none
+  }
+  footer {
+    height: 60px;
   }
 }
