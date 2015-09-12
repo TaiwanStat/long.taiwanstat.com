@@ -67,7 +67,7 @@ twstat chart-item.js -w
 
 #### Setup new project
 
-要開始一個新專案首先要先創立一個新的 `index.hbs` 在你剛創立的那個 folder 下面，那個 `hbs`，裡面有很重要的四個區域 `{{> header}}`, `{{> start}}`, `{{> end}}`, `{{> footer}}` 這四個區域分別會 include 一些 script。
+要開始一個新專案首先要先創立一個新的 `index.hbs` 在你剛創立的那個 folder 下面，那個 `hbs`，裡面有很重要的五個區域 `{{>head}}, {{> header}}`, `{{> start}}`, `{{> end}}`, `{{> footer}}` 這五個區域分別會 include 一些 script。
 
 下面是一個 example 的 `index.hbs` ，後面分別會講述各部分 include 什麼東西。
 
@@ -76,10 +76,11 @@ twstat chart-item.js -w
 ```html
 <!DOCTYPE html>
 <head>
-  {{> header}}
+  {{> head}}
     <!-- my js & css -->
 </head>
 <body>
+  {{>header}}
   {{> start}}
     <!-- my charts -->
   {{> end}}
@@ -87,10 +88,8 @@ twstat chart-item.js -w
   {{> footer}}
 </body>
 ```
-
-### `{{> header}}`
-
-header 區塊會 include 下面這些東西, `semantic`, `d3.js`, `jquery`, `meta`, `title`..., 所以請不要在其他地方重新宣告。
+### `{{>head}}`
+head 區塊會 include 下面這些東西, `semantic`, `d3.js`, `jquery`, `meta`, `title`..., 所以請不要在其他地方重新宣告。
 
 ```html
 <meta charset="utf-8">
@@ -113,22 +112,31 @@ header 區塊會 include 下面這些東西, `semantic`, `d3.js`, `jquery`, `met
 <script src="/bower_components/semantic/dist/semantic.min.js"></script>
 ```
 
-### `{{> start}}`
+### `{{> header}}`
+
+header 區塊
 
 我們的 header & footer 用 google 所開發的 material-design 所以他會引入一些 material-design 的一些 structure code ，[看 material-design doc](https://www.google.com/design/spec/material-design/introduction.html)
 
-header 引入了 mdl 的 header & main 然後也把這個圖表的 title & fb likes 都呈現出來，所以後面只要專心畫圖就好了，不用再寫 fb likes 的 code
-
-header:
+header 引入了 mdl 的 header & main
 
 ```html
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header">
-    <main class="mdl-layout__content" id="main-content">
-        <h2 id="title">{{chart_description.title}}</h2>
-        <div class="fb-plugin">
-            <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false"></div>
-            <div class="fb-like" data-href="http://long.taiwanstat.com/{{chart_description.url}}" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-        </div>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header">'
+<main class="mdl-layout__content" id="main-content">'
+```
+
+### `{{> start}}`
+
+start 把這個圖表的 title & fb likes 都呈現出來，所以後面只要專心畫圖就好了，不用再寫 fb likes 的 code
+
+```html
+
+    <h2 id="title">{{chart_description.title}}</h2>
+      <div class="fb-plugin">
+        <div class="fb-like-box" data-href="https://www.facebook.com/taiwanstat?fref=ts" data-colorscheme="light" data-show-faces="false"></div>
+        <div class="fb-like" data-href="http://long.taiwanstat.com/{{chart_description.url}}" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+    </div>
+    
 ```
 
 ### `{{> end}}`
