@@ -1,6 +1,6 @@
 <html>
   <head>
-    {{> header}}
+    {{> head}}
 
     <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" type="text/css">
     <!-- my css -->
@@ -8,6 +8,7 @@
     <script type="text/javascript" src="./js/zhutil.min.js"></script>
   </head>
   <body ng-app="myApp" ng-controller="mainController as mainCtrl">
+  {{> header}}
     {{> start}}
       <br/>
       <div id = "data_source">數據出處:

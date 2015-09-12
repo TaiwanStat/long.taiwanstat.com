@@ -1,5 +1,4 @@
-"use strict";
-(function(window, document, undefined) {
+(function(window, document, $) {
 
   var links = '';
   links += '<a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>';
@@ -10,7 +9,7 @@
   links += '<a class="mdl-navigation__link" href="https://www.facebook.com/taiwanstat">Facebook 粉專</a>';
 
 
-	var str = '<header class="mdl-layout__header">';
+  var str = '<header class="mdl-layout__header">';
   str += '<div class="mdl-layout__header-row">';
   str += '<span class="mdl-layout-title"><a href="http://real.taiwanstat.com/" style="color: #FFF"><img src="/images/assert/round-logo.png" id="round-logo"/>用數據看台灣</a></span>';
   str += '<div class="mdl-layout-spacer"></div>';
@@ -25,6 +24,6 @@
   str += '</div>';
   str += '</div>';
 
-	$('#layout-header').prepend(str);
+  $('#layout-header').prepend(str);
 
-})(window, document)
+})(window, document, jQuery);
