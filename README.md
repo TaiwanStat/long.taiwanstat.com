@@ -32,13 +32,13 @@ A cli tool for taiwanstat.
 Build the project once:
 
 ```
-twstat chart-item.js
+twstat chart_item.js
 ```
 
 Keep watching the project rebuild when it modified:
 
 ```
-twstat chart-item.js -w
+twstat chart_item.js -w
 ```
 
 ## GuideLines
