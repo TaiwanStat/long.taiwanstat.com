@@ -1,5 +1,6 @@
 {
   "data": {
+    "title": "用數據看台灣 - 統計資料",
     "page": [
 
       {
@@ -187,5 +188,6 @@
     ]
   },
   "layout": "./index.hbs",
-  "filename": "index.html"
+  "filename": "index.html",
+  "partials": "./include/partials.js"
 }
