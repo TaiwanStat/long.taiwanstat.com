@@ -21,7 +21,6 @@
         <input type="radio" name="mode" class="mode" value="old_population" > 老年人口 </input>
       </form>
       <div id="chart"> </div>
-      <script src="./aging2.js"> </script>
       <div id="detail_box">
         <ul id="detail_information">
           <li>
@@ -48,6 +47,7 @@
     {{> end}}
     {{> footer}}
 
+      <script src="./aging2.js"> </script>
     <script type="text/javascript">
       pjax("form input", "#chart");
         function pjax(inputs, content) {
