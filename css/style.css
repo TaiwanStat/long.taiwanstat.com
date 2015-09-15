@@ -132,9 +132,9 @@ footer {
 
 main .mdl-card.author {
   clear: both;
-  min-width: 300px;
+  min-width: 330px;
   max-width: 500px;
-  width: 92%;
+  width: 50%;
   margin: auto;
   background: white;
   padding: 20px;
@@ -157,7 +157,7 @@ main .mdl-card.author {
 }
 .author img {
   float: left;
-  height: 100px;
+  height: 80px;
   background: #f0f0f0;
   border: 1px solid #f0f0f0;
   padding: 5px;
