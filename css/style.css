@@ -124,11 +124,12 @@ discussion {
     z-index:-10;
 }
 footer {
-  position:absolute;
-  bottom:0;
+  position: fixed;
+  bottom: 0;
   width: 100%;
   z-index: 999;
 }
+
 
 /* mobile phone */
 @media all and (max-width: 650px) {
@@ -141,6 +142,9 @@ footer {
     display: none
   }
   footer {
-    height: 70px;
+    height: 75px;
+  }
+  footer a {
+    line-height: 1.8em;
   }
 }
