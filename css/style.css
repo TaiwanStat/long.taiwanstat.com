@@ -8,7 +8,7 @@ body, html {
 }
 
 .sites {
-    margin: 10px;
+  margin: 10px;
 }
 
 #round-logo {
@@ -21,14 +21,14 @@ body, html {
 }
 
 .official {
-    float: right;
+  float: right;
 }
 
 .btn-sites {
-    margin: 10px;
+  margin: 10px;
 }
 .btn-sites .button{
-    margin: 10px;
+  margin: 10px;
 }
 
 .fb-plugin {
@@ -36,14 +36,14 @@ body, html {
 }
 
 discussion {
-    float: left;
-    width: 100%;
+  float: left;
+  width: 100%;
 }
 
 #discussion_title{
-    font-size: 38px;
-    margin-left: 20px;
-    margin-top: 10px;
+  font-size: 38px;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 
 .mdl-layout__header {
@@ -51,18 +51,18 @@ discussion {
 }
 
 .fb-comments, .fb-comments iframe[style], .fb-comments span {
-   margin-top:10px;
-   width: 95% !important;
-   margin-left: 10px;
-   padding-right: 5%;
-   margin-bottom: 30px;
+  margin-top:10px;
+  width: 95% !important;
+  margin-left: 10px;
+  padding-right: 5%;
+  margin-bottom: 30px;
 
 }
 
 .layout-transparent .mdl-layout__header,
 .layout-transparent .mdl-layout__drawer-button {
   /* This background is dark, so we set text to white. Use 87% black instead if
-     your background is light. */
+  your background is light. */
   color: #000;
 }
 
@@ -109,19 +109,19 @@ discussion {
   color: #fff;
 }
 #background{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('/images/assert/background.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 40%;
-    background-position: center;
-    opacity: 0.6;
-    filter:alpha(opacity=60);
-    z-index:-10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/assert/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 40%;
+  background-position: center;
+  opacity: 0.6;
+  filter:alpha(opacity=60);
+  z-index:-10;
 }
 footer {
   position: fixed;
@@ -129,10 +129,12 @@ footer {
   width: 100%;
   z-index: 999;
 }
+
 main .mdl-card.author {
   clear: both;
-  width: 50%;
-  min-width: 330px;
+  min-width: 360px;
+  max-width: 500px;
+  width: 30%;
   margin: auto;
   background: white;
   padding: 20px;
@@ -142,6 +144,7 @@ main .mdl-card.author {
   z-index: '';
   height: 220px;
   margin: 20px;
+  display: block;
 }
 .author h4 {
   color: #999999;
@@ -149,24 +152,26 @@ main .mdl-card.author {
   margin: 20px 0;
   padding-bottom: 20px;
   border-bottom: 1px solid #eee;
-  width: 125px;
+  width: 150px;
 
 }
 .author img {
   float: left;
-  width: 120px;
-  height: 550px;
+  height: 100px;
+  background: #f0f0f0;
+  border: 1px solid #f0f0f0;
+  padding: 5px;
 }
 .author-info {
   margin: 20px;
+  margin-left: 40px;
   float: left;
-  width: 80%;
+  width: 150px;
 }
 .author-info h5 {
   font-size: 16px;
   float: left;
 }
-
 
 
 /* mobile phone */
@@ -175,14 +180,14 @@ main .mdl-card.author {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
-  }
-  .footer_msg {
-    display: none
-  }
-  footer {
-    height: 75px;
-  }
-  footer a {
-    line-height: 1.8em;
-  }
+}
+.footer_msg {
+  display: none
+}
+footer {
+  height: 75px;
+}
+footer a {
+  line-height: 1.8em;
+}
 }
