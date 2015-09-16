@@ -13,7 +13,7 @@ body {
 }
 #map {
   position: relative;
-  height: 480px;
+  height: 450px;
   margin-bottom: 20px
 }
 
@@ -106,3 +106,8 @@ body {
   }
 }
 
+@media all and (max-height: 700px) {
+   #map {
+    height: 390px;
+   }
+}
