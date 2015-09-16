@@ -108,6 +108,6 @@ body {
 
 @media all and (max-height: 700px) {
    #map {
-    height: 390px;
+    height: 380px;
    }
 }
