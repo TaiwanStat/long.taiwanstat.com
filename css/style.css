@@ -2,28 +2,22 @@ body, html {
   margin: 0;
   padding: 0;
 }
-
 #main-content {
   padding: 20px;
 }
-
 .sites {
   margin: 10px;
 }
-
 #round-logo {
   margin-right: 20px;
   width: 30px;
 }
-
 #title {
-  margin: 30px;
+  margin: 15px;
 }
-
 .official {
   float: right;
 }
-
 .btn-sites {
   margin: 10px;
 }
@@ -181,21 +175,27 @@ main .mdl-card.author {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
-  }
-  .footer_msg {
-    display: none
-  }
-  footer {
-    height: 75px;
-  }
-  footer a {
-    line-height: 1.8em;
-  }
-  nav.mdl-navigation.mdl-layout--large-screen-only {
-    display: none;
-  }
+}
+.footer_msg {
+  display: none
+}
+footer {
+  height: 75px;
+}
+footer a {
+  line-height: 1.8em;
+}
+nav.mdl-navigation.mdl-layout--large-screen-only {
+  display: none;
+}
 
-  .author img {
-    height: 60px;
-  }
+.author img {
+  height: 60px;
+}
+#title {
+  font-size: 26px;
+}
+li {
+  padding-top: 4px;
+}
 }
