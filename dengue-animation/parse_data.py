@@ -31,7 +31,7 @@ def get_circle_data(input_data):
             if dis < 500:
                 #print (dis, each[2], item[2])
                 count += 1
-        if count > len(input_data)*0.04:
+        if count > len(input_data)*0.03:
             #print (circle)
             tmp = each.copy()
             tmp.append(count)

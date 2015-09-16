@@ -44,7 +44,7 @@
     var key = pivot.toISOString().substring(0, 10).replace(/-/g, '/');
     $('.current').text(key); 
     threeCircleData = format(data[key].three);
-    fivCircleData = format(data[key].five);
+    fiveCircleData = format(data[key].five);
     drawCircle(threeCircleData, defaultCirlceParams);
   });
 
@@ -83,7 +83,6 @@
 
     map.setView(new L.LatLng(23, 120.2), 13);
     osm.addTo(map);
-    map.on('click', onCircleClick);
     info.addTo(map); 
   }
 
@@ -116,12 +115,6 @@
       latlngs[point.Longitude][point.Latitude] = true;
     });
   }
-
-  function onCircleClick(e) {
-    var nearPoints = getNearBy(e.latlng);
-    addPoints(nearPoints);
-  }
-
 
   function onInfoAdd(map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
@@ -169,7 +162,6 @@
 
   function updateVis (input, interval) {
     input.value = parseInt(input.value) + 1;
-    console.log(input.value);
     var pivot = new Date(from);
     pivot.setDate(from.getDate()+parseInt(input.value));
     var key = pivot.toISOString().substring(0, 10).replace(/-/g, '/');
