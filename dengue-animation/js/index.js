@@ -46,6 +46,11 @@
     threeCircleData = format(data[key].three);
     fiveCircleData = format(data[key].five);
     drawCircle(threeCircleData, defaultCirlceParams);
+    d3.json('./drug_data.json', function(data) {
+      drugOrg = data;
+      drugData = format(drugOrg[key]);
+      toggleDrugCircle();
+    });
   });
 
   function format(arr) {
@@ -69,10 +74,6 @@
     }
     return dateArr;
   }
-
-  d3.json('./drug_data.json', function(data) {
-    drugOrg = data;
-  });
 
   function initMap() {
     map = new L.Map('map');
@@ -151,6 +152,7 @@
     showDrug = !showDrug;
     if (!showDrug)  
       return removeCircles(drugCircles);
+    console.log(drugData);
     drawCircle(drugData, {
       color: '#028D9B',
       fillColor: '#028D9B',
