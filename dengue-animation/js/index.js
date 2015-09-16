@@ -39,6 +39,8 @@
     var timeDiff = Math.abs(end.getTime() - from.getTime());
     diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
     $('.range input')[0].max = diffDays;
+
+    var pivot = new Date(end);
     var key = pivot.toISOString().substring(0, 10).replace(/-/g, '/');
     $('.current').text(key); 
     threeCircleData = format(data[key].three);
