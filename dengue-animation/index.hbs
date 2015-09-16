@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+  {{> head}}
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css" />
+
+</head>
+<body>
+  {{> header}}
+  {{> start}}
+  <ul>
+    <li>資料來源：<a href="http://data.tainan.gov.tw/">臺南市政府資料開放平台</a></li>
+    <li>熱區及噴藥日期計算方式：以最新確診病例日期為基礎來計算</i>
+    <li>最後更新日期：2015/9/16</i>
+    <li>最新病例資料：2015/9/14</i>
+    <li>噴藥資料：2015/8/13～2015/9/14</i>
+    <li>
+    相關網站：<a href="http://web.ncku.edu.tw/files/11-1000-17008.php?Lang=zh-tw">成功大學登革熱防疫專區</a> | <a href="http://nidss.cdc.gov.tw/ch/Default.aspx?op=4">傳染病統計資料查詢系統</a></li>
+  </ul>
+  <div class="visual">
+    <div class="ui form">
+      <div class="inline fields">
+        <label>熱區時間計算：</label>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="days" value="3" checked="checked">
+            <label>3天內</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="days" value="5">
+            <label>5天內<span class="browser-note">（建議以Chrome、Firefox顯示）</span></label>
+          </div>
+        </div> 
+      </div>
+    </div>
+    <div class="ui toggle checkbox">
+      <input type="checkbox" name="drug" value="drug">
+      <label>顯示7天內噴藥區域（50公尺）</label>
+    </div>
+      <span class="date">日期：<span class="current"></span></span>
+    <div id="map"> </div>
+    <div class="ui slider range" style="width:100%">
+      <input type="range"
+      min="0" max="240" value="0" tabindex="0"/>
+      <span class="ui icon buttons">
+      <button class="ui button stepback">
+          <i class="step backward icon"></i>
+      </button>
+      <button class="ui button play">
+        <i class="play icon"></i>
+      </button>
+      <button class="ui button pause">
+        <i class="pause icon"></i>
+      </button>
+      </span> 
+    </div>
+
+   </div>
+  {{> end}}
+   <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
+   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.min.js"></script>
+   <script type="text/javascript" src="./js/index.js" charset="UTF-8"> </script>
+    <!-- my js & css -->
+  {{> footer}}
+</body>

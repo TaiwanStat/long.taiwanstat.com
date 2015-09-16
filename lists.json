@@ -2,7 +2,13 @@
   "data": {
     "title": "用數據看台灣 - 統計資料",
     "page": [
-
+       {
+        "title": "2015台南登革熱-熱區變遷地圖",
+        "url": "dengue-animation",
+        "img": "images/dengue-animation.jpg",
+        "description": "根據了即時登革熱資訊，增加了時間維度，看出2015年台南登革熱疫情熱區變遷。",
+        "author": "Chi-Hsuan Huang"
+      },
       {
         "title": "民國 102 年政府基金資料",
         "url": "government_fund",
