@@ -14,7 +14,7 @@
   var dist800 = 'off';
   var showDrug = false;
   var from = new Date('2015/06/01');
-  var end = new Date('2015/09/15');
+  var end = new Date('2015/09/18');
   var pivot;
   var diffDays;
   var latlngs = {};
@@ -34,7 +34,7 @@
 
   initMap();
 
-  d3.json('./data_03.json', function(_data) {
+  d3.json('./data.json', function(_data) {
     data = _data;
     var timeDiff = Math.abs(end.getTime() - from.getTime());
     diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 

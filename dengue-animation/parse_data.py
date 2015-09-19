@@ -8,6 +8,10 @@ from datetime import date
 from geopy.distance import vincenty
 import json
 
+def read_json(file_name):
+    with open(file_name, 'r') as input_file:
+        return json.load(input_file)
+
 def write_csv(file_name, content):
     """write csv"""
     with open(file_name, 'w') as output_file:
@@ -49,9 +53,10 @@ if __name__ == '__main__':
 
     data.pop(1) # remove 103 year
     #now = datetime.now().date()
-    new_data = {}
-    now = datetime.strptime(data[1][1], '%Y/%m/%d').date()
-    end = date(2015, 9, 16)
+    new_data = read_json('./data.json')
+    d = '2015/9/14'
+    now = datetime.strptime(d, '%Y/%m/%d').date()
+    end = date(2015, 9, 15)
     row = data[0]
     row[1] = '日期'
     row[2] = '區別'
