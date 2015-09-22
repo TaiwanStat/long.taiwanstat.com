@@ -14,7 +14,7 @@
   var dist800 = 'off';
   var showDrug = false;
   var from = new Date('2015/06/01');
-  var end = new Date('2015/09/18');
+  var end = new Date('2015/09/21');
   var pivot;
   var diffDays;
   var latlngs = {};
