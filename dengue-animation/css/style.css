@@ -104,6 +104,10 @@ body {
     padding: 10px;
     display: block;
   }
+.leaflet-control-attribution.leaflet-control {
+    display: none;
+  }
+
 }
 
 @media all and (max-height: 700px) {
