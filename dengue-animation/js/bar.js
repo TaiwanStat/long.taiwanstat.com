@@ -2,7 +2,7 @@ var barDivWidth = $("#bar").width();
 
 var margin = {top: 20, right: 20, bottom: 70, left: 40},
     width = barDivWidth - margin.left - margin.right,
-    height = 250;
+    height = 200;
 
 // Parse the date / time
 var parseDate = d3.time.format("%Y/%m/%d").parse;
@@ -25,7 +25,7 @@ var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return "<strong>病例數:</strong> <span style='color:red'>" + d.value + "</span>";
+    return d.date.toISOString().substring(0, 10) + " | <strong>病例數:</strong> <span style='color:red'>" + d.value + "</span>";
   });
 
 var svg = d3.select("#bar").append("svg")
