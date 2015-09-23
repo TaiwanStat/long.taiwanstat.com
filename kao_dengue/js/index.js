@@ -13,8 +13,8 @@
   var info = L.control();
   var dist800 = 'off';
   var showDrug = false;
-  var from = new Date('2015/06/01');
-  var end = new Date('2015/09/21');
+  var from = new Date('2014/06/01');
+  var end = new Date('2015/01/01');
   var pivot;
   var diffDays;
   var latlngs = {};
@@ -46,11 +46,6 @@
     threeCircleData = format(data[key].three);
     fiveCircleData = format(data[key].five);
     drawCircle(threeCircleData, defaultCirlceParams);
-    d3.json('./drug_data.json', function(data) {
-      drugOrg = data;
-      drugData = format(drugOrg[key]);
-      toggleDrugCircle();
-    });
   });
 
   function format(arr) {
@@ -152,6 +147,7 @@
     showDrug = !showDrug;
     if (!showDrug)  
       return removeCircles(drugCircles);
+    console.log(drugData);
     drawCircle(drugData, {
       color: '#028D9B',
       fillColor: '#028D9B',
@@ -182,9 +178,6 @@
     $('.current').text(key); 
     updateCircle(day, dist800);
 
-    $('rect').attr("class", "");
-    $('#bar-'+key.replace(/\//g, '-')).attr("class", "active");
-
     if (showDrug) {
       removeCircles(drugCircles);
       if (drugData) {
@@ -205,8 +198,7 @@
     var interval = setInterval(function(){ 
         // update circle data
         updateVis(input, interval);
-        return;
-      }, 1000); 
+      }, 700); 
   });
 
   $('.pause').click(function() {
