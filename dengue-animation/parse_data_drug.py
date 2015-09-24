@@ -41,7 +41,7 @@ if __name__ == '__main__':
     tmp = '2015年' + data[1][1]
     now = datetime.strptime(tmp, '%Y年%m月%d日').date()
     tmp = '2015年' + data[-1][1]
-    end = datetime.strptime(tmp, '%Y年%m月%d日').date()
+    end = datetime.strptime(tmp, '%Y年%m月%d日').date() + timedelta(days=1)
 
     row = data[0]
     row[0] = '編號'
@@ -53,7 +53,6 @@ if __name__ == '__main__':
     while now < end:
         head = True
         data_tmp = []
-        now += timedelta(days=1)
         for row in data:
             if head:
                 head = False
@@ -70,4 +69,6 @@ if __name__ == '__main__':
 
         print (now)
         new_data[now.strftime('%Y/%m/%d')] = data_tmp
+        now += timedelta(days=1)
+
     write_json('drug_data.json', new_data)
