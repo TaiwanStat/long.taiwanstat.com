@@ -91,8 +91,11 @@ d3.json("./bar-data.json", function(error, data) {
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.value); })
       .attr("height", function(d) { return height - y(d.value); })
-      .attr('id', function(d) {return 'bar-'+d.date.toISOString()
-        .substring(0, 10).replace(/-/g, '-'); })
+      .attr('id', function(d) {
+        var _d = new Date(d.date.getTime()+86400000);
+        var id = 'bar-'+_d.toISOString().substring(0, 10).replace(/-/g, '-');
+        return id;
+      })
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide);
 

@@ -185,7 +185,6 @@
 
     $('rect').attr("class", "");
     $('#bar-'+key.replace(/\//g, '-')).attr("class", "active");
-
     if (showDrug) {
       removeCircles(drugCircles);
       if (drugData) {
