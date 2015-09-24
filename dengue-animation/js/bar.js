@@ -119,7 +119,7 @@ d3.json("./bar-data.json", function(error, data) {
       .attr("d", line);
   
   svg.append("text")
-    .attr("transform", "translate(" + (width-100) + "," + 0 + ")")
+    .attr("transform", "translate(" + (width-100) + "," + -10 + ")")
     .attr("dy", ".35em")
     .attr("text-anchor", "start")
     .style("fill", "red")
