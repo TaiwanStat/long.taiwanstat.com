@@ -16,6 +16,14 @@ var xAxis = d3.svg.axis()
     .orient("bottom")
     .tickFormat(d3.time.format("%m/%d"));
 
+var x2 = d3.scale.linear()
+      .domain([0, 1])
+      .range([0, width]);
+
+var y2 = d3.scale.linear()
+      .domain([0, 100])
+      .rangeRound([height, 0]);
+
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
@@ -79,4 +87,42 @@ d3.json("./bar-data.json", function(error, data) {
         .substring(0, 10).replace(/-/g, '-'); })
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide);
+
+  movingAvg = function(n) {
+    return function (points) {
+        points = points.map(function(each, index, array) {
+            var to = index + n - 1;
+            var subSeq, sum;
+            if (to < points.length) {
+                subSeq = array.slice(index, to + 1);
+                sum = subSeq.reduce(function(a,b) { 
+                    return {value: a.value + b.value}; 
+                });
+                return {value: sum.value/n, date: subSeq[subSeq.length-1].date};
+            }
+            return undefined;
+        });
+        points = points.filter(function(each) { return typeof each !== 'undefined';});
+        return points;
+    };
+  };
+  var movingAverageLine = movingAvg(5);
+  var lineData = movingAverageLine(data);
+  var line = d3.svg.line()
+    .interpolate("basis")
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.value); });
+
+  svg.append("path")
+      .datum(lineData)
+      .attr("class", "line")
+      .attr("d", line);
+  
+  svg.append("text")
+    .attr("transform", "translate(" + (width-100) + "," + 0 + ")")
+    .attr("dy", ".35em")
+    .attr("text-anchor", "start")
+    .style("fill", "red")
+    .text("5日移動平均線");
+
 });
