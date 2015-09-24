@@ -55,10 +55,12 @@ if __name__ == '__main__':
             d = datetime.strptime(current_date, '%Y/%m/%d').date().strftime('%Y/%m/%d')
             w = weather[d]
             new_data.append({'date': current_date, 'value': count, \
-                    '氣溫': w['氣溫'], '相對濕度': w['相對溼度'], '降水量': w['降水量']})
+                    '氣溫': w['氣溫'], '相對溼度': w['相對溼度'], '降水量': w['降水量']})
             count = 1
             current_date = event_date
     
+    d = datetime.strptime(current_date, '%Y/%m/%d').date().strftime('%Y/%m/%d')
+    w = weather[d]
     new_data.append({'date': current_date, 'value': count, \
-        '氣溫': w['氣溫'], '相對濕度': w['相對溼度'], '降水量': w['降水量']})
+        '氣溫': w['氣溫'], '相對溼度': w['相對溼度'], '降水量': w['降水量']})
     write_json('./bar-data.json', new_data)

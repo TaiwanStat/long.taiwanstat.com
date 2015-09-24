@@ -78,4 +78,5 @@ if __name__=='__main__':
 
         data[now.strftime('%Y/%m/%d')] = {'氣溫': temp_t, '相對溼度': rh_t, '降水量': precp_t}
         now += timedelta(days=1)
+        print (now)
     write_json('weather.json', data)
