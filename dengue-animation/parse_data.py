@@ -55,7 +55,7 @@ if __name__ == '__main__':
         data.append(item)
 
     new_data = read_json('./data.json')
-    d = '2015/9/21'
+    d = sys.argv[1]
     now = datetime.strptime(d, '%Y/%m/%d').date()
     end = datetime.strptime(data[-1][1], '%Y/%m/%d').date() + timedelta(days=1)
     row = data[0]

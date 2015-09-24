@@ -26,28 +26,20 @@ def write_json(file_name, content):
 
 
 if __name__ == '__main__':
-    r = requests.get('http://data.tainan.gov.tw/dataset/558392bb-96cc-4924-a6b0-1e4d223c0a57/resource/5f154e10-a504-4ce4-9455-28ad7cd0c9ed/download/2015denguefeverendenmiccases.csv') 
-
-    r = requests.get('http://data.tainan.gov.tw/dataset/d3fa6e37-4696-45a4-ab91-8010c77d6724/resource/34f191b3-276c-4232-b413-f5a3a89be4d6/download/092250912731.csv')
-
+    r = requests.get('http://denguefever.csie.ncku.edu.tw/file/dengue_all.csv')
     r.encoding = 'utf-8'
     raw = r.text
     data = []
     for item in csv.reader(raw.splitlines()):
         data.append(item)
 
-    data = data[6:]
-    d = data[0][1]
-    head = True
-    current_date = d
+    weather = read_json('./weather.json')
+    data = data[5:]
+    data = sorted(data, key = lambda x: datetime.strptime(x[1], '%Y/%m/%d').date())
+    current_date = data[0][1]
     count = 0
     new_data = []
-    data = sorted(data, key = lambda x: datetime.strptime(x[1], '%Y/%m/%d').date())
-    weather = read_json('./weather.json')
     for row in data:
-        if head:
-            head = False
-            continue
         event_date = row[1]
         if current_date == event_date:
             count += 1
