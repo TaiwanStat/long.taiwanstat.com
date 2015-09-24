@@ -129,6 +129,9 @@ body {
   border-radius: 2px;
   z-index: 999;
 }
+.d3-tip span{
+  padding: 3px;
+}
 
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
