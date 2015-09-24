@@ -33,7 +33,7 @@ var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return d.date.toISOString().substring(0, 10) + '<br/>' +
+    return d.date.toLocaleDateString() + '<br/>' +
     '<strong>病例數:</strong> <span style="color:red">' + d.value + '</span>' +
     '<strong>氣溫:</strong> <span style="color:red">' + d.氣溫 + '</span>'+
     '<strong>降水量:</strong> <span style="color:red">' + d.降水量 + '</span>';

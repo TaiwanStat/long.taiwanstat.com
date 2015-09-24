@@ -40,7 +40,8 @@ if __name__ == '__main__':
     data = get_data(raw0) + tmp_raw
     tmp = '2015年' + data[1][1]
     now = datetime.strptime(tmp, '%Y年%m月%d日').date()
-    end = date(2015, 9, 16)
+    tmp = '2015年' + data[-1][1]
+    end = datetime.strptime(tmp, '%Y年%m月%d日').date()
 
     row = data[0]
     row[0] = '編號'

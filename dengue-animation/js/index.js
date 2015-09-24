@@ -14,7 +14,7 @@
   var dist800 = 'off';
   var showDrug = false;
   var from = new Date('2015/06/01');
-  var end = new Date('2015/09/21');
+  var end = new Date('2015/09/23');
   var pivot;
   var diffDays;
   var latlngs = {};
@@ -43,6 +43,7 @@
     var pivot = new Date(end);
     var key = pivot.toISOString().substring(0, 10).replace(/-/g, '/');
     $('.current').text(key); 
+
     threeCircleData = format(data[key].three);
     fiveCircleData = format(data[key].five);
     drawCircle(threeCircleData, defaultCirlceParams);

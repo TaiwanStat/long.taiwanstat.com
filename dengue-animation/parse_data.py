@@ -51,12 +51,10 @@ if __name__ == '__main__':
     for item in csv.reader(raw.splitlines()):
         data.append(item)
 
-    data.pop(1) # remove 103 year
-    #now = datetime.now().date()
     new_data = read_json('./data.json')
-    d = '2015/9/14'
+    d = '2015/9/21'
     now = datetime.strptime(d, '%Y/%m/%d').date()
-    end = date(2015, 9, 15)
+    end = datetime.strptime(data[-1][1], '%Y/%m/%d').date()
     row = data[0]
     row[1] = '日期'
     row[2] = '區別'
@@ -66,21 +64,12 @@ if __name__ == '__main__':
     header.append('count')
     while now < end:
         head = True
-        now += timedelta(days=1)
         in_three_days = []
         in_five_days = []
         for row in data:
             if head:
                 head = False
                 continue
-            # date convert 104 convert 105
-            if '.' in row[1]:
-                y, m, d = row[1].split('.')
-                y = '2015'
-                m = str(int(m))
-                d = str(int(d))
-                row[1] = '/'.join([y, m, d])
-                row[4] += '里'
             
             event_date = datetime.strptime(row[1], '%Y/%m/%d').date()
             if event_date > now:
@@ -95,10 +84,12 @@ if __name__ == '__main__':
         new_data[now.strftime('%Y/%m/%d')] = {}
         three_cirlce = get_circle_data(in_three_days)
         five_cirlce = get_circle_data(in_five_days)
-        print (now)
+
         three_cirlce = [header] + three_cirlce
         five_cirlce = [header] + five_cirlce
         new_data[now.strftime('%Y/%m/%d')]['three'] = three_cirlce
         new_data[now.strftime('%Y/%m/%d')]['five'] = five_cirlce
+        print (now)
+        now += timedelta(days=1)
 
     write_json('data.json', new_data)
