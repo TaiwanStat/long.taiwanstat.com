@@ -107,24 +107,33 @@
           return points;
       };
     };
-    var movingAverageLine = movingAvg(5);
-    var lineData = movingAverageLine(data);
-    var line = d3.svg.line()
-      .interpolate("basis")
-      .x(function(d) { return x(d.date); })
-      .y(function(d) { return y(d.value); });
 
-    svg.append("path")
-        .datum(lineData)
-        .attr("class", "line")
-        .attr("d", line);
-    
-    svg.append("text")
-      .attr("transform", "translate(" + (width-100) + "," + -10 + ")")
-      .attr("dy", ".35em")
-      .attr("text-anchor", "start")
-      .style("fill", "red")
-      .text("5日移動平均線");
+    addMovingLine(5, '五日移動平均線', '#E10707', -10, width-100);
+    addMovingLine(10, '十日移動平均線', '#15B321', -10, width-220);
+
+    function addMovingLine(days, title, color, y_pos, x_pos) {
+
+      var movingAverageLine = movingAvg(days);
+      var lineData = movingAverageLine(data);
+
+      var line = d3.svg.line()
+        .interpolate("basis")
+        .x(function(d) { return x(d.date); })
+        .y(function(d) { return y(d.value); });
+
+      svg.append("path")
+          .datum(lineData)
+          .attr("class", "line")
+          .attr("stroke", color)
+          .attr("d", line);
+      
+      svg.append("text")
+        .attr("transform", "translate(" + x_pos + "," + y_pos + ")")
+        .attr("dy", ".35em")
+        .attr("text-anchor", "start")
+        .style("fill", color)
+        .text(title);
+    }
   });
 
 })();

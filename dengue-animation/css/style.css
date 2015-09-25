@@ -168,6 +168,5 @@ rect.active {
 }
 .line {
   fill: none;
-  stroke: #E10707;
   stroke-width: 1.5px;
 }
