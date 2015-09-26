@@ -62,7 +62,7 @@
     topoLayer = L.geoJson(geojson, {
         style: style,
         onEachFeature: onEachFeature
-    }).addTo(map);
+    }).addTo(map).setZIndex(99);
   });
 
   function style(feature) {
@@ -152,7 +152,8 @@
       }
      
       var circle = L.circle([point.Latitude, point.Longitude], argvs.size,
-        {fillColor: argvs.fillColor, color: argvs.color, opacity: argvs.opacity})
+        {fillColor: argvs.fillColor, color: argvs.color, opacity: argvs.opacity,
+          clickable: false})
         .addTo(map);
 
       if (argvs.showBig) {
