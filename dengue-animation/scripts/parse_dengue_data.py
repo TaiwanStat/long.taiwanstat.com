@@ -24,7 +24,7 @@ def getDaysWithin(data):
                 days3.append(item)
                 if delta.days < 1:
                     days1.append(item)
-    return days5, days3, days1
+    return days1, days3, days5
 
 if __name__ == '__main__':
     url = 'http://denguefever.csie.ncku.edu.tw/file/dengue_all.csv'
