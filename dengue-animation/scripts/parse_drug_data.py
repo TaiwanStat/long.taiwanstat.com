@@ -38,7 +38,7 @@ if __name__ == '__main__':
             row[-1], row[-2] = float(row[-1]), float(row[-2])
             if delta.days < 7:
                 data_tmp.append(row)
-        data_tmp.append(header)
+        data_tmp.insert(0, header)
         output_data[now.strftime('%Y/%m/%d')] = data_tmp
         now += timedelta(days=1)
 

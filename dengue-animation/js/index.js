@@ -180,8 +180,7 @@
     pivot.setDate(from.getDate()+parseInt(input.value));
     var key = pivot.toISOString().substring(0, 10).replace(/-/g, '/');
     //var key = getDate(dateArr).join('/');
-    if (parseInt(input.value) > diffDays || !(key in data) || 
-      stopIntervalIsTrue) {
+    if (parseInt(input.value) > diffDays || !(key in data) || stopIntervalIsTrue) {
       clearInterval(interval);
     }
     threeCircleData = format(data[key].three);
