@@ -39,7 +39,6 @@
 
     xDomain =d3.extent(data, function(d) { return d.date; } );
     x = d3.time.scale().domain(xDomain).range([0, width]);
-    console.log(xDomain);
     y = d3.scale.linear().range([height, 0]);
 
     xAxis = d3.svg.axis()

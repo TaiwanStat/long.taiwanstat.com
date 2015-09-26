@@ -43,31 +43,33 @@
       var pivot = new Date(end);
       var key = pivot.toISOString().substring(0, 10).replace(/-/g, '/');
       $('.current').text(key); 
-      console.log(data[key]);
       threeCircleData = format(data[key].three);
       fiveCircleData = format(data[key].five);
       drawCircle(threeCircleData, defaultCirlceParams);
-
-      d3.json(drugUrl, function(data) {
-        drugOrg = data;
-        drugData = format(drugOrg[key]);
-        toggleDrugCircle();
-      });
+  
+      if (drugUrl)
+        d3.json(drugUrl, function(data) {
+          drugOrg = data;
+          drugData = format(drugOrg[key]);
+          toggleDrugCircle();
+        });
     });
 
     if (topoUrl)
-    d3.json(topoUrl, function(topoData) {
-      for (var key in topoData.objects) {
-        geojson = topojson.feature(topoData, topoData.objects[key]);
-      }
-      topoLayer = L.geoJson(geojson, {
-        style: style,
-        onEachFeature: onEachFeature
-      }).addTo(map);
-    });
+      d3.json(topoUrl, function(topoData) {
+        for (var key in topoData.objects) {
+          geojson = topojson.feature(topoData, topoData.objects[key]);
+        }
+        topoLayer = L.geoJson(geojson, {
+          style: style,
+          onEachFeature: onEachFeature
+        }).addTo(map);
+      });
+    
+    if (barUrl)
+      d3.json(barUrl, function(error, data) { window.drawChart(data, showDefaultTip, true); });
 
-    d3.json(villageUrl, function(data) { villageData = data; });
-    d3.json(barUrl, function(error, data) { window.drawChart(data, showDefaultTip, true); });
+    if (villageUrl) d3.json(villageUrl, function(data) { villageData = data; });
   }
 
   function format(arr) {
@@ -305,7 +307,6 @@
 
   function layerOnClick(e) {
     var valliage = e.target.feature.properties.VILLAGENAM;
-    console.log(valliage);
     var svg = $('#bar svg');
     if (svg.length > 0) {
       svg[0].remove();
@@ -318,7 +319,5 @@
       return info;
     }, true);
   }
-
-
 
 })(window);
