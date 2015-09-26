@@ -9,34 +9,16 @@
       width = barDivWidth - margin.left - margin.right,
       height = 200;
 
-  var x = d3.scale.ordinal().rangeRoundBands([0, width], 0.05),
-      y = d3.scale.linear().range([height, 0]),
-      xAxis = d3.svg.axis()
-        .scale(x)
-        .orient("bottom")
-        .tickFormat(d3.time.format("%m/%d")),
-      yAxis = d3.svg.axis()
-      .scale(y)
-      .orient("left")
-      .ticks(10);
+  var x,
+      y,
+      xAxis,
+      yAxis,
+      xDomain;
 
   var tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([-10, 0]);
   
-
-  d3.json("./bar-data.json", function(error, data) {
-    drawChart(data, showTip, true);
-  });
-  
-  function showTip(d) {
-      return d.date.toLocaleDateString() + 
-      '  <strong>病例數：</strong> <span style="color:red">' + d.value + '</span><br/>' +
-      '<strong>氣溫：</strong> <span style="color:red">' + d.氣溫 + '</span> '+
-      '<strong>降水量：</strong> <span style="color:red">' + d.降水量 + '</span> ' +
-      '<strong>相對溼度：</strong> <span style="color:red">' + d.相對溼度 + '</span>';
-  }
-
   function drawChart(data, tipInfo, showLine) {
     tip.html(tipInfo);
 
@@ -49,12 +31,31 @@
       .call(tip);
     
     data.forEach(function(d) {
-      if (typeof d.date === 'string') 
+      if (typeof d.date === 'string')  {
         d.date = parseDate(d.date);
+      }
       d.value = +d.value;
     });
-    x.domain(data.map(function(d) { return d.date; }));
+
+    xDomain =d3.extent(data, function(d) { return d.date; } );
+    x = d3.time.scale().domain(xDomain).range([0, width]);
+    console.log(xDomain);
+    y = d3.scale.linear().range([height, 0]);
+
+    xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom")
+      .ticks(30)
+      .tickFormat(d3.time.format("%m/%d"));
+
+    yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10);
+
+    //x.domain(data.map(function(d) { return d.date; }));
     y.domain([0, d3.max(data, function(d) { return d.value; })]);
+
     addAxis();
     addBar(data);
     if (showLine) {
@@ -87,6 +88,9 @@
   }
 
   function addBar(data) {
+    barWidth = width / getDiffDays(xDomain[0], xDomain[1]);
+    if (barWidth < 0) barWidth = 1;
+
     svg.selectAll("bar")
       .data(data)
     .enter().append("rect")
@@ -97,7 +101,7 @@
         return "steelblue";
       })
       .attr("x", function(d) { return x(d.date); })
-      .attr("width", x.rangeBand())
+      .attr("width", barWidth)
       .attr("y", function(d) { return y(d.value); })
       .attr("height", function(d) { return height - y(d.value); })
       .attr('id', function(d) {
@@ -135,13 +139,17 @@
     return function (points) {
       points = points.map(function(each, index, array) {
         var to = index + n - 1;
-        var subSeq, sum;
+        var subSeq, sum, indexDay;
         if (to < points.length) {
             subSeq = array.slice(index, to + 1);
+            indexDay = subSeq[subSeq.length-1];
             sum = subSeq.reduce(function(a,b) { 
-                return {value: a.value + b.value}; 
+                if (getDiffDays(a.date, b.date) < n) {
+                  return {value: a.value + b.value, date: indexDay.date }; 
+                }
+                return {value: a.value, date: indexDay.date};
             });
-            return {value: sum.value/n, date: subSeq[subSeq.length-1].date};
+            return {value: sum.value/n, date: indexDay.date};
         }
         return undefined;
       });
@@ -150,6 +158,10 @@
     };
   }
 
-   
+  function getDiffDays(d1, d2) {
+    var timeDiff = Math.abs(d1.getTime() - d2.getTime());
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+    return diffDays;
+  }
 
 })(window);

@@ -30,94 +30,44 @@
 
   info.onAdd = onInfoAdd;
   info.update = onInfoUpdate;
+  window.initData = initData;
   initMap();
 
-  d3.json('./data.json', function(_data) {
-    data = _data;
-    var timeDiff = Math.abs(end.getTime() - from.getTime());
-    diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-    $('.range input')[0].max = diffDays;
+  function initData(dengueUrl, drugUrl, barUrl, villageUrl, topoUrl) {
 
-    var pivot = new Date(end);
-    var key = pivot.toISOString().substring(0, 10).replace(/-/g, '/');
-    $('.current').text(key); 
+    d3.json(dengueUrl, function(d) {
+      data = d;
+      var timeDiff = Math.abs(end.getTime() - from.getTime());
+      diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+      $('.range input')[0].max = diffDays;
+      var pivot = new Date(end);
+      var key = pivot.toISOString().substring(0, 10).replace(/-/g, '/');
+      $('.current').text(key); 
+      console.log(data[key]);
+      threeCircleData = format(data[key].three);
+      fiveCircleData = format(data[key].five);
+      drawCircle(threeCircleData, defaultCirlceParams);
 
-    threeCircleData = format(data[key].three);
-    fiveCircleData = format(data[key].five);
-    drawCircle(threeCircleData, defaultCirlceParams);
-    d3.json('./drug_data.json', function(data) {
-      drugOrg = data;
-      drugData = format(drugOrg[key]);
-      toggleDrugCircle();
+      d3.json(drugUrl, function(data) {
+        drugOrg = data;
+        drugData = format(drugOrg[key]);
+        toggleDrugCircle();
+      });
     });
-  });
 
-  d3.json('./tainan.topo.json', function(topoData) {
-    for (var key in topoData.objects) {
+    if (topoUrl)
+    d3.json(topoUrl, function(topoData) {
+      for (var key in topoData.objects) {
         geojson = topojson.feature(topoData, topoData.objects[key]);
       }
-    topoLayer = L.geoJson(geojson, {
+      topoLayer = L.geoJson(geojson, {
         style: style,
         onEachFeature: onEachFeature
-    }).addTo(map).setZIndex(99);
-    d3.json('./village-bar-data.json', function(data) {
-      villageData = data;
-    });
-  });
-
-  function style(feature) {
-    return {
-      fillColor: '#D5D5D5',
-      weight: 1,
-      opacity: 0.3,
-      color: '#666',
-      dashArray: '',
-      fillOpacity: 0.1
-    };
-  }
-
-  function onEachFeature(feature, layer) {
-    layer.on({
-      mouseover: highlightFeature,
-      mouseout: resetHighlight,
-      click: layerOnClick
-    });
-    layer.bindPopup(feature.properties.TOWNNAME +
-        ' ' + feature.properties.VILLAGENAM);
-  }
-
-  function resetHighlight(e) {
-    topoLayer.resetStyle(e.target);
-  }
-
-  function highlightFeature(e) {
-    var layer = e.target;
-    layer.setStyle({
-      weight: 2,
-      color: '#666',
-      dashArray: '',
-      fillOpacity: 0.6
+      }).addTo(map);
     });
 
-    if (!L.Browser.ie && !L.Browser.opera) {
-      layer.bringToFront();
-    }
-  }
-
-  function layerOnClick(e) {
-    var valliage = e.target.feature.properties.VILLAGENAM;
-    console.log(valliage);
-    var svg = $('#bar svg');
-    if (svg.length > 0) {
-      svg[0].remove();
-    }
-    window.drawChart(villageData[valliage], function(d) {
-      var info = d.date.toLocaleDateString() + 
-       '  <strong>病例數：</strong> <span style="color:red">' + d.value + '</span>';
-      if (d.降水量 > 0)
-        info += '<br/>降水：<span style="color:red">' + d.rain_day + '</span>天內';
-      return info;
-    }, true);
+    d3.json(villageUrl, function(data) { villageData = data; });
+    d3.json(barUrl, function(error, data) { window.drawChart(data, showDefaultTip, true); });
   }
 
   function format(arr) {
@@ -132,7 +82,7 @@
     return data;
   }
 
-  function getDate (dateArr) {
+  function getDate(dateArr) {
     if (dateArr[1] < 10) {
       dateArr[1] = '0' + dateArr[1];
     }
@@ -149,7 +99,7 @@
     var attrib = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>';
     var osm = new L.TileLayer(url, {minZoom: 12,  maxZoom: 19, attribution: attrib});   
 
-    map.setView(new L.LatLng(23, 120.2), 13);
+    map.setView(new L.LatLng(22.99, 120.2), 13);
     osm.addTo(map);
     info.addTo(map); 
   }
@@ -180,15 +130,16 @@
 
   function onInfoAdd(map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-    this._div.innerHTML = '<h4><span>橘紅色</span>區塊表示：這個範圍3天內的登革熱病例數超過整體的百分之三</h4><span>（半徑500公尺）</span>';
+    this._div.innerHTML = '<h4><span>橘紅色</span>區塊表示：' +
+      '這個範圍3天內的登革熱病例數超過整體的百分之三</h4><span>（半徑500公尺）</span>';
     return this._div;
   }
+
   function onInfoUpdate() {
      this._div.innerHTML = '<h4><span>橘紅色</span>區塊表示：這個範圍' + day  +
        '天內的登革熱病例數超過整體的百分之三</h4><span>（半徑500公尺）</span>';
     return this._div;
   }
-
 
   function updateCircle(d) {
     day = d;
@@ -281,7 +232,6 @@
     updateVis(this); 
   });
 
-  
   $('.checkbox')
     .checkbox({
       onChange: function() {
@@ -303,6 +253,72 @@
           } 
         });
       }
+  });
+
+  function showDefaultTip(d) {
+    return d.date.toLocaleDateString() + 
+      '  <strong>病例數：</strong> <span style="color:red">' + d.value + '</span><br/>' +
+      '<strong>氣溫：</strong> <span style="color:red">' + d.氣溫 + '</span> '+
+      '<strong>降水量：</strong> <span style="color:red">' + d.降水量 + '</span> ' +
+      '<strong>相對溼度：</strong> <span style="color:red">' + d.相對溼度 + '</span>';
+  }
+
+  function style(feature) {
+    return {
+      fillColor: '#D5D5D5',
+      weight: 1,
+      opacity: 0.3,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.1
+    };
+  }
+
+  function onEachFeature(feature, layer) {
+    layer.on({
+      mouseover: highlightFeature,
+      mouseout: resetHighlight,
+      click: layerOnClick
     });
+    layer.bindPopup(feature.properties.TOWNNAME +
+        ' ' + feature.properties.VILLAGENAM);
+  }
+
+  function resetHighlight(e) {
+    topoLayer.resetStyle(e.target);
+  }
+
+  function highlightFeature(e) {
+    var layer = e.target;
+    layer.setStyle({
+      weight: 2,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.6
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera) {
+      layer.bringToFront();
+    }
+  }
+
+
+  function layerOnClick(e) {
+    var valliage = e.target.feature.properties.VILLAGENAM;
+    console.log(valliage);
+    var svg = $('#bar svg');
+    if (svg.length > 0) {
+      svg[0].remove();
+    }
+    window.drawChart(villageData[valliage], function(d) {
+      var info = d.date.toLocaleDateString() + 
+       '  <strong>病例數：</strong> <span style="color:red">' + d.value + '</span>';
+      if (d.降水量 > 0)
+        info += '<br/>降水：<span style="color:red">' + d.rain_day + '</span>天內';
+      return info;
+    }, true);
+  }
+
+
 
 })(window);
