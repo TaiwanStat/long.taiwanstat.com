@@ -1,38 +1,35 @@
-(function() {
+(function(window) {
 
-  var map;
-  var data;
-  var threeCircleData;
-  var fiveCircleData;
-  var drugOrg;
-  var drugData;
-  var circles = [];
-  var drugCircles = [];
-  var markers = [];
-  var day = 3;
-  var info = L.control();
-  var dist800 = 'off';
-  var showDrug = false;
-  var from = new Date('2015/06/01');
-  var end = new Date('2015/09/24');
-  var pivot;
-  var diffDays;
-  var latlngs = {};
-  var topoLayer;
-  var stopIntervalIsTrue = false;
-  var defaultCirlceParams = {
-    size: 500,
-    color: '#e851c',
-    fillColor: '#E24A31',
-    showBig: true,
-    opacity: 0.1
-  };
-
+  var map,
+      data,
+      villageData,
+      threeCircleData,
+      fiveCircleData,
+      drugOrg,
+      drugData,
+      circles = [],
+      drugCircles = [],
+      markers = [],
+      day = 3,
+      info = L.control(),
+      showDrug = false,
+      from = new Date('2015/06/01'),
+      end = new Date('2015/09/24'),
+      pivot,
+      diffDays,
+      latlngs = {},
+      topoLayer,
+      stopIntervalIsTrue = false,
+      defaultCirlceParams = {
+        size: 500,
+        color: '#e851c',
+        fillColor: '#E24A31',
+        showBig: true,
+        opacity: 0.1
+      };
 
   info.onAdd = onInfoAdd;
   info.update = onInfoUpdate;
-
-
   initMap();
 
   d3.json('./data.json', function(_data) {
@@ -63,6 +60,9 @@
         style: style,
         onEachFeature: onEachFeature
     }).addTo(map).setZIndex(99);
+    d3.json('./village-bar-data.json', function(data) {
+      villageData = data;
+    });
   });
 
   function style(feature) {
@@ -79,7 +79,8 @@
   function onEachFeature(feature, layer) {
     layer.on({
       mouseover: highlightFeature,
-      mouseout: resetHighlight
+      mouseout: resetHighlight,
+      click: layerOnClick
     });
     layer.bindPopup(feature.properties.TOWNNAME +
         ' ' + feature.properties.VILLAGENAM);
@@ -101,6 +102,22 @@
     if (!L.Browser.ie && !L.Browser.opera) {
       layer.bringToFront();
     }
+  }
+
+  function layerOnClick(e) {
+    var valliage = e.target.feature.properties.VILLAGENAM;
+    console.log(valliage);
+    var svg = $('#bar svg');
+    if (svg.length > 0) {
+      svg[0].remove();
+    }
+    window.drawChart(villageData[valliage], function(d) {
+      var info = d.date.toLocaleDateString() + 
+       '  <strong>病例數：</strong> <span style="color:red">' + d.value + '</span>';
+      if (d.降水量 > 0)
+        info += '<br/>降水：<span style="color:red">' + d.rain_day + '</span>天內';
+      return info;
+    }, true);
   }
 
   function format(arr) {
@@ -144,13 +161,6 @@
         return;
       }
 
-      if (argvs.showBig && dist800 == 'on') {
-        var bigCircle = L.circle([point.Latitude, point.Longitude], 800, 
-          {fillColor: '#DE8552', color: '#CA1F18', opacity: 0.1})
-          .addTo(map);
-        circles.push(bigCircle);
-      }
-     
       var circle = L.circle([point.Latitude, point.Longitude], argvs.size,
         {fillColor: argvs.fillColor, color: argvs.color, opacity: argvs.opacity,
           clickable: false})
@@ -180,9 +190,8 @@
   }
 
 
-  function updateCircle(d, dist) {
+  function updateCircle(d) {
     day = d;
-    dist800 = dist;
     removeCircles(circles);
     if (day == 3) {
       drawCircle(threeCircleData, defaultCirlceParams);
@@ -231,7 +240,7 @@
       drugData = null;
 
     $('.current').text(key); 
-    updateCircle(day, dist800);
+    updateCircle(day);
 
     $('rect').attr("class", "");
     $('#bar-'+key.replace(/\//g, '-')).attr("class", "active");
@@ -286,10 +295,7 @@
 
           if (checkboxs[i].checked) {
             if (value == 5 || value == 3) {
-              updateCircle(value, dist800); 
-            }
-            else {
-              updateCircle(day, value); 
+              updateCircle(value); 
             }
           }
           else if (value == 'on') {
@@ -299,4 +305,4 @@
       }
     });
 
-})();
+})(window);
