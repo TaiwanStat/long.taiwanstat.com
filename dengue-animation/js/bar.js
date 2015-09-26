@@ -44,6 +44,7 @@
           d.date = parseDate(d.date);
           d.value = +d.value;
       });
+      data.push({value: 706, date: parseDate('2015/09/24')});
    
     x.domain(data.map(function(d) { return d.date; }));
     y.domain([0, d3.max(data, function(d) { return d.value; })]);
@@ -122,11 +123,11 @@
         .y(function(d) { return y(d.value); });
 
       svg.append("path")
-          .datum(lineData)
-          .attr("class", "line")
-          .attr("stroke", color)
-          .attr("d", line);
-      
+        .datum(lineData)
+        .attr("class", "line")
+        .attr("stroke", color)
+        .attr("d", line);
+    
       svg.append("text")
         .attr("transform", "translate(" + x_pos + "," + y_pos + ")")
         .attr("dy", ".35em")

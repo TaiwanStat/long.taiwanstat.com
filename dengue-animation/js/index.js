@@ -18,6 +18,7 @@
   var pivot;
   var diffDays;
   var latlngs = {};
+  var topoLayer;
   var stopIntervalIsTrue = false;
   var defaultCirlceParams = {
     size: 500,
@@ -53,6 +54,54 @@
       toggleDrugCircle();
     });
   });
+
+  d3.json('./tainan.topo.json', function(topoData) {
+    for (var key in topoData.objects) {
+        geojson = topojson.feature(topoData, topoData.objects[key]);
+      }
+    topoLayer = L.geoJson(geojson, {
+        style: style,
+        onEachFeature: onEachFeature
+    }).addTo(map);
+  });
+
+  function style(feature) {
+    return {
+      fillColor: '#D5D5D5',
+      weight: 1,
+      opacity: 0.3,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.1
+    };
+  }
+
+  function onEachFeature(feature, layer) {
+    layer.on({
+      mouseover: highlightFeature,
+      mouseout: resetHighlight
+    });
+    layer.bindPopup(feature.properties.TOWNNAME +
+        ' ' + feature.properties.VILLAGENAM);
+  }
+
+  function resetHighlight(e) {
+    topoLayer.resetStyle(e.target);
+  }
+
+  function highlightFeature(e) {
+    var layer = e.target;
+    layer.setStyle({
+      weight: 2,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.6
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera) {
+      layer.bringToFront();
+    }
+  }
 
   function format(arr) {
     var data = [];
