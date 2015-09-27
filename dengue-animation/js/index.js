@@ -14,7 +14,7 @@
       info = L.control(),
       showDrug = false,
       from = new Date('2015/06/01'),
-      end = new Date('2015/09/24'),
+      end = new Date('2015/09/26'),
       pivot,
       diffDays,
       latlngs = {},
