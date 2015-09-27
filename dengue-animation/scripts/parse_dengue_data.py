@@ -46,7 +46,7 @@ if __name__ == '__main__':
         days5 = geo.get_hot_points(days5, len(days5)*0.03, 500)
         days5.insert(0, header)
         output_data[now.strftime('%Y/%m/%d')] = {}
-        #output_data[now.strftime('%Y/%m/%d')]['one'] = days3
+        #output_data[now.strftime('%Y/%m/%d')]['one'] = days1
         output_data[now.strftime('%Y/%m/%d')]['three'] = days3
         output_data[now.strftime('%Y/%m/%d')]['five'] = days5
         now += timedelta(days=1)

@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import requests
 from datetime import datetime
 from datetime import timedelta
 from datetime import date
-from geopy.distance import vincenty
 from lib import json_io
 from lib import csv_io
 
