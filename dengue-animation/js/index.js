@@ -14,7 +14,7 @@
       info = L.control(),
       showDrug = false,
       from = new Date('2015/06/01'),
-      end = new Date('2015/09/26'),
+      end = new Date('2015/09/27'),
       pivot,
       diffDays,
       latlngs = {},
@@ -43,6 +43,9 @@
       var pivot = new Date(end);
       var key = pivot.toISOString().substring(0, 10).replace(/-/g, '/');
       $('.current').text(key); 
+      var latestDate = new Date()
+      latestDate.setDate(pivot.getDate()+1);
+      $('.updateAt').text(latestDate.toLocaleDateString());
       threeCircleData = format(data[key].three);
       fiveCircleData = format(data[key].five);
       drawCircle(threeCircleData, defaultCirlceParams);
