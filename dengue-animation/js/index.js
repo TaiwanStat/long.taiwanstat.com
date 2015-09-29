@@ -20,7 +20,7 @@
       latlngs = {},
       topoLayer,
       stopIntervalIsTrue = false,
-      defaultCirlceParams = {
+      defaultCircleParams = {
         size: 500,
         color: '#e851c',
         fillColor: '#E24A31',
@@ -48,7 +48,7 @@
       $('.updateAt').text(latestDate.toLocaleDateString());
       threeCircleData = format(data[key].three);
       fiveCircleData = format(data[key].five);
-      drawCircle(threeCircleData, defaultCirlceParams);
+      drawCircle(threeCircleData, defaultCircleParams);
   
       if (drugUrl)
         d3.json(drugUrl, function(data) {
@@ -150,10 +150,10 @@
     day = d;
     removeCircles(circles);
     if (day == 3) {
-      drawCircle(threeCircleData, defaultCirlceParams);
+      drawCircle(threeCircleData, defaultCircleParams);
     }
     else if (day == 5){
-      drawCircle(fiveCircleData, defaultCirlceParams);
+      drawCircle(fiveCircleData, defaultCircleParams);
     }
     info.update();
   }
