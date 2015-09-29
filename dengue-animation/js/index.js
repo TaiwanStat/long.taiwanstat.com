@@ -43,7 +43,7 @@
       var pivot = new Date(end);
       var key = pivot.toISOString().substring(0, 10).replace(/-/g, '/');
       $('.current').text(key); 
-      var latestDate = new Date()
+      var latestDate = new Date();
       latestDate.setDate(pivot.getDate());
       $('.updateAt').text(latestDate.toLocaleDateString());
       threeCircleData = format(data[key].three);
@@ -316,8 +316,9 @@
     window.drawChart(villageData[valliage], function(d) {
       var info = d.date.toLocaleDateString() + 
        '  <strong>病例數：</strong> <span style="color:red">' + d.value + '</span>';
-      if (d.降水量 > 0)
-        info += '<br/>降水：<span style="color:red">' + d.rain_day + '</span>天內';
+      if (d.降水量 > 0) 
+        info += '<br/>降水：<span style="color:red">' + d.rain_day + '</span>天內<br/>' +
+          '降水量：<span style="color:red">' + d.降水量 + '</span>（毫米）';
       return info;
     }, true);
   }

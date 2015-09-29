@@ -27,9 +27,10 @@ def insert_village_data(village_data, village_values, current_date):
     rain, rain_day = 0, -1
     for i in range(0, 3): 
         if int(weather_data[d.strftime('%Y/%m/%d')]['降水量']) > 0:
-            rain = weather_data[d.strftime('%Y/%m/%d')]['降水量']
+            rain += weather_data[d.strftime('%Y/%m/%d')]['降水量']
             rain_day = i + 1
         d -= timedelta(days=1)
+
     for v in village_values:
         if v not in village_data:
             village_data[v] = []
