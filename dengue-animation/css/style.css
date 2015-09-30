@@ -170,3 +170,7 @@ rect.active {
   fill: none;
   stroke-width: 1.5px;
 }
+.in-drug-day {
+  stroke-width: 2px;
+  stroke: black;
+}

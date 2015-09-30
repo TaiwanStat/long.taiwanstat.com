@@ -11,6 +11,7 @@ from lib import csv_io
 url = 'http://denguefever.csie.ncku.edu.tw/file/dengue_all.csv'
 data = csv_io.req_csv(url, 'utf-8')
 weather_data = json_io.read_json('../data/weather.json')
+drug_data = json_io.read_json('../data/drug_days.json')
 
 def format_data(current_date, value):
     d = datetime.strptime(current_date, '%Y/%m/%d').date().strftime('%Y/%m/%d')
@@ -23,6 +24,23 @@ def format_data(current_date, value):
            }
 
 def insert_village_data(village_data, village_values, current_date):
+    rain, rain_day = get_wather_data(current_date)
+
+    for v in village_values:
+        if v not in village_data:
+            village_data[v] = []
+        drug_days, drug_times = get_drug_info(v, current_date)
+        village_data[v].append({\
+                'date': current_date, \
+                'value': village_values[v], \
+                '降水量': rain, \
+                'rain_day': rain_day,\
+                'drug_days': drug_days, \
+                'drug_times': drug_times
+                })
+
+
+def get_wather_data(current_date):
     d = datetime.strptime(current_date, '%Y/%m/%d').date()
     rain, rain_day = 0, -1
     for i in range(0, 3): 
@@ -30,17 +48,18 @@ def insert_village_data(village_data, village_values, current_date):
             rain += weather_data[d.strftime('%Y/%m/%d')]['降水量']
             rain_day = i + 1
         d -= timedelta(days=1)
+    return rain, rain_day
 
-    for v in village_values:
-        if v not in village_data:
-            village_data[v] = []
-        village_data[v].append({\
-                'date': current_date, \
-                'value': village_values[v], \
-                '降水量': rain, \
-                'rain_day': rain_day\
-                })
-
+def get_drug_info(village, current_date):
+    d = datetime.strptime(current_date, '%Y/%m/%d').date()
+    drug_day, drug_times = -1, 0
+    for i in range(0, 5): 
+        day = d.strftime('%Y/%m/%d')
+        if day in drug_data and village in drug_data[day]:
+            drug_day = i + 1
+            drug_times += 1
+        d -= timedelta(days=1)
+    return drug_day, drug_times
 
 if __name__ == '__main__':
     # from 6m

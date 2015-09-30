@@ -99,6 +99,12 @@
         }
         return "steelblue";
       })
+      .attr('class', function(d) {
+        if (d.drug_times > 0) {
+          return 'in-drug-day';
+        }
+        return '';
+      })
       .attr("x", function(d) { return x(d.date); })
       .attr("width", barWidth)
       .attr("y", function(d) { return y(d.value); })

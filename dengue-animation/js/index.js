@@ -317,9 +317,17 @@
     window.drawChart(villageData[valliage], function(d) {
       var info = d.date.toLocaleDateString() + 
        '  <strong>病例數：</strong> <span style="color:red">' + d.value + '</span>';
-      if (d.降水量 > 0) 
-        info += '<br/>降水：<span style="color:red">' + d.rain_day + '</span>天內<br/>' +
-          '降水量：<span style="color:red">' + d.降水量 + '</span>（毫米）';
+
+      if (d.降水量 > 0)  {
+        info += '<br/>降水：<span style="color:red">' + d.rain_day + 
+          '</span>天內<br/>' + '降水量：<span style="color:red">' + d.降水量 + '</span>（毫米）';
+      }
+      if (d.drug_times > 0) {
+        info += '<br/>噴藥：<span style="color:red">' + d.drug_days + '</span>天內 次數：' + 
+            d.drug_times + '<br/>';
+      }
+
+
       return info;
     }, true);
   }
