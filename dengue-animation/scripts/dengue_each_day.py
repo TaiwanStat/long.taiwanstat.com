@@ -52,13 +52,14 @@ if __name__ == '__main__':
     village_data = {}
     village_values = {}
     for item in data:
-        if item[3] not in village_values:
-            village_values[item[3]] = 0
+        key = item[2].replace(' ', '') + item[3]
+        if key not in village_values:
+            village_values[key] = 0
 
         event_date = item[1]
         if current_date == event_date:
             value += 1
-            village_values[item[3]] += 1
+            village_values[key] += 1
         else:
             output_data.append(format_data(current_date, value))
             insert_village_data(village_data, village_values, current_date)
@@ -67,6 +68,7 @@ if __name__ == '__main__':
             village_values = {}
    
     output_data.append(format_data(current_date, value))
+    insert_village_data(village_data, village_values, current_date)
     json_io.write_json('../data/village_bar_data.json', village_data)
     json_io.write_json('../data/bar_data.json', output_data)
     print (output_data[-1], 'done.')

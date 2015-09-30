@@ -308,7 +308,8 @@
 
 
   function layerOnClick(e) {
-    var valliage = e.target.feature.properties.VILLAGENAM;
+    var valliage = e.target.feature.properties.TOWNNAME + 
+      e.target.feature.properties.VILLAGENAM;
     var svg = $('#bar svg');
     if (svg.length > 0) {
       svg[0].remove();
