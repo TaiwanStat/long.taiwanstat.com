@@ -45,6 +45,7 @@
       $('.current').text(key); 
       var latestDate = new Date();
       latestDate.setDate(pivot.getDate());
+      latestDate.setDate(1);
       $('.updateAt').text(latestDate.toLocaleDateString());
       threeCircleData = format(data[key].three);
       fiveCircleData = format(data[key].five);
