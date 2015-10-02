@@ -71,7 +71,7 @@ if __name__ == '__main__':
     village_data = {}
     village_values = {}
     for item in data:
-        key = item[2].replace(' ', '') + item[3]
+        key = item[2].replace('　', '') + item[3]
         if key not in village_values:
             village_values[key] = 0
 
