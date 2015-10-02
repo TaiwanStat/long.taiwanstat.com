@@ -8,7 +8,7 @@ from geopy.distance import vincenty
 from lib import json_io
 from lib import csv_io
 
-url = 'http://denguefever.csie.ncku.edu.tw/file/dengue_all.csv'
+url = 'http://denguefever.csie.ncku.edu.tw/file/dengue_all_v2.csv'
 data = csv_io.req_csv(url, 'utf-8')
 weather_data = json_io.read_json('../data/weather.json')
 drug_data = json_io.read_json('../data/drug_days.json')
@@ -64,7 +64,7 @@ def get_drug_info(village, current_date):
 if __name__ == '__main__':
     # from 6m
     value = 0
-    data = data[5:]
+    data = data[1:]
     data = sorted(data, key = lambda x: datetime.strptime(x[1], '%Y/%m/%d').date())
     current_date = data[0][1]
     output_data = []
