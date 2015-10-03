@@ -37,15 +37,18 @@ def get_values(html_doc):
             precp_count += 1
         except:
             pass
-
-    temp = round(temp/temp_count, 2)
-    rh = round(rh/rh_count, 2)
-    precp = round(precp)
+    
+    try:
+        temp = round(temp/temp_count, 2)
+        rh = round(rh/rh_count, 2)
+        precp = round(precp)
+    except:
+        return temp, rh, precp
     return temp, rh, precp
 
 if __name__=='__main__':
     url_t = "http://e-service.cwb.gov.tw/HistoryDataQuery/DayDataController.do?command=viewMain&station=467410&datepicker="
-    now = datetime.strptime('2015/09/01', '%Y/%m/%d').date()
+    now = datetime.strptime('2015/09/20', '%Y/%m/%d').date()
     end = datetime.now().date()
     data = json_io.read_json('../data/weather.json')
     while now < end:

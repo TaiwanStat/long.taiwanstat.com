@@ -14,7 +14,7 @@
       info = L.control(),
       showDrug = false,
       from = new Date('2015/06/01'),
-      end = new Date('2015/10/01'),
+      end,
       pivot,
       diffDays,
       latlngs = {},
@@ -37,6 +37,7 @@
 
     d3.json(dengueUrl, function(d) {
       data = d;
+      end = new Date(data.end);
       var timeDiff = Math.abs(end.getTime() - from.getTime());
       diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
       $('.range input')[0].max = diffDays;
@@ -69,8 +70,11 @@
         }).addTo(map);
       });
     
-    if (barUrl)
-      d3.json(barUrl, function(error, data) { window.drawChart(data, showDefaultTip, true); });
+    if (barUrl) {
+      d3.json(barUrl, function(error, data) { 
+        window.drawChart(data, showDefaultTip, true); 
+      });
+    }
 
     if (villageUrl) d3.json(villageUrl, function(data) { villageData = data; });
   }

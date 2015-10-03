@@ -27,7 +27,7 @@ def getDaysWithin(data):
     return days1, days3, days5
 
 if __name__ == '__main__':
-    url = 'http://denguefever.csie.ncku.edu.tw/file/dengue_all_v2.csv'
+    url = 'http://denguefever.csie.ncku.edu.tw/file/dengue_all.csv'
     data = csv_io.req_csv(url, 'utf-8')
     output_data = json_io.read_json('../data/data.json')
 
@@ -51,4 +51,5 @@ if __name__ == '__main__':
         output_data[now.strftime('%Y/%m/%d')]['five'] = days5
         now += timedelta(days=1)
 
+    output_data['end'] = end.strftime('%Y/%m/%d')
     json_io.write_json('../data/data.json', output_data)
