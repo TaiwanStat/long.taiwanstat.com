@@ -227,7 +227,7 @@
         // update circle data
         updateVis(input, interval);
         return;
-      }, 800); 
+      }, 500); 
   });
 
   $('.pause').click(function() {
