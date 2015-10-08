@@ -9,7 +9,7 @@ from lib import csv_io
 def filter_data(input_):
     data = []
     for item in input_:
-        data.append([item[4], item[8], item[9]])
+        data.append([item[4], item[-2], item[-1]])
     return data
 
 if __name__ == '__main__':
@@ -33,7 +33,10 @@ if __name__ == '__main__':
             if event_date > now:
                 break
             delta = now - event_date
-            row[-1], row[-2] = float(row[-1]), float(row[-2])
+            try:
+                row[-1], row[-2] = float(row[-1]), float(row[-2])
+            except ValueError:
+                continue
             if delta.days < 7:
                 data_tmp.append(row)
         data_tmp.insert(0, header)
