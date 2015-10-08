@@ -46,7 +46,7 @@
       var key = pivot.toISOString().substring(0, 10).replace(/-/g, '/');
       $('.current').text(key); 
       var latestDate = new Date();
-      latestDate.setDate(pivot.getDate()+1);
+      latestDate.setDate(pivot.getDate());
       $('.updateAt').text(latestDate.toLocaleDateString());
       threeCircleData = format(data[key].three);
       fiveCircleData = format(data[key].five);
