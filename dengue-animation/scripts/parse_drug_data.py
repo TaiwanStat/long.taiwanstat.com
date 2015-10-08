@@ -9,7 +9,7 @@ from lib import csv_io
 def filter_data(input_):
     data = []
     for item in input_:
-        data.append([item[4], item[-2], item[-1]])
+        data.append([item[4], item[8], item[9]])
     return data
 
 if __name__ == '__main__':

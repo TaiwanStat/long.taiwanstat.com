@@ -200,7 +200,6 @@
       drugData = format(drugOrg[key]);
     else
       drugData = null;
-
     $('.current').text(key); 
     updateCircle(day);
 
