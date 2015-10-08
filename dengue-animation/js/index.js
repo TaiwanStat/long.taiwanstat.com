@@ -20,6 +20,7 @@
       latlngs = {},
       topoLayer,
       stopIntervalIsTrue = false,
+      canUpdate = false;
       defaultCircleParams = {
         size: 500,
         color: '#e851c',
@@ -182,6 +183,8 @@
   }
 
   function updateVis (input, interval) {
+    canUpdate = !canUpdate;
+    if (!canUpdate) return;
     input.value = parseInt(input.value) + 1;
     var pivot = new Date(from);
     pivot.setDate(from.getDate()+parseInt(input.value));
@@ -224,7 +227,7 @@
         // update circle data
         updateVis(input, interval);
         return;
-      }, 1000); 
+      }, 800); 
   });
 
   $('.pause').click(function() {
