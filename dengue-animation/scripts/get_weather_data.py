@@ -48,7 +48,7 @@ def get_values(html_doc):
 
 if __name__=='__main__':
     url_t = "http://e-service.cwb.gov.tw/HistoryDataQuery/DayDataController.do?command=viewMain&station=467410&datepicker="
-    now = datetime.strptime('2015/09/20', '%Y/%m/%d').date()
+    now = datetime.strptime('2015/10/20', '%Y/%m/%d').date()
     end = datetime.now().date()
     data = json_io.read_json('../data/weather.json')
     while now < end:

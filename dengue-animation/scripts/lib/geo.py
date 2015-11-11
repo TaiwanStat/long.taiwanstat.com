@@ -12,7 +12,7 @@ def get_hot_points(data, threshold, distance):
             if p_dis < distance:
                 count += 1
                 if count > threshold:
-                    tmp = each.copy()
+                    tmp = list(each)#each.copy()
                     tmp.append(count)
                     hot_points.append(tmp)
                     break
