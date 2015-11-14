@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang='zh-TW'>
+<head>
+  {{> head}}
+</head>
+<body>
+  {{> header}}
+  {{> start}}
+
+<ul>
+    <li>資料來源：<a href="http://tgos.nat.gov.tw/tgos/Web/OpenGeospatial/TGOS_OpenGeospatial.aspx">開放地理空間資料</a></li>
+    <li>土石流潛勢溪流定義：土石流潛勢溪流係指依據現地土石流發生之自然條件，配合影響範圍內是否有保全對象等因素，綜合評估後，判斷有可能發生土石流災害之溪流或坑溝。</li>
+    <li>相關網站：
+    <br><a href="http://web.fg.tp.edu.tw/~earth/learn/esf/magazine/980602.htm">認識土石流</a>
+    <br><a href="http://246.swcb.gov.tw/">土石流防災資訊網</a> 
+    <br><a href="http://www.nfa.gov.tw/main/Unit.aspx?ID=&amp;MenuID=496&amp;ListID=2762">土石流防災須知</a> 
+    </li>
+  </ul>
+<div id="map">
+  <div id="button">
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--2dp" id="reset">
+      <i class="material-icons">refresh</i>
+    </button>
+
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--2dp" id="set">
+      <i class="material-icons">place</i>
+    </button>
+  </div>
+</div>
+
+  {{> end}}
+    <!-- my js & css -->
+  {{> footer}}
+<script type="text/javascript" src="js/dist/common.min.js"></script>
+<script type="text/javascript" src="js/dist/index.min.js"></script>
+</body>
+</html>
