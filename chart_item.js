@@ -11,7 +11,8 @@ lists.data.page.forEach(function(p) {
   if(!url.parse(p.url).protocol) {
     post_arr.push({
       "data": {
-        "chart_description": p
+        "chart_description": p,
+        "domain": "http://long.taiwanstat.com/"
       },
       "partials": './include/partials.js',
       "layout": path.join(p.url, "index.hbs"),
