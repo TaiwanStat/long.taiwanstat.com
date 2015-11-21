@@ -1,5 +1,5 @@
 var margin = {top:20, right: 20, bottom: 250, left: 70}, 	//////units: 十億 ---> 兆
-	width = 880 - margin.right - margin.left, 
+	width = 780 - margin.right - margin.left, 
 	height = 700 - margin.top - margin.bottom; 
 
 var colorScale = ["#1f77b4", "#3B457F", "#ff7f0e", "#ffbb78", "#2ca02c",

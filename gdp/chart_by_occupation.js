@@ -3,11 +3,11 @@ var n = 15, // number of layers
 
 var margin = {top:30, right:40, bottom:30, left:60}, 
 	height = 600 - margin.top - margin.bottom, 
-	width = 720 - margin.left - margin.right; 
+	width = 680 - margin.left - margin.right; 
 
 var xScale = d3.scale.ordinal() 
 	.domain(d3.range(2007, 2015))
-	.rangeRoundBands([0, width], 0.08); 
+	.rangeRoundBands([0, width-100], 0.08); 
 
 var yScale = d3.scale.linear() 
 	.domain([0, 30000000])
@@ -31,14 +31,14 @@ var yAxis = d3.svg.axis()
 	.tickFormat(function(d) { return parseInt(d)/1000000 + "百萬"; }); 
 
 var svg = d3.select("#chart").append("svg") 
-	.attr("width", width + margin.left + margin.right + 500)
+	.attr("width", width + margin.left + margin.right + 400)
 	.attr("height", height + margin.bottom + margin.top)
 	.append("g") 
 	.attr("transform", "translate(" + margin.left +", " + margin.top + ")"); 
 
 var g = svg.append("g") 
-	.attr("width", 350)
-	.attr("transform", "translate(" + 700 +", 0)"); 
+	.attr("width", 300)
+	.attr("transform", "translate(" + 590 +", 0)"); 
 
 var xLabels = g.selectAll(".xLabel")
 	.data(["第一季", "第二季", "第三季", "第四季"])
@@ -54,7 +54,8 @@ var yLabels = g.selectAll(".yLabel")
 			  "其他"])
 	.enter().append("text")
 	.attr("class", "yLabels") 
-	.attr("x", 350)
+	.attr("x", 330)
+	.style("font-size", "12px")
 	.attr("y", function(d, i) { return i * 38 + 50; })
 	.text(function(d) { return d; });
 
@@ -117,7 +118,7 @@ function cleanUpData(data) {
 	.enter().append("text") 
 	.attr("class", "yearLabel")
 	.attr("id", function(d) { return "year-" + d })
-	.attr("x", function(d, i) { return 20 + i * 75; })
+	.attr("x", function(d, i) { return i * 62; })
 	.attr("y", height + margin.top)
 	.text(function(d) { return d; })
 	.on("click", function(d) { 
