@@ -11,7 +11,7 @@ var svg = d3.select("#chart").append("svg")
 var colorScale = d3.scale.category10();
 
 var barChart_margin = {top: 20, right: 60, bottom: 20, left: 20},
-	barChart_width = 600 - barChart_margin.left - barChart_margin.right,
+	barChart_width = 510 - barChart_margin.left - barChart_margin.right,
 	barChart_height = 1200 - barChart_margin.top - barChart_margin.bottom;
 
 var barChart = d3.select("#barChart").append("svg")
