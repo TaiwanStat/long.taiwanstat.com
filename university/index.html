@@ -1,0 +1,205 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-TW"><head>
+    <meta charset="utf-8"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" href="/favicon.ico"><meta property="og:title" content="用數據看台灣 - university"><meta property="og:site_name" content="用數據看台灣 - university"><meta property="og:description" content="Project description"><title>用數據看台灣 - university</title><meta http-equiv="Content-Type" content="text/html" charset="utf-8"><meta property="og:image" content="http://long.taiwanstat.com/images/university.png"><meta property="og:image:type" content="image/png">  <meta name="author" content="Your Name">  <meta name="citation_authors" content="Your Name">  <meta name="description" content="Project description Author: Your Name"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="http://real.taiwanstat.com/css/style.min.css" type="text/css" media="all"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.amber-orange.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css"><script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js" async=""></script>    <!-- my js & css -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="lib/leaflet/leaflet.css">
+    <link rel="stylesheet" href="css/leaflet_numbered_markers.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/leaflet.awesome-markers.css">
+    <style>
+        body {text-shadow: #707070 0.05px 0.05px 0.05px}
+        *{font-family:Arial,"Microsoft YaHei";}
+        *{font-weight:400 !important;}
+        body {
+            margin: 0px;
+            border: 0px;
+            padding: 0px;
+			overflow: hidden;
+        }
+
+        #map {
+            background: rgba(0, 0, 0, 0);
+            height: 500px;
+            width: 100%;
+            position: relative;
+        }
+
+        #mz-bug {
+            display: none;
+        }
+
+        #mz-citysearch {
+            display: none;
+        }
+
+        #mz-geolocator {
+            display: none;
+        }
+
+        .close-button {
+            display: none;
+        }
+
+        .dg.main {
+            display: none;
+        }
+
+    .label {
+        /*width: 200px;*/
+        /*margin-left: -100px;*/
+        position: absolute;
+        z-index: 10;
+        text-align: left;
+        margin: 0px;
+        background: #333;
+        opacity: 0.9;
+        padding: 2px;
+        /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+        /*word-wrap: break-word;*/
+    }
+
+    .labelInner {
+        padding: 3px 0px;
+        font-family: Helvetica, sans-serif;
+        font-size: 16px;
+        color: white;
+        opacity: 2.0;
+        margin: 0px;
+    }
+
+    .labelLine {
+        /*border: 2px solid gold;*/
+    }
+
+    .labelLine:hover {
+        border: 2px solid gold;
+    }
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+  </head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header"><header class="mdl-layout__header">  <div class="mdl-layout__header-row">  <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/"><img src="/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>  <div class="mdl-layout-spacer"></div>  <nav class="mdl-navigation mdl-layout--large-screen-only">    <a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>    <a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>    <a class="mdl-navigation__link" href="http://taiwanstat.com/opendata">開放資料分析部落格</a>    <a class="mdl-navigation__link" href="http://taiwanstat-about-us.cannerapp.com/">關於我們</a>  </nav>  <div></div></div></header><div class="mdl-layout__drawer">  <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/"><img src="/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>  <nav class="mdl-navigation">    <a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>    <a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>    <a class="mdl-navigation__link" href="http://taiwanstat.com/opendata">開放資料分析部落格</a>    <a class="mdl-navigation__link" href="http://taiwanstat-about-us.cannerapp.com/">關於我們</a>  </nav></div>    <main class="mdl-layout__content" id="main-content"><div class="title__wrapper">  <h1 id="title">    university  </h1>  <div class="fb-plugin">    <div class="fb-like" data-href="http://long.taiwanstat.com/university" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>  </div></div>    <!-- my charts -->
+    <div class="chart">
+    <!-- content -->
+    <div class="ui stackable grid">
+        <!-- row -->
+        <div class="five column row">
+            <!-- column -->
+            <div class="column">
+                <h4 class="ui header">
+                    <i class="calendar outline icon"></i>
+                    <div class="content">
+                        <div class="ui inline year dropdown">
+                            <div class="text">103</div>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <div class="active item" data-text="103 " value="103">103</div>
+                                <div class="item" data-text="102 " value="102">102</div>
+                                <div class="item" data-text="101 " value="101">101</div>
+                            </div>
+                        </div>
+                        學年度
+                    </div>
+                </h4>
+            </div>
+
+            <!-- column -->
+            <div class="column">
+                <h4 class="ui header">
+                    <i class="trophy icon"></i>
+                    <div class="content">
+                        排名依據:
+                        <div class="ui inline selected dropdown">
+                            <div class="text">總學生數</div>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <div class="active item" data-text="總學生數" value="total">總學生數</div>
+                                <div class="item" data-text="男學生數" value="mnum">男學生數</div>
+                                <div class="item" data-text="女學生數" value="fnum">女學生數</div>
+                                <div class="item" data-text="性別比(男/女)" value="mfr">性別比(男/女)</div>
+                            </div>
+                        </div>
+                    </div>
+                </h4>
+            </div>
+        </div>
+        <!-- end of row -->
+
+        <!-- row -->
+        <div class="ten column row">
+            <!-- column -->
+            <div class="three wide column">
+                <div class="ui labeld icon resetz button">
+                    <i class="fa fa-map-o"></i>
+                    地圖縮放重設 
+                </div>
+            </div>
+            <!-- column -->
+            <div class="five wide column">
+                <div class="ui north button">
+                    北部
+                </div>
+                <div class="ui mid button">
+                    中部
+                </div>
+                <div class="ui south button">
+                    南部
+                </div>
+            </div>
+        </div>
+        <!-- end of row -->
+    </div>
+    <!-- end of grid -->
+
+    <div class="ui stackable grid">
+        <div class="nine wide column">
+            <div id="map"></div>
+        </div>
+        <div class="seven wide column">
+            <div class="ui basic segment">
+                <span style="font-size:30px;" class="uname disp">選取地圖上的圖標來顯示學校資訊!</span><br><br>
+                <span><h1 class="ui year header"></h1></span>
+                <span style="font-size:20px;" class="total disp"></span><br><br>
+                <span style="font-size:20px;" class="mnum disp"></span><br><br>
+                <span style="font-size:20px;" class="fnum disp"></span><br><br>
+                <span style="font-size:20px;" class="mfr disp"></span><br><br>
+            </div>
+        </div>
+    </div>
+    </div>
+     <div class="mdl-card author"><h4><a href="http://taiwanstat_members.cannerapp.com/">About Author</a></h4>  <div class="author-wrapper">    <img class="ui circular image" src="/images/assert/background.png">    <div class="author-info"><h5>Your Name            </h5></div>  </div></div><div class="license__wrapper"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a><br>本著作由<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.taiwanstat.com" property="cc:attributionName" rel="cc:attributionURL">用數據看台灣團隊</a>製作，以<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 授權條款</a>釋出。</div></main></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.9/d3.min.js"></script><script src="/bower_components/semantic/dist/semantic.min.js"></script><script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');    ga('create', 'UA-61023469-1', 'auto');    ga('send', 'pageview');  </script>   <div id="fb-root"></div>  <script>(function(d, s, id) {    var js, fjs = d.getElementsByTagName(s)[0];    if (d.getElementById(id)) return;    js = d.createElement(s); js.id = id;    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";    fjs.parentNode.insertBefore(js, fjs);    }(document, 'script', 'facebook-jssdk'));</script>    <!-- my js & css -->
+
+    <!-- 3rd party libraries -->
+    <script src="lib/leaflet/leaflet.js"></script>
+    <!-- bog-standard leaflet URL hash -->
+    <script src="lib/leaflet-hash.js"></script>
+    <!-- A lightweight graphical user interface for changing variables in JavaScript.  -->
+    <script src="lib/dat.gui.min.js"></script>
+    <!-- End of 3rd party libraries -->
+
+    <!-- Main tangram library -->
+    <script src="https://mapzen.com/tangram/0.2/tangram.min.js"></script>
+    <script src="lib/leaflet.awesome-markers.js"></script>
+    <script src="lib/leaflet_numbered_markers.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+
+    <!-- Adding a script block to post message to the parent container (think iframed demos) -->
+    <script type="text/javascript">
+      window.addEventListener("hashchange",function(){parent.postMessage(window.location.hash, "*")});
+    </script>
+
+    <!-- Mapzen map UI -->
+    <script src="//s3.amazonaws.com/assets-staging.mapzen.com/ui/mapzen-ui.min.js"></script>
+    <script>
+      MPZN.bug({
+      name: 'Tangram',
+      link: 'https://mapzen.com/projects/tangram',
+      tweet: 'OSM Tag Explorer from @mapzen',
+      repo: 'https://github.com/tangrams/tag-explorer/'
+    });
+    </script>
+    <!-- <script src="/js/main.js"></script> -->
+    <div class="footer-mobile">  <button class="scrollup mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--2dp" id="set">    <i class="material-icons">keyboard_arrow_up</i>  </button></div><footer class="mdl-mini-footer">  <div class="mdl-mini-footer__left-section">© 2015 <a href="http://taiwanstat-about-us.cannerapp.com">用數據看台灣</a> ·    <a href="http://netdb.csie.ncku.edu.tw">NCKU-NetDB</a>        · <a href="https://www.facebook.com/taiwanstat/?fref=ts"><i class="facebook icon"></i></a>  </div>  <div class="mdl-mini-footer__right-section">    <span class="footer_msg">合作提案、客製化圖表製作、意見回饋  </span>    歡迎來信: <a href="mailto:contact@taiwanstat.com">contact@taiwanstat.com</a>  </div>  </footer> <script src="http://real.taiwanstat.com/js/main.min.js" async=""></script>    <script type="text/javascript" src="./js/index.js"></script>
+  
+
+</body></html>

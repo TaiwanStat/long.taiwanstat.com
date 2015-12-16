@@ -1,0 +1,834 @@
+cameras:
+    perspective:
+        type: perspective
+        focal_length: [[16, 2], [17, 2.5], [18, 3], [19, 4], [20, 6]] # pairs of [zoom, focal len]
+        vanishing_point: [0, -500] # relative to center of screen, in pixels
+        active: true
+
+    isometric:
+        type: isometric
+        axis: [0, 1]
+        active: false
+
+    flat:
+        type: flat
+        active: false
+lights:
+    directional1:
+        type: directional
+        direction: [.1, .5, -1] #[0.1, 0.1, -1]
+        diffuse: .2
+        ambient: 1.1
+		
+scene:
+    background:
+        color: '#9dc3de'
+		
+textures:
+    pois:
+        url: images/poi_icons_32.png
+        filtering: mipmap
+        sprites:
+            # define sprites: [x origin, y origin, width, height]
+            plane: [0, 0, 32, 32]
+            tree: [0, 185, 32, 32]
+            sunburst: [0, 629, 32, 32]
+            restaurant: [0, 777, 32, 32]
+            cafe: [0, 814, 32, 32]
+            museum: [0, 518, 32, 32]
+            bar: [0, 887, 32, 32]
+            train: [0, 74, 32, 32]
+            bus: [0, 148, 32, 32]
+            hospital: [0, 444, 32, 32]
+            parking: [0, 1073, 32, 32]
+            info: [0, 1110, 32, 32]
+            hotel: [0, 259, 32, 32]
+            bookstore: [0, 333, 32, 32]
+
+styles:
+    water:
+        base: polygons
+        animated: true
+        shaders:
+            defines:
+                EFFECT_NOISE_ANIMATED: true
+            blocks:
+                global:
+                    url: shaders/glsl-noise-periodic-3d.glsl
+                color: |
+                    color.rgb *=
+                        abs(pnoise(
+                            (v_world_position.xyz + vec3(u_time * 5., u_time * 7.5, u_time * 10.)) / 10.0,
+                            vec3(TANGRAM_WORLD_POSITION_WRAP / 10.0))
+                        ) / 4. + .75;
+
+    rainbow:
+        base: polygons
+        animated: true
+        lighting: false
+        shaders:
+            blocks:
+                global: |
+                    // hue-saturation-value to RBG color space converter
+                    vec3 hsv2rgb(vec3 c) {
+                        vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+                        vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+                        return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+                    }
+                color: |
+                    // modulate hue by z-position and time, then convert to RGB and set pixel color
+                    vec3 c = vec3(v_world_position.z * .003 + u_time / 10., 1.0, 1.0);
+                    color.rgb = hsv2rgb(c);
+
+    popup:
+        url: styles/popup.yaml
+
+    elevator:
+        base: polygons
+        animated: true
+        shaders:
+            blocks:
+                position: |
+                    // Elevator buildings
+                    if (position.z > 0.01) {
+                        position.z *= (sin(position.z + u_time) + 1.0);
+                    }
+
+    envmap:
+        base: polygons
+        animated: true
+        material:
+            ambient: 0
+            diffuse: 0
+            emission:
+                texture: images/sunset.jpg
+                mapping: spheremap
+
+    halftone_polygons:
+        url: styles/halftone.yaml
+
+    halftone_lines:
+        url: styles/halftone.yaml
+
+    windows:
+        url: styles/windows.yaml
+
+    flat:
+        base: polygons
+        lighting: false
+
+    flat_lines:
+        base: lines
+        lighting: false
+
+    buildings:
+        base: polygons
+        shaders:
+            blocks:
+                color: |
+                    color.rgb = vec3(min((v_world_position.z*.0005 + .65),.8));
+
+    icons:
+        base: points
+        texture: pois
+
+    grid:
+        base: polygons
+        lighting: false
+        shaders:
+            extensions: OES_standard_derivatives
+            # extensions: [OES_standard_derivatives, EXT_frag_depth]
+            blocks:
+                color: |
+                    // From: http://madebyevan.com/shaders/grid/
+                    // Pick a coordinate to visualize in a grid
+                    vec3 coord = v_world_position.xyz / 10.;
+
+                    // Compute anti-aliased world-space grid lines
+                    vec3 grid = abs(fract(coord - 0.5) - 0.5) / fwidth(coord);
+                    float line = min(min(grid.x, grid.y), grid.z);
+
+                    // Just visualize the grid lines directly
+                    color = vec4(vec3(1.0 - min(line, 1.0)), 1.0);
+			
+sources:
+    osm:
+        type: TopoJSON
+        url:  //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-HqUVidw
+        # type: GeoJSON
+        # url:  //tilestache-dev2-us-east-ext-1189213459.us-east-1.elb.amazonaws.com/osm/all/{z}/{x}/{y}.json?api_key=vector-tiles-HqUVidw
+
+layers:
+    earth:
+        data: { source: osm }
+        properties: 
+            key_text: ""
+            value_text: ""
+        draw:
+            polygons:
+                style: flat
+                order: 0
+                color: '#f0ebeb'
+        red:
+            filter: |
+                function () {
+                    return feature[properties.key_text] && feature[properties.key_text].toLowerCase().indexOf(properties.value_text.toLowerCase()) > -1;
+                }
+            draw:
+                lines:
+                    order: 100
+                    color: red
+                    width: 3px
+                text:
+                    order: 100
+                    text_source: name
+                    font:
+                        typeface: 8pt Lucida Grande
+                        fill: white
+                        # stroke: { color: black, width: 4 }
+
+    landuse:
+        data: { source: osm }
+        filter:
+            # show smaller landuse areas at higher zooms
+            any:
+                - { $zoom: { min: 9 }, area: { min: 10000000 } }
+                - { $zoom: { min: 10 }, area: { min: 3300000 } }
+                - { $zoom: { min: 12 }, area: { min: 1000000 } }
+                - { $zoom: { min: 13 }, area: { min: 10000 } }
+                - { $zoom: { min: 15 } }
+        properties: 
+            key_text: ""
+            value_text: ""
+        draw:
+            polygons:
+                order: 1
+                interactive: true
+                style: flat
+        red:
+            filter: |
+                function () {
+                    return feature[properties.key_text] && feature[properties.key_text].toLowerCase().indexOf(properties.value_text.toLowerCase()) > -1;
+                }
+            draw:
+                lines:
+                    order: 100
+                    color: red
+                    width: 3px
+                text:
+                    order: 100
+                    text_source: name
+                    font:
+                        typeface: 0pt Lucida Grande
+                        fill: white
+                        stroke: { color: black, width: 4 }
+        green:
+            filter: { kind: [park, graveyard, cemetery, forest, recreation_ground] }
+            draw:
+                polygons:
+                    order: 2
+                    color: '#bddec5'
+        blue:
+            filter: { kind: [commercial, industrial] }
+            draw:
+                polygons:
+                    color: '#C0CDCD'
+        orange:
+            filter: { kind: [university] }
+            draw:
+                polygons:
+                    color: '#D9CFC3'
+
+    water:
+        data: { source: osm }
+        filter:
+            any:
+                # show smaller water areas at higher zooms
+                - { $zoom: { min: 0 }, area: { min: 10000000 } }
+                - { $zoom: { min: 10 }, area: { min: 1000000 } }
+                - { $zoom: { min: 12 }, area: { min: 100000 } }
+                - { $zoom: { min: 15 }, area: { min: 1000 } }
+                - { $zoom: { min: 18 } }
+        properties: 
+            key_text: ""
+            value_text: ""
+        draw:
+            polygons:
+                interactive: true
+                style: flat
+                order: 3
+                color: '#9dc3de'
+            lines:
+                order: 3
+                color: [.5, .5, .5]
+                width: 1px
+        red:
+            filter: |
+                function () {
+                    return feature[properties.key_text] && feature[properties.key_text].toLowerCase().indexOf(properties.value_text.toLowerCase()) > -1;
+                }
+            draw:
+                lines:
+                    order: 100
+                    color: red
+                    width: 3px
+                text:
+                    order: 100
+                    text_source: name
+                    font:
+                        typeface: 8pt Lucida Grande
+                        fill: white
+                        # stroke: { color: black, width: 4 }
+
+    # routes:
+    #     data: { source: osm }
+        # filter:
+            # route: subway
+            # operator: Metropolitan Transportation Authority
+        # properties: 
+        #     key_text: ""
+        #     value_text: ""
+        # draw:
+        #     lines:
+        #         interactive: true
+        #         order: 2
+        #         color: '#bbb'
+        #         width: 4px
+        #     text:
+        #         order: 2
+        #         text_source: route_name
+        #         font:
+        #             typeface: 10px Helvetica
+        #             fill: white
+        # blue:
+        #     filter: { ref: [A, C, E] }
+        #     draw:
+        #         lines:
+        #             color: blue
+        # orange:
+        #     filter: { ref: [B, D, F, M] }
+        #     draw:
+        #         lines:
+        #             color: orange
+        # yellow:
+        #     filter: { ref: [N, R, Q, J] }
+        #     draw:
+        #         lines:
+        #             color: yellow
+        # red:
+        #     filter: { ref: ["1", "2", "3"] }
+        #     draw:
+        #         lines:
+        #             color: red
+        # green:
+        #     filter: { ref: ["4" , "5", "6"] }
+        #     draw:
+        #         lines:
+        #             color: green
+        # match:
+        #     filter: |
+        #         function () {
+        #             return feature[properties.key_text] && feature[properties.key_text].toLowerCase().indexOf(properties.value_text.toLowerCase()) > -1;
+        #         }
+        #     draw:
+        #         lines:
+        #             interactive: true
+        #             order: 100
+        #             color: red
+        #             width: 4px
+        #         text:
+        #             order: 100
+        #             text_source: name
+        #             font:
+        #                 typeface: 8pt Lucida Grande
+        #                 fill: white
+
+    roads:
+        data: { source: osm }
+        filter:
+            not: { kind: [rail] }
+        properties: 
+            key_text: ""
+            value_text: ""
+        draw:
+            lines:
+                interactive: true
+                style: flat_lines
+                color: white
+                width: 12
+                order: function () { return feature.sort_key + 5; }
+                outline:
+                    color: [[16, '#999'], [18, '#aaa']]
+                    width: [[15, 0], [16, 2]]
+                    order: 4 # put all outlines below all roads (for now)
+        red:
+            filter: |
+                function () {
+                    return feature[properties.key_text] && feature[properties.key_text].toLowerCase().indexOf(properties.value_text.toLowerCase()) > -1;
+                }
+            draw:
+                lines:
+                    order: 100
+                    color: red
+                    width: 2px
+                text:
+                    order: 100
+                    text_source: name
+                    font:
+                        typeface: 8pt Lucida Grande
+                        fill: white
+                        # stroke: { color: black, width: 4 }
+        rounded:
+            filter: { $zoom: { min: 18 } }
+            draw:
+                lines:
+                    cap: round
+        highway:
+            filter: { kind: highway }
+            draw:
+                lines:
+                    color: '#D16768'
+                    width: [[14, 2px], [15, 12]]
+                    outline:
+                        width: [[14, 0], [15, 2]]
+            link:
+                filter: { is_link: yes }
+                draw:
+                    lines:
+                        color: '#aaa'
+                        width: [[13, 0], [14, 12]]
+        major_road:
+            filter: { kind: major_road, $zoom: { min: 10 } }
+            draw:
+                lines:
+                    width: [[10, 0], [13, 2px], [14, 2px], [16, 12]]
+                    outline:
+                        width: [[16, 0], [17, 1]]
+        minor_road:
+            filter: { kind: minor_road }
+            draw:
+                lines:
+                    width: [[13, 0px], [14, 1px], [15, 8]]
+                    outline:
+                        width: [[17, 0], [18, 1]]
+        paths:
+            filter: { kind: path }
+            draw:
+                lines:
+                    color: '#bbb'
+                    width: [[15, 0px], [18, 2px]]
+                    outline:
+                        width: 0
+        airports:
+            filter: { aeroway: true }
+            draw:
+                lines:
+                    color: '#ddd'
+                    outline:
+                        width: 0
+
+            taxiways:
+                filter: { aeroway: taxiway }
+                draw:
+                    lines:
+                        width: [[13, 0px], [14, 2px], [17, 10px]]
+
+            runways:
+                filter: { aeroway: runway }
+                draw:
+                    lines:
+                        color: [[13, '#FFE4B5'], [16, white]]
+                        width: [[11, 3px], [12, 5px], [13, 10px], [15, 75]]
+                        order: 39
+                        cap: square
+                        outline:
+                            color: orange
+                            width: [[11, 0px], [12, 1px], [13, 2px], [15, 12.5]]
+                            order: 38
+        land:
+            filter: { intersects_park: true }
+            draw:
+                lines:
+                    outline:
+                        color: yellow
+                        width: 2px
+
+    transit:
+        data: { source: osm }
+        properties:
+            key_text: ""
+            value_text: ""
+        draw:
+            lines:
+                interactive: true
+                order: 2
+                color: '#bbb'
+                width: 2px
+        red:
+            filter: |
+                function () {
+                    return feature[properties.key_text] && feature[properties.key_text].toLowerCase().indexOf(properties.value_text.toLowerCase()) > -1;
+                }
+            draw:
+                lines:
+                    order: 100
+                    color: red
+                    width: 2px
+                text:
+                    order: 100
+                    text_source: name
+                    font:
+                        typeface: 8pt Lucida Grande
+                        fill: white
+                        # stroke: { color: black, width: 4 }
+
+    buildings:
+        data: { source: osm }
+        filter: { $zoom: { min: 14 } }
+        properties: 
+            key_text: ""
+            value_text: ""
+        draw:
+            polygons:
+                interactive: true
+                order: 50
+                color: [.65, .65, .65]
+        interactive:
+            filter: { name: true }
+            draw: { polygons: { interactive: true } }
+
+        # extrude 3d buildings
+        extruded:
+            filter: { $zoom: { min: 15 } }
+            draw:
+                polygons:
+                    style: buildings
+                    extrude: function () { return feature.height > 20 || $zoom >= 16; }
+
+        high-line:
+            filter: { roof_material: grass }
+            draw:
+                polygons:
+                    style: flat
+                    color: '#bddec5'
+        red:
+            filter: |
+                function () {
+                    return feature[properties.key_text] && feature[properties.key_text].toLowerCase().indexOf(properties.value_text.toLowerCase()) > -1;
+                }
+            draw:
+                lines:
+                    order: 100
+                    color: red
+                    width: 3px
+                text:
+                    order: 100
+                    text_source: name
+                    font:
+                        typeface: 8pt Lucida Grande
+                        fill: white
+                        # stroke: { color: black, width: 4 }
+						
+    places-dot-outlines:
+        data: { source: osm, layer: places }
+        properties: 
+            key_text: ""
+            value_text: ""
+        draw:
+            points:
+                order: 10
+                color: black
+                size: 0px
+
+    places:
+        data: { source: osm }
+        properties: 
+            key_text: ""
+            value_text: ""
+        filter:
+            name: true
+            not: { kind: [county, state, island] }
+            any:
+                - { $zoom: { min: 1 }, kind: ocean }
+                - { $zoom: { min: 2, max: 5 }, kind: continent }
+                # important countries
+                - { $zoom: { min: 4 }, name: ["United States of America", "Brasil", " Россия", "中华人民共和国"] }
+                # unimportant countries
+                - { $zoom: { min: 5 }, kind: country }
+                # this function matches the "cities" sublayer
+                - function() { return (feature.scalerank * .75) <= ($zoom - 4); }
+        draw:
+            points:
+                interactive: true
+                order: 11
+                color: '#888'
+                size: 0px
+            text:
+                priority: 1
+                font:
+                    family: Helvetica
+                    size: 11pt
+                    style: italic
+                    fill: black
+                    stroke: { color: white, width: 3 }
+        red:
+            filter: |
+                function () {
+                    return feature[properties.key_text] && feature[properties.key_text].toLowerCase().indexOf(properties.value_text.toLowerCase()) > -1;
+                }
+            draw:
+                points:
+                    interactive: true
+                    order: 100
+                    color: '#c88'
+                    size: 0px
+                text:
+                    order: 101
+                    text_source: name
+                    font:
+                        fill: red
+        continents:
+            filter: { kind: continent }
+            draw:
+                text:
+                    font:
+                        transform: uppercase
+        countries:
+            filter: { kind: country }
+            draw:
+                text:
+                    font:
+                        transform: uppercase
+        oceans:
+            filter: { kind: ocean }
+            draw:
+                text:
+                    font:
+                        family: Baskerville
+                        size: 14pt
+                        style: italic
+
+        cities:
+            # this filter shows lower scaleranks at higher zooms, starting at z4
+            filter: function() { return (feature.scalerank * .75) <= ($zoom - 4); }
+            draw:
+                text:
+                    font:
+                        family: Helvetica
+                        size: 12pt
+                        style: italic
+                        fill: black
+                        stroke: { color: white, width: 3 }
+
+        minor-places:
+            filter: { kind: [hamlet, village, town, neighbourhood, suburb, quarter], $zoom: { max: 14 } }
+            visible: false
+						
+    road_labels:
+        data: { source: osm, layer: roads }
+        filter: { name: true, aeroway: false, tunnel: false, railway: false, not: { kind: rail }, $zoom: { min: 10 } }
+        properties: 
+            key_text: ""
+            value_text: ""
+        highway:
+            filter: { kind: highway, $zoom: { min: 7 } }
+            draw:
+                text:
+                    priority: 2
+                    font:
+                        fill: '#666'
+                        family: Helvetica
+                        size: 12px
+                        stroke: { color: white, width: 4 }
+
+        not_highway:
+            filter: { not: { kind: highway }, $zoom: { min: 13 } }
+            draw:
+                text:
+                    priority: 5
+                    font:
+                        fill: '#666'
+                        stroke: { color: white, width: 4 }
+                        family: Helvetica
+                        size: 12px
+
+            major_road:
+                filter: { kind: major_road, $zoom: { min: 14 } }
+                draw:
+                    text:
+                        priority: 3
+                        font:
+                            family: Helvetica
+                            size: 16px
+                            stroke: { color: white, width: 4 }
+
+            small:
+                filter: { highway: [residential, unclassified], $zoom: { max: 15 } }
+                visible: false
+						
+    poi_icons:
+        data: { source: osm, layer: pois }
+        filter: { name: true, not: { kind: [peak, viewpoint, bicycle_rental, car_sharing] }, $zoom: { min: 15 } }
+        properties: 
+            key_text: ""
+            value_text: ""
+        draw:
+            icons:
+                offset: [0px, -13px]
+                size: [[13, 12px], [15, 18px]]
+                interactive: true
+
+        # add generic icon at high zoom
+        generic:
+            filter: { $zoom: { min: 18 } }
+            draw: { icons: { sprite: info } }
+
+        # examples of different icons mapped to feature properties
+        icons:
+            restaurant:
+                filter: { kind: [restaurant] }
+                draw: { icons: { sprite: restaurant } }
+            cafe:
+                filter: { kind: [cafe, convenience] }
+                draw: { icons: { sprite: cafe } }
+            bar:
+                filter: { kind: [bar, pub] }
+                draw: { icons: { sprite: bar } }
+            culture:
+                filter: { kind: [museum, library, church, place_of_worship, bank] }
+                draw: { icons: { sprite: museum } }
+            station:
+                filter: { kind: [station] }
+                draw: { icons: { sprite: train } }
+            hospital:
+                filter: { kind: [hospital, pharmacy] }
+                draw: { icons: { sprite: hospital } }
+            hotel:
+                filter: { kind: [hotel, hostel] }
+                draw: { icons: { sprite: hotel } }
+            bus_stop:
+                filter: { kind: [bus_stop] }
+                draw: { icons: { sprite: bus } }
+            bookstore:
+                filter: { kind: [bookstore] }
+                draw: { icons: { sprite: bookstore } }
+
+
+    poi_labels-dot-outlines:
+        data: { source: osm, layer: pois }
+        filter: { $zoom: { min: 15 } }
+        properties: 
+            key_text: ""
+            value_text: ""
+        draw:
+            points:
+                order: 10
+                color: black
+                size: 0px
+
+
+    poi_labels:
+        data: { source: osm, layer: pois }
+        filter:
+            name: true
+        properties: 
+            key_text: ""
+            value_text: ""
+        draw:
+            points:
+                interactive: true
+                order: 11
+                color: '#888'
+                size: 0px
+            text:
+                order: 12
+                text_source: name
+                font:
+                    typeface: 0pt Helvetica
+                    fill: purple
+        red:
+            filter: |
+                function () {
+                    return feature[properties.key_text] && feature[properties.key_text].toLowerCase().indexOf(properties.value_text.toLowerCase()) > -1;
+                }
+            draw:
+                points:
+                    interactive: true
+                    order: 100
+                    color: '#c88'
+                    size: 0px
+                text:
+                    order: 100
+                    text_source: name
+                    font:
+                        fill: red
+
+
+    landuse_labels-dot-outlines:
+        data: { source: osm, layer: landuse_labels }
+        filter: 
+            any:
+                # show labels for smaller landuse areas at higher zooms
+                - { $zoom: { min: 9 },  area: { min: 100000000 } }
+                - { $zoom: { min: 10 }, area: { min: 100000000 } }
+                - { $zoom: { min: 11 }, area: { min: 25000000 } }
+                - { $zoom: { min: 12 }, area: { min: 5000000 } }
+                - { $zoom: { min: 13 }, area: { min: 2000000 } }
+                - { $zoom: { min: 14 }, area: { min: 100000 } }
+                - { $zoom: { min: 15 }, area: { min: 50000 } }
+                - { $zoom: { min: 15 }, area: { min: 10000 } }
+                - { $zoom: { min: 18 } }
+        properties: 
+            key_text: ""
+            value_text: ""
+        draw:
+            points:
+                order: 10
+                color: black
+                size: 0px
+
+    landuse_labels:
+        data: { source: osm }
+        filter: 
+            any:
+                # show labels for smaller landuse areas at higher zooms
+                - { $zoom: { min: 9 },  area: { min: 100000000 } }
+                - { $zoom: { min: 10 }, area: { min: 100000000 } }
+                - { $zoom: { min: 11 }, area: { min: 25000000 } }
+                - { $zoom: { min: 12 }, area: { min: 5000000 } }
+                - { $zoom: { min: 13 }, area: { min: 2000000 } }
+                - { $zoom: { min: 14 }, area: { min: 100000 } }
+                - { $zoom: { min: 15 }, area: { min: 50000 } }
+                - { $zoom: { min: 15 }, area: { min: 10000 } }
+                - { $zoom: { min: 18 } }
+        properties: 
+            key_text: ""
+            value_text: ""
+        draw:
+            points:
+                interactive: true
+                order: 11
+                color: '#888'
+                size: 0px
+            text:
+                order: 12
+                text_source: name
+                font:
+                    typeface: 0pt Helvetica
+                    fill: green
+        red:
+            filter: |
+                function () {
+                    return feature[properties.key_text] && feature[properties.key_text].toLowerCase().indexOf(properties.value_text.toLowerCase()) > -1;
+                }
+            draw:
+                points:
+                    interactive: true
+                    order: 100
+                    color: '#c88'
+                    size: 0px
+                text:
+                    order: 100
+                    text_source: name
+                    font:
+                        fill: red
