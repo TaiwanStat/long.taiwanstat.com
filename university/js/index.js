@@ -21,10 +21,6 @@ map = (function () {
             }
         });
 
-
-// (function () {
-    // 'use strict';
-
     var locations = {
         'taiwan': [23.868475, 120.99295, 7.5],
         'north': [24.962730, 121.232870, 9.2],
@@ -64,13 +60,6 @@ map = (function () {
         // window.location.hash = url_options.join('/');
     }
 
-    // function updateHash () {
-    //     newhash = hash.lastHash + "/"+scene.config.layers["roads"].properties.key_text + "/"+scene.config.layers["roads"].properties.value_text;
-    //     if (window.location != newhash) window.location = newhash
-    // }
-
-    /*** Map ***/
-
     var map = L.map('map',
         {"keyboardZoomOffset" : .05}
     );
@@ -84,11 +73,6 @@ map = (function () {
             return 0;
         }
 
-        if(!a[0][year]['mfr'])
-            a[0][year]['mfr'] = a[0][year]['mnum']/a[0][year]['fnum'];
-        if(!b[0][year]['mfr'])
-            b[0][year]['mfr'] = b[0][year]['mnum']/b[0][year]['fnum'];
-
         if(a[0][year][data_type] < b[0][year][data_type]) {
             return 1;
         } 
@@ -99,6 +83,7 @@ map = (function () {
     }
 
     markerSet = [];
+
     function placeMarker() {
 
         for(var k in markerSet) 
@@ -136,18 +121,31 @@ map = (function () {
                 count += 1;
             }
         }
-        console.log(count);
     }
 
     d3.json('data/result.json', function(data){
         gdata = data;
+        
+        for(var k in gdata){
+            for(var y in gdata[k]){
 
-        var c = 0;
-        for(var k in gdata) { 
-            sortlist.push([gdata[k], k]);         
-            c += 1;
-        } 
-        console.log(c);
+                gdata[k][y]['mfr'] = gdata[k][y]['mnum']/gdata[k][y]['fnum'];
+
+                var thisYearData = parseInt(gdata[k][y]['total']);
+                var lastYear = parseInt(y) - 1;
+
+                if(gdata[k][lastYear] !== undefined){
+                    var lastYearData = parseInt(gdata[k][lastYear]['total']);     
+                    gdata[k][y]['progress'] = (thisYearData-lastYearData)/lastYearData;
+                }
+
+            }
+        }
+        // var c = 0;
+        // for(var k in gdata) { 
+        //     sortlist.push([gdata[k], k]);         
+        //     c += 1;
+        // } 
 
         placeMarker();
     })
@@ -155,7 +153,7 @@ map = (function () {
     function markerClick(e) {
         var uname = this.options.name;
 
-        $('.uname.header').text(uname);
+        $('.uname.disp').text(uname);
         displayInfo(gdata[uname]);
         // updateValue(uname);
         map.setView(this.getLatLng(), 15);
@@ -179,6 +177,8 @@ map = (function () {
             d[year]['mfr'] = d[year]['mnum'] / d[year]['fnum'];
 
         $('.mfr.disp').text('性別比(男/女): ' + Math.round(d[year]['mfr']*100)/100);
+
+        $('.progress.disp').text('較去年人數增加: ' + Math.round(d[year]['progress']*10000)/100 + '%');
     }
 
 

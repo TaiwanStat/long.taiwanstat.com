@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/leaflet.awesome-markers.css">
     <style>
         body {text-shadow: #707070 0.05px 0.05px 0.05px}
-        *{font-family:Arial,"Microsoft YaHei";}
+        *{font-family:Raleway,"Microsoft Jhenghei",Helvetica,Arial,Geneva,sans-serif; }
         *{font-weight:400 !important;}
         body {
             margin: 0px;
@@ -44,6 +44,21 @@
 
         .dg.main {
             display: none;
+        }
+
+        .title-marker {
+            background: url('css/images/markers-soft.png') no-repeat 0 0;
+            width: 35px;
+            height: 46px;
+            display: inline-block;
+        } 
+
+        .title-marker.blue {
+           background-position: -108px 0; 
+        }
+
+        .title-marker.green {
+           background-position: -72px 0; 
         }
 
     .label {
@@ -88,9 +103,9 @@
     <!-- content -->
     <div class="ui stackable grid">
         <!-- row -->
-        <div class="five column row">
+        <div class="row">
             <!-- column -->
-            <div class="column">
+            <div class="two wide column">
                 <h4 class="ui header">
                     <i class="calendar outline icon"></i>
                     <div class="content">
@@ -109,7 +124,7 @@
             </div>
 
             <!-- column -->
-            <div class="column">
+            <div class="four wide column">
                 <h4 class="ui header">
                     <i class="trophy icon"></i>
                     <div class="content">
@@ -122,10 +137,20 @@
                                 <div class="item" data-text="男學生數" value="mnum">男學生數</div>
                                 <div class="item" data-text="女學生數" value="fnum">女學生數</div>
                                 <div class="item" data-text="性別比(男/女)" value="mfr">性別比(男/女)</div>
+                                <div class="item" data-text="較去年人數增加率" value="progress">性較去年人數增加率</div>
                             </div>
                         </div>
                     </div>
                 </h4>
+            </div>
+            
+            <div class="six wide column">
+                <div class="title-marker red"></div>
+                <div calss="header" style="display:inline-block;">排名較前</div> 
+                <div class="title-marker green"></div>
+                <div calss="header" style="display:inline-block;">排名中間</div> 
+                <div class="title-marker blue"></div>
+                <div calss="header" style="display:inline-block;">排名較後</div> 
             </div>
         </div>
         <!-- end of row -->
@@ -168,6 +193,7 @@
                 <span style="font-size:20px;" class="mnum disp"></span><br><br>
                 <span style="font-size:20px;" class="fnum disp"></span><br><br>
                 <span style="font-size:20px;" class="mfr disp"></span><br><br>
+                <span style="font-size:20px;" class="progress disp"></span><br><br>
             </div>
         </div>
     </div>

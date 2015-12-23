@@ -1,5 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-TW"><head>
-    <meta charset="utf-8"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" href="/favicon.ico"><meta property="og:title" content="用數據看台灣 - university"><meta property="og:site_name" content="用數據看台灣 - university"><meta property="og:description" content="Project description"><title>用數據看台灣 - university</title><meta http-equiv="Content-Type" content="text/html" charset="utf-8"><meta property="og:image" content="http://long.taiwanstat.com/images/university.png"><meta property="og:image:type" content="image/png">  <meta name="author" content="Your Name">  <meta name="citation_authors" content="Your Name">  <meta name="description" content="Project description Author: Your Name"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="http://real.taiwanstat.com/css/style.min.css" type="text/css" media="all"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.amber-orange.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css"><script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js" async=""></script>    <!-- my js & css -->
+    <meta charset="utf-8"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" href="/favicon.ico"><meta property="og:title" content="用數據看台灣 - 101-103年台灣大專院校學生人數統計"><meta property="og:site_name" content="用數據看台灣 - 101-103年台灣大專院校學生人數統計"><meta property="og:description" content="少子化正衝擊著台灣的高等教育，希望用這張圖讓大家瞭解各校近年的學生人數概況。"><title>用數據看台灣 - 101-103年台灣大專院校學生人數統計</title><meta http-equiv="Content-Type" content="text/html" charset="utf-8"><meta property="og:image" content="http://long.taiwanstat.com/images/university.png"><meta property="og:image:type" content="image/png">  <meta name="author" content="郭亭劭">  <meta name="citation_authors" content="郭亭劭">  <meta name="description" content="少子化正衝擊著台灣的高等教育，希望用這張圖讓大家瞭解各校近年的學生人數概況。 Author: 郭亭劭"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="http://real.taiwanstat.com/css/style.min.css" type="text/css" media="all"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.amber-orange.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css"><script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js" async=""></script>    <!-- my js & css -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="lib/leaflet/leaflet.css">
     <link rel="stylesheet" href="css/leaflet_numbered_markers.css">
@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/leaflet.awesome-markers.css">
     <style>
         body {text-shadow: #707070 0.05px 0.05px 0.05px}
-        *{font-family:Arial,"Microsoft YaHei";}
+        *{font-family:Raleway,"Microsoft Jhenghei",Helvetica,Arial,Geneva,sans-serif; }
         *{font-weight:400 !important;}
         body {
             margin: 0px;
@@ -41,6 +41,21 @@
 
         .dg.main {
             display: none;
+        }
+
+        .title-marker {
+            background: url('css/images/markers-soft.png') no-repeat 0 0;
+            width: 35px;
+            height: 46px;
+            display: inline-block;
+        } 
+
+        .title-marker.blue {
+           background-position: -108px 0; 
+        }
+
+        .title-marker.green {
+           background-position: -72px 0; 
         }
 
     .label {
@@ -78,14 +93,14 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
   </head>
   <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header"><header class="mdl-layout__header">  <div class="mdl-layout__header-row">  <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/"><img src="/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>  <div class="mdl-layout-spacer"></div>  <nav class="mdl-navigation mdl-layout--large-screen-only">    <a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>    <a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>    <a class="mdl-navigation__link" href="http://taiwanstat.com/opendata">開放資料分析部落格</a>    <a class="mdl-navigation__link" href="http://taiwanstat-about-us.cannerapp.com/">關於我們</a>  </nav>  <div></div></div></header><div class="mdl-layout__drawer">  <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/"><img src="/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>  <nav class="mdl-navigation">    <a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>    <a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>    <a class="mdl-navigation__link" href="http://taiwanstat.com/opendata">開放資料分析部落格</a>    <a class="mdl-navigation__link" href="http://taiwanstat-about-us.cannerapp.com/">關於我們</a>  </nav></div>    <main class="mdl-layout__content" id="main-content"><div class="title__wrapper">  <h1 id="title">    university  </h1>  <div class="fb-plugin">    <div class="fb-like" data-href="http://long.taiwanstat.com/university" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>  </div></div>    <!-- my charts -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header"><header class="mdl-layout__header">  <div class="mdl-layout__header-row">  <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/"><img src="/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>  <div class="mdl-layout-spacer"></div>  <nav class="mdl-navigation mdl-layout--large-screen-only">    <a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>    <a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>    <a class="mdl-navigation__link" href="http://taiwanstat.com/opendata">開放資料分析部落格</a>    <a class="mdl-navigation__link" href="http://taiwanstat-about-us.cannerapp.com/">關於我們</a>  </nav>  <div></div></div></header><div class="mdl-layout__drawer">  <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/"><img src="/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>  <nav class="mdl-navigation">    <a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>    <a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>    <a class="mdl-navigation__link" href="http://taiwanstat.com/opendata">開放資料分析部落格</a>    <a class="mdl-navigation__link" href="http://taiwanstat-about-us.cannerapp.com/">關於我們</a>  </nav></div>    <main class="mdl-layout__content" id="main-content"><div class="title__wrapper">  <h1 id="title">    101-103年台灣大專院校學生人數統計  </h1>  <div class="fb-plugin">    <div class="fb-like" data-href="http://long.taiwanstat.com/university" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>  </div></div>    <!-- my charts -->
     <div class="chart">
     <!-- content -->
     <div class="ui stackable grid">
         <!-- row -->
-        <div class="five column row">
+        <div class="row">
             <!-- column -->
-            <div class="column">
+            <div class="two wide column">
                 <h4 class="ui header">
                     <i class="calendar outline icon"></i>
                     <div class="content">
@@ -104,7 +119,7 @@
             </div>
 
             <!-- column -->
-            <div class="column">
+            <div class="four wide column">
                 <h4 class="ui header">
                     <i class="trophy icon"></i>
                     <div class="content">
@@ -117,10 +132,20 @@
                                 <div class="item" data-text="男學生數" value="mnum">男學生數</div>
                                 <div class="item" data-text="女學生數" value="fnum">女學生數</div>
                                 <div class="item" data-text="性別比(男/女)" value="mfr">性別比(男/女)</div>
+                                <div class="item" data-text="較去年人數增加率" value="progress">性較去年人數增加率</div>
                             </div>
                         </div>
                     </div>
                 </h4>
+            </div>
+            
+            <div class="six wide column">
+                <div class="title-marker red"></div>
+                <div calss="header" style="display:inline-block;">排名較前</div> 
+                <div class="title-marker green"></div>
+                <div calss="header" style="display:inline-block;">排名中間</div> 
+                <div class="title-marker blue"></div>
+                <div calss="header" style="display:inline-block;">排名較後</div> 
             </div>
         </div>
         <!-- end of row -->
@@ -163,11 +188,12 @@
                 <span style="font-size:20px;" class="mnum disp"></span><br><br>
                 <span style="font-size:20px;" class="fnum disp"></span><br><br>
                 <span style="font-size:20px;" class="mfr disp"></span><br><br>
+                <span style="font-size:20px;" class="progress disp"></span><br><br>
             </div>
         </div>
     </div>
     </div>
-     <div class="mdl-card author"><h4><a href="http://taiwanstat_members.cannerapp.com/">About Author</a></h4>  <div class="author-wrapper">    <img class="ui circular image" src="/images/assert/background.png">    <div class="author-info"><h5>Your Name            </h5></div>  </div></div><div class="license__wrapper"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a><br>本著作由<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.taiwanstat.com" property="cc:attributionName" rel="cc:attributionURL">用數據看台灣團隊</a>製作，以<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 授權條款</a>釋出。</div></main></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.9/d3.min.js"></script><script src="/bower_components/semantic/dist/semantic.min.js"></script><script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');    ga('create', 'UA-61023469-1', 'auto');    ga('send', 'pageview');  </script>   <div id="fb-root"></div>  <script>(function(d, s, id) {    var js, fjs = d.getElementsByTagName(s)[0];    if (d.getElementById(id)) return;    js = d.createElement(s); js.id = id;    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";    fjs.parentNode.insertBefore(js, fjs);    }(document, 'script', 'facebook-jssdk'));</script>    <!-- my js & css -->
+     <div class="mdl-card author"><h4><a href="http://taiwanstat_members.cannerapp.com/">About Author</a></h4>  <div class="author-wrapper">    <img class="ui circular image" src="/images/assert/background.png">    <div class="author-info"><h5>郭亭劭            </h5></div>  </div></div><div class="license__wrapper"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a><br>本著作由<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.taiwanstat.com" property="cc:attributionName" rel="cc:attributionURL">用數據看台灣團隊</a>製作，以<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 授權條款</a>釋出。</div></main></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.9/d3.min.js"></script><script src="/bower_components/semantic/dist/semantic.min.js"></script><script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');    ga('create', 'UA-61023469-1', 'auto');    ga('send', 'pageview');  </script>   <div id="fb-root"></div>  <script>(function(d, s, id) {    var js, fjs = d.getElementsByTagName(s)[0];    if (d.getElementById(id)) return;    js = d.createElement(s); js.id = id;    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";    fjs.parentNode.insertBefore(js, fjs);    }(document, 'script', 'facebook-jssdk'));</script>    <!-- my js & css -->
 
     <!-- 3rd party libraries -->
     <script src="lib/leaflet/leaflet.js"></script>
