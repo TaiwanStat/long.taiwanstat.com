@@ -5,6 +5,7 @@ var picking = false;
 map = (function () {
     var year = $('.year.dropdown .menu .active.item').attr('value');
     var data_type = $('.selected.dropdown .menu .active.item').attr('value');
+    var underMouse;
 
     $('.selected.dropdown')
         .dropdown({
@@ -17,6 +18,21 @@ map = (function () {
         .dropdown({
             onChange: function(value, text) {
                 year = $('.year.dropdown .menu .active.item').attr('value');   
+                if(underMouse !== undefined) {
+                    if(gdata[underMouse][year] !== undefined) {
+                        $('.uname.disp').text(underMouse);
+                        displayInfo(gdata[underMouse]);
+                    }
+                    else {
+                        $('.uname.disp').text('選取地圖上的圖標來顯示學校資訊!');
+                        $('.total.disp').text('');
+                        $('.mnum.disp').text('');
+                        $('.fnum.disp').text('');
+                        $('.mfr.disp').text('');
+                        $('.progress.disp').text('');
+                    }
+                }
+
                 placeMarker();
             }
         });
@@ -30,28 +46,12 @@ map = (function () {
 
     var map_start_location = locations['taiwan'];
 
-    /*** URL parsing ***/
-
-    // leaflet-style URL hash pattern:
-    // #[zoom],[lat],[lng]
     var url_hash = window.location.hash.slice(1, window.location.hash.length).split('/');
     keytext = "name";
     window.keytext = keytext;
     valuetext = "major_road";
     window.valuetext = valuetext;
 
-    // if (url_hash.length >= 3) {
-    //     map_start_location = [url_hash[1],url_hash[2], url_hash[0]];
-    //     // convert from strings
-    //     map_start_location = map_start_location.map(Number);
-    // }
-
-    // if (url_hash.length == 5) {
-    //     keytext = unescape(url_hash[3]);
-    //     valuetext = unescape(url_hash[4]);
-    // }
-
-    // Put current state on URL
     window.updateURL = function() {
         // if (picking) return;
         // console.log(window.location.hash);
@@ -152,20 +152,17 @@ map = (function () {
 
     function markerClick(e) {
         var uname = this.options.name;
-
+        underMouse = uname;
         $('.uname.disp').text(uname);
         displayInfo(gdata[uname]);
-        // updateValue(uname);
         map.setView(this.getLatLng(), 15);
-        // map.removeLayer(this);
     }
 
     function markerHover(e) {
         var uname = this.options.name;
-
+        underMouse = uname;
         $('.uname.disp').text(uname);
         displayInfo(gdata[uname]);
-        
     }
 
     function displayInfo(d) {
@@ -177,8 +174,11 @@ map = (function () {
             d[year]['mfr'] = d[year]['mnum'] / d[year]['fnum'];
 
         $('.mfr.disp').text('性別比(男/女): ' + Math.round(d[year]['mfr']*100)/100);
-
-        $('.progress.disp').text('較去年人數增加: ' + Math.round(d[year]['progress']*10000)/100 + '%');
+        
+        if(!isNaN(d[year]['progress']))
+            $('.progress.disp').text('較去年人數增加: ' + Math.round(d[year]['progress']*10000)/100 + '%');
+        else
+            $('.progress.disp').text('');
     }
 
 
@@ -196,7 +196,6 @@ map = (function () {
     var scene = layer.scene;
     window.scene = scene;
 
-    // setView expects format ([lat, long], zoom)
     map.setView(map_start_location.slice(0, 3), map_start_location[2]);
 
     $('.resetz.button').on('click', function(){
@@ -213,8 +212,6 @@ map = (function () {
     })
 
     map.on('moveend', updateURL);
-
-    // var hash = new L.Hash(map);
 
     function updateKey(value) {
         keytext = value;
