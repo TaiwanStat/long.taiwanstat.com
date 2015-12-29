@@ -16,15 +16,16 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
 
-var chart = d3.select(".chart")
+
+var chart = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("data.tsv", type, function(error, data) {
-  x.domain(data.map(function(d) { return d.name; }));
-  y.domain([0, d3.max(data, function(d) { return d.value; })]);
+d3.json("data.json",function(error, data) {
+  x.domain([1,2,3,4,5,6,7,8,9,10,11,12]);
+  y.domain([0,1200]);
 
   chart.append("g")
       .attr("class", "x axis")
@@ -35,17 +36,17 @@ d3.tsv("data.tsv", type, function(error, data) {
       .attr("class", "y axis")
       .call(yAxis);
 
+
   chart.selectAll(".bar")
       .data(data)
-    .enter().append("rect")
+    .enter().append("circle")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.name); })
-      .attr("y", function(d) { return y(d.value); })
-      .attr("height", function(d) { return height - y(d.value); })
-      .attr("width", x.rangeBand());
+      .attr("cx", function(d) { return x(d.month)+20; })
+      .attr("cy", function(d) { return y(d.count); })
+      .attr("r", function(d) { return sqrt(d.count)*20; });
 });
 
 function type(d) {
-  d.value = +d.value; // coerce to number
+  d.count = +d.count; // coerce to number
   return d;
 }
