@@ -3,14 +3,6 @@
     "title": "用數據看台灣 - 統計資料",
     "page": [
        {
-        "title": "2015 全球重大事件回顧",
-        "url": "WorldEvent2015",
-        "img": "images/tmp",
-        "description": "2015 全球重大事件回顧",
-        "author": "Pei-Hsuan, Hsieh",
-        "collaborator": "Po-An, Yang"
-       },
-       {
         "title": "截至2011年土石流潛流統計",
         "url": "mudslide",
         "img": "images/mudslide.jpg",
