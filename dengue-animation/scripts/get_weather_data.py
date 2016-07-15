@@ -52,7 +52,6 @@ if __name__=='__main__':
     end = datetime.now().date()
     data = json_io.read_json('../data/weather.json')
     while now < end:
-        print (now)
         html_doc_t = requests.get(url_t+now.strftime('%Y-%m-%d')).text
         temp_t, rh_t, precp_t = get_values(html_doc_t)
 
