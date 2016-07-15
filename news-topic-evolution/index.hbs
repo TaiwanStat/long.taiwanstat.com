@@ -1,0 +1,32 @@
+<html>
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  {{> head }}
+</head>
+
+<body>
+   {{>header}}
+   {{> start}}
+
+  <div id="cloud" style="text-align:center"></div>
+  <div style="text-align:center">
+  </div>
+
+  <div id="control" class="control">
+
+    <button id="button" class="ui compact icon button">
+      <i id="icon" class="play icon"></i>
+    </button>
+    <b id="month" class="month">2015/1月</b>
+    <input id="range_bar" type="range" value="0">
+
+  </div>
+  {{> end }}
+  <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
+  <script src="./index.js"></script>
+  {{> footer}}
+</body>
+</html>
