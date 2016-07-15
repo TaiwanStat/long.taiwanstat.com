@@ -1,6 +1,7 @@
 (function(window) {
 
   var words = [];
+  var frame = 0;
   var width = $('#main-content').width();
   var myWordCloud;
   var bar_elem = document.getElementById("range_bar");
@@ -13,6 +14,9 @@
 
     // resize bar range
     bar_elem.max = words.length-1;
+
+   var d = words[frame].date;
+    month_elem.innerHTML = d.substring(0, 4) + '年' + d.substring(4) + '月';
   });
 
   function getRandomColor(i) {
@@ -96,10 +100,10 @@
   }
 
   function getWords(i) {
-    word_list = words[i];
+    word_list = words[i].word_list;
     result = [];
     for (i = 0; i < word_list.length; i++) {
-        result.push({text:word_list[i][0], size:word_list[i][1]});
+        result.push({text:word_list[i].word, size:word_list[i].count});
     }
 
      var leaderScale = d3.scale.linear()
@@ -113,11 +117,10 @@
     return result;
   }
 
-  var frame = 0;
 
   var is_playing = false;
   var timeoutVar;
-  
+
   function playCloud() {
     if (bar_elem.value == words.length-1) {
       clearTimeout(timeoutVar);
@@ -126,7 +129,8 @@
       myWordCloud.update(getWords(++frame % words.length));
       bar_elem.value = frame % words.length;
       timeoutVar = setTimeout(playCloud, 2000);
-      month_elem.innerHTML = '2015/' + (parseInt(bar_elem.value)+1) + '月';
+      var d = words[frame].date;
+      month_elem.innerHTML = d.substring(0, 4) + '年' + d.substring(4) + '月';
     }
   }
 
@@ -136,7 +140,7 @@
       is_playing = false;
       myWordCloud.update(getWords(bar_elem.value));
       frame = bar_elem.value;
-      month_elem.innerHTML = '2015/' + (parseInt(bar_elem.value)+1) + '月';
+      month_elem.innerHTML = d.substring(0, 4) + '年' + d.substring(4) + '月';
     });
 
   var icon = $('#icon');
