@@ -140,7 +140,12 @@
       is_playing = false;
       myWordCloud.update(getWords(bar_elem.value));
       frame = bar_elem.value;
+
+      var d = words[frame].date;
       month_elem.innerHTML = d.substring(0, 4) + '年' + d.substring(4) + '月';
+
+      icon.addClass('play');
+      icon.removeClass('pause');
     });
 
   var icon = $('#icon');
