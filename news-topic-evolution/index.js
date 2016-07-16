@@ -86,7 +86,7 @@
           //The outside world will need to call this function, so make it part
           // of the wordCloud return value.
           update: function(words) {
-              d3.layout.cloud().size([700, 300])
+              d3.layout.cloud().size([width-10, 300])
                   .words(words)
                   .padding(5)
                   //.rotate(function() { return ~~(Math.random() * 2) * 45; })
