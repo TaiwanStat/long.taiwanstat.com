@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body {
+    width: 1200px;
+    margin: 100px auto;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+</style><link rel="stylesheet" type="text/css" href="./dist/css/style.css">
+<body>
+    <header>
+        <h1>
+            2015年貪瀆起訴視覺化
+        </h1>
+    </header>
+    <main>
+        <div id="description">
+            公務人員的貪瀆往往被認為是政府是否清廉的一重要指標，
+            而2011年廉政署的成立就是為了防止貪污事件的發生以及打擊貪污人員，
+            在2015年期間全台各地檢署共起訴了298人次，其中包含了各類別、職等、服務機關等，
+            其中的關係、比例是如何，我們藉由這個視覺化的作品呈現。
+
+        </div>
+        <div id="select">
+            <label for="mainItem">選擇主類別：</label>
+            <select id="mainItem">
+                <option value="性別">性別</option>
+                <option value="弊端類型">弊端類型</option>
+                <option value="職務層級">職務層級</option>
+                <option value="服務機關">服務機關</option>
+            </select>
+        </div>
+        <div id="vis" />
+    </main>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <!-- <script src="./dist/js/index.min.js"></script> -->
+    <script type='text/javascript' src="./src/js/intro.js"></script>
+    <script type='text/javascript' src="./src/js/scroll.js"></script>
+    <script type='text/javascript' src="./src/js/biPartite.js"></script>
+
+</body>
