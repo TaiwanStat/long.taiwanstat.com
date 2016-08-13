@@ -161,6 +161,7 @@ main {
     line-height: 1;
     height: 34px;
     -webkit-appearance: none;
+    cursor: pointer;
 
 }
 @media screen and (min-width: 1200px) {
@@ -202,3 +203,15 @@ main {
 .ui.list .list>.item, .ui.list>.item, ol.ui.list li, ul.ui.list li {
   line-height: 2.2rem !important;
 }
+
+.introjs-helperNumberLayer, .introjs-hint-pulse, .introjs-hint-dot {
+  box-sizing: initial;
+}
+
+.introjs-hint-pulse, .introjs-hint-dot {
+  background-color: rgba(255, 0, 0, 0.4) !important;
+  border-color: rgba(255, 0, 0, 0.3) !important;
+  z-index: 1 !important;
+}
+
+
