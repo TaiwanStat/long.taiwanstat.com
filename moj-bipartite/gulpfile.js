@@ -5,8 +5,8 @@ var uglifycss = require('gulp-uglifycss');
 var watch = require('gulp-watch');
 gulp.task('uglify:js', function(){
 	return gulp.src([
-			'src/js/biPartite.js',
 			'src/js/intro.js',
+			'src/js/biPartite.js',
 		])
 		.pipe(concat('index.min.js'))
 		.pipe(uglify())
@@ -14,8 +14,8 @@ gulp.task('uglify:js', function(){
 });
 gulp.task('concat:js', function(){
 	return gulp.src([
-			'src/js/biPartite.js',
 			'src/js/intro.js',
+			'src/js/biPartite.js',
 		])
 		.pipe(concat('index.min.js'))
 		.pipe(gulp.dest('dist/js'));
