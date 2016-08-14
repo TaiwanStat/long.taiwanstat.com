@@ -476,7 +476,13 @@ this.bP = bP;
       //  colors: ["#BCD9D9", "#93C0C0", "#6BA3A3", "#4D8E8E", "#347C7C",
         //    "#C5CDE0", "#A1AECB", "#7C8DB3",'#5D719E','#42588A', '#FFF4DD', '#FFEBC4','#FFE2A8',
         //  '#ECC880','#CFA656','#FFECDD', '#FFDFC4','#FFCFA8', '#ECB180', '#CF8D56'],
-      colors: ["#3366CC", "#DC3912", "#FF9900", "#109618", "#990099", "#0099C6"],
+        colors: ["#3366cc", "#d65c5c", "#db8b70", "#ffc266", "#39ac73", "#00264d",
+          '#003366','#004080', '#004d99','#0059b3','#0066cc',
+          '#0073e6','#0080ff',
+          "#1a8cff",'#3399ff','#4da6ff','#66b3ff','#80bfff','#99ccff','#b3d9ff','#cce6ff','#e6f2ff'
+
+
+        ],
         // colors: ["#97C00E", "FFCC00", "#FF6464"],
         labelColumn: [-120, 50],
         valueColumn: [-0, 120], //(count (%)) first value is left position x, second value is right position x
