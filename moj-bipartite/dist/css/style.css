@@ -86,7 +86,8 @@ header{
 }
 #top .intro{
     background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
 }
 main {
     margin:3rem  auto;
@@ -222,5 +223,3 @@ main {
   z-index: 10 !important;
   transform: translateX(50);
 }
-
-
