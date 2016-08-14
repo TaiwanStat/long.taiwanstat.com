@@ -10,9 +10,9 @@
 </head>
 <body>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header"><header class="mdl-layout__header">  <div class="mdl-layout__header-row">  <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/"><img src="/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>  <div class="mdl-layout-spacer"></div>  <nav class="mdl-navigation mdl-layout--large-screen-only">    <a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>    <a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>    <a class="mdl-navigation__link" href="http://taiwanstat.com/opendata">開放資料分析部落格</a>    <a class="mdl-navigation__link" href="http://taiwanstat-about-us.cannerapp.com/">關於我們</a>  </nav>  <div></div></div></header><div class="mdl-layout__drawer">  <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/"><img src="/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>  <nav class="mdl-navigation">    <a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>    <a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>    <a class="mdl-navigation__link" href="http://taiwanstat.com/opendata">開放資料分析部落格</a>    <a class="mdl-navigation__link" href="http://taiwanstat-about-us.cannerapp.com/">關於我們</a>  </nav></div>  <main class="mdl-layout__content" id="main-content"><div class="title__wrapper">  <h1 id="title">    2015年貪瀆起訴視覺化  </h1>  <div class="fb-plugin">    <div class="fb-like" data-href="http://long.taiwanstat.com/moj-bipartite" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>  </div></div>      <div id="top">
-        <div class="ui bulleted list">
-          <div class="item">資料來源為<a href="http://www.aac.moj.gov.tw/mp289.html">法務部廉政署</a></div>
-        </div>
+        <ul>
+          <li>資料來源為<a href="http://www.aac.moj.gov.tw/mp289.html">法務部廉政署</a></li>
+        </ul>
         <div class="intro">
           公務員貪瀆情況反映政府清廉程度，
           2011年廉政署的成立就是為了防止降低貪瀆犯罪的發生，打擊貪腐。
@@ -24,8 +24,8 @@
       </div>
     <div>
 
-      <div class="select mainItem">
-        <label for="mainItem"  data-intro="在這裡可以挑選想比較的類別，試試看吧！" data-step="1" data-hint="在這裡可以挑選想比較的類別，試試看吧！">選擇主類別：</label>
+      <div class="select mainItem" id="forHint">
+        <label for="mainitem"  data-step="1">選擇主類別：</label>
         <select id="mainItem" class="selectItem">
           <option value="性別">性別</option>
           <option value="涉案類別">涉案類別</option>
@@ -42,7 +42,7 @@
           <option value="犯罪時服務機關">犯罪時服務機關</option>
         </select>
       </div>
-      <div id="vis" data-hint="將游標移至長條圖任一區塊上方可以單獨顯示該項目中的比例唷！">
+      <div id="vis">
       </div>
       
       <div class="ui divider"></div>

@@ -195,6 +195,10 @@ main {
     }
 }
 #vis{
+  position: relative;
+}
+#forHint {
+  position: relative;
 }
 
 
@@ -211,7 +215,12 @@ main {
 .introjs-hint-pulse, .introjs-hint-dot {
   background-color: rgba(255, 0, 0, 0.4) !important;
   border-color: rgba(255, 0, 0, 0.3) !important;
-  z-index: 1 !important;
+}
+.introjs-tooltip {
+}
+.introjs-hint {
+  z-index: 10 !important;
+  transform: translateX(50);
 }
 
 
