@@ -87,7 +87,7 @@ header{
 #top .intro{
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 5px;
-    border: 1px solid #aaa;
+    `;box-shadow: 4px 4px 4px #aaa;
 }
 main {
     margin:3rem  auto;
@@ -205,6 +205,14 @@ main {
 
 /* over the semantic */
 
+.ui.blue.button {
+  box-shadow: 4px 4px 4px #aaa;
+  transition: box-shadow 200ms;
+}
+.ui.blue.button:hover {
+  box-shadow: none;
+}
+
 .ui.list .list>.item, .ui.list>.item, ol.ui.list li, ul.ui.list li {
   line-height: 2.2rem !important;
 }
@@ -216,6 +224,9 @@ main {
 .introjs-hint-pulse, .introjs-hint-dot {
   background-color: rgba(255, 0, 0, 0.4) !important;
   border-color: rgba(255, 0, 0, 0.3) !important;
+}
+.introjs-hint-dot {
+  animation: introjspulse 1s ease-out;
 }
 .introjs-tooltip {
 }
