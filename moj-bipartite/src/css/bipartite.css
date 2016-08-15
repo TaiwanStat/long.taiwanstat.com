@@ -226,7 +226,6 @@ main {
   border-color: rgba(255, 0, 0, 0.3) !important;
 }
 .introjs-hint-dot {
-  animation: introjspulse 1s ease-out;
 }
 .introjs-tooltip {
 }
