@@ -67,7 +67,6 @@ rect {
 body{
     width:100%;
     margin: 0;
-
 }
 header{
     background-color: #BCD9D9;
@@ -86,8 +85,8 @@ header{
 }
 #top .intro{
     background-color: rgba(255, 255, 255, 0.9);
+    border: 1px #ccc solid;
     border-radius: 5px;
-    `;box-shadow: 4px 4px 4px #aaa;
 }
 main {
     margin:3rem  auto;
@@ -98,12 +97,14 @@ main {
 }
 .intro{
     /*background-color: #eee;*/
-  font-size: 1.3rem;
-    margin-bottom: 25px;
-    padding:5rem 3rem;
-    line-height: 2.2rem;
-    letter-spacing:  2px;
+    margin-bottom: 2rem;
+    padding:3rem 3rem;
     color: #444;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+}
+.introPart {
+  padding:2rem 0rem;
 }
 .red{
     color: red;
@@ -111,14 +112,14 @@ main {
 .bold{
     font-weight: bold;
 }
-.intro img{
+.introPart img{
     display: inline-block;
     height:400px;
     width:auto;
     max-width: 100%;
     max-height: 100%;
     transition: height 400ms;
-    margin: 30px auto 30px auto;
+    margin-top: 1rem;
 }
 /*.intro img:hover{
     height:400px;
@@ -126,28 +127,6 @@ main {
 #content {
 
   margin-top: 5rem;
-}
-.decorate{
-    display: inline-block;
-    position: relative;
-    bottom:40px;
-    width: 8%;
-    border:0;
-    margin-left: 10px;
-    height:20px;
-    background: #BCD9D9;
-    z-index: -2;
-}
-.circle{
-    width:30px;
-    height:30px;
-    border-radius: 15px;
-    background-color: #7C8DB3;
-    position: relative;
-    top:40px;
-    left:-5px;
-    opacity: 0.7;
-    z-index: -1;
 }
 .select{
     margin-bottom: 50px;
@@ -204,7 +183,6 @@ main {
 
 
 /* over the semantic */
-
 .ui.blue.button {
   box-shadow: 4px 4px 4px #aaa;
   transition: box-shadow 200ms;
