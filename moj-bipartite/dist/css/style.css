@@ -5,6 +5,12 @@ svg text {
     font-size: 1rem;
     fill: #444;
 }
+svg text.bigText {
+  font-size: 1.1rem;
+}
+svg text.hugeText {
+  font-size: 1.2rem;
+}
 svg .header text {
   font-size: 0.9rem;
 }
@@ -133,6 +139,11 @@ main {
     margin-top: 50px;
     margin: 10px;
 }
+.buttons {
+  position: relative;
+    top: -13px;
+    left: 75%;
+}
 .selectItem{
     background-color: white;
     width: auto;
@@ -184,7 +195,7 @@ main {
 
 /* over the semantic */
 .ui.blue.button {
-  box-shadow: 4px 4px 4px #aaa;
+  box-shadow: 1px 1px 1px #aaa;
   transition: box-shadow 200ms;
 }
 .ui.blue.button:hover {
