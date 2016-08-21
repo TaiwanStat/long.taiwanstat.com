@@ -6,10 +6,10 @@ svg text {
     fill: #444;
 }
 svg text.bigText {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 svg text.hugeText {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
 }
 svg .header text {
   font-size: 0.9rem;
@@ -55,7 +55,7 @@ rect {
 .barvalue.selected,
 .barpercent.selected {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     fill: #111;
 }
 .barlabel.unselected,
@@ -165,6 +165,9 @@ main {
     main, header {
         /*padding-left: 50px;
         padding-right: 50px;*/
+    }
+    svg text {
+      font-size:1.2rem ;
     }
     #top .intro{
         width:90%;

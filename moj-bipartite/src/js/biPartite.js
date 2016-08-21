@@ -560,9 +560,9 @@ var textClass = '';
         barValueFontSize: "10",
         barPercentFontSize: "10",
         width :  window.innerWidth > 1200 ? 1200 : window.innerWidth,
-        height : window.innerHeight * 0.85,
-        margin : { b: 40, t: 40, l: 160, r: 0 },
-        eachWidth:390,
+        height : window.innerHeight < 600? 600 : window.innerHeight * 0.85,
+        margin : { b: 40, t: 40, l: window.innerWidth < 600 ? 130:170 , r: 0 },
+        eachWidth:385,
       });
       bP.draw(data,'#vis');
       document.getElementById("mainItem")
