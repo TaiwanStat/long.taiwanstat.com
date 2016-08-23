@@ -213,6 +213,18 @@ main {
   line-height: 2.2rem !important;
 }
 
+.ui.bottom.attached.tab.segment {
+  transition: all 700ms;
+}
+.ui.tab {
+  display: block !important;
+  max-height: 0px;
+  overflow: hidden;
+}
+.ui.tab.active {
+  max-height: 2000px;
+}
+
 .introjs-helperNumberLayer, .introjs-hint-pulse, .introjs-hint-dot {
   box-sizing: initial;
 }
