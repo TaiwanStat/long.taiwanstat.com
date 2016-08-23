@@ -130,6 +130,10 @@ main {
 /*.intro img:hover{
     height:400px;
 }*/
+
+* {
+  box-sizing: content-box !important;
+}
 #content {
 
   margin-top: 5rem;
