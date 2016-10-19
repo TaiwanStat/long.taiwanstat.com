@@ -1,0 +1,164 @@
+.text-style{
+  font-family: 'cwTeXYen', sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  line-height: 25px;
+  font-weight: normal;
+  color: #666666;
+  text-align: center;
+}
+.ref-text{
+  font-family: 'cwTeXYen', sans-serif;
+  font-size: 15px;
+  letter-spacing: 4px;
+  line-height: 25px;
+  font-weight: normal;
+  color: #878787;
+  text-align: center;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+button{
+  margin-left: 15px;
+}
+.focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+.option{
+  margin: 30px;
+}
+.tooltip { 
+    position: relative;     
+    text-align: left;       
+    height: 55px;         
+    padding: 10px;       
+    font: 10px;
+    color: white;
+    background: darkblue; 
+    border: 0px;    
+    line-height:20px;
+    border-radius: 6px;    
+    width: 130px; 
+    pointer-events: none;
+    bottom: 267px;
+}
+.tooltip .arrow_b_out{
+  width:0px;
+  height:0px;
+  border-width:15px;
+  border-style:solid;
+  border-color:darkblue transparent transparent transparent ;
+  position:absolute;
+  bottom:-29px;
+  right:35px;
+}
+#container {
+  margin: 20px;
+  width: 260;
+  height: 260px;
+  margin-top: 100px;
+  position: relative;
+}
+div.default.text, div.text{
+  font-size: 20px;
+}
+.des{
+  font-size: 20px;
+  margin-top: 25px;
+}
+.row{
+  display: inline-flex;
+}
+#result{
+  text-align: center;
+}
+.age{
+  margin-right: 15px;
+}
+.column{
+  display: inline-block;
+  padding: 20px;
+  margin-top: 25px;
+}
+.chart-container{
+  display: inline-block;
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  margin-top: 27px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+  box-shadow: -10px 10px 50px hsla(0,0%,94%,1);
+}
+#circle-descript, #chart-descript{
+  text-align: left;
+}
+#chart-descript{
+  margin-left: 80px;
+}
+#age,#hometown{
+  margin-right: 30px;
+}
+p {
+  font-size: 15px;
+  border-left-style: solid;
+  border-left-width: 1px;
+  padding-left: 8px;
+  line-height: 27px;
+  letter-spacing: 5px;
+}
+
+text.x.label, text.y.label{
+  font-size: 11px;
+}
+.highlight{
+  font-size: 25px;
+  color: #4c6ef5;
+}
+#bottomtext{
+  margin: 30px;
+  font-size: 15px;
+  letter-spacing: 10px;
+}
+button{
+  margin-left: 16px;
+}
+select.ui.dropdown{
+  font-size: 15px;
+}
+@media only screen and (max-width: 900px) {
+    .row{
+      display: block;
+    }
+    .column{
+      display: block;
+    }
+    #chart-descript{
+      margin-left: 0;
+    }
+    #bottomtext{
+      font-size: 14px;
+  }
+  .text-style{
+  font-size: 9px;
+  letter-spacing: 1px;
+  }
+  .tooltip { 
+    bottom: 160px;
+    }
+}

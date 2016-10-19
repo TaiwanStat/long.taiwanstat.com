@@ -1,81 +1,86 @@
 <html><head>
-    <meta charset="utf-8"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" href="/favicon.ico"><meta property="og:title" content="用數據看台灣 - 2015年貪瀆起訴視覺化"><meta property="og:site_name" content="用數據看台灣 - 2015年貪瀆起訴視覺化"><meta property="og:description" content="此視覺化圖表以2015年期間各地檢署起訴之貪瀆案件，共計297人次， 包含各種性別、涉案類別、職務層級及犯罪時之服務機關， 呈現其相互關聯及比例。"><title>用數據看台灣 - 2015年貪瀆起訴視覺化</title><meta http-equiv="Content-Type" content="text/html" charset="utf-8"><meta property="og:image" content="http://long.taiwanstat.com/./images/moj-bipartite.png"><meta property="og:image:type" content="image/png">  <meta name="author" content="Fu-Siou Li">  <meta name="citation_authors" content="Fu-Siou Li">  <meta name="description" content="此視覺化圖表以2015年期間各地檢署起訴之貪瀆案件，共計297人次， 包含各種性別、涉案類別、職務層級及犯罪時之服務機關， 呈現其相互關聯及比例。 Author: Fu-Siou Li"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/css/style.min.css" type="text/css" media="all"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.amber-orange.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css"><script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js" async=""></script>    <link rel="stylesheet" type="text/css" href="./dist/css/style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/shepherd/1.8.0/css/shepherd-theme-arrows.css" rel="stylesheet">
+  <meta charset="utf-8"><link rel="icon" type="image/png" href="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/favicon.ico"><link rel="shortcut icon" href="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/favicon.ico" type="image/x-icon"><meta property="og:title" content="用數據看台灣 - 2015年貪瀆起訴視覺化"><meta property="og:site_name" content="用數據看台灣 - 2015年貪瀆起訴視覺化"><meta property="og:description" content="此視覺化圖表以2015年期間各地檢署起訴之貪瀆案件，共計297人次， 包含各種性別、涉案類別、職務層級及犯罪時之服務機關， 呈現其相互關聯及比例。"><title>用數據看台灣 - 2015年貪瀆起訴視覺化</title><meta http-equiv="Content-Type" content="text/html" charset="utf-8"><meta property="og:image" content="http://long.taiwanstat.com/./images/moj-bipartite.png"><meta property="og:image:type" content="image/png">  <meta name="author" content="廉政署">  <meta name="citation_authors" content="廉政署">  <meta name="description" content="此視覺化圖表以2015年期間各地檢署起訴之貪瀆案件，共計297人次， 包含各種性別、涉案類別、職務層級及犯罪時之服務機關， 呈現其相互關聯及比例。 Author: 廉政署"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/css/style.min.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.amber-orange.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/bower_components/semantic/dist/semantic.min.css"><script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js" async=""></script>    <link rel="stylesheet" type="text/css" href="./dist/css/style.css">
+    <link href="//cdn.bootcss.com/shepherd/1.8.0/css/shepherd-theme-default.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.4/css/tether.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
-    <link href="//cdn.bootcss.com/intro.js/2.2.0/introjs.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="//cdn.bootcss.com/intro.js/2.2.0/intro.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.4/js/tether.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/shepherd/1.8.0/js/shepherd.min.js" type="text/javascript" charset="utf-8"></script>
-  </head>
-  <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header"><header class="mdl-layout__header">  <div class="mdl-layout__header-row">  <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/"><img src="/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>  <div class="mdl-layout-spacer"></div>  <nav class="mdl-navigation mdl-layout--large-screen-only">    <a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>    <a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>    <a class="mdl-navigation__link" href="http://taiwanstat.com/opendata">開放資料分析部落格</a>    <a class="mdl-navigation__link" href="http://taiwanstat-about-us.cannerapp.com/">關於我們</a>  </nav>  <div></div></div></header><div class="mdl-layout__drawer">  <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/"><img src="/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>  <nav class="mdl-navigation">    <a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a>    <a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>    <a class="mdl-navigation__link" href="http://taiwanstat.com/opendata">開放資料分析部落格</a>    <a class="mdl-navigation__link" href="http://taiwanstat-about-us.cannerapp.com/">關於我們</a>  </nav></div>  <main class="mdl-layout__content" id="main-content"><div class="title__wrapper">  <h1 id="title">    2015年貪瀆起訴視覺化  </h1>  <div class="fb-plugin">    <div class="fb-like" data-href="http://long.taiwanstat.com/moj-bipartite" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>  </div></div>      <div id="top">
-        <ul>
-          <li>資料來源為<a href="http://www.aac.moj.gov.tw/mp289.html">法務部廉政署</a></li>
-          <li>若無法正常顯示建議更換其他瀏覽器，如IE10以上或是Safari、Chrome等。</li>
-        </ul>
+</head>
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header"><header class="mdl-layout__header">  <div class="mdl-layout__header-row">  <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/"><img src="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/realtime/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>  <div class="mdl-layout-spacer"></div>  <nav class="mdl-navigation mdl-layout--large-screen-only">    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/realtime/">台灣開放即時資料</a>    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/statistics/">台灣開放統計資料</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>    <a class="mdl-navigation__link" href="https://taiwanstat.com/blog/opendata/">開放資料分析部落格</a>    <a class="mdl-navigation__link" href="http://taiwanstat-about-us.cannerapp.com/">關於我們</a>  </nav>  <div></div></div></header><div class="mdl-layout__drawer">  <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/"><img src="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/realtime/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>  <nav class="mdl-navigation">    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/realtime/">台灣開放即時資料</a>    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/statistics/">台灣開放統計資料</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a>    <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a>    <a class="mdl-navigation__link" href="https://taiwanstat.com/blog/opendata/">開放資料分析部落格</a>    <a class="mdl-navigation__link" href="http://taiwanstat-about-us.cannerapp.com/">關於我們</a>  </nav></div>  <main class="mdl-layout__content" id="main-content"><div class="title__wrapper">  <h1 id="title">    2015年貪瀆起訴視覺化  </h1>  <div class="fb-plugin">    <div class="fb-like" data-href="http://long.taiwanstat.com/moj-bipartite" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>  </div></div>      <div id="top">
+        <div class="ui bulleted list">
+          <div class="item">資料來源為<a href="http://www.aac.moj.gov.tw/mp289.html">法務部廉政署</a></div>
+        </div>
         <div class="intro">
-          公務員貪瀆情況反映政府清廉程度，2011年廉政署的成立就是為了防止降低貪瀆犯罪的發生，打擊貪腐。
+          公務員貪瀆情況反映政府清廉程度，
+          2011年廉政署的成立就是為了防止降低貪瀆犯罪的發生，打擊貪腐。
           <br>
-          此視覺化圖表以2015年期間各地檢署起訴之貪瀆案件涉案公務員共計297人次，包含各種<span class="bold">性別、涉案類別、職務層級及犯罪時之服務機關</span>，呈現其相互關聯及比例。
+          此視覺化圖表以2015年期間各地檢署起訴之貪瀆案件，共計297人次，
+          包含各種<span class="bold">性別、涉案類別、職務層級及犯罪時之服務機關</span>，
+          呈現其相互關聯及比例。
         </div>
       </div>
-      <div>
+    <div>
 
-        <div class="select mainItem" id="forHint">
-          <label for="mainitem"  data-step="1">選擇主類別：</label>
-          <select id="mainItem" class="selectItem">
-            <option value="性別">性別</option>
-            <option value="涉案類別">涉案類別</option>
-            <option value="職務層級">職務層級</option>
-            <option value="犯罪時服務機關">犯罪時服務機關</option>
-          </select>
-        <span class="buttons">
-        <button class="ui blue icon plus compact button">
-          ＋
-        </button>
-        <button class="ui blue  icon minus compact button">
-          －
-        </button>
-        </span>
-        </div>
-        <div class="select subItem">
-          <label for="subItem">選擇次類別：</label>
-          <select id="subItem" class="selectItem">
-            <option value="性別">性別</option>
-            <option value="涉案類別" selected="">涉案類別</option>
-            <option value="職務層級">職務層級</option>
-            <option value="犯罪時服務機關">犯罪時服務機關</option>
-          </select>
-        </div>
-        <div id="vis">
-        </div>
-
-        <div class="ui divider"></div>
-        <h1 class="ui block header">
-          圖表說明
-        </h1>
-        <div class="intro">
-          此視覺化圖表主要呈現2015年公務員貪瀆案件的相關資訊，我們可以透過「性別」、「涉案類別」、「職務層級」、「犯罪時服務機關」來看這4個要素之間的相互關係。
-        </div>
-
+      <div class="select mainItem">
+        <label for="mainItem">選擇主類別：</label>
+        <select id="mainItem" class="selectItem">
+          <option value="性別">性別</option>
+          <option value="涉案類別">涉案類別</option>
+          <option value="職務層級">職務層級</option>
+          <option value="犯罪時服務機關">犯罪時服務機關</option>
+        </select>
+      </div>
+      <div class="select subItem">
+        <label for="subItem">選擇次類別：</label>
+        <select id="subItem" class="selectItem">
+          <option value="性別">性別</option>
+          <option value="涉案類別" selected="">涉案類別</option>
+          <option value="職務層級">職務層級</option>
+          <option value="犯罪時服務機關">犯罪時服務機關</option>
+        </select>
+      </div>
+      <div id="vis">
+      </div>
+      
+      <div class="ui divider"></div>
+      <h1 class="ui block header">
+        圖表說明
+      </h1>
+      <div class="intro">
+      統計資料說明：<br>
+      <div class="ui ordered list">
+      <div class="item">
+        本圖表統計資料係以各地檢署（不含最高法院檢察署特別偵查組）檢察官偵辦
+      貪瀆案件，法務部統計處於104年1-12月結案之起訴書為基準，故包含其他期間起訴，
+      惟於104年1-12月開始併其他追加起訴案件結案之相關起訴書。
+      </div>
+      <div class="item">
+      本圖表統計資料係依起訴書歸類涉案類別，該起訴書所列之起訴公務員人數均歸類為
+      該涉案類別，例如起訴書經研判涉案類別，例如起訴書經研判涉案類別為「關務」類，
+      其涉案人員如非屬財政部關務署。亦會含括至此類別，因此涉案類別並不等同於機關別。
+      </div>
+      <div class="item">
+      涉案人次係以該起訴書起訴人數為主，如2份不同起訴書起訴同一人，以2人次計算。
+      </div>
+      </div>
+      <div id="content">
         <div class="ui top attached tabular menu">
           <a class="active item" data-tab="性別">性別</a>
-          <a class="active item" data-tab="涉案類別">涉案類別</a>
-          <a class="active item" data-tab="職務層級">職務層級</a>
-          <a class="active item" data-tab="犯罪時服務機關">犯罪時服務機關</a>
+          <a class="item" data-tab="涉案類別">涉案類別</a>
+          <a class="item" data-tab="服務機關">服務機關</a>
+          <a class="item" data-tab="職務層級">職務層級</a>
         </div>
-        <div class="ui bottom attached tab segment" data-tab="性別">
-          <div class="intro">
-            <div class="introPart">
-              2015年公務員性別的比例約為男女各半（男性26萬4,261人，女性26萬1,959人，行政院人事行政總處2015年第 4季統計資料），從本圖表中可發現，男性人數為264人，女性為33人，男性的比例趨近9成。
-              <div>
+        <div class="ui bottom attached active tab segment" data-tab="性別">
+            <div class="intro">
+              2015年公務員性別的比例約為男女各半（男性26萬4,261人，女性26萬1,959人，
+              行政院人事行政總處2015年第 4季統計資料），從本圖表中可發現
+              ，男性人數為264人，女性為33人，男性的比例趨近9成。
+            <div>
 
-                <img src="./dist/img/MF.png">
-              </div>
-
+              <img src="./dist/img/MF.png">
             </div>
-            <div class="introPart">
+
             以男性與涉案類別、犯罪時服務機關、職務層級中，三者的交互關係呈現如下：<br>
             <ul>
               <li>
@@ -94,9 +99,7 @@
               <img src="./dist/img/male2.png">
               <img src="./dist/img/male3.png">
             </div>
-            </div>
 
-            <div class="introPart">
             女性則為:<br>
             <ul>
               <li>
@@ -115,21 +118,19 @@
               <img src="./dist/img/female2.png">
               <img src="./dist/img/female3.png">
             </div>
-            </div>
 
           </div>
         </div>
         <div class="ui bottom attached tab segment" data-tab="涉案類別">
-          <div class="intro">
-            <div class="introPart">
+            <div class="intro">
             涉案類別中營建、警政、行政各佔了<span class="red">1</span>成以上的比例，是較多的類型，有部分類型是只有男性人員，例如國營事業、外交事務等。
             <br>
             <div>
 
-              <img src="./dist/img/type.png">
+              <img src="./dist/img/type1.png">
+              <img src="./dist/img/type2.png">
+              <img src="./dist/img/type3.png">
             </div>
-            </div>
-            <div class="introPart">
             以最多的營建類來看:<br>
             <ul>
               <li>
@@ -144,24 +145,23 @@
             </ul>
             <div>
 
-              <img src="./dist/img/type1.png">
-              <img src="./dist/img/type2.png">
-              <img src="./dist/img/type3.png">
-            </div>
+              <img src="./dist/img/type4.png">
+              <img src="./dist/img/type5.png">
+              <img src="./dist/img/type6.png">
             </div>
           </div>
         </div>
         <div class="ui bottom attached tab segment" data-tab="職務層級">
-          <div class="intro">
-            <div class="introPart">
-            公務人員官職等主要可分為：委任一職等至委任五職等、薦任六職等至九職等、簡任十職等至簡任十四職等，本圖表統計包含簡任、薦任、委任或相當層級的公務員。從本圖表中可發現，中層薦任及基層委任共佔了7成比例。
+            <div class="intro">
+            公務人員官職等主要可分為：委任一職等至委任五職等、薦任六職等至九職等、簡任十職等至簡任十四職等，
+            本圖表統計包含簡任、薦任、委任或相當層級的公務員。從本圖表中可發現，
+            中層薦任及基層委任共佔了7成比例。
             <br>
             <div>
 
-              <img src="./dist/img/level.png">
+              <img src="./dist/img/level1.png">
+              <img src="./dist/img/level2.png">
             </div>
-            </div>
-            <div class="introPart">
             以最多的中層薦任來看:<br>
             <ul>
               <li>
@@ -176,24 +176,20 @@
             </ul>
             <div>
 
-              <img src="./dist/img/level1.png">
-              <img src="./dist/img/level2.png">
-              <img src="./dist/img/level3.png">
-            </div>
+              <img src="./dist/img/level4.png">
+              <img src="./dist/img/level5.png">
+              <img src="./dist/img/level6.png">
             </div>
           </div>
         </div>
-        <div class="ui bottom attached tab segment" data-tab="犯罪時服務機關">
+        <div class="ui bottom attached tab segment" data-tab="服務機關">
           <div class="intro">
-            <div class="introPart">
             犯罪時服務機關則以地方行政機關為最多。
             <br>
             <div>
 
               <img src="./dist/img/service1.png">
             </div>
-            </div>
-            <div class="introPart">
             以最多的地方行政來看:<br>
             <ul>
               <li>
@@ -208,31 +204,16 @@
             </ul>
             <div>
 
-              <img src="./dist/img/service1.png">
-              <img src="./dist/img/service2.png">
-              <img src="./dist/img/service3.png">
-            </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="intro">
-          統計資料說明：<br>
-          <div class="ui ordered list">
-            <div class="item">
-              本圖表統計資料係以各地檢署（不含最高法院檢察署特別偵查組）檢察官偵辦貪瀆案件，法務部統計處於104年1-12月結案之起訴書為基準，故包含其他期間起訴，惟於104年1-12月開始併其他追加起訴案件結案之相關起訴書。
-            </div>
-            <div class="item">
-              本圖表統計資料係依起訴書歸類涉案類別，該起訴書所列之起訴公務員人數均歸類為該涉案類別，例如起訴書經研判涉案類別，例如起訴書經研判涉案類別為「關務」類，其涉案人員如非屬財政部關務署，亦會含括至此類別，因此涉案類別並不等同於機關別。
-            </div>
-            <div class="item">
-              涉案人次係以該起訴書起訴人數為主，如2份不同起訴書起訴同一人，以2人次計算。
+              <img src="./dist/img/service4.png">
+              <img src="./dist/img/service5.png">
+              <img src="./dist/img/service6.png">
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="mdl-card author"><h4><a href="http://taiwanstat_members.cannerapp.com/">About Author</a></h4>  <div class="author-wrapper">    
+    </div>
 
-            <img class="ui circular image" src="./dist/img/moj.png">    <div class="author-info"><h5>廉政署            </h5></div>  </div></div><div class="license__wrapper"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a><br>本著作由<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.taiwanstat.com" property="cc:attributionName" rel="cc:attributionURL">用數據看台灣團隊</a>製作，以<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 授權條款</a>釋出。</div></div></main></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.9/d3.min.js"></script><script src="/bower_components/semantic/dist/semantic.min.js"></script><script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');    ga('create', 'UA-61023469-1', 'auto');    ga('send', 'pageview');  </script>   <div id="fb-root"></div>  <script>(function(d, s, id) {    var js, fjs = d.getElementsByTagName(s)[0];    if (d.getElementById(id)) return;    js = d.createElement(s); js.id = id;    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";    fjs.parentNode.insertBefore(js, fjs);    }(document, 'script', 'facebook-jssdk'));</script>    <script src="./dist/js/index.min.js"></script>
-    <div class="footer-mobile">  <button class="scrollup mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--2dp" id="set">    <i class="material-icons">keyboard_arrow_up</i>  </button></div><footer class="mdl-mini-footer">  <div class="mdl-mini-footer__left-section">© 2015 <a href="http://taiwanstat-about-us.cannerapp.com">用數據看台灣</a> ·    <a href="http://netdb.csie.ncku.edu.tw">NCKU-NetDB</a>        · <a href="https://www.facebook.com/taiwanstat/?fref=ts"><i class="facebook icon"></i></a>  </div>  <div class="mdl-mini-footer__right-section">    <span class="footer_msg">合作提案、客製化圖表製作、意見回饋  </span>    歡迎來信: <a href="mailto:contact@taiwanstat.com">contact@taiwanstat.com</a>  </div>  </footer> <script src="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/js/main.min.js" async=""></script>
-  </body></html>
+   <div class="mdl-card author"><h4><a href="http://taiwanstat_members.cannerapp.com/">About Author</a></h4>  <div class="author-wrapper">    <img class="ui circular image" src="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/realtime/images/assert/background.png">    <div class="author-info"><h5>廉政署            </h5></div>  </div></div><div class="license__wrapper"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a><br>本著作由<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.taiwanstat.com" property="cc:attributionName" rel="cc:attributionURL">用數據看台灣團隊</a>製作，以<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 授權條款</a>釋出。</div></div></main></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.9/d3.min.js"></script><script src="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/bower_components/semantic/dist/semantic.min.js"></script><script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');    ga('create', 'UA-61023469-1', 'auto');    ga('send', 'pageview');  </script>   <div id="fb-root"></div>  <script>(function(d, s, id) {    var js, fjs = d.getElementsByTagName(s)[0];    if (d.getElementById(id)) return;    js = d.createElement(s); js.id = id;    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";    fjs.parentNode.insertBefore(js, fjs);    }(document, 'script', 'facebook-jssdk'));</script>    <script src="./dist/js/index.min.js"></script>
+  <div class="footer-mobile">  <button class="scrollup mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--2dp" id="set">    <i class="material-icons">keyboard_arrow_up</i>  </button></div><footer class="mdl-mini-footer">  <div class="mdl-mini-footer__left-section">© 2015 <a href="http://taiwanstat-about-us.cannerapp.com">用數據看台灣</a> ·    <a href="http://netdb.csie.ncku.edu.tw">NCKU-NetDB</a>        · <a href="https://www.facebook.com/taiwanstat/?fref=ts"><i class="facebook icon"></i></a>  </div>  <div class="mdl-mini-footer__right-section">    <span class="footer_msg">合作提案、客製化圖表製作、意見回饋  </span>    歡迎來信: <a href="mailto:contact@taiwanstat.com">contact@taiwanstat.com</a>  </div>  </footer> <script src="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/js/main.min.js"></script>
+</body></html>
