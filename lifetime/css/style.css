@@ -15,6 +15,7 @@
   font-weight: normal;
   color: #878787;
   text-align: center;
+  font-weight: 600;
 }
 .axis path,
 .axis line {
@@ -113,6 +114,8 @@ div.default.text, div.text{
 }
 #age,#hometown{
   margin-right: 30px;
+  font-size: 16px;
+  font-family: sans-serif;
 }
 p {
   font-size: 15px;
@@ -121,10 +124,12 @@ p {
   padding-left: 8px;
   line-height: 27px;
   letter-spacing: 5px;
+  font-weight: 600;
 }
 
 text.x.label, text.y.label{
   font-size: 11px;
+  font-weight: 600;
 }
 .highlight{
   font-size: 25px;
@@ -134,6 +139,7 @@ text.x.label, text.y.label{
   margin: 30px;
   font-size: 15px;
   letter-spacing: 10px;
+  font-weight: 600;
 }
 button{
   margin-left: 16px;
