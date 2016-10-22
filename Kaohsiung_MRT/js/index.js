@@ -115,7 +115,7 @@ svg.append("text")
         .style("font-size","13.5px")
         .style("font-family","Microsoft JhengHei")
         .style("font-weight","bold")
-        .text("※點選圓餅圖得知當月更多資料詳情!");
+        .text("※點選圓餅圖得知當月更多資料詳情!(點擊第二次取消選取)");
 
 function detail(year,i,callback){
   d3.csv("data/ticket/"+(year-1911)+".csv", function(error, data) {
