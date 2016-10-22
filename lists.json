@@ -3,6 +3,13 @@
     "title": "用數據看台灣 - 統計資料",
     "page": [
        {
+        "title": "高雄捷運月均營業額及票種分析",
+        "url": "Kaohsiung_MRT",
+        "img": "./images/MRT.jpg",
+        "description": "自2016年7月起，高雄捷運開放使用悠遊卡，你知道這對高雄捷運產生甚麼影響嗎!?一起來看看吧!",
+        "author": "劉冠文"
+       },
+       {
         "title": "人生還長：壽命視覺化",
         "url": "lifetime",
         "img": "./images/lifetime.png",

@@ -1,0 +1,65 @@
+.plot,
+.axis text{
+  font: 10px sans-serif;
+}
+
+.layer,
+.layer2{
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis2 path,
+.axis2 line,
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+}
+
+
+.toolrect{
+    stroke: lightgrey;
+    fill: lightgrey;
+    stroke-width:5;
+}
+
+.pie{
+    stroke: #fff;
+}
+
+.pieTip{
+    font-size:30px;
+    pointer-events: none;
+}
+
+.title{
+  text-anchor:middle;
+  font-size:22px;
+}
+
+.text1,
+.text2,
+.monL{
+  text-anchor:end;
+}
+
+.more{
+    position: absolute;
+    font-size: 10px;
+    top: 595px;
+    left: 750px;
+    width: 300px;
+    height: 100px;
+}
+
+ @media only screen and (max-width: 500px) {
+            .more{
+                position: absolute;
+                font-size: 15px;
+                top: 595px;
+                left: 750px;
+                width: 300px;
+                height: 100px;
+            }
+}
