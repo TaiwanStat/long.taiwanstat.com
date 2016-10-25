@@ -3,6 +3,13 @@
     "title": "用數據看台灣 - 統計資料",
     "page": [
        {
+        "title": "2015年台灣薪資",
+        "url": "taiwan_salary_2015",
+        "img": "./images/taiwan_salary_2015.png",
+        "description": "想知道什麼行業薪資最高嗎？又或是男女的薪資待遇真的公平嗎？根據政府開放資料，呈現2015年台灣的薪資視覺化！",
+        "author": "曾柏瑄"
+       },
+       {
         "title": "高雄捷運月均營業額及票種分析",
         "url": "Kaohsiung_MRT",
         "img": "./images/MRT.jpg",

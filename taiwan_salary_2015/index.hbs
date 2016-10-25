@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang='zh-TW'>
+  <head>
+    {{> head}}
+    <!-- my js & css -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <link href="https://fonts.googleapis.com/earlyaccess/cwtexyen.css" rel="stylesheet">
+
+  </head>
+  <body>
+    {{> header}}
+    {{> start}}
+    <!-- my charts -->
+    <div align="center" class="bars">
+      <div class="avg-lines">
+        <div class="lines">輔助線</div>
+        <div class="check-box-male"><input type="checkbox" id="maleAverage"> 男性平均薪資</div>
+        <div class="check-box-female"><input type="checkbox" id="femaleAverage"> 女性平均薪資</div>
+      </div>
+
+      <div class="modes">
+        <div class="lines">看圖模式</div>
+        <div><input class="chart" type="radio" name="mode" value="stacked" checked> 各行業薪資</div>
+        <div><input class="maleChart" type="radio" name="mode" value="stacked"> 男性薪資</div>
+        <div><input class="femaleChart" type="radio" name="mode" value="stacked"> 女性薪資</div>
+        <div><input class="chart" type="radio" name="mode" value="grouped"> 男女薪資差異</div>
+      </div>
+  </div>
+  <div class="svg-chart"></div>
+
+    {{> end}}
+    <!-- my js & css -->
+    <script src="d3.tip.v0.6.3.js"></script>
+    {{> footer}}
+    <script type="text/javascript" src="./js/index.js"></script>
+  </body>
+</html>
