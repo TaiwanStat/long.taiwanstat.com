@@ -146,7 +146,7 @@ d3.csv("data/salary.csv", function(error, data) {
      .style("font-weight", "normal")
      .style("fill","#4d4d4d")
      .text("時薪(NTD)")
-     .attr("x", -7)
+     .attr("x", -1)
      .attr("y", -3)
      .attr("dy", ".71em")
      .style("text-anchor", "end");

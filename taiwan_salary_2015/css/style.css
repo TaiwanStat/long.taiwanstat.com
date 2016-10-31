@@ -18,15 +18,18 @@
 
 .check-box-female {
   color:#4d4d4d;
+  letter-spacing: -0.6px;
 }
 
 .check-box-male {
   color:#4d4d4d;
+  letter-spacing: -0.6px;
 }
 
 .lines {
   letter-spacing: 10px;
   margin-bottom: 10px;
+  margin-right: -10px;
   text-align: center;
   font-size: 24px;
   font-weight: bold;
@@ -63,6 +66,7 @@ text {
   background: #595959;
   color: #fff;
   border-radius: 4px;
+  z-index: 99;
 }
 
 /* Creates a small triangle extender for the tooltip */
