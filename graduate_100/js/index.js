@@ -294,7 +294,7 @@ function pageInitUniversity(){
                 })
                 .style({
                     "text-anchor": "start",
-                    "font-size": "0.5em",
+                    "font-size": "0.7em",
                 })
                 .text(function(d, i) { return legendText[i]; });
         //line
@@ -556,8 +556,8 @@ function pageChangeUniversity(selectNumber) {
                 "color": "#666666"
             })
             .attr({
-                "writing-mode": "vertical-lr",
-                "transform": "rotate(-30)",
+                // "writing-mode": "vertical-lr",
+                "transform": "rotate(30)",
             });
         //line
         svg.append("line")
@@ -656,8 +656,8 @@ function pageChangeUniversity(selectNumber) {
                                 "color": "#666666"
                             })
                             .attr({
-                                "writing-mode": "vertical-lr",
-                                "transform": "rotate(-30)",
+                                // "writing-mode": "vertical-lr",
+                                "transform": "rotate(30)",
                             });
                     };
         var sort2 = function() {
@@ -700,8 +700,8 @@ function pageChangeUniversity(selectNumber) {
                                 "color": "#666666"
                             })
                             .attr({
-                                "writing-mode": "vertical-lr",
-                                "transform": "rotate(-30)",
+                                // "writing-mode": "vertical-lr",
+                                "transform": "rotate(30)",
                             });
                     };
 
@@ -948,7 +948,7 @@ function pageInitMaster(){
                 })
                 .style({
                     "text-anchor": "start",
-                    "font-size": "0.5em",
+                    "font-size": "0.7em",
                 })
                 .text(function(d, i) { return legendText[i]; });
         //line
@@ -1209,8 +1209,8 @@ function pageChangeMaster(selectNumber) {
                 "color": "#666666"
             })
             .attr({
-                "writing-mode": "vertical-lr",
-                "transform": "rotate(-30)",
+                // "writing-mode": "vertical-lr",
+                "transform": "rotate(30)",
             });
         //line
         svg.append("line")
@@ -1309,8 +1309,8 @@ function pageChangeMaster(selectNumber) {
                                 "color": "#666666"
                             })
                             .attr({
-                                "writing-mode": "vertical-lr",
-                                "transform": "rotate(-30)",
+                                // "writing-mode": "vertical-lr",
+                                "transform": "rotate(30)",
                             });
                     };
         var sort2 = function() {
@@ -1354,8 +1354,8 @@ function pageChangeMaster(selectNumber) {
                                 "color": "#666666"
                             })
                             .attr({
-                                "writing-mode": "vertical-lr",
-                                "transform": "rotate(-30)",
+                                // "writing-mode": "vertical-lr",
+                                "transform": "rotate(30)",
                             });
                     };
     });
