@@ -50,7 +50,7 @@ window.onload = function(){
     d3.select("#backButton").on("click", function(){
     	$(function(){
     		console.log("fuck");
-			$("main, #layout-header").stop().animate({scrollTop:$("h1").prop("scrollHeight")}, 700, 'linear');
+			$("main, #layout-header").stop().animate({scrollTop:$("#scrollTarget").prop("scrollHeight")*2.4}, 700, 'linear');
         })
     })
 };
@@ -151,7 +151,7 @@ function pageInitUniversity(){
                     return "id" + parseInt(d.code / 100);
                 },
                 "class": function(d){
-                    return d.field + "領域 " + d.subject;
+                    return  d.subject + "<br><span style=\"font-size:0.7em\">" + d.field + "領域</span>";
                 },
                 })
             .on("mouseover", function(){
@@ -163,7 +163,7 @@ function pageInitUniversity(){
                     "stroke-width": 2,
 					"cursor": "pointer",
                 });
-                $(".info").empty().text(selectClass);
+                $(".info").empty().html(selectClass);
             })
             .on("mouseout", function(){
                 var setNumber = d3.select(this).property("id");
@@ -178,7 +178,7 @@ function pageInitUniversity(){
                 changed = true;
                 pageChangeUniversity(setChangeNumber);
                 console.log("fuck");
-                $("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.4}, 700, 'linear')
+                $("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.21}, 700, 'linear')
      //            $(function(){
 					// $("main. ").stop().animate({scrollTop:document.getElementById('superContainer').scrollHeight}, 700, 'linear');
      //            })
@@ -241,7 +241,7 @@ function pageInitUniversity(){
                         .data(legendData)
                         .enter().append("g")
                         .attr("class", "legend")
-                        .attr("transform", function(d, i) { return "translate(" + (width - legendPadding) + "," + i * 15 + ")"; });
+                        .attr("transform", function(d, i) { return "translate(" + (width - legendPadding) + "," + i * 18 + ")"; });
 
         legend.append("rect")
                 .attr({
@@ -255,7 +255,7 @@ function pageInitUniversity(){
                     },
                     "opacity": 0.5,
                     "class": function(d, i){
-                        return legendField[i] + "領域 " + legendText[i] + "學門";
+                    	return  legendText[i] + "學門<br><span style=\"font-size:0.7em\">" + legendField[i]  + "領域</span>";
                     },
                 })
             .on("mouseover", function(){
@@ -267,7 +267,7 @@ function pageInitUniversity(){
                     "stroke-width": 2,
 					"cursor": "pointer",
                 });
-                $(".info").empty().text(selectClass);
+                $(".info").empty().html(selectClass);
             })
             .on("mouseout", function(){
                 var setNumber = d3.select(this).property("id");
@@ -281,7 +281,7 @@ function pageInitUniversity(){
                 changed = true;
                 pageChangeUniversity(setChangeNumber);
                 $(function(){
-					$("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.4}, 700, 'linear');
+					$("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.21}, 700, 'linear');
                 })
             });
 
@@ -290,7 +290,7 @@ function pageInitUniversity(){
                 .attr({
                     "x": "20",
                     "y": "5",
-                    "dy": ".65em",
+                    "dy": ".4em",
                 })
                 .style({
                     "text-anchor": "start",
@@ -557,7 +557,7 @@ function pageChangeUniversity(selectNumber) {
             })
             .attr({
                 // "writing-mode": "vertical-lr",
-                "transform": "rotate(30)",
+                "transform": "rotate(35)",
             });
         //line
         svg.append("line")
@@ -657,7 +657,7 @@ function pageChangeUniversity(selectNumber) {
                             })
                             .attr({
                                 // "writing-mode": "vertical-lr",
-                                "transform": "rotate(30)",
+                                "transform": "rotate(35)",
                             });
                     };
         var sort2 = function() {
@@ -701,7 +701,7 @@ function pageChangeUniversity(selectNumber) {
                             })
                             .attr({
                                 // "writing-mode": "vertical-lr",
-                                "transform": "rotate(30)",
+                                "transform": "rotate(35)",
                             });
                     };
 
@@ -806,7 +806,7 @@ function pageInitMaster(){
                     return "id" + parseInt(d.code / 100);
                 },
                 "class": function(d){
-                    return d.field + "領域 " + d.subject;
+                    return  d.subject + "<br><span style=\"font-size:0.7em\">" + d.field + "領域</span>";
                 },
                 })
             .on("mouseover", function(){
@@ -818,7 +818,7 @@ function pageInitMaster(){
                     "stroke-width": 2,
 					"cursor": "pointer"
                 });
-                $(".info").empty().text(selectClass);
+                $(".info").empty().html(selectClass);
                 $("#info_text").empty().text(selectClass);
             })
             .on("mouseout", function(){
@@ -835,7 +835,7 @@ function pageInitMaster(){
                 changed = true;
                 pageChangeMaster(setChangeNumber);
                 $(function(){
-					$("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.4}, 700, 'linear');
+					$("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.21}, 700, 'linear');
                 })
             })
             .transition()
@@ -896,7 +896,7 @@ function pageInitMaster(){
                         .data(legendData)
                         .enter().append("g")
                         .attr("class", "legend")
-                        .attr("transform", function(d, i) { return "translate(" + (width - legendPadding) + "," + i * 15 + ")"; });
+                        .attr("transform", function(d, i) { return "translate(" + (width - legendPadding) + "," + i * 18 + ")"; });
 
         legend.append("rect")
                 .attr({
@@ -910,7 +910,7 @@ function pageInitMaster(){
                     },
                     "opacity": 0.5,
                     "class": function(d, i){
-                        return legendField[i] + "領域 " + legendText[i] + "學門";
+                        return  legendText[i] + "學門<br><span style=\"font-size:0.7em\">" + legendField[i]  + "領域</span>";
                     },
                 })
             .on("mouseover", function(){
@@ -922,7 +922,7 @@ function pageInitMaster(){
                     "stroke-width": 2,
 					"cursor": "pointer",
                 });
-                $(".info").empty().text(selectClass);
+                $(".info").empty().html(selectClass);
             })
             .on("mouseout", function(){
                 var setNumber = d3.select(this).property("id");
@@ -937,14 +937,14 @@ function pageInitMaster(){
                 changed = true;
                 pageChangeMaster(setChangeNumber);
                 $(function(){
-					$("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.4}, 700, 'linear');
+					$("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.21}, 700, 'linear');
                 })
             })
         legend.append("text")
                 .attr({
                     "x": "20",
                     "y": "5",
-                    "dy": ".65em",
+                    "dy": ".4em",
                 })
                 .style({
                     "text-anchor": "start",
@@ -1210,7 +1210,7 @@ function pageChangeMaster(selectNumber) {
             })
             .attr({
                 // "writing-mode": "vertical-lr",
-                "transform": "rotate(30)",
+                "transform": "rotate(35)",
             });
         //line
         svg.append("line")
@@ -1310,7 +1310,7 @@ function pageChangeMaster(selectNumber) {
                             })
                             .attr({
                                 // "writing-mode": "vertical-lr",
-                                "transform": "rotate(30)",
+                                "transform": "rotate(35)",
                             });
                     };
         var sort2 = function() {
@@ -1355,7 +1355,7 @@ function pageChangeMaster(selectNumber) {
                             })
                             .attr({
                                 // "writing-mode": "vertical-lr",
-                                "transform": "rotate(30)",
+                                "transform": "rotate(35)",
                             });
                     };
     });
