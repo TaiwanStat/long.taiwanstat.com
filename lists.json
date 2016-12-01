@@ -3,6 +3,13 @@
     "title": "用數據看台灣 - 統計資料",
     "page": [
        {
+        "title": "大專院校100年畢業生103年職場薪資圖",
+        "url": "graduate_100",
+        "img": "./images/graduate_100.png",
+        "description": "用圖表呈現大專院校100年畢業生在103年職場上的表現",
+        "author": "kuoteng, Ding"
+        },
+       {
         "title": "2015年台灣薪資",
         "url": "taiwan_salary_2015",
         "img": "./images/taiwan_salary_2015.png",
