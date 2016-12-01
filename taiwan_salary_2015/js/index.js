@@ -2,8 +2,26 @@ var selector = ["hourMale", "hourFemale"];
 var maleSelector = ["hourMale"];
 var femaleSelector = ["hourFemale"];
 var timeout;//change to grouped mode in ? second
-var margin = {top: 30, right: 90, bottom: 110, left: 90},
-    width = 960 - margin.left - margin.right,
+
+var windowSize = $(window).width();
+var chartWidth = 960;
+
+var xRotate = 'rotate(25)';
+var dy = '1em';
+var fontSize = '16px';
+if (windowSize < 600) {
+	chartWidth = 400;
+	fontSize = '12px';
+	xRotate = 'rotate(50)';
+} else if (windowSize < 930) {
+	chartWidth = 780;
+
+} else {
+	chartWidth = 960;
+}
+
+var margin = {top: 30, right: 90, bottom: 110, left: 60},
+    width = chartWidth - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 var tip = d3.tip()
@@ -15,7 +33,7 @@ var tip = d3.tip()
 
 var svg = d3.select(".svg-chart").append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", 100+height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -130,24 +148,24 @@ d3.csv("data/salary.csv", function(error, data) {
      .attr("transform", "translate(0," + height + ")")
      .call(xAxis)
      .selectAll("text")
-     .style("font-size","16px")
+     .style("font-size", fontSize)
      .style("font-weight", "normal")
      .style("text-anchor", "start")
      .style("fill","#4d4d4d")
-     .attr("dx", "-0.1em")
-     .attr("dy", "1em")
-     .attr("transform", "rotate(25)" );
+     .attr("dx", "0.1em")
+     .attr("dy", dy)
+     .attr("transform", xRotate);
 
   svg.append("g")
      .attr("class", "y axis")
      .call(yAxis)
      .append("text")
-     .style("font-size","16px")
+     .style("font-size", fontSize)
      .style("font-weight", "normal")
      .style("fill","#4d4d4d")
      .text("時薪(NTD)")
-     .attr("x", -1)
-     .attr("y", -3)
+     .attr("x", '14px')
+     .attr("y", '-20px')
      .attr("dy", ".71em")
      .style("text-anchor", "end");
 
@@ -237,12 +255,12 @@ function changeMale(){
      .duration(1000)
      .call(xAxis)
      .selectAll("text")
-     .style("font-size","16px")
+     .style("font-size", fontSize)
      .style("font-weight", "normal")
      .style("text-anchor", "start")
      .attr("dx", "-0.1em")
      .attr("dy", "1em")
-     .attr("transform", "rotate(25)" );
+     .attr("transform", xRotate);
 
   rect.data(byMale)
       .transition()
@@ -265,12 +283,12 @@ function changeFemale(){
      .duration(1000)
      .call(xAxis)
      .selectAll("text")
-     .style("font-size","16px")
+     .style("font-size", fontSize)
      .style("font-weight", "normal")
      .style("text-anchor", "start")
      .attr("dx", "-0.1em")
      .attr("dy", "1em")
-     .attr("transform", "rotate(25)" );
+     .attr("transform", xRotate);
 
   rect.data(byFemale)
       .transition()
@@ -293,12 +311,12 @@ function transitionGrouped() {
      .duration(1000)
      .call(xAxis)
      .selectAll("text")
-     .style("font-size","16px")
+     .style("font-size", fontSize)
      .style("font-weight", "normal")
      .style("text-anchor", "start")
      .attr("dx", "-0.1em")
      .attr("dy", "1em")
-     .attr("transform", "rotate(25)" );
+     .attr("transform", xRotate);
 
   layer.data(layers);
 
@@ -327,12 +345,12 @@ function transitionStacked() {
      .duration(1000)
      .call(xAxis)
      .selectAll("text")
-     .style("font-size","16px")
+     .style("font-size", fontSize)
      .style("font-weight", "normal")
      .style("text-anchor", "start")
      .attr("dx", "-0.1em")
      .attr("dy", "1em")
-     .attr("transform", "rotate(25)" );
+     .attr("transform", xRotate);
 
   layer.data(layers);
 
