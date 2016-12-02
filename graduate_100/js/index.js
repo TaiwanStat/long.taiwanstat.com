@@ -178,7 +178,7 @@ function pageInitUniversity(){
                 changed = true;
                 pageChangeUniversity(setChangeNumber);
                 console.log("fuck");
-                $("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.21}, 700, 'linear')
+                $("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.226}, 700, 'linear')
      //            $(function(){
 					// $("main. ").stop().animate({scrollTop:document.getElementById('superContainer').scrollHeight}, 700, 'linear');
      //            })
@@ -281,7 +281,7 @@ function pageInitUniversity(){
                 changed = true;
                 pageChangeUniversity(setChangeNumber);
                 $(function(){
-					$("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.21}, 700, 'linear');
+					$("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.226}, 700, 'linear');
                 })
             });
 
@@ -835,7 +835,7 @@ function pageInitMaster(){
                 changed = true;
                 pageChangeMaster(setChangeNumber);
                 $(function(){
-					$("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.21}, 700, 'linear');
+					$("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.226}, 700, 'linear');
                 })
             })
             .transition()
@@ -937,7 +937,7 @@ function pageInitMaster(){
                 changed = true;
                 pageChangeMaster(setChangeNumber);
                 $(function(){
-					$("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.21}, 700, 'linear');
+					$("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.226}, 700, 'linear');
                 })
             })
         legend.append("text")
