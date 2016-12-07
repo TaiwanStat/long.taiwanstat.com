@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang='zh-TW'>
+  <head>
+    {{> head}}
+    <!-- my js & css -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+  </head>
+  <body>
+    {{> header}}
+    {{> start}}
+    <!-- my charts -->
+    <div id="superContainer">
+	    <div id="myChart">
+<!-- 			<div id="chartTitle" sytle="margin: 0px auto">
+		        <h1 id="chartTitle" align="center">大專院校100年畢業生103年職場薪資圖</h1>
+		    </div> -->
+		    <div class="row">
+		    	<div id="masterOrUniversity">
+			    	<label><input id="radioBox" type="radio" name="mode" value="university" checked="checked">日間學士</label>
+			    	<label><input id="radioBox" type="radio" name="mode" value="master">日間碩士（不含在職專班）</label>
+			    </div>
+		        &nbsp;&nbsp;
+		        <input id="checkAverage" type="checkbox">顯示103年全國受僱員工平均薪資
+		        <input id="checkSort" type="checkbox">是否排序下表
+		        <div class="info" id="scrollTarget" align="center" style="font-size:1.7em">教育學門<br><span style="font-size:0.7em">教育領域</span></div>
+		        <div id="column">
+		        </div>
+		        <!-- <div id="change_title"> -->
+		        <input id="checkAverage2" type="checkbox">顯示103年全國受僱員工平均薪資
+		        <input id="checkSort2" type="checkbox">是否排序下表
+		        <div class="info" align="center" style="font-size:1.7em">教育學門<br><span style="font-size:0.7em">教育領域</span></div>
+		        <div id="column2">
+		        </div>
+		        <div id="column3">
+		        </div>
+		    </div>
+		    <a id="backButton" style="cursor:pointer;">▲按我回去</a><br>
+		</div>
+	</div>
+	<br>
+	<span id="tip2">資料來源</span>
+	<ul>
+		<li><span id="tip2">各學類薪資：</span><a id="link" href="https://udb.moe.edu.tw/Form/FormIndex">教育部 大專院校校務資訊公開平台<br></a></li>
+		<li><span id="tip2">103年全國受僱員工平均薪資：</span><a id="link" href="http://www.dgbas.gov.tw/ct.asp?xItem=37147&ctNode=5624">行政院主計總處<br></a></li>
+    {{> end}}
+    <!-- my js & css -->
+    {{> footer}}
+    <script type="text/javascript" src="./js/index.js"></script>
+  </body>
+</html>
