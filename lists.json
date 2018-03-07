@@ -2,59 +2,66 @@
   "data": {
     "title": "用數據看台灣 - 統計資料",
     "page": [
-       {
+      {
+        "title": "water-consume",
+        "url": "water-consume",
+        "img": "images/water-consume.png",
+        "description": "Project description",
+        "author": "Your Name"
+      },
+      {
         "title": "大專院校100年畢業生103年職場薪資圖",
         "url": "graduate_100",
         "img": "./images/graduate_100.png",
         "description": "用圖表呈現大專院校100年畢業生在103年職場上的表現",
         "author": "kuoteng, Ding"
-        },
-       {
+      },
+      {
         "title": "2015年台灣薪資",
         "url": "taiwan_salary_2015",
         "img": "./images/taiwan_salary_2015.png",
         "description": "想知道什麼行業薪資最高嗎？或是男女的薪資待遇真的公平嗎？根據政府開放資料，呈現2015年台灣的薪資視覺化！",
         "author": "曾柏瑄"
-       },
-       {
+      },
+      {
         "title": "高雄捷運月均營業額及票種分析",
         "url": "Kaohsiung_MRT",
         "img": "./images/MRT.jpg",
         "description": "自2016年7月起，高雄捷運開放使用悠遊卡，你知道這對高雄捷運產生甚麼影響嗎!?一起來看看吧!",
         "author": "劉冠文"
-       },
-       {
+      },
+      {
         "title": "人生還長：壽命視覺化",
         "url": "lifetime",
         "img": "./images/lifetime.png",
         "description": "讓我們一起來看看壽命的視覺化，告訴你人生苦短，光陰似箭，逝去的歲月不能回頭。也或者，人生還長，莫嘆已老，還有無限的可能！",
         "author": "李至青"
-       },
-       {
+      },
+      {
         "title": "2015年貪瀆起訴視覺化",
         "url": "moj-bipartite",
         "img": "./images/moj-bipartite.png",
         "description": "此視覺化圖表以2015年期間各地檢署起訴之貪瀆案件，共計297人次， 包含各種性別、涉案類別、職務層級及犯罪時之服務機關， 呈現其相互關聯及比例。",
         "author": "廉政署",
         "collaborator": ""
-       },
-       {
+      },
+      {
         "title": "臺灣2013－2016年輿情演變",
         "url": "news-topic-evolution",
         "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/news-topic-evolution.png",
         "description": "一起來看看2013-2016年台灣新聞每個月熱門的關鍵字",
         "author": "Jie-Han Chen、Po-An Yang、Yen-Kuan Lee、Chi-Hsuan Huang",
         "collaborator": ""
-       },
-       {
+      },
+      {
         "title": "截至2011年土石流潛流統計",
         "url": "mudslide",
         "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/mudslide.jpg",
         "description": "想知道哪些地方潛在性的可能發生土石流嗎？瞭解一下哪些山區在下大雨的時候需要特別注意吧！",
         "author": "徐鼎翔、盧柏凱、楊熙恩",
         "collaborator": "Chi-Hsuan, Huang"
-        },
-       {
+      },
+      {
         "title": "2015台南登革熱-熱區變遷地圖",
         "url": "dengue-animation",
         "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/dengue-animation.jpg",
@@ -220,7 +227,6 @@
         "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/pm2.5.png",
         "description": "做了 PM2.5 空污即時系統後，近幾日商周、報紙有很多媒體都在報導有關空污的資訊。我們團隊很好奇台灣 103 年整年的空污狀況，於是把台灣北、中、南、東、離島的空品區資料做呈現。",
         "author": "Li-Jung Chi"
-
       },
       {
         "title": "台灣物價指數變化",

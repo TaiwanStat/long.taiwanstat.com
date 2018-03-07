@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang='zh-TW'>
+
+<head>
+  {{> head}}
+  <!-- my js & css -->
+  <script src="./js/data.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/main.css">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  {{> header}} {{> start}}
+  <!-- my charts -->
+  <div class="chart">
+    <div style="text-align:center;">
+      <!-- <h2 id="page-title">標題(自來水生活用水 備註：生活用水)</h2> -->
+      <h1 id="page-title">您的生活與大家的水</h1>
+      <!-- <h5 id="page-introduction">引言</h3> -->
+      <h6 id="page-introduction">
+        水資源與我們的生活息息相關
+        <br> 就讓我們來看台灣各縣市人口與生活用水的關係吧！
+      </h6>
+    </div>
+    <div style="text-align:center;" class="deco">
+      <select name="YES" id="drop-down-year" class="form-control-sm">
+        <option value="---" selected="selected">選擇年份</option>
+        <option value="data2011">2011</option>
+        <option value="data2012">2012</option>
+        <option value="data2013">2013</option>
+        <option value="data2014">2014</option>
+        <option value="data2015">2015</option>
+        <option value="data2016">2016</option>
+      </select>
+      <select name="YES" id="drop-down-region" class="form-control-sm">
+        <option value='---' selected='selected'>選擇地區</option>
+        <optgroup label="北">
+          <option value='臺北市'>臺北市</option>
+          <option value='新北市'>新北市</option>
+          <option value='基隆市'>基隆市</option>
+          <option value='桃園市'>桃園市</option>
+          <option value='新竹市'>新竹市</option>
+          <option value='新竹縣'>新竹縣</option>
+          <option value='宜蘭縣'>宜蘭縣</option>
+        </optgroup>
+        <optgroup label="中">
+          <option value='苗栗縣'>苗栗縣</option>
+          <option value='臺中市'>臺中市</option>
+          <option value='彰化縣'>彰化縣</option>
+          <option value='南投縣'>南投縣</option>
+          <option value='雲林縣'>雲林縣</option>
+        </optgroup>
+        <optgroup label="南">
+          <option value='嘉義市'>嘉義市</option>
+          <option value='嘉義縣'>嘉義縣</option>
+          <option value='臺南市'>臺南市</option>
+          <option value='高雄市'>高雄市</option>
+          <option value='屏東縣'>屏東縣</option>
+          <option value='澎湖縣'>澎湖縣</option>
+        </optgroup>
+        <optgroup label="東">
+          <option value='花蓮縣'>花蓮縣</option>
+          <option value='臺東縣'>臺東縣</option>
+        </optgroup>
+        <optgroup label="福建金馬">
+          <option value='金門縣'>金門縣</option>
+          <option value='連江縣'>連江縣</option>
+        </optgroup>
+      </select>
+      <!-- <button onClick="location.href=location.href" class="btn-info">refresh</button> -->
+      <button id="clear" class="btn">重置</button>
+      <br>
+      <input type="checkbox" class="myCheckbox" style="margin: 0; visibility: hidden;">
+      <!-- 用水量>人口 -->
+    </div>
+    <!--     
+          <script>
+              $("#drop-down-region").append("<option value='---' selected='selected'>---</option>")
+              var region_list = ["宜蘭縣","花蓮縣","金門縣","南投縣","屏東縣","苗栗縣","桃園市","高雄市","基隆市","連江縣","雲林縣","新北市","新竹市","新竹縣","嘉義市","嘉義縣","彰化縣","臺中市","臺北市","臺東縣","臺南市","澎湖縣"];
+              for (var index = 0; index < 22; index++) {
+                  $("#drop-down-region").append("<option value='"+region_list[index]+"'>"+region_list[index]+"</option>")
+              }
+          </script> 
+      -->
+    <div id="container-div">
+      <div class="div left-div">
+        <h4>全國用水比例</h4>
+        <svg id="piesvg"></svg>
+        <p id="pie-year"></p>
+        <p id="pie-total-consumption"></p>
+        <p id="pie-total-population"></p>
+      </div>
+      <hr>
+      <div class="div middle-div">
+        <br>
+        <div id="region-name"></div>
+        <div id="region-rank"></div>
+        <div id="region-population"></div>
+        <div id="region-consumption"></div>
+        <br>
+        <br>
+        <div id="region-more-water-s">
+          <span id="focus-more-water-s"></span>
+          <br>用水量比例大於人口比例</div>
+      </div>
+      <hr>
+      <div class="div right-div">
+        <h4>人口比例與用水比例關係</h4>
+        <svg id="slopesvg"></svg>
+      </div>
+    </div>
+    <div style="text-align:center;" class="footer-div">
+      <p style="margin-top: 20px">上次更新時間：2018/03/07</p>
+      <small class="form-text text-muted align-middle">
+        資料來源:
+        <a href="https://data.gov.tw/dataset/8316" style="color: #6c757d!important; font-weight: bold;">政府資料開放平台 - 自來水生活用水量統計</a>
+        <br>
+        <!-- 資料來源<br>
+                  資料來源 -->
+      </small>
+      <br>
+    </div>
+
+
+
+    <script>
+      d3.select("#clear").on("click", function () {
+        if (signal == 1) {
+          $("#drop-down-region").val("---");
+          recoverPie();
+          recoverSlope();
+          recoverCircle();
+          $(".tagRegion").remove();
+          d3.select(".myCheckbox").property("checked", false);
+          updateTextInfo(23);
+        }
+      });
+    </script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+
+    <script src="./js/pieChart.js"></script>
+    <script src="./js/slopeDiagram.js"></script>
+    <script src="./js/checkbox.js"></script>
+    <script>
+      var lo, loo, charr = "你想看到什麼";
+      for (loo = 10; loo > 0; loo--) {
+        charr = charr + "?"
+        console.log(charr + "\n")
+      }
+
+      console.log("window width: " + $(window).width() + " window height: " + $(window).height())
+    </script>
+  </div>
+  {{> end}}
+  <!-- my js & css -->
+  {{> footer}}
+</body>
+
+</html>
