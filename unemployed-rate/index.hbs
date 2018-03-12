@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang='zh-TW'>
+
+<head>
+  {{> head}}
+  <link rel="stylesheet" type="text/css" href="css/notosans.css">
+  <link rel="stylesheet" type="text/css" href="css/d3-tip.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+  {{> header}} {{> start}}
+  <!-- my charts -->
+  <div class="chart">
+    <div class="flexbox-container" id="infoSvg-container">
+      <div class="flexbox-item-row">
+        <svg id="infoSvg">
+        </svg>
+      </div>
+    </div>
+    <!--  -->
+    <div class="flexbox-container" id="unemployedSvg-container">
+      <div class="flexbox-item-row">
+        <svg id="unemployedSvg">
+        </svg>
+      </div>
+    </div>
+    <!--  -->
+    <hr>
+    <div class="flexbox-container">
+      <div class="flexbox-item-row">
+        <!-- <br> -->
+        <h2>大學畢業失業率怎麼會這麼高？</h2>
+        <br>
+        <br>
+      </div>
+    </div>
+    <div class="flexbox-container">
+      <div class="flexbox-item" id="collegeSvg-container">
+        <svg id="collegeSvg">
+        </svg>
+      </div>
+      <div class="flexbox-item centered">
+        <h3>
+          歷年大學畢業生人數日益上升
+        </h3>
+        <br>
+        <div>
+          <p class="centered">
+            1994年4月10號，410教改聯盟發起了「四一零教育大改造」的遊行
+            <br> 其中一點訴求為「廣社高中大學」
+            <br> 該點的確影響了每年台灣的大學生畢業人數
+            <br> 由1994年的
+            <span style="color:#FF7777">67823</span>人，一直到2016年已經高達
+            <span style="color:#FF7777">228793</span>人
+            <br> 大學門檻日漸下降，人流不斷湧入大學端
+            <br> 時至今日也有了「大學生滿街跑」的現象
+            <br> 間接反映出大學學歷貶值
+            <br> 對於市場而言呈現出
+            <span style="color:#FF7777">供過於求</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="flexbox-container">
+      <div class="flexbox-item" id="reasonSvg-container">
+        <select id="reason-select">
+          <option value="0">2017年</option>
+          <option value="1">2016年</option>
+          <option value="2">2015年</option>
+          <option value="3">2014年</option>
+          <option value="4">2013年</option>
+          <option value="5">2012年</option>
+          <option value="6">2011年</option>
+        </select>
+        <svg id="reasonSvg">
+        </svg>
+      </div>
+      <div class="flexbox-item  centered">
+        <h3>
+          沒有工作機會、待遇太低
+        </h3>
+        <br>
+        <p class="centered">
+          附圖包含2011年-2017年
+          <br>學歷為大學以上之失業者在找尋工作過程中
+          <br> 未就業之原因調查
+          <br> 由該圖可發現
+          <br>
+          <span style="color:#FF7777">沒有工作機會</span>是主要原因
+          <br> 而有過工作機會，卻未就業的主要原因是
+          <span style="color:#FF7777">待遇太低</span>
+          <br> 其中最為大家詬病的「
+          <span style="color:#76A665">學非所用</span>」
+          <br> 顯然
+          <span style="color:#76A665">不佔多數</span>
+          <br>
+          <br>註：2012年以前之調查無「需輪班或排(輪)休」此題。
+        </p>
+      </div>
+    </div>
+
+    <!--  -->
+    <br>
+    <hr>
+    <div class="flexbox-container">
+      <div class="flexbox-item-row">
+        <br>
+        <br>
+        <h2>失業族群主要是分佈在哪呢？</h2>
+        <br>
+        <br>
+      </div>
+    </div>
+
+    <!--  -->
+    <div class="flexbox-container">
+      <div class="flexbox-item" id="yearGroupSvg-container">
+        <select id="yearGroup-select">
+          <option value="0">2016年</option>
+          <option value="1">2015年</option>
+          <option value="2">2014年</option>
+          <option value="3">2013年</option>
+          <option value="4">2012年</option>
+          <option value="5">2011年</option>
+        </select>
+        <svg id="yearGroupSvg">
+        </svg>
+      </div>
+      <div class="flexbox-item centered">
+        <h3>
+          最高學歷為大學之失業者，以20-24歲之人口最多
+        </h3>
+        <br>
+        <p class="centered">
+          附圖為2011年-2016年
+          <br>最高學歷為大學之失業率-按年齡分組圖
+          <br>由圖中可以發現
+          <br>失業率
+          <span style="color:#FF7777">最高的族群</span>主要分佈在
+          <span style="color:#FF7777">20-24歲</span>
+          <br>說明了
+          <span style="color:#FF7777">失業期主要落在剛畢業後的這段期間</span>
+          <br>24歲過後，職場探索期結束，失業率也漸漸下降
+        </p>
+      </div>
+    </div>
+
+    <!--  -->
+    <div class="flexbox-container">
+      <div class="flexbox-item" id="prejobSvg-container">
+        <select id="prejob-select">
+          <option value="0">2017年</option>
+          <option value="1">2016年</option>
+          <option value="2">2015年</option>
+          <option value="3">2014年</option>
+          <option value="4">2013年</option>
+          <option value="5">2012年</option>
+          <option value="6">2011年</option>
+        </select>
+        <svg id="prejobSvg">
+        </svg>
+      </div>
+      <div class="flexbox-item prejobText centered">
+        <h3>
+          原有工作之失業者失業前行業
+        </h3>
+        <br>
+        <p class="centered">
+          附圖為2011年-2017年
+          <br>學歷為大學以上之失業者失業前行業
+          <br>由圖中發現
+          <br>近幾年來之失業者之原有工作主要為
+          <span style="color:#FF7777">製造業</span>與
+          <span style="color:#FF7777">批發及零售業</span>
+        </p>
+      </div>
+    </div>
+    <!--  -->
+    <br>
+    <hr>
+    <div class="flexbox-container">
+      <div class="flexbox-item-row">
+        <br>
+        <br>
+        <h2>大學畢業生失業率這麼高，為什麼還是那麼多人念大學呢？</h2>
+        <br>
+        <br>
+      </div>
+    </div>
+
+    <!--  -->
+    <div class="flexbox-container">
+      <div class="flexbox-item" id="salarySvg-container">
+        <select id="salary-select">
+          <option value="0">2016年</option>
+          <option value="1">2015年</option>
+          <option value="2">2014年</option>
+          <option value="3">2013年</option>
+          <option value="4">2012年</option>
+          <option value="5">2011年</option>
+        </select>
+        <svg id="salarySvg">
+        </svg>
+      </div>
+      <div class="flexbox-item centered">
+        <h3>
+          初任人員每人每月經常性薪資
+        </h3>
+        <br>
+        <p class="centered">
+          附圖為2011年-2016年
+          <br> 各教育程度之初任人員(亦即社會新鮮人)薪資結果
+          <br> 顯示出台灣在近幾年來之薪資水平
+          <br> 仍與學歷呈現正向關
+          <br> 促使學生更有意願繼續升學
+          <br>
+          <br> 另外，
+          <br> 1994年起台灣開始實行高等教育普及化政策
+          <br> 使得大學從菁英教育走向普及教育
+          <br> 並修法讓各技職院校升格成大學
+          <br> 導致技職教育與大學教育的界線日益模糊
+          <br> 儘管每年大學畢業生人數有上升的趨勢
+          <br> 卻變向侷限台灣學生的適性化發展
+        </p>
+      </div>
+    </div>
+
+    <!--  -->
+
+    <div class="flexbox-container">
+      <div class="flexbox-item">
+        <br>
+        <br>
+        <h6>資料來源：
+          <a href="https://data.gov.tw/dataset/32741">政府資料開放平台</a>、
+          <a href="https://www.dgbas.gov.tw/lp.asp?CtNode=4987&amp;CtUnit=1183&amp;BaseDSD=7&amp;mp=1">行政院主計總處</a>、
+          <a href="https://depart.moe.edu.tw/ed4500/cp.aspx?n=1b58e0b736635285&amp;s=d04c74553db60cad">教育部統計處</a>
+        </h6>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+  {{> end}}
+  <script type="text/javascript" src="javascript/responsive.js"></script>  
+  <script type="text/javascript" src="javascript/d3-tip.js"></script>
+  <script type="text/javascript" src="javascript/linechart1.js"></script>
+  <script type="text/javascript" src="javascript/linechart2.js"></script>
+  <script type="text/javascript" src="javascript/barchart.js"></script>
+  <script type="text/javascript" src="javascript/barchart2.js"></script>
+  <script type="text/javascript" src="javascript/barchart3.js"></script>
+  <script type="text/javascript" src="javascript/barchart4.js"></script>
+  {{> footer}}
+</body>
+
+</html>
