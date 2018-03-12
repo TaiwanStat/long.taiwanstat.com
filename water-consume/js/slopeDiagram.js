@@ -3,10 +3,10 @@ var warning_color = "red",
     color_set = d3["schemeSet3"].slice(0,1).concat(d3["schemeSet3"].slice(2,6).concat(d3["schemeSet3"].slice(9)));
 
 var slopemargin = {top: 40, right: 40, bottom: 40, left: 60},
-    slopewidth = 500 - slopemargin.left - slopemargin.right, // for axis and line(circle)
-    slopeheight = 480 - slopemargin.top - slopemargin.bottom,
+    slopewidth = 450 - slopemargin.left - slopemargin.right, // for axis and line(circle)
+    slopeheight = 432 - slopemargin.top - slopemargin.bottom,
     axiswidth = slopewidth + 10;
-
+// 500 480 450 432
     // svg 
 
 /* var slopecont = d3.select("body")
@@ -25,8 +25,8 @@ $(function(){
     }
 
     slopecont = d3.select("#slopesvg")
-    .attr('width', window.innerWidth >= 768 ? "632px" : "532px") //%
-    .attr('height', slopeheight + slopemargin.top + slopemargin.bottom)
+    .attr('width', window.innerWidth >= 768 ? "542" : "442") //%
+    .attr('height', slopeheight + slopemargin.top + slopemargin.bottom + 100)
     .attr('id', "slopesvg")
     .append("g")
     // cause fail RWD
@@ -198,9 +198,9 @@ function render_slopeDiagram(new_data, highlight_index){
         .text("人口佔全國比例")
         // .attr('x', $("#slopesvg").width()/5)
         // .attr('x', $("#slopeGroup").offset().left - $(".right-div").offset().left)
-        .attr('x', 0)
+        .attr('x', 40)
         //.attr('x', 30)
-        .attr('y', slopeheight + slopemargin.top + slopemargin.bottom - 10)
+        .attr('y', slopeheight + 1.3*slopemargin.top + slopemargin.bottom - 10)
         .attr('style', "fill: " + d3["schemeCategory10"][0] + "; font-size: 15px");
         
         d3.select("#slopesvg")
@@ -209,9 +209,9 @@ function render_slopeDiagram(new_data, highlight_index){
         // .attr('x', $("#slopesvg").width()*3/5)
         // .attr('x', $("#slopeGroup").offset().left - $(".right-div").offset().left + $("#slopesvg").width()*1/2)
         .attr('x', (window.innerWidth > 768) ?
-            632 - 200 : 532- 200)
+            542 - 220 : 442 - 220)
         //.attr('x', 350)
-        .attr('y', slopeheight + slopemargin.top + slopemargin.bottom - 10)
+        .attr('y', slopeheight + 1.3*slopemargin.top + slopemargin.bottom - 10)
         .attr('style', "fill: " + d3["schemeCategory10"][0] + "; font-size: 15px");
     }
 
@@ -224,9 +224,9 @@ function render_slopeDiagram(new_data, highlight_index){
     console.log("hi"+($("#slopesvg").width()-(axiswidth + 30)));
     // 30 for axis tag, 
     // 15~20 for average visiblity of graph, because graph have axis tag 
-    var x_displace = ($("#slopesvg").width()-(axiswidth + 30 - 20))/2;
-    x_displace = window.innerWidth > 768 ? x_displace : (x_displace-40);
-    d3.select("#slopeGroup").attr('transform', "translate("+ x_displace +","+slopemargin.top+")");
+    var x_displace = ($("#slopesvg").width()-(axiswidth + 30 - 45))/2;
+    x_displace = window.innerWidth > 768 ? x_displace : (x_displace-20);
+    d3.select("#slopeGroup").attr('transform', "translate("+ x_displace +","+(1.3*slopemargin.top)+")");
 }
 
 // drop-down menu about "Region"

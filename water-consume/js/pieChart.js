@@ -16,7 +16,7 @@ var pieScale = d3.arc()
                 .outerRadius(225)
                 .cornerRadius(3)
                 .padAngle(0.005)
-                .padRadius(200);
+                .padRadius(225);
 
 // data
 /* var cont = d3.select('body')
