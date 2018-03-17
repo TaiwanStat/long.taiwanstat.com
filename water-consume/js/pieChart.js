@@ -25,7 +25,9 @@ var signal = 0;
 var pieData = [];
 var data_source;
 var total_consumption = 0 , total_population = 0;
-
+var dummy_data = [];
+for(var du=0; du < 23 ; du++)
+    dummy_data.push({ consumption: 36685788, region: "宜蘭縣", population:	421328, per: 238 });
 
 $(function(){
     if(window.innerWidth < 768){
@@ -52,7 +54,7 @@ $(function(){
     .attr('id', "pieChartGroup")
     .attr('opacity', "1");
 
-    updatePieChart(data2016,undefined);
+    updatePieChart(dummy_data,undefined);
 });
 
 function updatePieChart(new_data, highlight_index){

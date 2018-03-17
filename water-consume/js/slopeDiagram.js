@@ -28,7 +28,7 @@ $(function(){
     lineCont = slopecont.append("g"), 
     second_lineCont = slopecont.append("g"); 
 
-    render_slopeDiagram(data2016, undefined);
+    render_slopeDiagram(dummy_data, undefined);
 
     d3.selectAll(".div").attr('height', "500px");
 });
