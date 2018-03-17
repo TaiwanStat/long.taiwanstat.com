@@ -3,41 +3,30 @@ var warning_color = "red",
     color_set = d3["schemeSet3"].slice(0,1).concat(d3["schemeSet3"].slice(2,6).concat(d3["schemeSet3"].slice(9)));
 
 var slopemargin = {top: 40, right: 40, bottom: 40, left: 60},
-    slopewidth = 450 - slopemargin.left - slopemargin.right, // for axis and line(circle)
+    slopewidth = 450 - slopemargin.left - slopemargin.right, 
     slopeheight = 432 - slopemargin.top - slopemargin.bottom,
     axiswidth = slopewidth + 10;
-// 500 480 450 432
-    // svg 
 
-/* var slopecont = d3.select("body")
-                    .append("svg") */
 var slopecont;
 
 var lineCont, second_lineCont;
 
-// This is not good method. 'Ready' function should be put together.
-// But I want get more control about my graph and code, I choose to take 'ready' function apart.
 $(function(){
     if(window.innerWidth < 768){
-        slopewidth = 400 - slopemargin.left - slopemargin.right, // for axis and line(circle)
+        slopewidth = 400 - slopemargin.left - slopemargin.right, 
         slopeheight = 384 - slopemargin.top - slopemargin.bottom,
         axiswidth = slopewidth + 10;
     }
 
     slopecont = d3.select("#slopesvg")
-    .attr('width', window.innerWidth >= 768 ? "542" : "442") //%
+    .attr('width', window.innerWidth >= 768 ? "542" : "442") 
     .attr('height', slopeheight + slopemargin.top + slopemargin.bottom + 100)
     .attr('id', "slopesvg")
     .append("g")
-    // cause fail RWD
-    //.attr('width', "50%")
-    // in the end of rendering slope function, it will set correctly 'transform'
-    // .attr('transform', "translate("+($("#slopesvg").width()/3)+","+slopemargin.top+")")
-    // .attr('transform', "translate("+(slopemargin.left+30)+","+(slopemargin.top)+")")
     .attr('id', "slopeGroup");
 
-    lineCont = slopecont.append("g"), //left circle and line
-    second_lineCont = slopecont.append("g"); // right circle
+    lineCont = slopecont.append("g"), 
+    second_lineCont = slopecont.append("g"); 
 
     render_slopeDiagram(data2016, undefined);
 
@@ -46,18 +35,15 @@ $(function(){
 
 function render_slopeDiagram(new_data, highlight_index){
 
-    // if choose new year, 1. initial value 2. change data source
     var total_consumption = 0 , total_population = 0, 
         data_source = new_data;
 
-    // get extra data
     for (var i = 0; i < data_source.length; i++) {
         var ele = data_source[i];
         total_consumption += ele.consumption;
         total_population += ele.population;
     }
 
-    // set scale
     var conScale = d3.scaleLinear()
                     .domain([d3.min(data_source, function(d){ return d.consumption/total_consumption; }),
                             d3.max(data_source, function(d){ return d.consumption/total_consumption; })
@@ -72,7 +58,6 @@ function render_slopeDiagram(new_data, highlight_index){
 
         usedScale = d3.max(data_source, function(d){ return d.consumption/total_consumption;})>d3.max(data_source, function(d){ return d.population/total_population;})?conScale:popScale;
 
-    // line
     var new_line = lineCont.selectAll("line")
                             .data(data_source);
 
@@ -87,25 +72,16 @@ function render_slopeDiagram(new_data, highlight_index){
             .attr('x2', slopewidth-20)
             .attr('y2', function(d,i){ return usedScale(d.consumption/total_consumption); })
             .style('stroke', function(d,i){ return (i<=5)?color_set[i]:color_set[6]})            
-            // .style('stroke', function(d){ return popScale(d.population/total_population)>conScale(d.consumption/total_consumption)?warning_color:normal_color;})
             .style('stroke-width', "2px")
             .on("end", function(d,i){
-                if(!d3.select(".myCheckbox").property("checked")){
-                    if(i === highlight_index)
-                    {
-                        highlightASlope(i);
-                    }
-                }
-                else
+                if(i === highlight_index)
                 {
-                    if(signal == 1)
-                        checkedCheckbox();
+                    highlightASlope(i);
                 }
             });
 
     new_line.exit().transition().remove();
 
-    // circle left
     var new_circle_L = lineCont.selectAll("circle")
                             .data(data_source);
 
@@ -123,22 +99,14 @@ function render_slopeDiagram(new_data, highlight_index){
             .style('stroke', function(d){ return (d.population/total_population)<(d.consumption/total_consumption)?warning_color:normal_color})
             .style('stroke-width', "2px")
             .on("end", function(d,i){
-                if(!d3.select(".myCheckbox").property("checked")){
-                    if(i === highlight_index)
-                    {
-                        highlightTwoCircle(highlight_index);
-                    }
-                }
-                else
+                if(i === highlight_index)
                 {
-                    if(signal == 1)
-                        checkedCheckbox();
+                    highlightTwoCircle(highlight_index);
                 }
             });
 
     new_circle_L.exit().transition().remove();
 
-    // circle right
     var new_circle_R = second_lineCont.selectAll("circle")
                             .data(data_source);
 
@@ -156,32 +124,22 @@ function render_slopeDiagram(new_data, highlight_index){
             .style('stroke', function(d){ return (d.population/total_population)<(d.consumption/total_consumption)?warning_color:normal_color})
             .style('stroke-width', "2px")
             .on("end", function(d,i){
-                if(!d3.select(".myCheckbox").property("checked")){
-                    if(i === highlight_index)
-                    {
-                        highlightTwoCircle(highlight_index);
-                    }
-                }
-                else
+                if(i === highlight_index)
                 {
-                    if(signal == 1)
-                        checkedCheckbox();
+                    highlightTwoCircle(highlight_index);
                 }
             });
 
     new_circle_R.exit().transition().remove();
 
-    // axis
     if(signal == 1)
     {
-        // First, remove axis and text
         $("#slopeAxis").remove();
         $("#slopesvg text").remove();
         slopecont.append("g")
         .style('stroke-dasharray', "30, 20")
         .style('stroke-width', "4px")
         .attr('id', "slopeAxis")
-        // get bigger value between population rate and consumption rate
         .call(d3.axisLeft(usedScale)
                 .tickFormat(function(d){ return d*100 + "%"; })
                 .tickSize(-(axiswidth),0)
@@ -196,21 +154,15 @@ function render_slopeDiagram(new_data, highlight_index){
         d3.select("#slopesvg")
         .append("text")
         .text("人口佔全國比例")
-        // .attr('x', $("#slopesvg").width()/5)
-        // .attr('x', $("#slopeGroup").offset().left - $(".right-div").offset().left)
         .attr('x', 40)
-        //.attr('x', 30)
         .attr('y', slopeheight + 1.3*slopemargin.top + slopemargin.bottom - 10)
         .attr('style', "fill: " + d3["schemeCategory10"][0] + "; font-size: 15px");
         
         d3.select("#slopesvg")
         .append("text")
         .text("年用水量佔全國比例")
-        // .attr('x', $("#slopesvg").width()*3/5)
-        // .attr('x', $("#slopeGroup").offset().left - $(".right-div").offset().left + $("#slopesvg").width()*1/2)
         .attr('x', (window.innerWidth > 768) ?
             542 - 220 : 442 - 220)
-        //.attr('x', 350)
         .attr('y', slopeheight + 1.3*slopemargin.top + slopemargin.bottom - 10)
         .attr('style', "fill: " + d3["schemeCategory10"][0] + "; font-size: 15px");
     }
@@ -220,16 +172,11 @@ function render_slopeDiagram(new_data, highlight_index){
     slopecont.select("#slopeAxis path.domain")
     .attr('display', "none");
 
-    // After render finished, update transform
-    //console.log("hi"+($("#slopesvg").width()-(axiswidth + 30)));
-    // 30 for axis tag, 
-    // 15~20 for average visiblity of graph, because graph have axis tag 
     var x_displace = ($("#slopesvg").width()-(axiswidth + 30 - 45))/2;
     x_displace = window.innerWidth > 768 ? x_displace : (x_displace-20);
     d3.select("#slopeGroup").attr('transform', "translate("+ x_displace +","+(1.3*slopemargin.top)+")");
 }
 
-// drop-down menu about "Region"
 function slopeReplyRegionMenu(region_index){
     recoverSlope();
     recoverCircle();
@@ -242,7 +189,6 @@ function slopeReplyRegionMenu(region_index){
                 break;
             }
         }
-        //console.log(i);
         highlightASlope(i);
         highlightTwoCircle(i);
     }
@@ -276,7 +222,6 @@ function recoverCircle(){
         .style('z-index', "9999")
         .attr('opacity', "1");
     
-    // delete text
     $(".prompt-text").remove();
 }
 

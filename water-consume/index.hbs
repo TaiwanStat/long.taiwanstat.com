@@ -3,25 +3,16 @@
 
 <head>
   {{> head}}
-  <!-- my js & css -->
-  <script src="./js/data.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link rel="stylesheet" href="./css/main.css">
-  <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
 </head>
 
 <body>
   {{> header}} {{> start}}
-  <!-- my charts -->
   <div class="chart">
     <div style="text-align:center;">
-      <!-- <h2 id="page-title">標題(自來水生活用水 備註：生活用水)</h2> -->
       <h1 id="page-title">生活用水 & 人民</h1>
-      <!-- <h5 id="page-introduction">引言</h3> -->
       <h6 id="page-introduction">
         水資源與我們的生活息息相關
         <br> 在這裡可以讓您知道每年度縣市的用水比例
@@ -75,21 +66,9 @@
           <option value='連江縣'>連江縣</option>
         </optgroup>
       </select>
-      <!-- <button onClick="location.href=location.href" class="btn-info">refresh</button> -->
       <button id="clear" class="btn">重置</button>
       <br>
-      <input type="checkbox" class="myCheckbox" style="margin: 0; visibility: hidden;">
-      <!-- 用水量>人口 -->
     </div>
-    <!--     
-          <script>
-              $("#drop-down-region").append("<option value='---' selected='selected'>---</option>")
-              var region_list = ["宜蘭縣","花蓮縣","金門縣","南投縣","屏東縣","苗栗縣","桃園市","高雄市","基隆市","連江縣","雲林縣","新北市","新竹市","新竹縣","嘉義市","嘉義縣","彰化縣","臺中市","臺北市","臺東縣","臺南市","澎湖縣"];
-              for (var index = 0; index < 22; index++) {
-                  $("#drop-down-region").append("<option value='"+region_list[index]+"'>"+region_list[index]+"</option>")
-              }
-          </script> 
-      -->
     <div id="container-div">
       <div class="div left-div">
         <h4>全國用水比例</h4>
@@ -130,7 +109,11 @@
       <br>
     </div>
 
-
+    <script src="./js/data.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
 
     <script>
       d3.select("#clear").on("click", function () {
@@ -140,7 +123,6 @@
           recoverSlope();
           recoverCircle();
           $(".tagRegion").remove();
-          d3.select(".myCheckbox").property("checked", false);
           updateTextInfo(23);
         }
       });
@@ -154,10 +136,8 @@
 
     <script src="./js/pieChart.js"></script>
     <script src="./js/slopeDiagram.js"></script>
-    <script src="./js/checkbox.js"></script>
   </div>
   {{> end}}
-  <!-- my js & css -->
   {{> footer}}
 </body>
 

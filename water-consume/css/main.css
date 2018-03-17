@@ -12,11 +12,6 @@ text {
     font-size: 14px;
 }
 
-/* h4 {
-    margin: 0px;
-} */
-
-/* page scope */
 #page-title {
     margin: 0px;
     margin-bottom: 10px;
@@ -30,9 +25,6 @@ text {
 }
 
 /* graph design */
-polyline {
-    
-}
 
 #container-div {
     width: 100%;
@@ -62,12 +54,6 @@ p {
     letter-spacing: 5px;
     text-shadow: 2px 2px gray;
 }
-/* #region-rank{
-    
-}
-#region-population
-#region-consumption
-#region-more-water */
 #focus-more-water-s {
     font-weight: bold;
     color: red;
@@ -105,14 +91,6 @@ p {
 
 @media only screen and (max-width: 767px)
 {
-/*     #piesvg {
-        margin-left: 0%;
-        margin-right: 40%;
-    }
-    #slopesvg {
-        width: 100%;
-    } */
-
     #container-div {
         flex-direction: column;
         justify-content: center;
@@ -137,6 +115,4 @@ p {
         flex: 1 0 5%;
         display: block;
     }
-
-
 }

@@ -18,14 +18,10 @@ var pieScale = d3.arc()
                 .padAngle(0.005)
                 .padRadius(225);
 
-// data
-/* var cont = d3.select('body')
-             .append("svg") */
 var cont;
 
 var signal = 0;
 
-// pie
 var pieData = [];
 var data_source;
 var total_consumption = 0 , total_population = 0;
@@ -48,7 +44,7 @@ $(function(){
     }
 
     cont = d3.select("#piesvg")
-    .attr('width', window.innerWidth >= 768 ? "480" : "400") //%
+    .attr('width', window.innerWidth >= 768 ? "480" : "400") 
     .attr('height', window.innerWidth >= 768 ? "450" : "375")
     .attr('id', "piesvg")
     .append("g")
@@ -61,26 +57,22 @@ $(function(){
 
 function updatePieChart(new_data, highlight_index){
 
-    // if choose new year, 1. initial value 2. change data source
     total_consumption = 0 , total_population = 0;
     pieData = [];
     data_source = new_data;
 
-    // get extra data
     for (var i = 0; i < data_source.length; i++) {
         var ele = data_source[i];
         total_consumption += ele.consumption;
         total_population += ele.population;
     }
 
-    // display extra data under pie chart
     if(signal == 1){
         $("#pie-year").html(d3.select("#drop-down-year").property("value").slice(4) + " 年");
         $("#pie-total-population").html("總用水人口數量 ： " + numberWithCommas(total_population) + "  人");
         $("#pie-total-consumption").html("總用水量： " + numberWithCommas(total_consumption) + " 千公升");
     }
 
-    // get the pie chart data
     var doublePi = 2*Math.PI;
     for (var j = 0; j < data_source.length; j++) {
         var elem = data_source[j];
@@ -93,8 +85,7 @@ function updatePieChart(new_data, highlight_index){
     var pieId = "#pie"+highlight_index,
     pieTextId = "#pietext"+highlight_index;
 
-    // draw pie
-    var new_pie = cont.selectAll(".pieGroup") //g tag
+    var new_pie = cont.selectAll(".pieGroup") 
                       .data(pieData);
     
     new_pie.enter()
@@ -109,14 +100,9 @@ function updatePieChart(new_data, highlight_index){
                 d3.select(this).attr('fill', (i<=5)?color_set[i]:color_set[6])
            })
            .on("end", function(d,i){
-                if(!d3.select(".myCheckbox").property("checked")){
-                    if(i === highlight_index)
-                    {
-                        highlightAPie(highlight_index,pieTextId,pieId);
-                        /* d3.select(pieId)
-                        .attr('stroke', "blue")
-                        .attr('stroke-width', "3px"); */
-                    }
+                if(i === highlight_index)
+                {
+                    highlightAPie(highlight_index,pieTextId,pieId);
                 }
             });
 
@@ -141,16 +127,9 @@ function updatePieChart(new_data, highlight_index){
                 return (pieData[i].endAngle-pieData[i].startAngle)<0.5?"":d.label;
             })
             .on("end", function(d,i){
-                if(!d3.select(".myCheckbox").property("checked")){
-                    if(i === highlight_index)
-                    {
-                        highlightAPie(highlight_index,pieTextId,pieId);
-                        /* d3.select(pieTextId)
-                        .style('fill', "yellow")
-                        // .attr('dx', function(d){ return (highlight_index>=8&&highlight_index<=10)?"10px":(highlight_index>=12&&highlight_index<=16)?"-20px":(highlight_index==19)?"-25px":d3.select(this).attr('dx');})
-                        // .attr('dy', function(d){ return (highlight_index>=0&&highlight_index<=5)?"-15px":(highlight_index>=8&&highlight_index<=10)?"15px":(highlight_index>=12&&highlight_index<=16)?"20px":(highlight_index==19||highlight_index==21)?"-25px":d3.select(this).attr('dy');})
-                        .text(region_list[highlight_index]); */
-                    }
+                if(i === highlight_index)
+                {
+                    highlightAPie(highlight_index,pieTextId,pieId);
                 }
             });
     
@@ -168,84 +147,46 @@ d3.select("#drop-down-year")
     else
         d3.select("#container-div").style('display', "flex");
 
-    var new_data_source = eval(d3.select("#drop-down-year").property("value"));
-    region_list = [];
+    var new_data_source;
 
-    // Based on consumption, sort data source array
-    new_data_source.sort(function(a, b){
-        if(a.consumption > b.consumption) return -1; // a,b
-        else if (a.consumption < b.consumption) return 1; // b,a
-        else return 0; // unchanged *
-    });
+    var year_selected = d3.select("#drop-down-year").property("value");
+    var year_file = "./dataset/" + year_selected +".csv";
 
-    // source of data is sorted
-    for (var i = 0; i < new_data_source.length; i++) {
-        var element = new_data_source[i];
-        region_list.push(element.region);
-        population_list.push(element.population);
-        consumption_list.push(element.consumption);
-    }
-    var selectedRegion = d3.select("#drop-down-region").property("value");
-    for (var i = 0; i < 22; i++) {
-        if(region_list[i] === selectedRegion)
-        {
-            break;
-        }
-    }
-    updatePieChart(new_data_source, i);
-    render_slopeDiagram(new_data_source, i);
-    updateTextInfo(i);
-  });
-
-// event handler
-/* 
-d3.selectAll(".pieGroup, .textGroup")
-.on("mouseenter", function(d,i){
-    if(!d3.select(".myCheckbox").property("checked")){
-        // .on function will pass event object (i) at parameter
-        recoverPie();
-        console.log("look me:::::::::::", i);
-        i = (i>21)?(i-22):i;
-        var pieId = "#pie"+i,
-            pieTextId = "#pietext"+i;
-
-        highlightAPie(i, pieTextId, pieId);
-
-        recoverSlope();
-        highlightASlope(i);
-
-        recoverCircle();
-        highlightTwoCircle(i);
-    }
-})
-.on("mouseout", function(d,i){
-
-    if(!d3.select(".myCheckbox").property("checked")){
-        //remind: replace original recovery method with recoverPie()
-        recoverPie();
-        recoverSlope();
-        recoverCircle();
-
-        // back to reply region manu 
-        var selectedRegion = d3.select("#drop-down-region").property("value");
-        if(selectedRegion != "---"){
-            for (var recover_index = 0; recover_index < 22; recover_index++) {
-                if(region_list[recover_index] === selectedRegion)
+    d3.csv(year_file, function(d) {
+        return {
+            'population': +d.population,
+            'region': d.region,
+            'consumption': +d.consumption,
+            'year': +d.year
+        };
+        }, function(error, csv_data) {
+            new_data_source = csv_data;
+            region_list = [];
+            
+            new_data_source.sort(function(a, b){
+                if(a.consumption > b.consumption) return -1; 
+                else if (a.consumption < b.consumption) return 1; 
+                else return 0; 
+            });
+        
+            for (var i = 0; i < new_data_source.length; i++) {
+                var element = new_data_source[i];
+                region_list.push(element.region);
+                population_list.push(element.population);
+                consumption_list.push(element.consumption);
+            }
+            var selectedRegion = d3.select("#drop-down-region").property("value");
+            for (var i = 0; i < 22; i++) {
+                if(region_list[i] === selectedRegion)
                 {
-                    var pieId = "#pie"+recover_index,
-                        pieTextId = "#pietext"+recover_index;
                     break;
                 }
             }
-
-            highlightAPie(recover_index, pieTextId, pieId);
-
-            highlightASlope(recover_index);
-            highlightTwoCircle(recover_index);
-        }
-    }
-});
-*/
+            updatePieChart(new_data_source, i);
+            render_slopeDiagram(new_data_source, i);
+            updateTextInfo(i);
+        });
+  });
 
 function SVG_response(){
     ;
@@ -253,27 +194,24 @@ function SVG_response(){
 
 d3.select("#drop-down-region")
 .on("change", function(){
-    if(!d3.select(".myCheckbox").property("checked")){
-        if(signal == 1)
-        {
-            recoverPie();
-            var selectedRegion = d3.select("#drop-down-region").property("value");
-            if(selectedRegion != "---"){
-                for (var i = 0; i < 22; i++) {
-                    if(region_list[i] === selectedRegion)
-                    {
-                        var pieId = "#pie"+i,
-                        pieTextId = "#pietext"+i;
-                        break;
-                    }
+    if(signal == 1)
+    {
+        recoverPie();
+        var selectedRegion = d3.select("#drop-down-region").property("value");
+        if(selectedRegion != "---"){
+            for (var i = 0; i < 22; i++) {
+                if(region_list[i] === selectedRegion)
+                {
+                    var pieId = "#pie"+i,
+                    pieTextId = "#pietext"+i;
+                    break;
                 }
+            }
 
-                highlightAPie(i, pieTextId, pieId);
-            } 
-            // call slope update
-            slopeReplyRegionMenu(i); // this update function will check region menu value whether is "---"
-            updateTextInfo(i); // will check region menu
-        }
+            highlightAPie(i, pieTextId, pieId);
+        } 
+        slopeReplyRegionMenu(i);
+        updateTextInfo(i); 
     }
 });
 
@@ -295,8 +233,6 @@ function recoverPie(){
 function highlightAPie(i, pieTextId, pieId){
     d3.select(pieTextId)
     .style('fill', "black")
-    // .attr('dx', function(d){ return (i>=8&&i<=10)?"10px":(i>=12&&i<=16)?"-20px":(i==19)?"-25px":d3.select(this).attr('dx');})
-    // .attr('dy', function(d){ return (i>=0&&i<=5)?"-15px":(i>=8&&i<=10)?"15px":(i>=12&&i<=16)?"20px":(i==19||i==21)?"-25px":d3.select(this).attr('dy');})
     .text(region_list[i]);
 
     
@@ -307,8 +243,6 @@ function highlightAPie(i, pieTextId, pieId){
 }
 
 function updateTextInfo(i){
-    // display detail info of a region
-    // display ranking of consumption of water
     if(d3.select("#drop-down-region").property("value") == "---"){
         i = 0;
     }
@@ -316,8 +250,6 @@ function updateTextInfo(i){
     $("#region-name, #region-rank, #region-population, #region-consumption, #region-more-water-s").attr("style", "visibility: visible;");
     $("#region-name").html(pieData[i].label);
     $("#region-rank").html("用水排名: " + (i+1));
-/*         $("#region-population").html("用水人口數: " + population_list[i] + " 人("+ ((population_list[i]/total_population)*100).toFixed(2) + "%)");
-    $("#region-consumption").html("用水量: " + consumption_list[i] + " 千公升("+ ((consumption_list[i]/total_consumption)*100).toFixed(2) + "%)"); */
     $("#region-population").html("用水人口數: " + numberWithCommas(population_list[i]) + " 人");
     $("#region-consumption").html("用水量: " + numberWithCommas(consumption_list[i]) + " 千公升");
     $("#focus-more-water-s").html(function(){
