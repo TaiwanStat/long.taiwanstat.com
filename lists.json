@@ -7,7 +7,8 @@
         "url": "water-consume",
         "img": "./images/water-consume.png",
         "description": "用各年度的生活用水量、供水人口的資料以及圖表來讓您看見各縣市的用水比一比",
-        "author": "陳殿善"
+        "author": "陳殿善",
+        "d3_v4": true
       },
       {
         "title": "大專院校100年畢業生103年職場薪資圖",
