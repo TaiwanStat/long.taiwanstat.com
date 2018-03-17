@@ -49,7 +49,6 @@ window.onload = function(){
     pageChangeUniversity(setChangeNumber);
     d3.select("#backButton").on("click", function(){
     	$(function(){
-    		console.log("fuck");
 			$("main, #layout-header").stop().animate({scrollTop:$("#scrollTarget").prop("scrollHeight")*2.4}, 700, 'linear');
         })
     })
@@ -177,7 +176,6 @@ function pageInitUniversity(){
                 setChangeNumber = d3.select(this).property("id");
                 changed = true;
                 pageChangeUniversity(setChangeNumber);
-                console.log("fuck");
                 $("main, #layout-header").stop().animate({scrollTop:$("#column2").prop("scrollHeight")+height/1.226}, 700, 'linear')
      //            $(function(){
 					// $("main. ").stop().animate({scrollTop:document.getElementById('superContainer').scrollHeight}, 700, 'linear');
@@ -582,7 +580,7 @@ function pageChangeUniversity(selectNumber) {
                 "id": "averageText2",
                 "opacity": 1,
             })
-            .text("103年全國平均月薪資：47300(新台幣)")
+            .text("103年全國受僱員工平均薪資：47300(新台幣)")
             .style({
                 "fill": "#ee86ba",
                 "text-anchor": "middle",
@@ -974,7 +972,7 @@ function pageInitMaster(){
                 "id": "averageText",
                 "opacity": 0,
             })
-            .text("103年全國平均月薪資：47300(新台幣)")
+            .text("103年全國受僱員工平均薪資：47300(新台幣)")
             .style({
                 "fill": "#ee86ba",
                 "text-anchor": "middle",
