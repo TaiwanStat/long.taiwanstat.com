@@ -14,7 +14,8 @@ lists.data.page.forEach(function(p) {
     post_arr.push({
       "data": {
         "chart_description": p,
-        "domain": "http://long.taiwanstat.com/"
+        "domain": "https://www.taiwanstat.com/statistics/",
+        "category_url": "https://www.taiwanstat.com/statistics/"
       },
       "partials": './include/partials.js',
       "layout": path.join(p.url, "index.hbs"),
