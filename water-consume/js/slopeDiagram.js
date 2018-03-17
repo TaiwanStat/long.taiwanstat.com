@@ -221,7 +221,7 @@ function render_slopeDiagram(new_data, highlight_index){
     .attr('display', "none");
 
     // After render finished, update transform
-    console.log("hi"+($("#slopesvg").width()-(axiswidth + 30)));
+    //console.log("hi"+($("#slopesvg").width()-(axiswidth + 30)));
     // 30 for axis tag, 
     // 15~20 for average visiblity of graph, because graph have axis tag 
     var x_displace = ($("#slopesvg").width()-(axiswidth + 30 - 45))/2;

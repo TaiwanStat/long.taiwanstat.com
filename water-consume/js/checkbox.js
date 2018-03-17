@@ -46,8 +46,8 @@ function checkedCheckbox(){
           .attr('y', tmp["cy"].animVal["value"]+40)
           .attr('style', "fill: #1E90FF; font-size: 14px")
           .attr('class', "tagRegion");
-        console.log(tmp["cy"].animVal["value"]);
-        console.log(tmp["id"].split("circle")[1]);
+        // console.log(tmp["cy"].animVal["value"]);
+        // console.log(tmp["id"].split("circle")[1]);
     }
 
     // hide region where line is not red
