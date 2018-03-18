@@ -3,8 +3,6 @@
 
 <head>
   {{> head}}
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
   <link rel="stylesheet" href="./css/main.css">
 </head>
 
@@ -20,7 +18,7 @@
       </h6>
     </div>
     <div style="text-align:center;" class="deco form-group">
-      <select name="YES" id="drop-down-year" class="form-control-sm">
+      <select name="YES" id="drop-down-year" class="ui dropdown">
         <optgroup>
           <option value="---" selected="selected">選擇年份</option>
           <option value="data2011">2011</option>
@@ -31,7 +29,7 @@
           <option value="data2016">2016</option>
         </optgroup>
       </select>
-      <select name="YES" id="drop-down-region" class="form-control-sm">
+      <select name="YES" id="drop-down-region" class="ui dropdown">
         <option value='---' selected='selected'>選擇地區</option>
         <optgroup label="北">
           <option value='臺北市'>臺北市</option>
@@ -66,7 +64,7 @@
           <option value='連江縣'>連江縣</option>
         </optgroup>
       </select>
-      <button id="clear" class="btn">重置</button>
+      <button id="clear" class="ui basic button">重置</button>
       <br>
     </div>
     <div id="container-div">
@@ -108,10 +106,10 @@
       </small>
       <br>
     </div>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"></script>
+  </div>
+
+
+  {{> end}}
 
     <script>
       d3.select("#clear").on("click", function () {
@@ -127,16 +125,26 @@
     </script>
 
 
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <script>
+      d3.select("#clear").on("click", function () {
+        if (signal == 1) {
+          $("#drop-down-region").val("---");
+          recoverPie();
+          recoverSlope();
+          recoverCircle();
+          $(".tagRegion").remove();
+          updateTextInfo(23);
+        }
+      });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"></script>
 
     <script src="./js/pieChart.js"></script>
     <script src="./js/slopeDiagram.js"></script>
-  </div>
-  {{> end}}
   {{> footer}}
 </body>
-
 </html>
