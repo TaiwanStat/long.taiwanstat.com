@@ -1,9 +1,10 @@
+//顯示二氧化碳歷年趨勢的折線圖
+
 var co_line_margin = { top: 20, right: 80, bottom: 30, left: 50 },
     co_line_width = co_get_screen_width() - co_line_margin.left - co_line_margin.right,
     co_line_height = 300 - co_line_margin.top - co_line_margin.bottom;
 
 function co_get_screen_width() {
-    console.log(innerWidth)
     if (innerWidth < 800) {
         return innerWidth;
     }
@@ -112,7 +113,7 @@ d3.csv("./data/energy_type.csv", function (d) {
         .attr('height', co_line_height)
         .attr('fill', 'none')
         .attr('pointer-events', 'all')
-        .on("mouseover", function (d) {
+        .on("mouseover", function (d) {//update year data and move the line to mouse position 
             for (i = 0; i < stack_data.length; i++) {
                 if (d3.mouse(this)[0] < x(97 + i) + 10 && d3.mouse(this)[0] > x(97 + i) - 10) {
                     stack_bar_change(i)

@@ -1,3 +1,4 @@
+//台灣近年再生能源各項數值框
 var stack_info_margin = { top: 20, right: 80, bottom: 30, left: 50 },
     stack_info_width = 250 - stack_info_margin.left - stack_info_margin.right,
     stack_info_height = 250 - stack_info_margin.top - stack_info_margin.bottom;
@@ -7,7 +8,6 @@ var stack_info_svg = d3.select("#stack_info")
     .append("svg")
     .attr("width", stack_info_width + stack_info_margin.left + stack_info_margin.right)
     .attr("height", stack_info_height + stack_info_margin.top + stack_info_margin.bottom)
-    //.attr("transform", "translate（1000,0)")
     .append("g").attr("transform", "translate(" + stack_info_margin.left + ",0)");
 
 d3.csv("./data/energy_type.csv", function (d, i, columns) {
@@ -105,7 +105,7 @@ d3.csv("./data/energy_type.csv", function (d, i, columns) {
         })
 
     var total_renew = 0;
-    for (i = 0; i < data[0].energy.length; i++) {
+    for (i = 0; i < data[0].energy.length; i++) {//calculate total value 
         total_renew = total_renew + Math.round(data[0].energy[i].percent / 1000000);
     }
     stack_text_total = stack_info_svg.append("text")

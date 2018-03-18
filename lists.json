@@ -7,7 +7,8 @@
         "url": "renewable-energy",
         "img": "images/renewable-energy.png",
         "description": "再生一個再生能源吧",
-        "author": "黃顯堯"
+        "author": "黃顯堯",
+	"d3_v4":true
       },
       {
         "title": "大專院校100年畢業生103年職場薪資圖",
@@ -75,6 +76,8 @@
         "description": "你知道政府在 102 年各方面基金投入的狀況為何嗎？",
         "author": "Weber Chi"
       },
+      {
+      {
       {
         "title": "近年台灣旅客統計",
         "url": "traveler",
@@ -253,5 +256,3 @@
   },
   "layout": "./index.hbs",
   "filename": "index.html",
-  "partials": "./include/partials.js"
-}

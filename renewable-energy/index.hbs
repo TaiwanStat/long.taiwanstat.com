@@ -5,7 +5,6 @@
     {{> head}}
     <!-- my js & css -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./javascript/d3.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -40,18 +39,16 @@
             </div>
             <div id="taiwan_renewable_block" class="flex_container">
                 <div id="scale_chart">
-                    <script src="./javascript/scale_chart.js"></script>
+
                 </div>
                 <div id="line_chart">
-                    <script src="./javascript/line_chart.js"></script>
                 </div>
                 <div id="scale_stack">
-                    <script src="./javascript/scale_stack.js"></script>
                 </div>
                 <div id="scale_stack_info">
-                    <script src="./javascript/scale_info.js"></script>
                 </div>
             </div>
+
             <div id="co_text">
                 <p>抽蓄水力是一種儲能方式，當電力需求低時，多出的電力將水放至高位儲存，到電力需求高時，便以高位的水作發電之用，因此比較不偏向再生能源</p>
             </div>
@@ -73,11 +70,10 @@
             </div>
             <div id="japan_renewable_block" class="flex_container">
                 <div id="japan_scale">
-                    <script src="./javascript/japan_scale.js"></script>
                 </div>
                 <div id="japan_line">
-                    <script src="./javascript/japan_line.js"></script>
                 </div>
+
                 <div id="japan_renewble_block_text">
                     <p>即使是科技進步的日本，在減少核電之後的首要能源，依然是選擇火力發電而不是相對於較少的二氧化碳排放的再生能源，
                         <br>
@@ -118,16 +114,14 @@
             </div>
             <div id="category_block" class="flex_container">
                 <div id="stackareacate">
-                    <script src="./javascript/stackareacate.js"></script>
                 </div>
                 <div id="stack_info">
-                    <script src="./javascript/stack_info.js"></script>
                 </div>
                 <div id="stack_bar">
-                    <script src="./javascript/stack_bar.js"></script>
                 </div>
 
             </div>
+
             <h3>再生能源節省了多少碳</h3>
             <div id="co_text">
                 <p>滑鼠滑上圖表可顯示不同年份及種類資訊</p>
@@ -135,12 +129,11 @@
             <br>
             <div id="co_block" class="flex_container">
                 <div id="co_save">
-                    <script src="./javascript/co_save.js"></script>
                 </div>
                 <div id="co_info">
-                    <script src="./javascript/co_info.js"></script>
                 </div>
             </div>
+
             <div id="co_text">
                 <p>註:計算公式=水力發電，太陽能發電及風力發電發電度數總和*能源局公佈電力排放係數</p>
                 <p>註:造林效益依農委會林務局委託研究，99年推算每公頃林地之年二氧化碳固定量為9.9公噸。</p>
@@ -165,13 +158,11 @@
             </div>
             <div id="official_folk_block" class="flex_container">
                 <div id="timeline">
-                    <script src="./javascript/timeline.js"></script>
                 </div>
                 <br>
                 <br>
                 <br>
                 <div id="donut_chart">
-                    <script src="./javascript/donut_chart.js"></script>
                 </div>
                 <div id="official_flok_block_text">
                     <h3>太陽能發電</h3>
@@ -209,6 +200,19 @@
     </div>
     {{> end}}
     <!-- my js & css -->
+    <script src="./javascript/scale_chart.js"></script>
+    <script src="./javascript/line_chart.js"></script>
+    <script src="./javascript/scale_stack.js"></script>
+    <script src="./javascript/scale_info.js"></script>
+    <script src="./javascript/japan_scale.js"></script>
+    <script src="./javascript/japan_line.js"></script>
+    <script src="./javascript/stackareacate.js"></script>
+    <script src="./javascript/stack_info.js"></script>
+    <script src="./javascript/stack_bar.js"></script>
+    <script src="./javascript/co_save.js"></script>
+    <script src="./javascript/co_info.js"></script>
+    <script src="./javascript/timeline.js"></script>
+    <script src="./javascript/donut_chart.js"></script> 
     {{> footer}}
 </body>
 

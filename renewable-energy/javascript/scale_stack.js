@@ -1,9 +1,9 @@
+//台灣近年各項能源的長條堆疊圖
 var scale_stack_margin = { top: 20, right: 80, bottom: 30, left: 50 },
     scale_stack_width = scale_stack_get_screen_width() - scale_stack_margin.left - scale_stack_margin.right,
     scale_stack_height = 200 - scale_stack_margin.top - scale_stack_margin.bottom;
 
 function scale_stack_get_screen_width() {
-    console.log(innerWidth)
     if (innerWidth < 1000) {
         return innerWidth;
     }
@@ -14,7 +14,6 @@ var scale_stack_svg = d3.select("#scale_stack")
     .append("svg")
     .attr("width", scale_stack_width + scale_stack_margin.left + scale_stack_margin.right)
     .attr("height", scale_stack_height + scale_stack_margin.top + scale_stack_margin.bottom)
-    //.attr("transform", "translate（1000,0)")
     .append("g").attr("transform", "translate(" + scale_stack_margin.left + ",0)");
 
 var scale_stack_x = d3.scaleLinear()
@@ -75,24 +74,7 @@ d3.csv("./data/his_ele_cate.csv", function (d, i, columns) {
         .style("text-anchor", "middle")
         .style("fill", "black")
         .text("民國97年")
-    // var scale_stack_info = scale_stack_svg.append("rect")
-    //     .attr("rx", 10)
-    //     .attr("ry", 10)
-    //     .attr("x", scale_stack_width * 0.875)
-    //     .attr("y", 10)
-    //     .attr("width", stack_rect_info_width())
-    //     .attr("height", 180)
-    //     .attr("opacity", 0.3)
-    //     .attr("fill", "lightgray")
-    //     .style("stroke", "black")
-    //     .style("stroke-width", "5px")
-
-    // scale_stack_text_fire = create_stack_text(scale_stack_svg, "2.0em", scale_stack_width * 0.95, "火力：" + Math.round(data[0].energy[0].percent) + "億度")
-    // scale_stack_text_nuclear = create_stack_text(scale_stack_svg, "4.0em", scale_stack_width * 0.95, "核能：" + Math.round(data[0].energy[1].percent) + "億度")
-    // scale_stack_text_water = create_stack_text(scale_stack_svg, "6.0em", scale_stack_width * 0.95, "抽蓄水力：" + Math.round(data[0].energy[2].percent) + "億度")
-    // scale_stack_text_renewable = create_stack_text(scale_stack_svg, "8.0em", scale_stack_width * 0.95, "再生能源：" + Math.round(data[0].energy[3].percent) + "億度")
-
-
+    
     scale_stack_rect = scale_stack_svg.append("g")
         .selectAll("g")
         .attr("class", "scale_stack")
@@ -219,6 +201,61 @@ d3.csv("./data/his_ele_cate.csv", function (d, i, columns) {
             }
         });
 })
+
+
+
+function scale_stack_change(index) {
+    if (scale_stack_now_index != index) {
+        scale_stack_rect.data(scale_stack_data[index].energy).enter()
+
+        scale_stack_rect.select("rect")
+            .attr("rx", 5)
+            .attr("ry", 5)
+            .attr("x", function (d) { return scale_stack_x(d.pre_per); })
+            .attr("y", 100)
+            .attr("height", 50)
+            .attr("width", function (d) { return scale_stack_x(d.percent); })
+        scale_stack_text_fire.text(function (d) {
+
+            return "火力：" + Math.round(scale_stack_data[index].energy[0].percent) + "億度"
+        })
+        scale_stack_text_water.text(function (d) {
+
+            return "抽蓄水力：" + Math.round(scale_stack_data[index].energy[2].percent) + "億度"
+        })
+        scale_stack_text_nuclear.text(function (d) {
+
+            return "核能：" + Math.round(scale_stack_data[index].energy[1].percent) + "億度"
+        })
+        scale_stack_text_renewable.text(function (d) {
+
+            return "再生能源：" + Math.round(scale_stack_data[index].energy[3].percent) + "億度"
+        })
+        var year_now = index + 97
+        scale_stack_title.text("民國" + year_now + "年")
+        scale_stack_now_index = index;
+
+        for (i = 0; i < scale_data.length; i++) {
+            if (index + 97 === scale_data[i].year) {
+                scale_total = 0;
+                for (j = 0; j < scale_data[i].energy.length; j++) {
+                    scale_total = scale_data[i].energy[j].percent + scale_total;
+
+                }
+                scale.data(function (d) { return scale_pie(scale_data[i].energy); })
+                    .enter();
+                scale.select("path")
+                    .attr("d", scale_arc);
+                scale_text_year.text("民國" + year_now + "年")
+                var select_value = scale_data[index].energy[choose_ener].percent;
+                var select_value_per = +((select_value / scale_total) * 100);
+                scale_text.text(Math.round(select_value_per) + "％")
+            }
+        }
+
+    }
+}
+
 function create_stack_text(create_svg, create_dy, create_width, create_content) {
     create_text = create_svg.append("text")
         .attr("transform", "translate(" + create_width + ",0)")

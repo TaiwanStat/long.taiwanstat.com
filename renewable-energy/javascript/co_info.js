@@ -1,3 +1,6 @@
+//顯示各項二氧化碳資訊的框
+
+
 var co_line_info_margin = { top: 20, right: 80, bottom: 30, left: 50 },
     co_line_info_width = 250 - co_line_info_margin.left - co_line_info_margin.right,
     co_line_info_height = 250 - co_line_info_margin.top - co_line_info_margin.bottom;

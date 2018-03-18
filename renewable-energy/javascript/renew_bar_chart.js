@@ -1,3 +1,4 @@
+//台灣近年再生能源長條堆疊圖
 var renew_margin = { top: 20, right: 80, bottom: 30, left: 50 },
     renew_width = screen.availWidth*0.5 - renew_margin.left - renew_margin.right,
     renew_height = 200 - renew_margin.top - renew_margin.bottom;
@@ -5,12 +6,9 @@ var renew_margin = { top: 20, right: 80, bottom: 30, left: 50 },
 var renew_bar_svg = d3.select("#renew_bar")
     .append("svg")
     .attr("transform", "translate(400," + renew_margin.top + ")")
-    //.attr("transform", "translate(600,0)")
     .attr("width", renew_width + renew_margin.left + renew_margin.right)
     .attr("height", renew_height + renew_margin.top + renew_margin.bottom)
     .append("g").attr("transform", "translate(" + renew_margin.left + "," + renew_margin.top + ")");
-
-//var renew_g = renew_bar_svg.append("g").attr("transform", "translate(" + renew_margin.left + "," + renew_margin.top + ")");
 
 var renew_color = d3.scaleOrdinal()
     .range(["#3CB371", "#4169E1", "#FFBB00"]);
@@ -99,8 +97,6 @@ d3.csv("./data/water.csv", function (d, i, columns) {
         .attr("fill", function (d) { return renew_color(d.name) });
 
 })
-
-
 
 
 function data_anyl() {

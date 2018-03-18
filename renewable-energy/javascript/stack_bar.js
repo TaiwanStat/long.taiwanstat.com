@@ -1,9 +1,9 @@
+//台灣近年再生能源長條堆疊圖
 var stack_margin = { top: 20, right: 80, bottom: 30, left: 50 },
     stack_width = stack_get_screen_width() - stack_margin.left - stack_margin.right,
     stack_height = 200 - stack_margin.top - stack_margin.bottom;
 
 function stack_get_screen_width() {
-    console.log(innerWidth)
     if (innerWidth < 1000) {
         return innerWidth;
     }
@@ -15,7 +15,6 @@ var stack_svg = d3.select("#stack_bar")
     .append("svg")
     .attr("width", stack_width + stack_margin.left + stack_margin.right)
     .attr("height", stack_height + stack_margin.top + stack_margin.bottom)
-    //.attr("transform", "translate（1000,0)")
     .append("g").attr("transform", "translate(" + stack_margin.left + ",0)");
 
 

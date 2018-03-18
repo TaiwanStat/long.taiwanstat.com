@@ -1,9 +1,9 @@
+//選擇台電民營圖的年份  
 var time_margin = { top: 20, right: 80, bottom: 30, left: 50 },
     time_width = time_get_screen_width() - time_margin.left - time_margin.right,
     time_height = 100 - time_margin.top - time_margin.bottom;
 
     function time_get_screen_width(){
-        console.log(innerWidth)
         if(innerWidth<1200){
            return innerWidth;
         }
@@ -72,12 +72,14 @@ d3.csv("./data/his_ele_cate.csv", function (d) {
             chart_change(select_cir_year);
         });
 })
-function check_circle_choose(select_cir) {
+
+
+function check_circle_choose(select_cir) {//check whether cirle is choose or not
     if (choose_circle == 0) {
         choose_circle = select_cir.data()[0].year;
         select_cir
             .attr("r", 15)
-            .attr("opacity",1)
+            .attr("opacity", 1)
     } else if (choose_circle != 0 && choose_circle != select_cir) {
         choose_circle = select_cir.data()[0].year;
         time_circle_append.attr("r", 10)
@@ -86,43 +88,34 @@ function check_circle_choose(select_cir) {
     }
 }
 
-function chart_change(index) {
+function chart_change(index) {//update donut_chart to choosen year
 
     for (i = 0; i < wind_data.length; i++) {
         if (wind_data[i].year) {
             if (index === wind_data[i].year) {
-                wind.select(".text_remove_wind").remove();
+                wind.select(".donut_remove_text").remove();
                 wind.data(function (d) { return pie(wind_data[i].pers); })
                     .enter()
                 wind.select("path")
                     .attr("d", init_arc)
+                donut_chart_outside_text_update(wind)
 
-                wind.append("text")
-                    .attr("class", "text_remove_wind")
-                    .attr("transform", function (d) { return "translate(" + arc.centroid(d) + ")"; })
-                    .attr("dy", ".35em")
-                    .attr("text-anchor", "middle")
-                    .text(function (d) { return d.data.name; });
-                text_update(wind_text_year, "民國" + index+ "年")
+
+                text_update(wind_text_year, "民國" + index + "年")
                 text_update(wind_text_type, "台電發電量達")
-                text_update(wind_text, Math.round(wind_data[i].pers["0"].percent)  + "百萬度")
+                text_update(wind_text, Math.round(wind_data[i].pers["0"].percent) + "百萬度")
             }
         }
     }
     for (i = 0; i < water_data.length; i++) {
         if (water_data[i].year) {
             if (index === water_data[i].year) {
-                water.select(".text_remove_water").remove();
+                water.select(".donut_remove_text").remove();
                 water.data(function (d) { return pie(water_data[i].pers); })
                     .enter()
                 water.select("path")
-                    .attr("d", init_arc)
-                water.append("text")
-                    .attr("class", "text_remove_water")
-                    .attr("transform", function (d) { return "translate(" + arc.centroid(d) + ")"; })
-                    .attr("dy", ".35em")
-                    .attr("text-anchor", "middle")
-                    .text(function (d) { return d.data.name; });
+                    .attr("d", init_arc);
+                donut_chart_outside_text_update(water)
 
 
                 text_update(water_text_year, "民國" + index + "年")
@@ -134,23 +127,27 @@ function chart_change(index) {
     for (i = 0; i < sun_data.length; i++) {
         if (sun_data[i].year) {
             if (index === sun_data[i].year) {
-                sun.select(".text_remove_sun").remove();
+                sun.select(".donut_remove_text").remove();
                 sun.data(function (d) { return pie(sun_data[i].pers); })
                     .enter()
                 sun.select("path")
-                    .attr("d", init_arc)
-                sun.append("text")
-                    .attr("class", "text_remove_sun")
-                    .attr("transform", function (d) { return "translate(" + arc.centroid(d) + ")"; })
-                    .attr("dy", ".35em")
-                    .attr("text-anchor", "middle")
-                    .text(function (d) { return d.data.name; });
+                    .attr("d", init_arc);
+                donut_chart_outside_text_update(sun)
 
                 text_update(sun_text_year, "民國" + index + "年")
                 text_update(sun_text_type, "台電發電量達")
-                text_update(sun_text, sun_data[i].pers["0"].percent+ "百萬度")
+                text_update(sun_text, sun_data[i].pers["0"].percent + "百萬度")
             }
         }
     }
 
+}
+
+function donut_chart_outside_text_update(donut_chart) {
+    donut_chart.append("text")
+        .attr("class","donut_remove_text")
+        .attr("transform", function (d) { return "translate(" + arc.centroid(d) + ")"; })
+        .attr("dy", ".35em")
+        .attr("text-anchor", "middle")
+        .text(function (d) { return d.data.name; });
 }

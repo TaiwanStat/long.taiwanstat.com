@@ -1,3 +1,4 @@
+//日本近年各項資源甜甜圈圖
 var japan_scale_margin = { top: 20, right: 80, bottom: 30, left: 50 },
     japan_scale_width = japan_scale_get_screen_width() - japan_scale_margin.left - japan_scale_margin.right,
     japan_scale_height = japan_scale_get_screen_width() - japan_scale_margin.top - japan_scale_margin.bottom,
@@ -5,7 +6,6 @@ var japan_scale_margin = { top: 20, right: 80, bottom: 30, left: 50 },
 
 
 function japan_scale_get_screen_width() {
-    console.log(innerWidth)
     if (innerWidth < 500) {
         return innerWidth;
     }
@@ -55,6 +55,7 @@ var select_cir_year = 97;
 var japan_polyline;
 var japan_pol_text;
 var japan_choose = 3;
+
 function japan_scale_defaultsetting() {
     return {
         circle_color: "#568D4B",
@@ -63,6 +64,7 @@ function japan_scale_defaultsetting() {
         text_name_content: "再生能源發電比例達"
     };
 }
+
 d3.csv("./data/日本各項電力.csv", function (d, i, columns) {
     return {
         year: +d.year,
@@ -112,6 +114,7 @@ d3.csv("./data/日本各項電力.csv", function (d, i, columns) {
         .style("text-anchor", "middle")
         .style("fill", "black")
         .text(config.text_content)
+
     japan_scale_text_year = japan_scale.append("text")
         .attr("transform", "translate(0,0)")
         .attr("dy", "-2.0em")
@@ -119,6 +122,7 @@ d3.csv("./data/日本各項電力.csv", function (d, i, columns) {
         .style("text-anchor", "middle")
         .style("fill", "black")
         .text(config.text_year_content)
+
     japan_scale_text_name = japan_scale.append("text")
         .attr("transform", "translate(0,0)")
         .attr("dy", "-1.0em")
@@ -233,4 +237,8 @@ d3.csv("./data/日本各項電力.csv", function (d, i, columns) {
             return select_scale_name(d.data.name);
         });
 })
+
+function text_update(text_var, text_content) {
+    text_var.text(text_content);
+}
 

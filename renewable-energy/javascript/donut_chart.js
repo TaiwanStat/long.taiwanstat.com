@@ -1,11 +1,10 @@
-
+//台電與民營的電力比例甜甜圈圖
 var margin = { top: 20, right: 50, bottom: 30, left: 50 },
     donut_width = donut_get_screen_width() - margin.left - margin.right,
     donut_height = donut_get_screen_width() - margin.top - margin.bottom,
     radius = Math.min(donut_width, donut_height) / 2;
 
 function donut_get_screen_width() {
-    console.log(innerWidth)
     if (innerWidth < 470) {
         return innerWidth;
     }
@@ -36,50 +35,36 @@ var pie = d3.pie()
     .sort(null)
     .value(function (d) { return d.percent });
 
-    var donut_transform_x = (donut_width/2)
 
-    
-var sun_svg = d3.select("#donut_chart").append("svg")
-    .attr("width", donut_width)
-    .attr("height", donut_height)
-    .append("g")
-    .attr("transform", "translate(" + donut_transform_x + "," + donut_height / 2 + ")");
+var donut_transform_x = (donut_width / 2)
+function create_donut_svg(div) {
+    var donut_svg = d3.select(div).append("svg")
+        .attr("width", donut_width)
+        .attr("height", donut_height)
+        .append("g")
+        .attr("transform", "translate(" + donut_transform_x + "," + donut_height / 2 + ")");
+    return donut_svg;
+}
+var sun_svg = create_donut_svg("#donut_chart");
+var water_svg = create_donut_svg("#donut_chart");
+var wind_svg = create_donut_svg("#donut_chart");
 
-var water_svg = d3.select("#donut_chart").append("svg")
-    .attr("width", donut_width)
-    .attr("height", donut_height)
-    .append("g")
-    .attr("transform", "translate(" + donut_transform_x + "," + donut_height / 2 + ")");
 
-var wind_svg = d3.select("#donut_chart").append("svg")
-    .attr("width", donut_width)
-    .attr("height", donut_height)
-    .append("g")
-    .attr("transform", "translate(" + donut_transform_x + "," + donut_height / 2 + ")");
 
-var sun_label_text = sun_svg.append("text")
+function donut_label_create(donut_svg,label_text){
+    donut_svg.append("text")
     .attr("transform", "translate(0,0)")
     .attr("dy", "-7.5em")
     .attr("font-size", "1.3em")
     .style("text-anchor", "middle")
     .style("fill", "black")
-    .text("太陽能發電")
+    .text(label_text)
+}
+var sun_label_text = donut_label_create(sun_svg,"太陽能發電");
+var water_label_text = donut_label_create(water_svg,"水力發電");
+var wind_label_text = donut_label_create(wind_svg,"風力發電");
 
-var water_label_text = water_svg.append("text")
-    .attr("transform", "translate(0,0)")
-    .attr("dy", "-7.5em")
-    .attr("font-size", "1.3em")
-    .style("text-anchor", "middle")
-    .style("fill", "black")
-    .text("水力發電")
 
-var wind_label_text = wind_svg.append("text")
-    .attr("transform", "translate(0,0)")
-    .attr("dy", "-7.5em")
-    .attr("font-size", "1.3em")
-    .style("text-anchor", "middle")
-    .style("fill", "black")
-    .text("風力發電")
 
 var mouseenter_arc = d3.arc()
     .outerRadius(radius * 0.85)
@@ -188,7 +173,7 @@ d3.csv("./data/sun.csv", function (d, i, columns) {
         })
 
     sun.append("text")
-        .attr("class", "text_remove_sun")
+        .attr("class", "donut_remove_text")
         .attr("transform", function (d) { return "translate(" + arc.centroid(d) + ")"; })
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
@@ -292,7 +277,7 @@ d3.csv("./data/water.csv", function (d, i, columns) {
 
 
     water.append("text")
-        .attr("class", "text_remove_water")
+        .attr("class", "donut_remove_text")
         .attr("transform", function (d) { return "translate(" + arc.centroid(d) + ")"; })
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
@@ -349,6 +334,9 @@ d3.csv("./data/wind.csv", function (d, i, columns) {
         .style("fill", "black")
         .text("民國97年")
 
+    function donut_click_event(donut, data) {
+
+    }
 
     var wind_donut = wind.append("path")
         .attr("d", init_arc)
@@ -395,13 +383,15 @@ d3.csv("./data/wind.csv", function (d, i, columns) {
 
         })
     wind.append("text")
-        .attr("class", "text_remove_wind")
+        .attr("class", "donut_remove_text")
         .attr("transform", function (d) { return "translate(" + arc.centroid(d) + ")"; })
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
         .text(function (d) { return d.data.name; });
 })
 
-function text_update(text_var, text_content) {
-    text_var.text(text_content);
+
+
+function calculate_percent(select_value, total_value) {
+    return +((select_value / total_value) * 100)
 }

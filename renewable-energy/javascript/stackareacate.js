@@ -1,11 +1,12 @@
+//近年台灣再生能源折線堆疊圖
 var tsvData = null;
+
 
 var stackarea_margin = { top: 20, right: 80, bottom: 30, left: 50 },
     stackarea_width = stackarea_line_get_screen_width() - stackarea_margin.left - stackarea_margin.right,
     stackarea_height = 300 - stackarea_margin.top - stackarea_margin.bottom;
 
 function stackarea_line_get_screen_width() {
-    console.log(innerWidth)
     if (innerWidth < 800) {
         return innerWidth;
     }
@@ -46,6 +47,8 @@ var stackarea_svg = d3.select('#stackareacate').append('svg')
     .attr('height', stackarea_height + stackarea_margin.top + stackarea_margin.bottom)
     .append('g')
     .attr('transform', 'translate(' + stackarea_margin.left + ',' + stackarea_margin.top + ')');
+
+    
 var stackarea_line_move;
 d3.csv('./data/energy_type.csv', function (error, data) {
     color.domain(d3.keys(data[0]).filter(function (key) { return key !== 'year'; }));
@@ -54,8 +57,6 @@ d3.csv('./data/energy_type.csv', function (error, data) {
         d.year = +d.year
     });
     tsvData = (function () { return data; })();
-    console.log(tsvData)
-
     var maxDateVal = d3.max(data, function (d) {
         var vals = d3.keys(d).map(function (key) { return key !== 'year' ? d[key] : 0 });
         return d3.sum(vals);
@@ -81,8 +82,6 @@ d3.csv('./data/energy_type.csv', function (error, data) {
 
     stack.order(d3.stackOrderNone);
     stack.offset(d3.stackOffsetNone);
-
-    console.log(stack(data));
 
     var browser = stackarea_svg.selectAll('.browser')
         .data(stack(data))
@@ -143,19 +142,6 @@ d3.csv('./data/energy_type.csv', function (error, data) {
             line_move(stackarea_line_move, d3.mouse(this)[0]);
             line_move(co_line_move, d3.mouse(this)[0]);
         });
-    // browser.append('text')
-    //     .datum(function (d) { return d; })
-    //     .attr('transform', function (d) { return 'translate(' + stackarea_x(data[8].year) + ',' + stackarea_y(d[8][1]) + ')'; })
-    //     .attr('x', -6)
-    //     .attr('dy', '.35em')
-    //     .style("text-anchor", "start")
-    //     .text(function (d) {
-    //         if (d.key != "bio") {
-    //             return d.key;
-    //         }
-    //     })
-    //     .attr('fill-opacity', 1);
-
     stackarea_svg.append('g')
         .attr('class', 'x axis')
         .attr('transform', 'translate(0,' + stackarea_height + ')')
@@ -167,3 +153,50 @@ d3.csv('./data/energy_type.csv', function (error, data) {
 
 
 });
+
+
+function stack_bar_change(index) {
+    if (index != stack_now_index) {
+        stack_rect.data(stack_data[index].energy).enter()
+
+        stack_rect.select("rect")
+            .attr("rx", 5)
+            .attr("ry", 5)
+            .attr("x", function (d) { return stack_x(d.pre_per); })
+            .attr("y", 100)
+            .attr("height", 50)
+            .attr("width", function (d) { return stack_x(d.percent); })
+            ;
+        stack_text_water.text(function (d) {
+
+            return "水力：" + Math.round(stack_data[index].energy[2].percent / 1000000) + "百萬度"
+        })
+        stack_text_wind.text(function (d) {
+
+            return "風力：" + Math.round(stack_data[index].energy[0].percent / 1000000) + "百萬度"
+        })
+        stack_text_solar.text(function (d) {
+
+            return "太陽能：" + Math.round(stack_data[index].energy[1].percent / 1000000) + "百萬度"
+        })
+        stack_text_gar.text(function (d) {
+
+            return "垃圾沼氣：" + Math.round(stack_data[index].energy[4].percent / 1000000) + "百萬度"
+        })
+        stack_text_bio.text(function (d) {
+
+            return "生質能：" + Math.round(stack_data[index].energy[3].percent / 1000000) + "百萬度"
+        })
+        var total_renew = 0;
+        for (i = 0; i < stack_data[index].energy.length; i++) {
+            total_renew = total_renew + Math.round(stack_data[index].energy[i].percent / 1000000);
+        }
+        stack_text_total.text(function (d) {
+
+            return "再生能源：" + total_renew / 100 + "億度"
+        })
+        var year_stack = index + 97
+        stack_title.text("民國" + year_stack + "年")
+        stack_now_index = index;
+    }
+}

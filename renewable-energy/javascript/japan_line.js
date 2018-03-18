@@ -1,4 +1,4 @@
-
+//日本近年來各項能源折線圖
 var japan_line_svg = d3.select("#japan_line")
     .append("svg")
     .attr("width", line_width + margin.left + margin.right)
@@ -69,6 +69,8 @@ d3.csv("./data/日本各項電力.csv", function (d) {
 
 })
 
+
+
 function japan_mouse_enent(data, mouse) {
     date_x = bisectDate(data, x.invert(mouse), 0);
     for (i = 0; i < scale_stack_data.length; i++) {
@@ -80,7 +82,7 @@ function japan_mouse_enent(data, mouse) {
 }
 
 
-function scale_japan_change(index) {
+function scale_japan_change(index) {//when line update year also update scale_donut data 
     if (scale_stack_now_index != index) {
         var year_now = index + 97
         scale_stack_now_index = index;

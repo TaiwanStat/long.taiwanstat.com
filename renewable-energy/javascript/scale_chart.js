@@ -1,3 +1,4 @@
+//台灣近年各項能源甜甜圈圖
 var scale_margin = { top: 20, right: 80, bottom: 30, left: 50 },
     scale_width = scale_get_screen_width() - scale_margin.left - scale_margin.right,
     scale_height = scale_get_screen_width() - scale_margin.top - scale_margin.bottom,
@@ -5,7 +6,6 @@ var scale_margin = { top: 20, right: 80, bottom: 30, left: 50 },
 
 
 function scale_get_screen_width() {
-    console.log(innerWidth)
     if (innerWidth < 500) {
         return innerWidth;
     }
@@ -230,6 +230,7 @@ d3.csv("./data/his_ele_cate.csv", function (d, i, columns) {
         });
 })
 
+
 function select_scale_name(select_name) {
     if (select_name == "fire") {
         return "火力";
@@ -244,9 +245,8 @@ function set_scale_color(scale_name) {
     else if (scale_name == "water") { choose_ener = 0; return scale_color.range()[2] }
     else if (scale_name == "renewable") { choose_ener = 3; return scale_color.range()[3] }
 }
-function calculate_percent(select_value, total_value) {
-    return +((select_value / total_value) * 100)
-}
+
+
 function calculatePoints(d) {
     var pos = scale_text_arc.centroid(d);
     pos[0] = scale_radius * 0.7 * (midAngle(d) < Math.PI ? 1 : -1);
@@ -260,4 +260,4 @@ function labelTransform(d) {
     return 'translate(' + pos + ')';
 }
 
-function midAngle(d) { return d.startAngle + (d.endAngle - d.startAngle) / 2; } 
+function midAngle(d) { return d.startAngle + (d.endAngle - d.startAngle) / 2; }

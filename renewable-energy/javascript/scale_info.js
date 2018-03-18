@@ -1,3 +1,4 @@
+//顯示台灣近年各項能源數值的框
 var scale_stack_info_margin = { top: 20, right: 80, bottom: 30, left: 50 },
     scale_stack_info_width = 250 - scale_stack_info_margin.left - scale_stack_info_margin.right,
     scale_stack_info_height = 200 - scale_stack_info_margin.top - scale_stack_info_margin.bottom;
@@ -6,7 +7,6 @@ var scale_stack_info_svg = d3.select("#scale_stack_info")
     .append("svg")
     .attr("width", scale_stack_info_width + scale_stack_info_margin.left + scale_stack_info_margin.right)
     .attr("height", scale_stack_info_height + scale_stack_info_margin.top + scale_stack_info_margin.bottom)
-    //.attr("transform", "translate（1000,0)")
     .append("g").attr("transform", "translate(" + scale_stack_margin.left + ",0)");
 
 
