@@ -164,6 +164,8 @@ d3.select("#drop-down-year")
         }, function(error, csv_data) {
             new_data_source = csv_data;
             region_list = [];
+            population_list = [];
+            consumption_list = [];
             
             new_data_source.sort(function(a, b){
                 if(a.consumption > b.consumption) return -1; 
