@@ -1,0 +1,80 @@
+body {
+    /* background-color: #f7f7f7; */
+}
+
+#unemployedSvg {
+    background-color: #fff;
+}
+
+h1,
+h2,
+h3,
+h6 {
+    color: #6E6E6E;
+    text-align: center;
+}
+
+
+h2{
+    font-size: 3em;
+    font-weight: 500;
+}
+
+h3{
+    font-size: 28px;
+    font-weight: 500;
+}
+
+
+p {
+    color: #6E6E6E;
+    font-size: 20px;
+    font-family: 'Noto Sans TC';
+}
+
+.pink{
+    color:#FF7777;
+}
+
+.green{
+    color:#76A665
+}
+
+
+.flexbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.flexbox-item {
+    text-align: left;
+    flex-basis: 49%;
+}
+
+.flexbox-item-row {
+    flex-basis: 100%;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+#reason-select {
+    margin-left: 120px;
+}
+
+#salary-select {
+    margin-left: 120px;
+}
+
+#yearGroup-select {
+    margin-left: 120px;
+}
+
+#prejob-select {
+    margin-left: 120px;
+}

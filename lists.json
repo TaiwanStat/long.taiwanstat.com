@@ -3,6 +3,13 @@
     "title": "用數據看台灣 - 統計資料",
     "page": [
       {
+        "title": "探討大學生高失業率之原因",
+        "url": "unemployed-rate",
+        "img": "images/unemployed-rate.png",
+        "description": "大學生失業率怎麼會這麼高?將政府開放資料視覺化後，一起來看看有哪些影響因素吧！",
+        "author": "王議偉"
+      },
+      {
         "title": "台灣生活用水與人口關係",
         "url": "water-consume",
         "img": "./images/water-consume.png",
