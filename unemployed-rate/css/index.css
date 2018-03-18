@@ -32,18 +32,24 @@ p {
     font-family: 'Noto Sans TC';
 }
 
+.pink{
+    color:#FF7777;
+}
+
+.green{
+    color:#76A665
+}
+
+
 .flexbox-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    /* align-items: center; */
 }
 
 .flexbox-item {
-    /* border: 2px solid black; */
     text-align: left;
     flex-basis: 49%;
-    /* min-width: 275px; */
 }
 
 .flexbox-item-row {
@@ -55,8 +61,6 @@ input[type="checkbox"] {
     height: 20px;
     cursor: pointer;
     vertical-align: middle;
-    /* -webkit-appearance: none;
-    appearance: none; */
 }
 
 #reason-select {

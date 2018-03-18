@@ -70,7 +70,7 @@ d3.csv("./data/unemployment_rate.csv", function (data) {
         if (containerWidth >= 1600) {
             infoWidth = 250;
             sizeIsXL = 1;
-        } else if ( containerWidth < 1600 && containerWidth >= 1250) {
+        } else if (containerWidth < 1600 && containerWidth >= 1250) {
             infoWidth = 250;
             sizeIsL = 1;
         } else if ((containerWidth < 1250) && (containerWidth >= 768)) {
@@ -559,7 +559,9 @@ d3.csv("./data/unemployment_rate.csv", function (data) {
 
                     if (i == 0) {
                         valY = parseInt(scaleY(data[n].total)) + linechartMargin.top;
-                        if (sizeIsL || sizeIsM) moveRight = 55;
+                        console.log(sizeIsXL,sizeIsL, sizeIsM);
+                        if (sizeIsL || sizeIsXL) moveRight = 60;
+                        else if (sizeIsM) moveRight = 55;
                         else if (sizeIsS) moveRight = 45;
                         else moveRight = 35;
                         moveDown = 5;
@@ -567,28 +569,22 @@ d3.csv("./data/unemployment_rate.csv", function (data) {
                         valY = parseInt(scaleY(data[n].primary)) + linechartMargin.top;
                     } else if (i == 2) {
                         valY = parseInt(scaleY(data[n].junior)) + linechartMargin.top;
-                        // moveLeft = 10;
-                        moveDown = 25;
+                        moveDown = 22;
                     } else if (i == 3) {
                         valY = parseInt(scaleY(data[n].senior)) + linechartMargin.top;
-                        // moveLeft = 5;
                         moveUp = 15;
                     } else if (i == 4) {
                         valY = parseInt(scaleY(data[n].vocational)) + linechartMargin.top;
-                        // moveLeft = 10;
                         moveDown = 23;
                     } else if (i == 5) {
                         valY = parseInt(scaleY(data[n].specialist)) + linechartMargin.top;
-                        // moveLeft = 15;
                         moveDown = 25;
                     } else if (i == 6) {
                         valY = parseInt(scaleY(data[n].college)) + linechartMargin.top;
-                        // moveLeft = 5;
                         moveUp = 10;
                     } else if (i == 7) {
                         valY = parseInt(scaleY(data[n].graduate)) + linechartMargin.top;
-                        // moveLeft = 95;
-                        moveUp = 5;
+                        moveUp = 3;
                     }
                     return "translate(" + (linechartWidth + moveRight - moveLeft + 45) + "," + (valY + moveDown - moveUp) + ")";
                 })
@@ -660,17 +656,16 @@ d3.csv("./data/unemployment_rate.csv", function (data) {
                 }
             }
             var checkboxText = document.getElementsByClassName('checkboxtext');
-            if(sizeIsXL){
+            if (sizeIsXL) {
                 for (var i = 0; i < checkboxText.length; i++) {
                     checkboxText[i].style.fontSize = 20;
                 }
-            }
-            else{
+            } else {
                 for (var i = 0; i < checkboxText.length; i++) {
                     checkboxText[i].style.fontSize = 15;
                 }
             }
-            
+
 
         } else {
             if (sizeIsM) {
