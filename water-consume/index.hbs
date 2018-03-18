@@ -111,20 +111,6 @@
 
   {{> end}}
 
-    <script>
-      d3.select("#clear").on("click", function () {
-        if (signal == 1) {
-          $("#drop-down-region").val("---");
-          recoverPie();
-          recoverSlope();
-          recoverCircle();
-          $(".tagRegion").remove();
-          updateTextInfo(23);
-        }
-      });
-    </script>
-
-
   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
