@@ -1,37 +1,38 @@
 d3.csv("./data/reason.csv", function (error, reasonData) {
 
     reasonData.forEach(function (d) {
-        d.reasonRate = +d.reasonRate;
-        d.ry = +d.ry;
+        d.reasonRate = parseFloat(d.reasonRate);
+        d.ry = parseInt(d.ry, 10);
     });
 
     var reasonSvg = d3.select("#reasonSvg");
 
+    /**
+     * reasonSvgDraw() have no return value
+     * it is called when the screen is resized
+     * it creates all elements of bar chart
+     */
     function reasonSvgDraw() {
-        var currentYear = 0; //2016
-        var barchartMargin = {
-                top: 35,
-                right: 20,
-                bottom: 160,
-                left: 70
-            },
-            barchartContainerWidth = document.getElementById("reasonSvg-container").clientWidth,
-            barchartWidth = barchartContainerWidth - barchartMargin.left - barchartMargin.right,
-            barchartHeight = 450 - barchartMargin.top - barchartMargin.bottom;
+        var currentYear = 0;
+        var margin = {
+            top: 35,
+            right: 20,
+            bottom: 160,
+            left: 70
+        };
 
-        // if (barchartHeight > window.innerHeight * 0.9 - 76)
-        //     barchartHeight = window.innerHeight * 0.9 - barchartMargin.top - barchartMargin.bottom - 76;
+        var textColor = '#6E6E6E';
+        var barchartContainerWidth = document.getElementById("reasonSvg-container").clientWidth;
+        var barchartWidth = barchartContainerWidth - margin.left - margin.right;
+        var barchartHeight = 450 - margin.top - margin.bottom;
+        var axisTextSize = (barchartWidth / 15) > 20 ? 20 : (barchartWidth / 15);
 
-        var axisTextSize3 = 20;
-        // console.log(barchartContainerWidth);
-        // console.log(barchartWidth / 15);
-        axisTextSize3 = (barchartWidth / 15) > 20 ? 20 : (barchartWidth / 15);
+        // 設定margin.bottom大概為10個字的size
+        margin.bottom = axisTextSize * 10;
 
-        barchartMargin.bottom = axisTextSize3 * 10;
-
-        var textColor3 = '#6E6E6E';
+        // Scale
         var reasonScaleX = d3.scale.ordinal()
-            .rangeRoundBands([0, barchartWidth], .25);
+            .rangeRoundBands([0, barchartWidth], 0.25);
 
         var reasonScaleY = d3.scale.linear()
             .range([barchartHeight, 0]);
@@ -50,18 +51,20 @@ d3.csv("./data/reason.csv", function (error, reasonData) {
             });
 
         reasonSvg
-            .attr("width", barchartWidth + barchartMargin.left + barchartMargin.right)
-            .attr("height", barchartHeight + barchartMargin.top + barchartMargin.bottom)
+            .attr("width", barchartWidth + margin.left + margin.right)
+            .attr("height", barchartHeight + margin.top + margin.bottom)
             .append("g");
 
-
-
+        // entireReasonData存放全部的資料
         var entireReasonData = [];
+
+        // yearlyReasonData存放當年的資料
         var yearlyReasonData = [];
+
         var entireYear = [2017, 2016, 2015, 2014, 2013, 2012, 2011];
 
-        for (var i = 0; i < entireYear.length; ++i) {
-            yearlyReasonData[i] = [];
+        for (var k = 0; k < entireYear.length; ++k) {
+            yearlyReasonData[k] = [];
         }
 
         for (var i = 0; i < reasonData.length; i++) {
@@ -75,7 +78,7 @@ d3.csv("./data/reason.csv", function (error, reasonData) {
         }
 
         reasonScaleX.domain(yearlyReasonData[currentYear].map(function (d) {
-            return d['reasons'];
+            return d.reasons;
         }));
         reasonScaleY.domain([0, d3.max(yearlyReasonData[currentYear], function (d) {
             return d.reasonRate;
@@ -83,58 +86,59 @@ d3.csv("./data/reason.csv", function (error, reasonData) {
 
         // 繪出x軸
         reasonSvg.append("g")
-            .attr("transform", "translate(" + barchartMargin.left + "," + (barchartHeight + barchartMargin.top) + ")")
+            .attr("transform", "translate(" + margin.left + "," + (barchartHeight + margin.top) + ")")
             .call(barchartAxisX)
             .attr("fill", 'none')
-            .attr("stroke", textColor3)
+            .attr("stroke", textColor)
             .selectAll("text")
             .style("text-anchor", "end")
             .attr("dx", "-0.1em")
             .attr("dy", "0.7em")
             .attr("transform", "rotate(-45)")
-            .attr("stroke", textColor3)
+            .attr("stroke", textColor)
             .attr({
-                'fill': textColor3, //x軸文字顏色
-                'stroke': 'none',
+                'fill': textColor, //x軸文字顏色
+                'stroke': 'none'
             })
             .style({
-                'font-size': axisTextSize3 - 2
+                'font-size': axisTextSize - 2
             })
             .attr('font-family', 'Noto Sans TC');
 
         // 繪出y軸
         reasonSvg.append("g")
-            .attr("transform", "translate(" + barchartMargin.left + "," + barchartMargin.top + ")")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .attr("class", "reasonYaxis")
             .call(barchartAxisY)
             .attr("fill", 'none')
-            .attr("stroke", textColor3)
+            .attr("stroke", textColor)
             .selectAll("text")
-            .attr("stroke", textColor3)
+            .attr("stroke", textColor)
             .attr({
-                'fill': textColor3, //y軸文字顏色
-                'stroke': 'none',
+                'fill': textColor, //y軸文字顏色
+                'stroke': 'none'
             }).style({
-                'font-size': axisTextSize3
+                'font-size': axisTextSize
             })
             .attr('font-family', 'Noto Sans TC');
 
         //繪出Y軸單位
         reasonSvg.append("text")
-            .attr("transform", "translate(" + barchartMargin.left + "," + barchartMargin.top + ")")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .attr("x", 20)
             .attr("y", -33)
             .attr("dy", "1em")
             .attr({
-                'fill': textColor3, // y軸文字顏色
-                'stroke': 'none',
+                'fill': textColor, // y軸文字顏色
+                'stroke': 'none'
             }).style({
-                'font-size': axisTextSize3
+                'font-size': axisTextSize
             })
             .attr('font-family', 'Noto Sans TC')
             .style("text-anchor", "end")
             .text("人數(%)");
 
+        // 設定tip的資料
         var reasonTip = d3.tip()
             .attr('class', 'reason-d3-tip')
             .offset([-10, 0])
@@ -143,7 +147,7 @@ d3.csv("./data/reason.csv", function (error, reasonData) {
                 else if (d.reasons == "學非所用") return d.reasons + " : <span style='color:#76A665'>" + d.reasonRate + "</span> %";
                 else return d.reasons + " : <span style='color:#fff'>" + d.reasonRate + "</span> %";
 
-            })
+            });
 
         reasonSvg.call(reasonTip);
 
@@ -152,7 +156,7 @@ d3.csv("./data/reason.csv", function (error, reasonData) {
             .data(yearlyReasonData[currentYear]);
 
         barRect.enter().append("rect")
-            .attr("transform", "translate(" + barchartMargin.left + "," + barchartMargin.top + ")")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .attr("class", "barRect")
             .style("fill", function (d, i) {
                 if (d.reasons == "待遇太低" || d.reasons == "沒有工作機會") return "#FF7777";
@@ -172,33 +176,35 @@ d3.csv("./data/reason.csv", function (error, reasonData) {
             .on('mouseover', reasonTip.show)
             .on('mouseout', reasonTip.hide);
 
-        var titleSize1;
+        var titleSize;
         if (barchartContainerWidth / 30 < 20)
-            titleSize1 = barchartContainerWidth / 30 - 1;
-        else titleSize1 = 20;
+            titleSize = barchartContainerWidth / 30 - 1;
+        else titleSize = 20;
 
         // 此svg的標題
         reasonSvg.append("text")
-            .attr("transform", "translate(" + barchartMargin.left + "," + barchartMargin.top + ")")
-            .attr("x", barchartContainerWidth / 2 - barchartMargin.left)
-            .attr("y", barchartHeight + barchartMargin.bottom - titleSize1)
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .attr("x", barchartContainerWidth / 2 - margin.left)
+            .attr("y", barchartHeight + margin.bottom - titleSize)
             .attr("text-anchor", "middle")
             .text("學歷為大學以上之失業者未就業之原因調查 (2011年-2017年)")
-            .attr("fill", textColor3)
-            .attr("font-size", titleSize1)
+            .attr("fill", textColor)
+            .attr("font-size", titleSize)
             .attr('font-family', 'Noto Sans TC');
 
-        var dropdown = d3.select("#reason-select")
+        d3.select("#reason-select")
             .on("change", reasonDropdownChange);
 
+        // data changing duration
         var dataChangingTime = 750;
 
         function reasonDropdownChange() {
-            currentYear = parseInt(d3.select("#reason-select").property('value'));
             //重新定義一些資料
 
+            currentYear = parseInt(d3.select("#reason-select").property('value'));
+
             reasonScaleX.domain(yearlyReasonData[currentYear].map(function (d) {
-                return d['reasons'];
+                return d.reasons;
             }));
             reasonScaleY.domain([0, d3.max(yearlyReasonData[currentYear], function (d) {
                 return d.reasonRate;
@@ -238,14 +244,14 @@ d3.csv("./data/reason.csv", function (error, reasonData) {
                 .duration(dataChangingTime)
                 .call(barchartAxisY)
                 .attr("fill", 'none')
-                .attr("stroke", textColor3)
+                .attr("stroke", textColor)
                 .selectAll("text")
-                .attr("stroke", textColor3)
+                .attr("stroke", textColor)
                 .attr({
-                    'fill': textColor3, //y軸文字顏色
-                    'stroke': 'none',
+                    'fill': textColor, //y軸文字顏色
+                    'stroke': 'none'
                 }).style({
-                    'font-size': axisTextSize3
+                    'font-size': axisTextSize
                 })
                 .attr('font-family', 'Noto Sans TC');
 

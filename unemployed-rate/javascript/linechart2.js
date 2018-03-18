@@ -1,13 +1,13 @@
 ﻿var maxPeople = 0;
 var minDate = new Date();
 var maxDate = new Date();
-var textColor2 = '#6E6E6E';
+var textColor = '#6E6E6E';
 
 d3.csv("./data/college.csv")
     .row(function (d) {
         return {
             year: new Date(d.year),
-            people: +d.people
+            people:  parseInt(d.people,10)
         };
     })
     .get(function (error, peopleData) {
@@ -21,42 +21,37 @@ d3.csv("./data/college.csv")
             return d.year;
         });
 
+        var peoplechartSvg = d3.select("#collegeSvg");
 
-        var linechartSvg2 = d3.select("#collegeSvg")
+        function drawPeopleChart() {
 
-        function linechartSvg2Draw() {
-
-            var linechartMargin2 = {
+            var margin = {
                 left: 100,
                 right: 20,
                 top: 20,
                 bottom: 80
             };
 
-            var containerWidth2 = document.getElementById('collegeSvg-container').clientWidth;
-            var linechartWidth2 = containerWidth2 - linechartMargin2.left - linechartMargin2.right;
-            var linechartHeight2 = 400 - linechartMargin2.top - linechartMargin2.bottom;
+            var containerWidth = document.getElementById('collegeSvg-container').clientWidth;
+            var linechartWidth = containerWidth - margin.left - margin.right;
+            var linechartHeight = 400 - margin.top - margin.bottom;
 
-            // if (linechartHeight2 > window.innerHeight * 0.9 - 56)
-            //     linechartHeight2 = window.innerHeight * 0.9 - linechartMargin2.top - linechartMargin2.bottom - 56;
-
+            // x,y軸上的文字大小
             var axisTextSize = 20;
 
-            if (containerWidth2 > 350) {
-                axisTextSize = 20;
-            } else if (containerWidth2 < 350 && containerWidth2 > 300) {
-                axisTextSize = 18;
-            } else {
-                axisTextSize = 16;
-            }
+            // set text size depend on containerWidth
+            if (containerWidth > 350) axisTextSize = 20;
+            else if (containerWidth < 350 && containerWidth > 300) axisTextSize = 18;
+            else axisTextSize = 16;
 
+            // Scale
             var yScale = d3.scale.linear()
                 .domain([0, maxPeople])
-                .range([linechartHeight2, 0]);
+                .range([linechartHeight, 0]);
 
             var xScale = d3.time.scale()
                 .domain([minDate, maxDate])
-                .range([0, linechartWidth2]);
+                .range([0, linechartWidth]);
 
             var yAxis = d3.svg.axis()
                 .orient("left")
@@ -68,6 +63,7 @@ d3.csv("./data/college.csv")
                 .scale(xScale)
                 .ticks(5);
 
+            // 設定折線的位置
             var peopleLine = d3.svg.line()
                 .x(function (d) {
                     return xScale(d.year);
@@ -76,61 +72,62 @@ d3.csv("./data/college.csv")
                     return yScale(d.people);
                 });
 
-            linechartSvg2
+            // 設定svg大小
+            peoplechartSvg
                 .attr({
-                    'width': linechartWidth2 + linechartMargin2.left + linechartMargin2.right,
-                    'height': linechartHeight2 + linechartMargin2.top + linechartMargin2.bottom
-                })
+                    'width': linechartWidth + margin.left + margin.right,
+                    'height': linechartHeight + margin.top + margin.bottom
+                });
 
-
-
-            linechartSvg2.append("path")
-                .attr("transform", "translate(" + linechartMargin2.left + "," + linechartMargin2.top + ")")
+            // 繪出折線
+            peoplechartSvg.append("path")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                 .attr("fill", "none")
                 .attr("stroke", "steelblue")
                 .attr("stroke-width", "3px")
                 .attr("d", function (d) {
                     return peopleLine(peopleData);
-                })
+                });
 
-
-            linechartSvg2.append("g")
+            // 繪出x軸
+            peoplechartSvg.append("g")
                 .call(xAxis)
-                .attr("transform", "translate(" + linechartMargin2.left + "," + (linechartHeight2 + linechartMargin2.top) + ")")
+                .attr("transform", "translate(" + margin.left + "," + (linechartHeight + margin.top) + ")")
                 .attr("fill", 'none')
-                .attr("stroke", textColor2)
+                .attr("stroke", textColor)
                 .selectAll('text')
                 .attr({
-                    'fill': textColor2, //x軸文字顏色
-                    'stroke': 'none',
+                    'fill': textColor,
+                    'stroke': 'none'
                 }).style({
                     'font-size': axisTextSize
                 })
                 .attr('font-family', 'Noto Sans TC');
 
-            linechartSvg2.append("g")
+            // 繪出y軸                
+            peoplechartSvg.append("g")
                 .call(yAxis)
-                .attr("transform", "translate(" + linechartMargin2.left + "," + linechartMargin2.top + ")")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                 .attr("fill", 'none')
-                .attr("stroke", textColor2)
+                .attr("stroke", textColor)
                 .selectAll('text')
                 .attr({
-                    'fill': textColor2, //y軸文字顏色
-                    'stroke': 'none',
+                    'fill': textColor,
+                    'stroke': 'none'
                 }).style({
                     'font-size': axisTextSize
                 })
                 .attr('font-family', 'Noto Sans TC');
 
             //繪出X軸單位
-            linechartSvg2.append("text")
-                // .attr("transform", "translate(" + linechartMargin2.left + "," + linechartMargin2.top + ")")
-                .attr("x", 0 + linechartMargin2.left + linechartWidth2 + linechartMargin2.right)
-                .attr("y", 0 + linechartMargin2.top + linechartHeight2)
+            peoplechartSvg.append("text")
+                // .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                .attr("x", 0 + margin.left + linechartWidth + margin.right)
+                .attr("y", 0 + margin.top + linechartHeight)
                 .attr("dy", "1em")
                 .attr({
-                    'fill': textColor2, // x軸文字顏色
-                    'stroke': 'none',
+                    'fill': textColor, // x軸文字顏色
+                    'stroke': 'none'
                 }).style({
                     'font-size': axisTextSize
                 })
@@ -139,14 +136,13 @@ d3.csv("./data/college.csv")
                 .text("(年)");
 
             //繪出Y軸單位
-            linechartSvg2.append("text")
-                // .attr("transform", "translate(" + linechartMargin2.left + "," + linechartMargin2.top + ")")
-                .attr("x", 0 + linechartMargin2.left - 10)
+            peoplechartSvg.append("text")
+                .attr("x", 0 + margin.left - 10)
                 .attr("y", 0)
                 .attr("dy", "1em")
                 .attr({
-                    'fill': textColor2, // y軸文字顏色
-                    'stroke': 'none',
+                    'fill': textColor,
+                    'stroke': 'none'
                 }).style({
                     'font-size': axisTextSize
                 })
@@ -155,26 +151,25 @@ d3.csv("./data/college.csv")
                 .text("(人)");
 
             // 此svg的標題
-            linechartSvg2.append("text")
-                // .attr("transform", "translate(" + linechartMargin2.left + "," + linechartMargin2.top + ")")
-                .attr("x", containerWidth2 / 2)
-                .attr("y", linechartHeight2 + linechartMargin2.bottom)
+            peoplechartSvg.append("text")
+                .attr("x", containerWidth / 2)
+                .attr("y", linechartHeight + margin.bottom)
                 .attr("text-anchor", "middle")
                 .text("歷年大學畢業生人數 (1994年-2016年)")
-                .attr("fill", textColor2)
+                .attr("fill", textColor)
                 .attr("font-size", axisTextSize)
                 .attr('font-family', 'Noto Sans TC');
         }
 
-        linechartSvg2Draw();
+        drawPeopleChart();
 
         window.addEventListener("resize", function () {
-            linechartSvg2.selectAll("g").remove();
-            linechartSvg2.selectAll("path").remove();
-            linechartSvg2.selectAll("text").remove();
-            linechartSvg2.selectAll("line").remove();
+            peoplechartSvg.selectAll("g").remove();
+            peoplechartSvg.selectAll("path").remove();
+            peoplechartSvg.selectAll("text").remove();
+            peoplechartSvg.selectAll("line").remove();
 
-            linechartSvg2Draw();
+            drawPeopleChart();
         });
 
     });

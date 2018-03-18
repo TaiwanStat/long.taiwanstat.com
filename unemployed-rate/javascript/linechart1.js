@@ -61,7 +61,7 @@
         // set the size of yearly infomation div
         var infoWidth = 200;
         var infoHeight = 190;
-        var linechartMargin = {
+        var margin = {
             top: 10,
             right: 80,
             bottom: 150,
@@ -103,7 +103,7 @@
                 fontSize2 = 20;
                 originR = 4;
                 bigR = 6;
-                linechartMargin.left = 40;
+                margin.left = 40;
             } else if (containerWidth < 330) {
                 sizeIsXSS = 1;
                 infoWidth = 160;
@@ -114,8 +114,8 @@
 
         setSize();
 
-        var linechartWidth = containerWidth - linechartMargin.left - linechartMargin.right;
-        var linechartHeight = 0.88 * window.innerHeight - 64 - 250 - linechartMargin.top - linechartMargin.bottom;
+        var linechartWidth = containerWidth - margin.left - margin.right;
+        var linechartHeight = 0.88 * window.innerHeight - 64 - 250 - margin.top - margin.bottom;
 
         // ensure linechartHeight has min-heght : 300
         if (linechartHeight < 300) linechartHeight = 300;
@@ -135,8 +135,8 @@
 
         unemployedSvg.data(data)
             .attr({
-                'width': linechartWidth + linechartMargin.left + linechartMargin.right,
-                'height': linechartHeight + linechartMargin.top + linechartMargin.bottom
+                'width': linechartWidth + margin.left + margin.right,
+                'height': linechartHeight + margin.top + margin.bottom
             })
             .style('background', "#f7f7f7")
             .on("mousemove", linechartMove)
@@ -200,7 +200,7 @@
                         return lineColors[i];
                     },
                     'stroke-width': 2,
-                    'transform': 'translate(' + (linechartMargin.left) + ', ' + (linechartMargin.top) + ')', // 用translate挑整axisX,axisY的位置
+                    'transform': 'translate(' + (margin.left) + ', ' + (margin.top) + ')', // 用translate挑整axisX,axisY的位置
                     'fill': 'none'
                 })
                 .attr("opacity", function () {
@@ -215,7 +215,7 @@
                 'class': 'axisX',
                 'fill': 'none',
                 'stroke': 'rgba(170,170,170,1)',
-                'transform': 'translate(' + (linechartMargin.left) + ', ' + (linechartHeight + linechartMargin.top) + ')' // 用translate挑整axisX,axisY的位置
+                'transform': 'translate(' + (margin.left) + ', ' + (linechartHeight + margin.top) + ')' // 用translate挑整axisX,axisY的位置
             })
             .selectAll('text')
             .attr({
@@ -233,7 +233,7 @@
                 'class': 'axisY',
                 'fill': 'none',
                 'stroke': 'rgba(170,170,170,1)',
-                'transform': 'translate(' + (linechartMargin.left) + ',' + (linechartMargin.top) + ')' // 用translate挑整axisX,axisY的位置
+                'transform': 'translate(' + (margin.left) + ',' + (margin.top) + ')' // 用translate挑整axisX,axisY的位置
             })
             .selectAll("text")
             .attr({
@@ -247,7 +247,7 @@
 
         // 繪出Y軸單位
         unemployedSvg.append("text")
-            .attr("x", 0 + linechartMargin.left + 38)
+            .attr("x", 0 + margin.left + 38)
             .attr("y", 0)
             .attr("dy", "1em")
             .attr({
@@ -288,17 +288,17 @@
                     return "dots" + i + " onLine" + j;
                 })
                 .attr('cx', function (d) {
-                    return scaleX(d.x) + linechartMargin.left;
+                    return scaleX(d.x) + margin.left;
                 })
                 .attr('cy', function (d, i) {
-                    if (j == 0) return scaleY(d.total) + linechartMargin.top;
-                    else if (j == 1) return scaleY(d.primary) + linechartMargin.top;
-                    else if (j == 2) return scaleY(d.junior) + linechartMargin.top;
-                    else if (j == 3) return scaleY(d.senior) + linechartMargin.top;
-                    else if (j == 4) return scaleY(d.vocational) + linechartMargin.top;
-                    else if (j == 5) return scaleY(d.specialist) + linechartMargin.top;
-                    else if (j == 6) return scaleY(d.college) + linechartMargin.top;
-                    else if (j == 7) return scaleY(d.graduate) + linechartMargin.top;
+                    if (j == 0) return scaleY(d.total) + margin.top;
+                    else if (j == 1) return scaleY(d.primary) + margin.top;
+                    else if (j == 2) return scaleY(d.junior) + margin.top;
+                    else if (j == 3) return scaleY(d.senior) + margin.top;
+                    else if (j == 4) return scaleY(d.vocational) + margin.top;
+                    else if (j == 5) return scaleY(d.specialist) + margin.top;
+                    else if (j == 6) return scaleY(d.college) + margin.top;
+                    else if (j == 7) return scaleY(d.graduate) + margin.top;
                 })
                 .attr('fill', function (d) {
                     return lineColors[j];
@@ -355,10 +355,10 @@
             .transition()
             .attr('opacity', 0.4)
             .attr("x", function () {
-                return (sizeIsL || sizeIsM) ? linechartMargin.left : 5;
+                return (sizeIsL || sizeIsM) ? margin.left : 5;
             })
             .attr("y", function () {
-                return linechartMargin.top;
+                return margin.top;
             });
 
         // 顯示資料塊裡的文字
@@ -367,10 +367,10 @@
                 .transition()
                 .attr("opacity", 1)
                 .attr("x", function () {
-                    return (sizeIsL || sizeIsM) ? linechartMargin.left : 5;
+                    return (sizeIsL || sizeIsM) ? margin.left : 5;
                 })
                 .attr("y", function () {
-                    return linechartMargin.top;
+                    return margin.top;
                 })
                 .text(function () {
                     if (j == 0) return data[5].year + " 年 各教育程度失業率";
@@ -398,7 +398,7 @@
         var usageText = unemployedSvg.append("text")
             .attr("x", containerWidth / 2)
             .attr("y", function () {
-                return (0.5 * (scaleY(data[2].senior) - scaleY(data[2].college))) + scaleY(data[2].college) + linechartMargin.top;
+                return (0.5 * (scaleY(data[2].senior) - scaleY(data[2].college))) + scaleY(data[2].college) + margin.top;
             })
             .attr("text-anchor", "middle")
             .text(function () {
@@ -432,7 +432,7 @@
 
             // show data
             for (var i = 0; i < data.length; ++i) {
-                var currentX = Math.abs(mousePosOnLinechart[0] - (scaleX(data[i].x) + linechartMargin.left));
+                var currentX = Math.abs(mousePosOnLinechart[0] - (scaleX(data[i].x) + margin.left));
                 if (currentX < shineRange) {
                     dotIsShining++;
 
@@ -463,10 +463,10 @@
                             .transition()
                             .attr("opacity", 1)
                             .attr("x", function () {
-                                return (sizeIsL || sizeIsM) ? linechartMargin.left : 5;
+                                return (sizeIsL || sizeIsM) ? margin.left : 5;
                             })
                             .attr("y", function () {
-                                return linechartMargin.top;
+                                return margin.top;
                             })
                             .text(function (d) {
                                 if (j == 0) return data[i].year + " 年 各教育程度失業率";
@@ -508,8 +508,8 @@
             // 繪出跟著滑鼠跑的那條線
             d3.select('#flexibleLine')
                 .style('opacity', function () {
-                    var leftBound = scaleX(data[0].x) + linechartMargin.left;
-                    var rightBound = scaleX(data[data.length - 1].x) + linechartMargin.left + 10;
+                    var leftBound = scaleX(data[0].x) + margin.left;
+                    var rightBound = scaleX(data[data.length - 1].x) + margin.left + 10;
 
                     if (mousePosOnLinechart[0] < leftBound) return 0;
                     else if (mousePosOnLinechart[0] > rightBound) return 0;
@@ -518,9 +518,9 @@
                 .transition()
                 .duration(10)
                 .attr('x1', mousePosOnLinechart[0])
-                .attr('y1', 0 + linechartMargin.top)
+                .attr('y1', 0 + margin.top)
                 .attr('x2', mousePosOnLinechart[0])
-                .attr('y2', mousePosOnLinechart[1] + (linechartHeight - mousePosOnLinechart[1] + linechartMargin.top));
+                .attr('y2', mousePosOnLinechart[1] + (linechartHeight - mousePosOnLinechart[1] + margin.top));
 
         }
 
@@ -531,7 +531,7 @@
         // 此svg的標題
         unemployedSvg.append("text")
             .attr("x", containerWidth / 2)
-            .attr("y", linechartHeight + linechartMargin.bottom - 60)
+            .attr("y", linechartHeight + margin.bottom - 60)
             .attr("text-anchor", "middle")
             .text("失業率按教育程度（2011年-2016年）")
             .attr("fill", textColor)
@@ -567,31 +567,31 @@
                     var moveDown = 0;
 
                     if (i == 0) {
-                        valY = parseInt(scaleY(data[n].total)) + linechartMargin.top;
+                        valY = parseInt(scaleY(data[n].total)) + margin.top;
                         if (sizeIsL || sizeIsXL) moveRight = 60;
                         else if (sizeIsM) moveRight = 55;
                         else if (sizeIsS) moveRight = 45;
                         else moveRight = 35;
                         moveDown = 5;
                     } else if (i == 1) {
-                        valY = parseInt(scaleY(data[n].primary)) + linechartMargin.top;
+                        valY = parseInt(scaleY(data[n].primary)) + margin.top;
                     } else if (i == 2) {
-                        valY = parseInt(scaleY(data[n].junior)) + linechartMargin.top;
+                        valY = parseInt(scaleY(data[n].junior)) + margin.top;
                         moveDown = 22;
                     } else if (i == 3) {
-                        valY = parseInt(scaleY(data[n].senior)) + linechartMargin.top;
+                        valY = parseInt(scaleY(data[n].senior)) + margin.top;
                         moveUp = 15;
                     } else if (i == 4) {
-                        valY = parseInt(scaleY(data[n].vocational)) + linechartMargin.top;
+                        valY = parseInt(scaleY(data[n].vocational)) + margin.top;
                         moveDown = 23;
                     } else if (i == 5) {
-                        valY = parseInt(scaleY(data[n].specialist)) + linechartMargin.top;
+                        valY = parseInt(scaleY(data[n].specialist)) + margin.top;
                         moveDown = 25;
                     } else if (i == 6) {
-                        valY = parseInt(scaleY(data[n].college)) + linechartMargin.top;
+                        valY = parseInt(scaleY(data[n].college)) + margin.top;
                         moveUp = 10;
                     } else if (i == 7) {
-                        valY = parseInt(scaleY(data[n].graduate)) + linechartMargin.top;
+                        valY = parseInt(scaleY(data[n].graduate)) + margin.top;
                         moveUp = 3;
                     }
                     return "translate(" + (linechartWidth + moveRight - moveLeft + 45) + "," + (valY + moveDown - moveUp) + ")";
@@ -623,7 +623,7 @@
         function drawCheckbox(isCol) {
             if (isCol) {
                 // 螢幕不夠寬就直行排放
-                if (sizeIsM) legendX = infoWidth + 11 + linechartMargin.left;
+                if (sizeIsM) legendX = infoWidth + 11 + margin.left;
                 else legendX = infoWidth + 11;
 
                 legendY = 10;
@@ -711,7 +711,7 @@
             checkboxTextSizing();
         } else {
             if (sizeIsM) {
-                legendX = infoWidth + 11 + linechartMargin.left;
+                legendX = infoWidth + 11 + margin.left;
             } else {
                 legendX = infoWidth + 11;
             }
