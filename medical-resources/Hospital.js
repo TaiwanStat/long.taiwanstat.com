@@ -17,7 +17,6 @@ d3.csv(datapath,function(dataset){
     for(var i=0;i<22;i++){
         data[i]=+dataset[i].center;    
     }
-    console.log(data)
     minBar = d3.min(dataset,function(d){ return +d.center});
     maxBar = d3.max(dataset,function(d){ return +d.center})
     scaleBar = d3.scale.linear()
@@ -38,7 +37,6 @@ d3.csv(datapath,function(dataset){
     .transition()
     .duration(2000)
     .attr('width',function(d){
-        console.log(scaleBar(d.center));
         return scaleBar(+d.center);
     })
 
@@ -74,7 +72,6 @@ d3.csv(datapath,function(dataset){
         return function(t) { that.text(k(t)); };
       })
     
-    console.log(data);
     d3.select('.btn-outline-success').on('click',function(){
         minBar = d3.min(dataset,function(d){ return +d.local});
         maxBar = d3.max(dataset,function(d){ return +d.local})
