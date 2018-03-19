@@ -3,6 +3,13 @@
     "title": "用數據看台灣 - 統計資料",
     "page": [
       {
+        "title": "用圖表呈現台灣醫療資源分配",
+        "url": "medical-resources",
+        "img": "images/medical-resources.jpg",
+        "description": "利用圖表呈現台灣醫療資源分布，探討台灣醫療資源分配不均之問題",
+        "author": "李佳勳"
+      },
+      {
         "title": "探討大學生高失業率之原因",
         "url": "unemployed-rate",
         "img": "images/unemployed-rate.png",
