@@ -20,7 +20,7 @@ function setWidth() {
         }
     } else {
         for (var i = 0; i < allP.length; i++)
-            allP[i].style.fontSize = 20;
+            allP[i].style.fontSize = 18;
 
         for (var i = 0; i < flexItems.length; i++) {
             if (i != 6 && i != 7) {
@@ -33,8 +33,8 @@ function setWidth() {
                 textItems[i].style.paddingRight = flexboxContainerWidth * 0.05;
             }
         }
-        prejobText.style.paddingLeft = "30%";
-        prejobText.style.paddingRight = "30%";
+        // prejobText.style.paddingLeft = "30%";
+        // prejobText.style.paddingRight = "30%";
     }
 }
 

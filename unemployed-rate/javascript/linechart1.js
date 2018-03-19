@@ -55,16 +55,16 @@
         var sizeIsS = 0;
         var sizeIsXS = 0;
         var sizeIsXSS = 0;
-        var fontSize1 = 20;
-        var fontSize2 = 30;
+        var fontSize1 = 18;
+        var fontSize2 = 18;
 
         // set the size of yearly infomation div
         var infoWidth = 200;
         var infoHeight = 190;
         var margin = {
-            top: 10,
+            top: 30,
             right: 80,
-            bottom: 150,
+            bottom: 75,
             left: 50
         };
 
@@ -223,8 +223,7 @@
                 'stroke': 'none'
             }).style({
                 'font-size': fontSize1
-            })
-            .attr('font-family', 'Noto Sans TC')
+            });
 
         // 繪出Y軸
         unemployedSvg.append('g')
@@ -242,8 +241,7 @@
                 'stroke': 'none'
             }).style({
                 'font-size': fontSize1
-            })
-            .attr('font-family', 'Noto Sans TC');
+            });
 
         // 繪出Y軸單位
         unemployedSvg.append("text")
@@ -255,13 +253,9 @@
                 'fill': textColor,
                 'stroke': 'none'
             })
-            .attr('font-family', 'Noto Sans TC')
             .style("text-anchor", "middle")
             .text("失業率(%)")
-            .attr('font-size', function () {
-                if (sizeIsS || sizeIsXS) return fontSize1 - 2;
-                else return fontSize1;
-            });
+            .style('font-size', '16px');
 
         // 繪出跟著滑鼠跑的線
         var flexibleLineColor = '#6465A5';
@@ -347,7 +341,7 @@
                     return 20 * (j + 1);
                 })
                 .text("")
-                .attr('font-family', 'Noto Sans TC');
+                .style('font-size', '16px');
         }
 
         // 顯示資料塊
@@ -408,7 +402,6 @@
             })
             .attr("fill", textColor)
             .attr("font-size", fontSize1)
-            .attr('font-family', 'Noto Sans TC')
             .attr("opacity", 0.2);
 
         // 讓輔助文字閃一次就好
@@ -528,15 +521,6 @@
         var all_type2 = ["平均", "國小及以下", "國中", "高中", "高職", "專科", "大學", "研究所及以上"];
         var all_type3 = ["total", "primary", "junior", "senior", "vocational", "specialist", "college", "graduate"];
 
-        // 此svg的標題
-        unemployedSvg.append("text")
-            .attr("x", containerWidth / 2)
-            .attr("y", linechartHeight + margin.bottom - 60)
-            .attr("text-anchor", "middle")
-            .text("失業率按教育程度（2011年-2016年）")
-            .attr("fill", textColor)
-            .attr("font-size", fontSize2)
-            .attr('font-family', 'Noto Sans TC');
 
         // legend
         var legendX = infoWidth + 120;
@@ -609,8 +593,7 @@
                 .text(function () {
                     return all_type2[i];
                 })
-                .attr("font-size", fontSize1)
-                .attr('font-family', 'Noto Sans TC');
+                .attr("font-size", fontSize1);
         }
 
         /**

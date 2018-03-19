@@ -1,5 +1,6 @@
 body {
     /* background-color: #f7f7f7; */
+    font-family: 'Noto Sans TC';
 }
 
 #unemployedSvg {
@@ -16,20 +17,19 @@ h6 {
 
 
 h2{
-    font-size: 3em;
+    font-size: 32px;
     font-weight: 500;
 }
 
 h3{
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 500;
 }
 
 
 p {
     color: #6E6E6E;
-    font-size: 20px;
-    font-family: 'Noto Sans TC';
+    font-size: 18px;
 }
 
 .pink{
@@ -45,6 +45,7 @@ p {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin: 0 auto 35px;
 }
 
 .flexbox-item {
@@ -77,4 +78,8 @@ input[type="checkbox"] {
 
 #prejob-select {
     margin-left: 120px;
+}
+
+.centered {
+	max-width: 500px;
 }
