@@ -11,7 +11,6 @@
 }
 
 /* Creates a small triangle extender for the tooltip */
-
 .reason-d3-tip:after , .salary-d3-tip:after , .yearGroup-d3-tip:after , .prejob-d3-tip:after {
     box-sizing: border-box;
     display: inline;
@@ -25,7 +24,6 @@
 }
 
 /* Style northward tooltips differently */
-
 .reason-d3-tip.n:after , .salary-d3-tip.n:after , .yearGroup-d3-tip.n:after , .prejob-d3-tip.n:after{
     margin: -1px 0 0 0;
     top: 100%;
