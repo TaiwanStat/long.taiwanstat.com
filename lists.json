@@ -3,6 +3,14 @@
     "title": "用數據看台灣 - 統計資料",
     "page": [
       {
+        "title": "台灣近年再生能源發展趨勢",
+        "url": "renewable-energy",
+        "img": "images/renewable-energy.png",
+        "description": "再生一個再生能源吧",
+        "author": "黃顯堯",
+        "d3_v4": true
+      },
+      {
         "title": "用圖表呈現台灣醫療資源分配",
         "url": "medical-resources",
         "img": "images/medical-resources.jpg",
