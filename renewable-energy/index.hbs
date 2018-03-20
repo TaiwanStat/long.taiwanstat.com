@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang='zh-TW'>
+
+<head>
+    {{> head}}
+    <!-- my js & css -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    {{> header}} {{> start}}
+    <!-- my charts -->
+    <div class="chart">
+        <div id="total_content">
+            <h1>再生一個吧</h1>
+            <h3>-你想像的再生能源和現實的再生能源的一樣嗎？-</h3>
+            <div id="title_block" class="flex_container">
+                <p>在溫室效應的嚴重性，核能的安全疑慮等問題下，再生能源的重要性也越來越受大家重視，
+                    <br>但再生能源的成長似乎沒有呼應到眾人的關注，
+                    <br>是因為成本和發電效率嗎？
+                    <br>或是民間和台電的投入不足嗎？
+                    <br>又或者是台灣的科技沒有那麼進步？
+                    <br>還是節省的二氧化碳沒有想像中的多呢？
+                    <br>
+                </p>
+                <br>
+                <br>
+                <br>
+            </div>
+
+            <div id="separ_line"></div>
+            <br>
+            <h2>再生，不生？</h2>
+            <br>
+            <h3>台灣能源比例</h3>
+            <div id="co_text">
+                <p>滑鼠滑上圖表可顯示不同年份及種類資訊</p>
+            </div>
+            <div id="taiwan_renewable_block" class="flex_container">
+                <div id="scale_chart">
+
+                </div>
+                <div id="line_chart">
+                </div>
+                <div id="scale_stack">
+                </div>
+                <div id="scale_stack_info">
+                </div>
+            </div>
+
+            <div id="co_text">
+                <p>抽蓄水力是一種儲能方式，當電力需求低時，多出的電力將水放至高位儲存，到電力需求高時，便以高位的水作發電之用，因此比較不偏向再生能源</p>
+            </div>
+            <div id="taiwan_renewable_block_text">
+                <p>再生能源為來自大自然的能源，例如太陽能、風力、潮汐能、地熱能等，
+                    <br>是取之不盡，用之不竭的能源，會自動再生，
+                    <br>但
+                    <br>你知道在台灣，
+                    <br> 再生能源的發電率還是不及所有發電的百分之10嗎
+                    <br>接下來，讓我們看一下和我們同樣為島國的日本的再生能源比例
+                    <br>
+                </p>
+            </div>
+
+
+            <h3>日本能源比例</h3>
+            <div id="co_text">
+                <p>滑鼠滑上圖表可顯示不同年份及種類資訊</p>
+            </div>
+            <div id="japan_renewable_block" class="flex_container">
+                <div id="japan_scale">
+                </div>
+                <div id="japan_line">
+                </div>
+
+                <div id="japan_renewble_block_text">
+                    <p>即使是科技進步的日本，在減少核電之後的首要能源，依然是選擇火力發電而不是相對於較少的二氧化碳排放的再生能源，
+                        <br>
+                        <br>是為什麼呢？</p>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <div id="separ_line"></div>
+            <br>
+
+            <h2>再生的缺點
+            </h2>
+            <div id="renewable_weak_block" class="flex_container">
+                <div id="renewable_weak_block_text">
+                    <h4>受天候影響，發電出力不穩定</h4>
+                    <p>由於再生能源會受到太陽，刮風下雨等自然因素影響，所以發電量也相較於火力發電或是核能發電不穩定，
+                        <br>難以替代基載電廠，通常需以火力或是核能機組作為備用電源</p>
+                    <h4>單位建造成本高，期初投資較大</h4>
+                    <p>目前的再生能源普遍的能量密度及裝置容量都相較火力發電小，且興建的價格也叫高昂，而再生能源24無法小時都持續發電
+                        <br>，所以以同樣的發電量比較，火力發電及核能發電的單位成本相較再生能源還是低許多</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <div id="separ_line"></div>
+            <br>
+            <h2>生什麼好？</h2>
+
+            <br>
+            <h3>台灣各類再生能源比例</h3>
+            <div id="co_text">
+                <p>滑鼠滑上圖表可顯示不同年份及種類資訊</p>
+            </div>
+            <div id="category_block" class="flex_container">
+                <div id="stackareacate">
+                </div>
+                <div id="stack_info">
+                </div>
+                <div id="stack_bar">
+                </div>
+
+            </div>
+
+            <h3>再生能源節省了多少碳</h3>
+            <div id="co_text">
+                <p>滑鼠滑上圖表可顯示不同年份及種類資訊</p>
+            </div>
+            <br>
+            <div id="co_block" class="flex_container">
+                <div id="co_save">
+                </div>
+                <div id="co_info">
+                </div>
+            </div>
+
+            <div id="co_text">
+                <p>註:計算公式=水力發電，太陽能發電及風力發電發電度數總和*能源局公佈電力排放係數</p>
+                <p>註:造林效益依農委會林務局委託研究，99年推算每公頃林地之年二氧化碳固定量為9.9公噸。</p>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+            <div id="separ_line"></div>
+            <br>
+            <h2>政府鼓勵再生嗎
+            </h2>
+
+            <p>我是否也可以在家利用再生能源發電呢?</p>
+
+            <h4>-政府與民間再生能源的比例-</h4>
+            <h2>時間</h2>
+            <div id="co_text">
+                <p>滑鼠滑上圖表可顯示不同年份及種類資訊</p>
+            </div>
+            <div id="official_folk_block" class="flex_container">
+                <div id="timeline">
+                </div>
+                <br>
+                <br>
+                <br>
+                <div id="donut_chart">
+                </div>
+                <div id="official_flok_block_text">
+                    <h3>太陽能發電</h3>
+                    <p>政府推動許多政策鼓勵一般民眾在自家的屋頂裝設太陽能板，
+                        <br>包含全額規劃費以及部份建置費，住戶也可以將所生產的電賣給台電，
+                        <br>因此太陽能也成為一般民眾容易接觸以及負擔的再生能源，
+                        <br>民間的參與比例也逐年增高
+                    </p>
+                    <h3>水力發電</h3>
+                    <p>水力發電因為牽涉環境的維護，以及避免潰堤的品質，
+                        <br>所以需要有經費定期維護及檢查，興建成本相當高，
+                        <br>一般民眾難以參與，所以目前台灣的水力發電主要為公司行號以及台電</p>
+                    <h3>風力發電</h3>
+                    <p>風力發電因為興建成本高，每座2MW風機需要1.2億元，
+                        <br>一般民眾比較難以參與，所以目前主要興建力發電的民間通常都為國外的廠商或是台電</p>
+                    <br>
+                    <br>
+
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div id="co_text">
+                <p>資料來源:台灣電力公司(https://www.taipower.com.tw/tc/index.aspx)</p>
+                <p>資料來源:維基百科(https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5)</p>
+                <p>資料來源:経済産業省・資源エネルギー庁(http://www.enecho.meti.go.jp/)</p>
+                <p>資料來源:DATAGOJP(http://www.data.go.jp/?lang=english)</p>
+                <p>資料來源:經濟部能源局(https://www.moeaboe.gov.tw/ecw/populace/home/Home.aspx)</p>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+    {{> end}}
+    <!-- my js & css -->
+    <script src="./javascript/scale_chart.js"></script>
+    <script src="./javascript/line_chart.js"></script>
+    <script src="./javascript/scale_stack.js"></script>
+    <script src="./javascript/scale_info.js"></script>
+    <script src="./javascript/japan_scale.js"></script>
+    <script src="./javascript/japan_line.js"></script>
+    <script src="./javascript/stackareacate.js"></script>
+    <script src="./javascript/stack_info.js"></script>
+    <script src="./javascript/stack_bar.js"></script>
+    <script src="./javascript/co_save.js"></script>
+    <script src="./javascript/co_info.js"></script>
+    <script src="./javascript/timeline.js"></script>
+    <script src="./javascript/donut_chart.js"></script> 
+    {{> footer}}
+</body>
+
+</html>
