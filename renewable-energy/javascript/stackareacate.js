@@ -17,7 +17,7 @@ function stackarea_line_get_screen_width() {
 var formatNumber = d3.format(".1f"),
     formatBillion = function (x) { return formatNumber(x / 1e9); };
 
-var stackarea_x = d3.scaleTime()
+var stackarea_x = d3.scaleLinear()
     .range([0, stackarea_width]);
 
 var stackarea_y = d3.scaleLinear()

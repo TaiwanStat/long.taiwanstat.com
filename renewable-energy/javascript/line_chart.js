@@ -30,7 +30,7 @@ var line_svg = d3.select("#line_chart")
 
 var line_g = line_svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var x = d3.scaleTime().range([0, line_width]),
+var x = d3.scaleLinear().range([0, line_width]),
     y = d3.scaleLinear().range([line_height, 0]);
 
 var fire_line = d3.line()

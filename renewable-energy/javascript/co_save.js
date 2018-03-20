@@ -21,7 +21,7 @@ var co_line_svg = d3.select("#co_save")
 
 var co_line_g = co_line_svg.append("g").attr("transform", "translate(" + co_line_margin.left + "," + co_line_margin.top + ")");
 
-var co_line_x = d3.scaleTime().range([0, co_line_width]),
+var co_line_x = d3.scaleLinear().range([0, co_line_width]),
     co_line_y = d3.scaleLinear().range([co_line_height, 0]);
 
 var co_bisectDate = d3.bisector(function (d) { return d.year; }).left;
