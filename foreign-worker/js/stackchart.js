@@ -5,7 +5,7 @@ var margin = {
         left: 10
     },
     w = parseInt(d3.select("#stack-chart").style("width"), 10) - margin.left - margin.right,
-    w1 = parseInt(d3.select("#stack-chart").style("width"), 10) - margin.left - margin.right,
+    w1 = parseInt(d3.select("#stack-chart").style("width"), 10) - 2*margin.left,
     h = parseInt(d3.select("#stack-chart").style("height"), 10) - margin.top ;
 var parse = d3.time.format("%Y").parse;
 var _f = d3.format(".0f");
@@ -27,6 +27,7 @@ d3.csv("database/stackchart.csv", function (error, dataset) {
             };
         });
     }));
+    
     var colors = ["#64363C", '#BEC23F', "#FFB11B", "#F596AA"];
 
     var x = d3.scale.ordinal()
@@ -211,8 +212,18 @@ d3.csv("database/stackchart.csv", function (error, dataset) {
         yAxis = d3.svg.axis().scale(y).orient("left").tickFormat(function (d) {
             return d
         });
-    svg.append('g').attr("class", "x axis").call(xAxis).attr('transform', 'translate(' + 0 + ',' + (h - margin.bottom - margin.top) + ')');
-    svg.append('g').attr("class", "y axis").call(yAxis);
+    svg.append('g').attr("class", "x axis").call(xAxis).attr('transform', 'translate(' + 0 + ',' + (h - margin.bottom - margin.top) + ')').attr({
+        'fill': 'black',
+        'stroke': 'none',
+        'font-weight': 500,
+        'font-family': "'Inconsolata', monospace"
+    });
+    svg.append('g').attr("class", "y axis").call(yAxis).attr({
+        'fill': 'black',
+        'stroke': 'none',
+        'font-weight': 500,
+        'font-family': "'Inconsolata', monospace"
+    });
 
     var group_by_year = svg.selectAll(".num_of_people")
         .data(data)

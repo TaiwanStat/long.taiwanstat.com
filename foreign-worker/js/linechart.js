@@ -32,9 +32,9 @@ d3.csv("./database/Linedata.csv", function (error, csvdata) {
     var yScale = d3.scale.linear().domain([0, Ymax]).range([height_Line - padding.top - padding.bottom, 0]);
 
     //創建x,y軸
-    var xAxis = d3.svg.axis().scale(xScale).orient('bottom').ticks(4);
+    var xAxis = d3.svg.axis().scale(xScale).orient('bottom').ticks(4).tickFormat(d3.format("d"));
     var yAxis = d3.svg.axis().scale(yScale).tickFormat(function (d) {
-        return d + '%';
+        return d + '‰';
     }).orient('left');
 
     //call axis
@@ -70,11 +70,11 @@ d3.csv("./database/Linedata.csv", function (error, csvdata) {
             "translate(" + (margin.left * 2+5) + " ," +
             0 + ")")
         .style("text-anchor", "middle")
-        .text("職災率 /")
+        .text("職災千人率 /")
         .call(textstyle1);
         LineChart.append("text")
         .attr("transform",
-            "translate(" + (margin.left * 3 + margin.right+5) + " ," +
+            "translate(" + (margin.left * 3 + margin.right+15) + " ," +
             0 + ")")
         .style("text-anchor", "middle")
         .text("年")
@@ -147,15 +147,15 @@ d3.csv("./database/Linedata.csv", function (error, csvdata) {
         .attr('id', function (d, i) {
             return 'dot' + i;
         });
-    LineChart.append("text").text('台灣勞工職災率').attr('transform', 'translate('+(padding.left/2)+','+(height_Line-padding.bottom-5)+')').call(textstyle1);
-    LineChart.append("text").text('外籍勞工職災率').attr('transform', 'translate('+(padding.left*2+padding.right*2-5)+','+(height_Line-padding.bottom-5)+')').call(textstyle1);
+    LineChart.append("text").text('台灣勞工職災千人率').attr('transform', 'translate('+(padding.left/2)+','+(height_Line-padding.bottom-5)+')').call(textstyle1);
+    LineChart.append("text").text('外籍勞工職災千人率').attr('transform', 'translate('+(padding.left*2+padding.right*2.5)+','+(height_Line-padding.bottom-5)+')').call(textstyle1);
     LineChart.append('circle').attr({
         'transform': 'translate('+0+','+(height_Line-padding.bottom-10)+')',
         'r': 5,
         'fill': '#E8B647',
     })
     LineChart.append('circle').attr({
-        'transform': 'translate('+(padding.left*2+padding.right*1.5)+','+(height_Line-padding.bottom-10)+')',
+        'transform': 'translate('+(padding.left*2+padding.right*2)+','+(height_Line-padding.bottom-10)+')',
         'r': 5,
         'fill': '#26453D',
     })
@@ -220,7 +220,7 @@ d3.csv("./database/long_term_care.csv", function (error, csvdata) {
     var yScale = d3.scale.linear().domain([0, Ymax]).range([height_Line - padding.top*2 - padding.bottom*2, 0]);
 
     //創建x,y軸
-    var xAxis = d3.svg.axis().scale(xScale).orient('bottom').ticks(4);
+    var xAxis = d3.svg.axis().scale(xScale).orient('bottom').ticks(4).tickFormat(d3.format("d"));
     var yAxis = d3.svg.axis().scale(yScale).tickFormat(function (d) {
         return d / 10000;
     }).orient('left');
@@ -455,7 +455,7 @@ d3.csv("./database/3k.csv", function (error, csvdata) {
     var yScale = d3.scale.linear().domain([0, 300720]).range([height_Line - padding.top - padding.bottom, 0]);
 
     //創建x,y軸
-    var xAxis = d3.svg.axis().scale(xScale).orient('bottom').ticks(4);
+    var xAxis = d3.svg.axis().scale(xScale).orient('bottom').ticks(4).tickFormat(d3.format("d"));
     var yAxis = d3.svg.axis().scale(yScale).tickFormat(function (d) {
         return d / 10000;
     }).orient('left');

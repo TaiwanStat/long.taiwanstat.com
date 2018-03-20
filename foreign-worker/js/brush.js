@@ -10,7 +10,7 @@ var margin = {
         bottom: 30,
         left: 20
     },
-    width_pop = parseInt(d3.select("#population").style("width"),10) - margin.left - margin.right,  
+    width_pop = parseInt(d3.select("#population").style("width"),10)-margin.right-margin.left ,  
     height_pop = parseInt(d3.select("#population").style("height"),10)  - margin.top - margin.bottom,
     height2 = parseInt(d3.select("#population").style("height"),10) - margin2.top - margin2.bottom;
     // width_pop = 960 - margin.left - margin.right,
@@ -20,12 +20,15 @@ var margin = {
 var svg_pop = d3.select("#population").append("svg")
     .attr("width", width_pop + margin.left + margin.right)
     .attr("height", height_pop + margin.top + margin.bottom + 50);
+
 var x = d3.time.scale().range([0, width_pop]),
     x2 = d3.time.scale().range([0, width_pop]),
     y = d3.scale.linear().range([height_pop, 0]),
     y2 = d3.scale.linear().range([height2, 0]);
-var xAxis = d3.svg.axis().scale(x).orient("Bottom"),
-    xAxis2 = d3.svg.axis().scale(x2).orient("Bottom"),
+   
+
+var xAxis = d3.svg.axis().scale(x).orient("Bottom").tickFormat(d3.format("d")),
+    xAxis2 = d3.svg.axis().scale(x2).orient("Bottom").tickFormat(d3.format("d")),
     yAxis = d3.svg.axis().scale(y).orient("left");
 var brush = d3.svg.brush().x(x2)
     .on("brush", brushed);
@@ -42,11 +45,11 @@ var focus = svg_pop.append("g")
 var context = svg_pop.append("g")
     .attr("class", "context")
     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
-d3.csv("./database/brushdata.csv", type, function (error, data) {
+d3.csv("./database/brushdata.csv",type, function (error, data) {
     if (error) throw error;
-
-    x.domain([2001, 2019]);
+    x.domain([2001,2019]);
     y.domain([d3.min(data, function (d) {
+      
         return d.growth_rate;
     }) - 3, d3.max(data, function (d) {
         return d.growth_rate;
@@ -153,24 +156,37 @@ d3.csv("./database/brushdata.csv", type, function (error, data) {
     focus.append("g")
         .attr("class", "axis axis--x")
         .attr("transform", "translate(0," + height_pop + ")")
-        .call(xAxis);
+        .call(xAxis)
+        .attr({
+            'fill': 'black',
+            'stroke': 'none',
+            'font-weight': 500,
+            'font-family': "'Inconsolata', monospace"
+        });
     focus.append("g")
         .attr("class", "axis axis--y")
-        .call(yAxis);
+        .attr("transform", "translate(0,0)")
+        .call(yAxis)
+        .attr({
+            'fill': 'black',
+            'stroke': 'none',
+            'font-weight': 500,
+            'font-family': "'Inconsolata', monospace"
+        });
 
         focus.append("text")
         .attr("transform",
             "translate(" + margin.left * 5 + " ," +
             0 + ")")
         .style("text-anchor", "middle")
-        .text("移工逐年成長率(%)/")
+        .text("移工較去年增減率(%)/")
         .call(textstyle1);
     focus.append("text")
         .attr("transform",
-            "translate(" + (margin.left * 4 + margin.right*4) + " ," +
+            "translate(" + (margin.left * 5 + margin.right*4) + " ," +
             0 + ")")
         .style("text-anchor", "middle")
-        .text("年")
+        .text("西元年")
         .call(textstyle1);
 
     // append scatter plot to brush chart area      
@@ -196,7 +212,13 @@ d3.csv("./database/brushdata.csv", type, function (error, data) {
     context.append("g")
         .attr("class", "axis axis--x")
         .attr("transform", "translate(0," + height2 + ")")
-        .call(xAxis2);
+        .call(xAxis2)
+        .attr({
+            'fill': 'black',
+            'stroke': 'none',
+            'font-weight': 500,
+            'font-family': "'Inconsolata', monospace"
+        });
     context.append("g")
         .attr("class", "brush")
         .call(brush)
@@ -348,7 +370,8 @@ function textstyle(t) {
 }
 
 function type(d) {
-    d.年分 = d.年分;
+    d.年分 =d.年分;
     d.growth_rate = +d.growth_rate;
+ 
     return d;
 };
