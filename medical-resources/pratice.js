@@ -18,7 +18,7 @@ d3.csv(datapath,function(dataset){
     .attr('transform', 'translate(0,0)')
 
     var color = d3.scale.linear().domain([200,1600]).range(["#FFFFFF","#003377"]);
-    //var fisheye = d3.fisheye.circular().radius(100).distortion(2);  
+    //var fisheye = d3.fisheye.circular().radius(100).distortion(2);
     /*var zoom = d3.behavior.zoom()
         .scaleExtent([1, 10])
         .on("zoom", zoomed);
@@ -36,7 +36,7 @@ d3.csv(datapath,function(dataset){
 
     for(var i=features.length - 1; i >= 0; i-- ) {
         for(var j=features.length - 1; j >= 0; j-- ){
-            if(dataset[j].county == features[i].properties.COUNTYNAME){     
+            if(dataset[j].county == features[i].properties.COUNTYNAME){
                 temp++;
                 features[i].properties.density = dataset[j].serve;
                 features[i].properties.doctor = dataset[j].doctor;
@@ -78,7 +78,7 @@ d3.csv(datapath,function(dataset){
         .on("mouseout", function (d) {
             d3.select(this).style('stroke-width', '0');
             d3.select(this).style('stroke', '#C6C6C6');
-            
+
         })
             //
     d3.select('button:nth-child(2)').on('click', function () {

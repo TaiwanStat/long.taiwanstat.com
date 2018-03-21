@@ -7,8 +7,9 @@
     <link rel="stylesheet" type="text/css" href="./css.css">
     <link rel="stylesheet" type="text/css" href="./googlemap.css">
     <link rel="stylesheet" type="text/css" href=" https://fonts.googleapis.com/earlyaccess/notosanstc.css">
+    <link rel="stylesheet" href="./Semantic-UI-CSS-master/semantic.min.css">
     <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
   </head>
   <body>
     {{> header}}
@@ -30,8 +31,8 @@
         <div class="text block b1">
             <div id="map1"></div>
             <div class="data text">
-                <button type="button" class="btn btn-outline-info text" >病床數</button>
-                <button type="button" class="btn btn-outline-info text" >醫事人數</button>
+                <button type="button" class="ui inverted blue button text" >病床數</button>
+                <button type="button" class="ui inverted blue button text" >醫事人數</button>
                 <div  id="countyname">臺北市 </div>
                 <div  id="population">人口數量 : 2695704人</div>
                 <div  id="doctor">醫師數量 : 9719人</div>
@@ -120,16 +121,16 @@
         <p style="color:#797979;">【點選按鈕以查看數量】</p>
         <div class="text block b3">
             <div class="left">
-                <button type="button" class="btn btn-outline-danger text" value="1" >醫學中心</button>
+                <button type="button" class="ui inverted red button text" value="1" >醫學中心</button>
                 <div class="detail">具有研究、教學訓練、精密診斷、高度醫療等多種功能外，還負有輔導、
                     協助區域內其他醫療機構的責任，並且需通過設有醫學中心數量限制的醫院評鑑</div>
-                <button type="button" class="btn btn-outline-warning text" value="2">區域醫院</button>
+                <button type="button" class="ui inverted yellow button text" value="2">區域醫院</button>
                 <div class="detail">應具教學醫院功能，建立健全住院醫生訓練制度，並培育專科醫生和地區醫院所需人力。</div>
-                <button type="button" class="btn btn-outline-success text" value="3">地區醫院</button>
+                <button type="button" class="ui inverted green button text" value="3">地區醫院</button>
                 <div class="detail">提供一般專科門診及住院服務。急性一般病床需20床以上，且急性一般病床與急性精神病床合計99床（含）以下。</div>
-                <button type="button" class="btn btn-outline-info text" value="4">醫院</button>
+                <button type="button" class="ui inverted teal button text" value="4">醫院</button>
                 <div class="detail">未經評鑑之醫院</div>
-                <button type="button" class="btn btn-outline-primary text" value="5">診所</button>
+                <button type="button" class="ui inverted blue button text" value="5">診所</button>
             </div>
             <div class="bar"></div>
         </div>
@@ -163,7 +164,8 @@
         </div>
     </div>
     {{> end}}
-        <script src="js/bootstrap.min.js"></script>
+        <script src="./Semantic-UI-CSS-master/jquery-1.10.1.js"></script>
+        <script src="./Semantic-UI-CSS-master/semantic.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -175,6 +177,7 @@
         <script type="text/javascript" src="./Hospital.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzoCKZdIHgsaWE-wzgT3JXRCdK4OuMnxQ&amp;callback"></script>
         <script type="text/javascript" src="./map_position.js"></script>
+
     <!-- my js & css -->
     {{> footer}}
 

@@ -15,7 +15,7 @@ datapath="./hospital.csv"
 d3.csv(datapath,function(dataset){
     var data=[];
     for(var i=0;i<22;i++){
-        data[i]=+dataset[i].center;    
+        data[i]=+dataset[i].center;
     }
     minBar = d3.min(dataset,function(d){ return +d.center});
     maxBar = d3.max(dataset,function(d){ return +d.center})
@@ -71,13 +71,13 @@ d3.csv(datapath,function(dataset){
             data[i]=+d.center;
         return function(t) { that.text(k(t)); };
       })
-    
-    d3.select('.btn-outline-success').on('click',function(){
+
+    d3.select('.green').on('click',function(){
         minBar = d3.min(dataset,function(d){ return +d.local});
         maxBar = d3.max(dataset,function(d){ return +d.local})
         scaleBar = d3.scale.linear()
         .range([20, 4*screen.width/10])
-        .domain([minBar, maxBar]); 
+        .domain([minBar, maxBar]);
 
         rect.selectAll('rect')
         .data(dataset)
@@ -125,12 +125,12 @@ d3.csv(datapath,function(dataset){
           })
     });
 
-    d3.select('.btn-outline-warning').on('click',function(){
+    d3.select('.yellow').on('click',function(){
         minBar = d3.min(dataset,function(d){ return +d.region});
         maxBar = d3.max(dataset,function(d){ return +d.region})
         scaleBar = d3.scale.linear()
         .range([5,4*screen.width/10])
-        .domain([minBar, maxBar]); 
+        .domain([minBar, maxBar]);
 
         rect.selectAll('rect')
         .data(dataset)
@@ -178,13 +178,13 @@ d3.csv(datapath,function(dataset){
           })
     });
 
-    d3.select('.b3').select('.btn-outline-info').on('click',function(){
+    d3.select('.b3').select('.teal').on('click',function(){
         minBar = d3.min(dataset,function(d){ return +d.hos});
         maxBar = d3.max(dataset,function(d){ return +d.hos})
         scaleBar = d3.scale.linear()
         .range([5, 4*screen.width/10])
-        .domain([minBar, maxBar]); 
-        
+        .domain([minBar, maxBar]);
+
         rect.selectAll('rect')
         .data(dataset)
         .transition()
@@ -230,13 +230,13 @@ d3.csv(datapath,function(dataset){
           })
     });
 
-    d3.select('.b3').select('.btn-outline-primary').on('click',function(){
+    d3.select('.b3').select('.blue').on('click',function(){
         minBar = d3.min(dataset,function(d){ return +d.clinic});
         maxBar = d3.max(dataset,function(d){ return +d.clinic})
         scaleBar = d3.scale.linear()
         .range([20, 4*screen.width/10])
-        .domain([minBar, maxBar]); 
-        
+        .domain([minBar, maxBar]);
+
         rect.selectAll('rect')
         .data(dataset)
         .transition()
@@ -282,13 +282,13 @@ d3.csv(datapath,function(dataset){
           })
     });
 
-    d3.select('.b3').select('.btn-outline-danger').on('click',function(){
+    d3.select('.b3').select('.red').on('click',function(){
         minBar = d3.min(dataset,function(d){ return +d.center});
         maxBar = d3.max(dataset,function(d){ return +d.center})
         scaleBar = d3.scale.linear()
         .range([5, 4*screen.width/10])
-        .domain([minBar, maxBar]); 
-        
+        .domain([minBar, maxBar]);
+
         rect.selectAll('rect')
         .data(dataset)
         .transition()
