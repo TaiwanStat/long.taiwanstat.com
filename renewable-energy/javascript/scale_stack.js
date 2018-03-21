@@ -62,8 +62,8 @@ d3.csv("./data/his_ele_cate.csv", function (d, i, columns) {
     scale_stack_x.domain([0, max_percent])
     scale_stack_y.domain([0, max_percent])
     function stack_rect_info_width() {
-        if(innerWidth<1200){
-            return innerWidth*160/1200;
+        if (innerWidth < 1200) {
+            return innerWidth * 160 / 1200;
         }
         return 160;
     }
@@ -74,7 +74,7 @@ d3.csv("./data/his_ele_cate.csv", function (d, i, columns) {
         .style("text-anchor", "middle")
         .style("fill", "black")
         .text("民國97年")
-    
+
     scale_stack_rect = scale_stack_svg.append("g")
         .selectAll("g")
         .attr("class", "scale_stack")
@@ -95,15 +95,23 @@ d3.csv("./data/his_ele_cate.csv", function (d, i, columns) {
         .attr("x", function (d) { return scale_stack_x(d.pre_per); })
         .attr("y", 100)
         .attr("height", 50)
-        .attr("width", function (d) { return scale_stack_x(d.percent) - 2; })
+        .attr("width", function (d) { return scale_stack_x(d.percent); })
         .on("mouseenter", function (data) {
             var select_name = d3.select(this).data()[0].name;
             scale_circle
                 .attr("opacity", 0.2)
                 .style("fill", set_scale_color(select_name))
-
+            var temp_scale_arc = d3.arc()
+                .outerRadius(function(d){
+                    if(d.data.name == select_name||d.data.name == "renewable"){
+                        return scale_radius * 0.85;
+                    }else{
+                        return scale_radius * 0.8;
+                    }
+                })
+                .innerRadius(scale_radius * 0.55);
             scale_donut
-                .attr("d", scale_arc)
+                .attr("d", temp_scale_arc)
                 .style("opacity", function (d) {
                     if (d.data.name == "renewable" || d.data.name == select_name) {
                         return 1;
@@ -242,6 +250,9 @@ function scale_stack_change(index) {
                     scale_total = scale_data[i].energy[j].percent + scale_total;
 
                 }
+                var temp_scale_arc = d3.arc()
+                    .outerRadius(scale_radius * 0.85)
+                    .innerRadius(scale_radius * 0.55);
                 scale.data(function (d) { return scale_pie(scale_data[i].energy); })
                     .enter();
                 scale.select("path")

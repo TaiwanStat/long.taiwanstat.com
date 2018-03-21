@@ -94,7 +94,7 @@ d3.csv("./data/energy_type.csv", function (d, i, columns) {
         .attr("x", function (d) { return stack_x(d.pre_per); })
         .attr("y", 100)
         .attr("height", 50)
-        .attr("width", function (d) { return stack_x(d.percent) - 2; })
+        .attr("width", function (d) { return stack_x(d.percent); })
         .on("mouseenter", function (data) {
             stack_bar.style("opacity", 0.7)
             d3.select(this)
