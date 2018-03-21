@@ -3,6 +3,13 @@
     "title": "用數據看台灣 - 統計資料",
     "page": [
       {
+        "title": "移工的台灣夢",
+        "url": "foreign-worker",
+        "img": "images/foreign-worker.png",
+        "description": "探討在台移民工人狀況",
+        "author": "尤辰因"
+      },
+      {
         "title": "台灣近年再生能源發展趨勢",
         "url": "renewable-energy",
         "img": "images/renewable-energy.png",
