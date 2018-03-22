@@ -100,6 +100,13 @@ d3.csv("./data/日本各項電力.csv", function (d, i, columns) {
         .enter().append("g")
         .attr("class", "japan_scalearc");
 
+    prompt = japan_scale_svg.append("text")
+        .attr("transform", "translate(0,0)")
+        .attr("dy", "-14.0em")
+        .attr("font-size", "0.8em")
+        .style("text-anchor", "middle")
+        .style("fill", "black")
+        .text("用鼠標滑上折線圖可以切換年份資料 ")
     japan_scale_circle = japan_scale.append("circle")
         .attr("cx", "0")
         .attr("cy", "0")
