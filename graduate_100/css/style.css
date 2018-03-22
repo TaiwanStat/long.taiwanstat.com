@@ -1,9 +1,10 @@
-@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 #superContainer {
 /*    height: 100%;*/
     width: 100%;
     color: #666666;
     font-size: 16px;
+    overflow: auto;
 }
 /*add h1 or not?*/
 #chartTitle, .info{

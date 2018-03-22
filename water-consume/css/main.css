@@ -1,0 +1,118 @@
+/* body scope */
+html, body {
+    width: 100%;
+}
+
+.line, .pop {
+    stroke-width: 3px;
+}
+
+text {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#page-title {
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+#page-introduction {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+/* graph design */
+
+#container-div {
+    width: 100%;
+    display: none; /* after choosing year, 'display' will be changed to 'flex'*/
+    flex-direction:row;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.div {
+    margin: 0px;
+    text-align:center; 
+    height: 600px;
+}
+
+p {
+    margin: 0px;
+}
+
+.middle-div {
+    line-height: 40px;
+}
+
+#region-name {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-shadow: 2px 2px gray;
+}
+#focus-more-water-s {
+    font-weight: bold;
+    color: red;
+}
+
+#pieChartGroup text{
+    letter-spacing: 2px;
+}
+
+.left-div {
+    flex: 0 0 43%;
+}
+.middle-div {
+    flex: 1 0 14%;
+}
+.right-div {
+    flex: 0 0 43%;
+}
+
+.footer-div {
+    display: block;
+}
+
+.hidden-div {
+    display: none;
+    text-align: center;
+}
+
+@media only screen and (max-width: 1280px)
+{
+    #container-div {
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and (max-width: 767px)
+{
+    #container-div {
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .left-div {
+        flex: 1 0 5%;
+    }
+    .middle-div {
+        flex: 1 0 5%;
+    }
+    .right-div {
+        flex: 1 0 5%;
+    }
+
+    .footer-div {
+        margin-top: 30px;
+    }
+
+    .hidden-div {
+        flex: 1 0 5%;
+        display: block;
+    }
+}

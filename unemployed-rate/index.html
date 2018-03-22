@@ -1,0 +1,361 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-TW"><head>
+  <title>用數據看台灣 - 探討大學生高失業率之原因</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta property="og:title" content="用數據看台灣 - 探討大學生高失業率之原因">
+<meta property="og:site_name" content="用數據看台灣 - 探討大學生高失業率之原因">
+<meta property="og:description" content="大學生失業率怎麼會這麼高?將政府開放資料視覺化後，一起來看看有哪些影響因素吧！">
+<meta property="og:image" content="https://www.taiwanstat.com/statistics/images/unemployed-rate.png">
+<meta property="og:image:type" content="image/png">
+
+  <meta name="author" content="王議偉">
+  <meta name="citation_authors" content="王議偉">
+  <meta name="description" content="大學生失業率怎麼會這麼高?將政府開放資料視覺化後，一起來看看有哪些影響因素吧！ Author: 王議偉">
+
+<meta name="keywords" content="數據、視覺化、台灣、圖表、資訊">
+<meta property="og:locale" content="zh_TW">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="//s3-ap-northeast-1.amazonaws.com/static.twstat.com/favicon.ico">
+<link rel="shortcut icon" href="//s3-ap-northeast-1.amazonaws.com/static.twstat.com/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//s3-ap-northeast-1.amazonaws.com/static.twstat.com/css/style.min.css">
+<link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.0.6/material.amber-orange.min.css">
+<link rel="stylesheet" href="//s3-ap-northeast-1.amazonaws.com/static.twstat.com/bower_components/semantic/dist/semantic.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+<script src="//storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js" async=""></script>
+  <link rel="stylesheet" type="text/css" href="css/notosans.css">
+  <link rel="stylesheet" type="text/css" href="css/d3-tip.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header">
+<header class="mdl-layout__header">
+  <div class="mdl-layout__header-row">
+  <span class="mdl-layout-title"><a href="https://www.taiwanstat.com/realtime/"><img src="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/realtime/images/assert/round-logo.png" class="round-logo" alt="logo">用數據看台灣</a></span>
+  <div class="mdl-layout-spacer"></div>
+  <nav class="mdl-navigation mdl-layout--large-screen-only">
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/realtime/">台灣開放即時資料</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/statistics/">台灣開放統計資料</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/global/r/">世界即時資訊</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/global/l/">世界統計資訊</a>
+    <a class="mdl-navigation__link" href="https://taiwanstat.com/blog/opendata/">開放資料分析部落格</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/about/">關於我們</a>
+  </nav>
+  <div>
+</div></div></header>
+<div class="mdl-layout__drawer">
+  <span class="mdl-layout-title"><a href="https://www.taiwanstat.com/realtime/"><img src="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/realtime/images/assert/round-logo.png" class="round-logo" alt="logo">用數據看台灣</a></span>
+  <nav class="mdl-navigation">
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/realtime/">台灣開放即時資料</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/statistics/">台灣開放統計資料</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/global/r/">世界即時資訊</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/global/l/">世界統計資訊</a>
+    <a class="mdl-navigation__link" href="https://taiwanstat.com/blog/opendata/">開放資料分析部落格</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/about/">關於我們</a>
+  </nav>
+</div>
+ <main class="mdl-layout__content" id="main-content">
+
+<div class="title__wrapper">
+  <h1 id="title">
+    探討大學生高失業率之原因
+  </h1>
+  <div class="fb-plugin">
+    <div class="fb-like" data-href="https://www.taiwanstat.com/statistics/unemployed-rate" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+  </div>
+</div>
+
+
+  <!-- my charts -->
+  <div class="chart">
+    <div class="flexbox-container" id="infoSvg-container">
+      <div class="flexbox-item-row">
+        <svg id="infoSvg">
+        </svg>
+      </div>
+    </div>
+    <div class="flexbox-container" id="unemployedSvg-container">
+      <div class="flexbox-item-row">
+        <svg id="unemployedSvg">
+        </svg>
+      </div>
+    </div>
+    <hr>
+    <div class="flexbox-container">
+      <div class="flexbox-item-row">
+        <h2>大學畢業失業率怎麼會這麼高？</h2>
+        <br>
+        <br>
+      </div>
+    </div>
+    <div class="flexbox-container">
+      <div class="flexbox-item" id="collegeSvg-container">
+        <svg id="collegeSvg">
+        </svg>
+      </div>
+      <div class="flexbox-item centered">
+        <h3>
+          歷年大學畢業生人數日益上升
+        </h3>
+        <br>
+        <div>
+          <p class="centered">
+            1994年4月10號，410教改聯盟發起了「四一零教育大改造」的遊行
+            <br> 其中一點訴求為「廣社高中大學」
+            <br> 該點的確影響了每年台灣的大學生畢業人數
+            <br> 由1994年的
+            <span class="pink">67823</span>人，一直到2016年已經高達
+            <span class="pink">228793</span>人
+            <br> 大學門檻日漸下降，人流不斷湧入大學端
+            <br> 時至今日也有了「大學生滿街跑」的現象
+            <br> 間接反映出大學學歷貶值
+            <br> 對於市場而言呈現出
+            <span class="pink">供過於求</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flexbox-container">
+      <div class="flexbox-item" id="reasonSvg-container">
+        <select id="reason-select">
+          <option value="0">2017年</option>
+          <option value="1">2016年</option>
+          <option value="2">2015年</option>
+          <option value="3">2014年</option>
+          <option value="4">2013年</option>
+          <option value="5">2012年</option>
+          <option value="6">2011年</option>
+        </select>
+        <svg id="reasonSvg">
+        </svg>
+      </div>
+      <div class="flexbox-item  centered">
+        <h3>
+          沒有工作機會、待遇太低
+        </h3>
+        <br>
+        <p class="centered">
+          附圖包含2011年-2017年
+          <br>學歷為大學以上之失業者在找尋工作過程中
+          <br> 未就業之原因調查
+          <br> 由該圖可發現
+          <br>
+          <span class="pink">沒有工作機會</span>是主要原因
+          <br> 而有過工作機會，卻未就業的主要原因是
+          <span class="pink">待遇太低</span>
+          <br> 其中最為大家詬病的「
+          <span class="green">學非所用</span>」
+          <br> 顯然
+          <span class="green">不佔多數</span>
+          <br>
+          <br>註：2012年以前之調查無「需輪班或排(輪)休」此題。
+        </p>
+      </div>
+    </div>
+    <br>
+    <hr>
+    <div class="flexbox-container">
+      <div class="flexbox-item-row">
+        <br>
+        <br>
+        <h2>失業族群主要是分佈在哪呢？</h2>
+        <br>
+        <br>
+      </div>
+    </div>
+    <div class="flexbox-container">
+      <div class="flexbox-item" id="yearGroupSvg-container">
+        <select id="yearGroup-select">
+          <option value="0">2016年</option>
+          <option value="1">2015年</option>
+          <option value="2">2014年</option>
+          <option value="3">2013年</option>
+          <option value="4">2012年</option>
+          <option value="5">2011年</option>
+        </select>
+        <svg id="yearGroupSvg">
+        </svg>
+      </div>
+      <div class="flexbox-item centered">
+        <h3>
+          最高學歷為大學之失業者，以20-24歲之人口最多
+        </h3>
+        <br>
+        <p class="centered">
+          附圖為2011年-2016年
+          <br>最高學歷為大學之失業率-按年齡分組圖
+          <br>由圖中可以發現
+          <br>失業率
+          <span class="pink">最高的族群</span>主要分佈在
+          <span class="pink">20-24歲</span>
+          <br>說明了
+          <span class="pink">失業期主要落在剛畢業後的這段期間</span>
+          <br>24歲過後，職場探索期結束，失業率也漸漸下降
+        </p>
+      </div>
+    </div>
+    <div class="flexbox-container">
+      <div class="flexbox-item" id="prejobSvg-container">
+        <select id="prejob-select">
+          <option value="0">2017年</option>
+          <option value="1">2016年</option>
+          <option value="2">2015年</option>
+          <option value="3">2014年</option>
+          <option value="4">2013年</option>
+          <option value="5">2012年</option>
+          <option value="6">2011年</option>
+        </select>
+        <svg id="prejobSvg">
+        </svg>
+      </div>
+      <div class="flexbox-item prejobText centered">
+        <h3>
+          原有工作之失業者失業前行業
+        </h3>
+        <br>
+        <p class="centered">
+          附圖為2011年-2017年
+          <br>學歷為大學以上之失業者失業前行業
+          <br>由圖中發現
+          <br>近幾年來之失業者之原有工作主要為
+          <span class="pink">製造業</span>與
+          <span class="pink">批發及零售業</span>
+        </p>
+      </div>
+    </div>
+    <br>
+    <hr>
+    <div class="flexbox-container">
+      <div class="flexbox-item-row">
+        <br>
+        <br>
+        <h2>大學畢業生失業率這麼高，為什麼還是那麼多人念大學呢？</h2>
+        <br>
+        <br>
+      </div>
+    </div>
+    <div class="flexbox-container">
+      <div class="flexbox-item" id="salarySvg-container">
+        <select id="salary-select">
+          <option value="0">2016年</option>
+          <option value="1">2015年</option>
+          <option value="2">2014年</option>
+          <option value="3">2013年</option>
+          <option value="4">2012年</option>
+          <option value="5">2011年</option>
+        </select>
+        <svg id="salarySvg">
+        </svg>
+      </div>
+      <div class="flexbox-item centered">
+        <h3>
+          初任人員每人每月經常性薪資
+        </h3>
+        <br>
+        <p class="centered">
+          附圖為2011年-2016年
+          <br> 各教育程度之初任人員(亦即社會新鮮人)薪資結果
+          <br> 顯示出台灣在近幾年來之薪資水平
+          <br> 仍與學歷呈現正向關
+          <br> 促使學生更有意願繼續升學
+          <br>
+          <br> 另外，
+          <br> 1994年起台灣開始實行高等教育普及化政策
+          <br> 使得大學從菁英教育走向普及教育
+          <br> 並修法讓各技職院校升格成大學
+          <br> 導致技職教育與大學教育的界線日益模糊
+          <br> 儘管每年大學畢業生人數有上升的趨勢
+          <br> 卻變向侷限台灣學生的適性化發展
+        </p>
+      </div>
+    </div>
+    <div class="flexbox-container">
+      <div class="flexbox-item">
+        <br>
+        <br>
+        <h6>資料來源：
+          <a href="https://data.gov.tw/dataset/32741">政府資料開放平台</a>、
+          <a href="https://www.dgbas.gov.tw/lp.asp?CtNode=4987&amp;CtUnit=1183&amp;BaseDSD=7&amp;mp=1">行政院主計總處</a>、
+          <a href="https://depart.moe.edu.tw/ed4500/cp.aspx?n=1b58e0b736635285&amp;s=d04c74553db60cad">教育部統計處</a>、
+          <a href="https://stats.moe.gov.tw/files/analysis/%E5%A4%A7%E5%B0%88%E4%BB%A5%E4%B8%8A%E7%A8%8B%E5%BA%A6%E9%9D%92%E5%B9%B4%E5%B0%B1%E6%A5%AD%E6%A6%82%E6%B3%81%E5%88%86%E6%9E%90.pdf">大專以上程度青年就業概況分析(教育部統計處)</a>、
+          <a href="https://www.sfaa.gov.tw/SFAA/Pages/ashx/File.ashx?FilePath=~/File/Attach/3912/File_22295.pdf">臺灣青年失業：趨勢與成因的考察 - 衛生福利部社會及家庭署(劉侑學)</a>、
+          <a href="http://www3.nccu.edu.tw/~iaezcpc/C-higher%20education%20in%20taiwan.htm">從國際案例看台灣高等教育的出路(周祝瑛)</a>
+        </h6>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+   
+<div class="mdl-card author"><h4><a href="http://taiwanstat_members.cannerapp.com/">About Author</a></h4>
+  <div class="author-wrapper">
+    <img class="ui circular image" src="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/realtime/images/assert/background.png">
+    <div class="author-info"><h5>王議偉
+        
+    </h5></div>
+  </div>
+</div>
+
+<div class="license__wrapper"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a><br>本著作由<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.taiwanstat.com" property="cc:attributionName" rel="cc:attributionURL">用數據看台灣團隊</a>製作，以<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 授權條款</a>釋出。</div>
+
+
+</main>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.9/d3.min.js"></script>
+
+<script src="//s3-ap-northeast-1.amazonaws.com/static.twstat.com/bower_components/semantic/dist/semantic.min.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-61023469-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+ 
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+  <script type="text/javascript" src="javascript/responsive.js"></script>
+  <script type="text/javascript" src="javascript/d3-tip.js"></script>
+  <script type="text/javascript" src="javascript/linechart1.js"></script>
+  <script type="text/javascript" src="javascript/linechart2.js"></script>
+  <script type="text/javascript" src="javascript/barchart.js"></script>
+  <script type="text/javascript" src="javascript/barchart2.js"></script>
+  <script type="text/javascript" src="javascript/barchart3.js"></script>
+  <script type="text/javascript" src="javascript/barchart4.js"></script> <a href="https://www.canner.io/" style="display: none;"></a>
+<div class="footer-mobile">
+  <button class="scrollup mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--2dp" id="set">
+    <i class="material-icons">keyboard_arrow_up</i>
+  </button>
+</div>
+<footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">© 2015 <a href="http://taiwanstat-about-us.cannerapp.com">用數據看台灣</a> 
+  <!--<a href="http://netdb.csie.ncku.edu.tw">NCKU-NetDB</a>-->
+    
+    · <a href="https://www.facebook.com/taiwanstat/?fref=ts"><i class="facebook square icon"></i></a>
+    · <a href="https://github.com/TaiwanStat"><i class="github square icon"></i></a>
+
+  </div>
+  <div class="mdl-mini-footer__right-section">
+    <span class="footer_msg">合作提案、客製化圖表製作、意見回饋
+  </span>
+    歡迎來信: <a href="mailto:service@taiwanstat.com">service@taiwanstat.com</a>
+  </div>
+  </footer> 
+
+<script src="//s3-ap-northeast-1.amazonaws.com/static.twstat.com/js/main.min.js"></script>
+
+
+
+</body></html>

@@ -10,6 +10,36 @@
         "author": "尤辰因"
       },
       {
+        "title": "台灣近年再生能源發展趨勢",
+        "url": "renewable-energy",
+        "img": "images/renewable-energy.png",
+        "description": "再生一個再生能源吧",
+        "author": "黃顯堯",
+        "d3_v4": true
+      },
+      {
+        "title": "用圖表呈現台灣醫療資源分配",
+        "url": "medical-resources",
+        "img": "images/medical-resources.jpg",
+        "description": "利用圖表呈現台灣醫療資源分布，探討台灣醫療資源分配不均之問題",
+        "author": "李佳勳"
+      },
+      {
+        "title": "探討大學生高失業率之原因",
+        "url": "unemployed-rate",
+        "img": "images/unemployed-rate.png",
+        "description": "大學生失業率怎麼會這麼高?將政府開放資料視覺化後，一起來看看有哪些影響因素吧！",
+        "author": "王議偉"
+      },
+      {
+        "title": "台灣生活用水與人口關係",
+        "url": "water-consume",
+        "img": "./images/water-consume.png",
+        "description": "用各年度的生活用水量、供水人口的資料以及圖表來讓您看見各縣市的用水比一比",
+        "author": "陳殿善",
+        "d3_v4": true
+      },
+      {
         "title": "大專院校100年畢業生103年職場薪資圖",
         "url": "graduate_100",
         "img": "./images/graduate_100.png",

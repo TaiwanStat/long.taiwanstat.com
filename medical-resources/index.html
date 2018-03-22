@@ -1,0 +1,300 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-TW"><head>
+    <title>用數據看台灣 - 用圖表呈現台灣醫療資源分配</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta property="og:title" content="用數據看台灣 - 用圖表呈現台灣醫療資源分配">
+<meta property="og:site_name" content="用數據看台灣 - 用圖表呈現台灣醫療資源分配">
+<meta property="og:description" content="利用圖表呈現台灣醫療資源分布，探討台灣醫療資源分配不均之問題">
+<meta property="og:image" content="https://www.taiwanstat.com/statistics/images/medical-resources.jpg">
+<meta property="og:image:type" content="image/png">
+
+  <meta name="author" content="李佳勳">
+  <meta name="citation_authors" content="李佳勳">
+  <meta name="description" content="利用圖表呈現台灣醫療資源分布，探討台灣醫療資源分配不均之問題 Author: 李佳勳">
+
+<meta name="keywords" content="數據、視覺化、台灣、圖表、資訊">
+<meta property="og:locale" content="zh_TW">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="//s3-ap-northeast-1.amazonaws.com/static.twstat.com/favicon.ico">
+<link rel="shortcut icon" href="//s3-ap-northeast-1.amazonaws.com/static.twstat.com/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//s3-ap-northeast-1.amazonaws.com/static.twstat.com/css/style.min.css">
+<link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.0.6/material.amber-orange.min.css">
+<link rel="stylesheet" href="//s3-ap-northeast-1.amazonaws.com/static.twstat.com/bower_components/semantic/dist/semantic.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+<script src="//storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js" async=""></script>
+    <!-- my js & css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css.css">
+    <link rel="stylesheet" type="text/css" href="./googlemap.css">
+    <link rel="stylesheet" type="text/css" href=" https://fonts.googleapis.com/earlyaccess/notosanstc.css">
+    <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header">
+<header class="mdl-layout__header">
+  <div class="mdl-layout__header-row">
+  <span class="mdl-layout-title"><a href="https://www.taiwanstat.com/realtime/"><img src="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/realtime/images/assert/round-logo.png" class="round-logo" alt="logo">用數據看台灣</a></span>
+  <div class="mdl-layout-spacer"></div>
+  <nav class="mdl-navigation mdl-layout--large-screen-only">
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/realtime/">台灣開放即時資料</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/statistics/">台灣開放統計資料</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/global/r/">世界即時資訊</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/global/l/">世界統計資訊</a>
+    <a class="mdl-navigation__link" href="https://taiwanstat.com/blog/opendata/">開放資料分析部落格</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/about/">關於我們</a>
+  </nav>
+  <div>
+</div></div></header>
+<div class="mdl-layout__drawer">
+  <span class="mdl-layout-title"><a href="https://www.taiwanstat.com/realtime/"><img src="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/realtime/images/assert/round-logo.png" class="round-logo" alt="logo">用數據看台灣</a></span>
+  <nav class="mdl-navigation">
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/realtime/">台灣開放即時資料</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/statistics/">台灣開放統計資料</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/global/r/">世界即時資訊</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/global/l/">世界統計資訊</a>
+    <a class="mdl-navigation__link" href="https://taiwanstat.com/blog/opendata/">開放資料分析部落格</a>
+    <a class="mdl-navigation__link" href="https://www.taiwanstat.com/about/">關於我們</a>
+  </nav>
+</div>
+    <main class="mdl-layout__content" id="main-content">
+
+<div class="title__wrapper">
+  <h1 id="title">
+    用圖表呈現台灣醫療資源分配
+  </h1>
+  <div class="fb-plugin">
+    <div class="fb-like" data-href="https://www.taiwanstat.com/statistics/medical-resources" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+  </div>
+</div>
+
+
+    <!-- my charts -->
+    <div class="chart">
+        <div class="text title">看病路遙遙</div>
+        <div style="color:#949292;" class="text second-title">-淺談台灣醫療資源不均問題-</div>
+        <hr color="#C9C9C9" size="20" align="right">
+
+
+        <p class="second-title">【各縣市病床與醫師數量】</p>
+        <p style="color:#797979;">【點選地圖以查看數量】</p>
+        <div class="blockt">
+        <p>通常，在探討醫療資源差異問題時，會先討論病床數和醫事人員數<br>
+        根據衛福部統計資料，令人意外的是花蓮縣居然位列前三<br>
+        而新北市卻成為醫療資源不足地區</p>
+        </div>
+        <div class="text block b1">
+            <div id="map1"></div>
+            <div class="data text">
+                <button type="button" class="btn btn-outline-info text">病床數</button>
+                <button type="button" class="btn btn-outline-info text">醫事人數</button>
+                <div id="countyname">臺北市 </div>
+                <div id="population">人口數量 : 2695704人</div>
+                <div id="doctor">醫師數量 : 9719人</div>
+                <div id="serve">每位醫生服務人數</div><div class="text important" id="servenum">277.36人</div>
+                <div id="rank">排名(由資源多到少)</div><div class="text important" id="ranknum">1/22</div>
+            </div>
+        </div>
+        <div class="blockt t2">
+        <p>根據以上數據，以下整理出資源最多及最少的各三個縣市</p>
+        </div>
+        <div class="block b2">
+            <table class="text">
+                <thead>
+                <tr>
+                    <th colspan="3">【擁有最多資源之縣市排名】</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>    </td>
+                    <td><strong>醫事人員</strong></td>
+                    <td><strong>病床</strong></td>
+                </tr>
+                </tbody><tbody>
+                <tr>
+                    <td>第一名</td>
+                    <td>台北市</td>
+                    <td>嘉義市</td>
+                </tr>
+                <tr>
+                    <td>第二名</td>
+                    <td>嘉義市</td>
+                    <td>花蓮縣</td>
+                </tr>
+                <tr>
+                    <td>第三名</td>
+                    <td>花蓮縣</td>
+                    <td>宜蘭縣</td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="text">
+                <thead>
+                <tr>
+                    <th colspan="3">【擁有最少資源之縣市排名】</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>    </td>
+                    <td><strong>醫事人員</strong></td>
+                    <td><strong>病床</strong></td>
+                </tr>
+                </tbody><tbody>
+                <tr>
+                    <td>倒數第一</td>
+                    <td>金門縣</td>
+                    <td>金門縣</td>
+                </tr>
+                <tr>
+                    <td>倒數第二</td>
+                    <td>新竹縣</td>
+                    <td>屏東縣</td>
+                </tr>
+                <tr>
+                    <td>倒數第三</td>
+                    <td>苗栗縣</td>
+                    <td>新北市</td>
+                </tr>
+                </tbody>
+            </table>
+         </div>
+         <div class="blockt">
+           <p>
+                <br><br><br>綜合以上衛福部統計資料，嘉義市醫療資源最充足<br>
+                讓人意外的是因為人口數少的關係，第二名居然是花蓮縣。<br>
+                另外，以平均病床數來看，新北市竟成了醫療資源不足地區<br><br>
+                對此，高雄市衛生局表示，醫療資源是否足夠，<br>
+                <strong style="color:#F75353;">除了從病床數、醫事人員數 判定之外<br>
+                當地醫療層級多寡、醫療可近性等因素也該列入評估<br> </strong>
+                其他縣市衛生局表示，醫療資源也存在區域內部分布不平均問題<br>
+           </p>
+        </div>
+        <br><br>
+        <p class="second-title">【台灣各地區各醫療層級數量】</p>
+        <p style="color:#797979;">【點選按鈕以查看數量】</p>
+        <div class="text block b3">
+            <div class="left">
+                <button type="button" class="btn btn-outline-danger text" value="1">醫學中心</button>
+                <div class="detail">具有研究、教學訓練、精密診斷、高度醫療等多種功能外，還負有輔導、
+                    協助區域內其他醫療機構的責任，並且需通過設有醫學中心數量限制的醫院評鑑</div>
+                <button type="button" class="btn btn-outline-warning text" value="2">區域醫院</button>
+                <div class="detail">應具教學醫院功能，建立健全住院醫生訓練制度，並培育專科醫生和地區醫院所需人力。</div>
+                <button type="button" class="btn btn-outline-success text" value="3">地區醫院</button>
+                <div class="detail">提供一般專科門診及住院服務。急性一般病床需20床以上，且急性一般病床與急性精神病床合計99床（含）以下。</div>
+                <button type="button" class="btn btn-outline-info text" value="4">醫院</button>
+                <div class="detail">未經評鑑之醫院</div>
+                <button type="button" class="btn btn-outline-primary text" value="5">診所</button>
+            </div>
+            <div class="bar"></div>
+        </div>
+
+        <div class="blockt t3">
+            <p>
+                從醫療院所數量來看，區域醫院及醫學中心等大型院所都集中在西部城市地區<br>
+                宣稱醫療資源不足的新北市，各類醫療院所數量都名列前茅<br>
+                反觀東部及離島的醫院數量則明顯少了許多<br>
+            </p>
+        </div>
+        <p class="second-title">【大型醫療院所位置分布圖】</p>
+        <p style="color:#797979;">【覆蓋圖標查看醫院名稱】</p>
+        <div class="text block b3">
+            <div id="googleMap"></div>
+            <div class="t4"><br>進一步將醫學中心及區域醫院位置標示出來<br>
+            發現這些大型院所大多集中在都市地區，縣市內部也出現了分布不均的情況<br>
+            以花蓮為例，醫療院所幾乎都分布在花蓮市區，花蓮南部的民眾就醫就極為不便<br>
+            反觀台北市，醫療院所分布密度高，民眾就醫時間和偏鄉形成極大差距<br>
+            </div>
+        </div>
+        <div class="blockt">
+            <p>
+                <br><br>
+                醫療資源分配不均的問題已存在在台灣非常久了<br>
+                而如何平均分配醫療資源，仍是現今政府所面臨的重要課題。
+                <br>
+                <br>
+                 資料來源：
+                <a href="http://www.tma.tw/">中華民國醫師公會全國聯合會</a>,
+                <a href="https://data.gov.tw/">政府資料開放平臺</a>
+            </p>
+        </div>
+    </div>
+     
+<div class="mdl-card author"><h4><a href="http://taiwanstat_members.cannerapp.com/">About Author</a></h4>
+  <div class="author-wrapper">
+    <img class="ui circular image" src="https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/realtime/images/assert/background.png">
+    <div class="author-info"><h5>李佳勳
+        
+    </h5></div>
+  </div>
+</div>
+
+<div class="license__wrapper"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a><br>本著作由<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.taiwanstat.com" property="cc:attributionName" rel="cc:attributionURL">用數據看台灣團隊</a>製作，以<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 授權條款</a>釋出。</div>
+
+
+</main>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.9/d3.min.js"></script>
+
+<script src="//s3-ap-northeast-1.amazonaws.com/static.twstat.com/bower_components/semantic/dist/semantic.min.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-61023469-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+ 
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+        <script src="js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://d3js.org/topojson.v1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="./pratice.js"></script>
+        <script type="text/javascript" src="./Hospital.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzoCKZdIHgsaWE-wzgT3JXRCdK4OuMnxQ&amp;callback"></script>
+        <script type="text/javascript" src="./map_position.js"></script>
+    <!-- my js & css -->
+    <a href="https://www.canner.io/" style="display: none;"></a>
+<div class="footer-mobile">
+  <button class="scrollup mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--2dp" id="set">
+    <i class="material-icons">keyboard_arrow_up</i>
+  </button>
+</div>
+<footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">© 2015 <a href="http://taiwanstat-about-us.cannerapp.com">用數據看台灣</a> 
+  <!--<a href="http://netdb.csie.ncku.edu.tw">NCKU-NetDB</a>-->
+    
+    · <a href="https://www.facebook.com/taiwanstat/?fref=ts"><i class="facebook square icon"></i></a>
+    · <a href="https://github.com/TaiwanStat"><i class="github square icon"></i></a>
+
+  </div>
+  <div class="mdl-mini-footer__right-section">
+    <span class="footer_msg">合作提案、客製化圖表製作、意見回饋
+  </span>
+    歡迎來信: <a href="mailto:service@taiwanstat.com">service@taiwanstat.com</a>
+  </div>
+  </footer> 
+
+<script src="//s3-ap-northeast-1.amazonaws.com/static.twstat.com/js/main.min.js"></script>
+
+  
+
+</body></html>
