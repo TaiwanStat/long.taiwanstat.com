@@ -1,6 +1,6 @@
 var appendBrush = function(){
     var margin = {
-        top: 30,
+        top: 20,
         right: 20,
         bottom: 110,
         left: 20
@@ -177,14 +177,14 @@ var appendBrush = function(){
 
         focus.append("text")
             .attr("transform",
-                "translate(" + margin.left * 5 + " ," +
+                "translate(" + margin.left * 4 + " ," +
                 0 + ")")
             .style("text-anchor", "middle")
             .text("移工較去年增減率(%)/")
             .call(textstyle1);
         focus.append("text")
             .attr("transform",
-                "translate(" + (margin.left * 5 + margin.right * 4) + " ," +
+                "translate(" + (margin.right * 8) + " ," +
                 0 + ")")
             .style("text-anchor", "middle")
             .text("西元年")
@@ -234,11 +234,11 @@ var appendBrush = function(){
         })
         svg_pop.append("text").text('外籍移工人數').attr('transform', 'translate(' + (margin.left + margin.right * 2 - 15) + ',' + (margin.top + 20) + ')').call(textstyle1);
         svg_pop.append('circle').attr({
-            'transform': 'translate(' + (margin.left * 4 + margin.right * 5) + ',' + (margin.top + 15) + ')',
+            'transform': 'translate(' + (margin.left * 7) + ',' + (margin.top + 15) + ')',
             'r': 5,
             'fill': '#E8B647',
         })
-        svg_pop.append("text").text('台灣就業人數').attr('transform', 'translate(' + (margin.left + margin.right * 7) + ',' + (margin.top + 20) + ')').call(textstyle1);
+        svg_pop.append("text").text('台灣就業人數').attr('transform', 'translate(' + (margin.right * 7 + 5) + ',' + (margin.top + 20) + ')').call(textstyle1);
 
         //event
         var last = 0;
