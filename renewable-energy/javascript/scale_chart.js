@@ -11,7 +11,7 @@ function scale_get_screen_width() {
     }
     return 500;
 }
-var scale_transform_x = (scale_width/2)+scale_margin.left
+var scale_transform_x = (scale_width / 2) + scale_margin.left
 
 var scale_svg = d3.select("#scale_chart")
     .append("svg")
@@ -102,7 +102,13 @@ d3.csv("./data/his_ele_cate.csv", function (d, i, columns) {
         .attr("opacity", 0.2)
         .attr("r", scale_radius * 0.54)
         .attr("fill", config.circle_color);
-
+    prompt = scale_svg.append("text")
+        .attr("transform", "translate(0,0)")
+        .attr("dy", "-14.0em")
+        .attr("font-size", "0.8em")
+        .style("text-anchor", "middle")
+        .style("fill", "black")
+        .text("用鼠標滑上折線圖可以切換年份資料")
     scale_text = scale.append("text")
         .attr("transform", "translate(0,0)")
         .attr("dy", "0.7em")
@@ -179,7 +185,7 @@ d3.csv("./data/his_ele_cate.csv", function (d, i, columns) {
                         return 0.6;
                     }
                 })
-        }) .on("click", function (data) {
+        }).on("click", function (data) {
             var select_name = d3.select(this).data()[0].data.name;
             var select_value = d3.select(this).data()[0].value;
             var select_value_per = calculate_percent(select_value, scale_total)
