@@ -75,6 +75,14 @@ d3.csv("./data/his_ele_cate.csv", function (d, i, columns) {
         .style("fill", "black")
         .text("民國97年")
 
+    prompt = scale_stack_svg.append("text")
+        .attr("transform", "translate(250,0)")
+        .attr("dy", "3.6em")
+        .attr("font-size", ".8em")
+        .style("text-anchor", "middle")
+        .style("fill", "black")
+        .text("用鼠標滑上折線圖可以切換年份資料 ")
+
     scale_stack_rect = scale_stack_svg.append("g")
         .selectAll("g")
         .attr("class", "scale_stack")
@@ -102,10 +110,10 @@ d3.csv("./data/his_ele_cate.csv", function (d, i, columns) {
                 .attr("opacity", 0.2)
                 .style("fill", set_scale_color(select_name))
             var temp_scale_arc = d3.arc()
-                .outerRadius(function(d){
-                    if(d.data.name == select_name||d.data.name == "renewable"){
+                .outerRadius(function (d) {
+                    if (d.data.name == select_name || d.data.name == "renewable") {
                         return scale_radius * 0.85;
-                    }else{
+                    } else {
                         return scale_radius * 0.8;
                     }
                 })
