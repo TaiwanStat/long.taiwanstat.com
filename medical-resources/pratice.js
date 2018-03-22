@@ -130,5 +130,4 @@ $.getJSON('COUNTY_MOI_1060525.json', function(data){
                 })
         });
     });
-})
-
+});
