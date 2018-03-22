@@ -74,7 +74,7 @@ p {
 #population {
     margin-left: 16%;
     width:80%;
-    height:550;
+    height:550px;
 }
 
 .subh2 {
@@ -133,7 +133,7 @@ p {
     position: relative;
     margin-left: 18%;
     width: 80%;
-    height:450;
+    height: 450px;
     float: left;
     min-width:300px;
     max-width:960px;
@@ -188,7 +188,7 @@ p {
     position: relative;
     margin-left: 18%;
     width: 80%;
-    height:450;
+    height:450px;
     float: left;
     min-width:300px;
     max-width:960px;
@@ -198,7 +198,7 @@ p {
 #threek {
     position: relative;
     width: 80%;
-    height: 450;
+    height: 450px;
     margin-left: 18%;
     min-width:300px;
     max-width:960px;
@@ -208,7 +208,7 @@ p {
 #donut_care {
     position: relative;
     width: 80%;
-    height: 450;
+    height: 450px;
     margin-left: 18%;
     min-width:300px;
     max-width:960px;
