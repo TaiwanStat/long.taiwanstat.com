@@ -3,6 +3,13 @@
     "title": "用數據看台灣 - 統計資料",
     "page": [
       {
+        "title": "youth-worker",
+        "url": "youth-worker",
+        "img": "images/youth-worker.png",
+        "description": "Project description",
+        "author": "Your Name"
+      },
+      {
         "title": "移工的台灣夢",
         "url": "foreign-worker",
         "img": "images/foreign-worker.png",
