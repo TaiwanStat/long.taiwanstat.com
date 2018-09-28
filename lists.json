@@ -3,11 +3,11 @@
     "title": "用數據看台灣 - 統計資料",
     "page": [
       {
-        "title": "youth-worker",
+        "title": "台灣青年勞工視覺化",
         "url": "youth-worker",
         "img": "images/youth-worker.png",
-        "description": "Project description",
-        "author": "Your Name"
+        "description": "從數據討論近年青年勞工就業因素及薪水",
+        "author": "曾大瑋"
       },
       {
         "title": "移工的台灣夢",

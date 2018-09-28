@@ -1,0 +1,97 @@
+
+#description{
+    padding:10px;
+    width:50%;
+    height:50%;
+    border-radius:12px;
+    border-color:#666666;
+    border-style: solid;
+    border-width:2px;
+    background:transparent;
+    margin:10px;
+}
+article {
+    text-align:center;
+}
+
+input {
+    width:50%;
+    height:5%;
+}
+#display{
+    margin-left:1%;
+}
+svg{
+    background: #f0f0f0;
+    color:#666666;
+    border:2px;
+    border-color: #666666;
+    border-style: solid;
+    margin:10px;
+}
+article{
+    white-space: pre-wrap;
+}
+main{
+    display: flex;
+}
+
+.title{
+    text-align:center;
+}
+
+/* Graph display*/
+/* for graph 1*/
+.能學以致用{
+    stroke:darkcyan;
+}
+.能學習到知識{
+    stroke:darkgreen;
+}
+.工作穩定{
+    stroke:darkgoldenrod;
+}
+.有發展前景{
+    stroke:darkmagenta;
+}
+.待遇高{
+    stroke:darksalmon;
+}
+.通勤方便{
+    stroke:darkred;
+}
+.符合自己興趣{
+    stroke:darkkhaki
+}
+.工作負擔較輕{
+    stroke:darkturquoise
+}
+.有挑戰性{
+    stroke:darkseagreen;
+}
+.有升遷機會{
+    stroke:darkviolet;
+}
+.其他{
+    stroke:darkslateblue;
+}
+/* for graph 2*/
+.碩士及以上{
+    stroke:green;
+}
+.大學{
+    stroke:rebeccapurple;
+}
+.專科{
+    stroke:goldenrod;
+
+}
+.高中\(職\){
+    stroke:brown;
+}
+.國中及以下{
+    stroke:salmon;
+}
+.平均薪資{
+    stroke:deeppink;
+}
