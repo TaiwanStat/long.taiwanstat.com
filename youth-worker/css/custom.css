@@ -22,7 +22,7 @@ input {
     margin-left:1%;
 }
 svg{
-    background: #f0f0f0;
+    background: transparent;
     color:#666666;
     border:2px;
     border-color: #666666;
