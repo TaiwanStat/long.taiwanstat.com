@@ -13,54 +13,59 @@
     {{> header}}
     {{> start}}
     <!-- my charts -->
-            <h2 class="title">過勞之島,迫不得已？</h2>
-            <article>
-              在台灣常常會看到有血汗工廠,超時加班等新聞
-              久而久之被冠上了「過勞之島」的稱呼
-              但是在薪水和其他因素比較下,變成必須向工作負擔妥協
-              「過勞之島」會不會是迫不得己接受的結果呢？
-            </article>
-            <main>
-                <section id="display"></section>
-                <section id="description">
-                    <h2>詳細資料</h2>
-                    <h3 id="year"></h3>
-                    <h4 id="type"></h4>
-                    <h3 id="total"></h3>
-                    <h4 id="value"></h4>
-                </section>
-            </main>
-            <hr>
-            <h2 class="title">學歷貶值,薪水變薄</h2>
-            <article>
-              隨著高等教育的普及化,大學和碩士生滿街跑
-              也間接的讓大學學歷光環不再
-              再加上物價指數的加成,學歷實際上貶值的相當嚴重
-            </article>
-            <main>
-                <section id="display2"></section>
-                <div id="description">
-                    <h2>詳細資料</h2>
-                    <h3 id="year2"></h3>
-                    <h4 id="type2"></h4>
-                    <h3 id="total2"></h3>
-                    <h4 id="value2"></h4>
-                    <h3>經過消費者物價指數後(計算通膨後)的薪水</h3>
-                    <h2 id="realwage"></h2>
-                    <h5>真實薪水為以2016年消費者物價指數為基礎,計算出實際消費能力之金額</h5>
-                    <h5>2010年資料短缺,故無點於折線圖中</h5>
-                </div>
-            </main>
-            <div>資料來源</div>
-            <ul>
-                <li><a href="https://www.stat.gov.tw/ct.asp?xItem=35375&CtNode=487&mp=4">消費者物價指數及其年增率</a></li>
-                <li><a href="http://statdb.mol.gov.tw/html/svy05/0511menu.htm">105年青年勞工統計資料</a></li>
-                <li><a href="http://statdb.mol.gov.tw/html/svy03/0311menu.htm">103年青年勞工統計資料</a></li>
-                <li><a href="http://statdb.mol.gov.tw/html/svy01/0107menu.htm">101年青年勞工統計資料</a></li>
-                <li><a href="http://statdb.mol.gov.tw/html/svy99/9920menu.htm">99年青年勞工統計資料</a></li>
-                <li><a href="http://statdb.mol.gov.tw/html/svy97/9703menu.htm">97年青年勞工統計資料</a></li>
-                <li><a href="http://statdb.mol.gov.tw/html/svy95/9501menu.htm">95年青年勞工統計資料</a></li>
-            </ul>
+    <h2 class="title">過勞之島,迫不得已？</h2>
+    <article>
+        在台灣常常會看到有血汗工廠,超時加班等新聞
+        久而久之被冠上了「過勞之島」的稱呼
+        但是在薪水和其他因素比較下,變成必須向工作負擔妥協
+        「過勞之島」會不會是迫不得己接受的結果呢？
+    </article>
+    <main>
+        <div id="display"></div>
+        <section class="description" id="description">
+            <div class="inner-description">
+                <h2>詳細資料</h2>
+                <h3 id="year"></h3>
+                <h4 id="type"></h4>
+                <h3 id="total"></h3>
+                <h4 id="value"></h4>
+            </div>
+            <div class="inner-display" id="inner-display"></div>
+        </section>
+    </main>
+    <hr>
+    <h2 class="title">學歷貶值,薪水變薄</h2>
+    <article>
+        隨著高等教育的普及化,大學和碩士生滿街跑
+        也間接的讓大學學歷光環不再
+        再加上物價指數的加成,學歷實際上貶值的相當嚴重
+    </article>
+    <main>
+        <div id="display2"></div>
+        <section class="description" id="description2">
+            <div class="inner-description">
+                <h2>詳細資料</h2>
+                <h3 id="year2"></h3>
+                <h4 id="type2"></h4>
+                <h3 id="total2"></h3>
+                <h4 id="value2"></h4>
+                <h3>經過消費者物價指數後(計算通膨後)的薪水</h3>
+                <h2 id="realwage"></h2>
+                <h5>真實薪水為以2016年消費者物價指數為基礎,計算出實際消費能力之金額</h5>
+            </div>
+            <div class="inner-display" id="inner-display2"></div>
+        </section>
+    </main>
+    <div>資料來源</div>
+    <ul>
+        <li><a href="https://www.stat.gov.tw/ct.asp?xItem=35375&CtNode=487&mp=4">消費者物價指數及其年增率</a></li>
+        <li><a href="http://statdb.mol.gov.tw/html/svy05/0511menu.htm">105年青年勞工統計資料</a></li>
+        <li><a href="http://statdb.mol.gov.tw/html/svy03/0311menu.htm">103年青年勞工統計資料</a></li>
+        <li><a href="http://statdb.mol.gov.tw/html/svy01/0107menu.htm">101年青年勞工統計資料</a></li>
+        <li><a href="http://statdb.mol.gov.tw/html/svy99/9920menu.htm">99年青年勞工統計資料</a></li>
+        <li><a href="http://statdb.mol.gov.tw/html/svy97/9703menu.htm">97年青年勞工統計資料</a></li>
+        <li><a href="http://statdb.mol.gov.tw/html/svy95/9501menu.htm">95年青年勞工統計資料</a></li>
+    </ul>
 
     {{> end}}
     <!-- my js & css -->

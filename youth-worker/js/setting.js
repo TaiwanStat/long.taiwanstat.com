@@ -1,6 +1,5 @@
 let Setting={
-    graph1:{
-        name:`#display`,
+    graph:{
         width:800,
         height:400,
         margin:{
@@ -16,9 +15,8 @@ let Setting={
             return this.height-this.margin.top-this.margin.left;
         },
     },
-    graph2:{
-        name:'#display2',
-        width:800,
+    innerGraph:{
+        width:400,
         height:400,
         margin:{
             top: 50,
