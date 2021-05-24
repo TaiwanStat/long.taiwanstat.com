@@ -78,7 +78,7 @@
       {
         "title": "臺灣2013－2016年輿情演變",
         "url": "news-topic-evolution",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/news-topic-evolution.png",
+        "img": "https://static.taiwanstat.com/statistics/images/news-topic-evolution.png",
         "description": "一起來看看2013-2016年台灣新聞每個月熱門的關鍵字",
         "author": "Jie-Han Chen、Po-An Yang、Yen-Kuan Lee、Chi-Hsuan Huang",
         "collaborator": ""
@@ -86,7 +86,7 @@
       {
         "title": "截至2011年土石流潛流統計",
         "url": "mudslide",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/mudslide.jpg",
+        "img": "https://static.taiwanstat.com/statistics/images/mudslide.jpg",
         "description": "想知道哪些地方潛在性的可能發生土石流嗎？瞭解一下哪些山區在下大雨的時候需要特別注意吧！",
         "author": "徐鼎翔、盧柏凱、楊熙恩",
         "collaborator": "Chi-Hsuan, Huang"
@@ -94,188 +94,188 @@
       {
         "title": "2015台南登革熱-熱區變遷地圖",
         "url": "dengue-animation",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/dengue-animation.jpg",
+        "img": "https://static.taiwanstat.com/statistics/images/dengue-animation.jpg",
         "description": "根據了即時登革熱資訊，增加了時間維度，看出2015年台南登革熱疫情熱區變遷。",
         "author": "Chi-Hsuan Huang"
       },
       {
         "title": "民國 102 年政府基金資料",
         "url": "government_fund",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/government_fund.png",
+        "img": "https://static.taiwanstat.com/statistics/images/government_fund.png",
         "description": "你知道政府在 102 年各方面基金投入的狀況為何嗎？",
         "author": "Weber Chi"
       },
       {
         "title": "近年台灣旅客統計",
         "url": "traveler",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/traveler.png",
+        "img": "https://static.taiwanstat.com/statistics/images/traveler.png",
         "description": "近來到台灣各處玩，你有發現周遭的外國人愈來愈多嘛？那是因為近5年內來台旅客人數增加1倍!",
         "author": "Fu-Siou Li"
       },
       {
         "title": "102 年台灣人口密度",
         "url": "population_density",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/population_density.png",
+        "img": "https://static.taiwanstat.com/statistics/images/population_density.png",
         "description": "台灣各縣市的人口密度為何？",
         "author": "Weber Chi"
       },
       {
         "title": "1991 ~ 2013 台灣人口動態變遷狀況",
         "url": "county-population",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/county-population.png",
+        "img": "https://static.taiwanstat.com/statistics/images/county-population.png",
         "description": "1991 ~ 2013 之前台灣有許多地方慢慢興起有地方慢慢沒落，於是我們團隊把它畫成一個動態人口變遷圖讓大家了解台灣的人口如何在這幾年間的變化。",
         "author": "Li-Jung Chi"
       },
       {
         "title": "102, 103 年中小企業家數",
         "url": "enterprise",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/enterprise.png",
+        "img": "https://static.taiwanstat.com/statistics/images/enterprise.png",
         "description": "中小企業在台灣是一個不可或缺的角色，有大半的台灣經濟都依賴著中小企業，我們整理了 102, 103 年中小企業家數的資料，讓你一覽台灣近況。",
         "author": "Li-Jung Chi"
       },
       {
         "title": "民國88 ~ 103年醫事人員核發執照人數",
         "url": "medical_personnel",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/medical_personnel.png",
+        "img": "https://static.taiwanstat.com/statistics/images/medical_personnel.png",
         "description": "近年來醫病關係及醫護人員的不合理工作內容常常是媒體報導的對象，我們來看看近年醫護人員的人數吧！",
         "author": "Fu-Siou Li"
       },
       {
         "title": "民國 92 ~ 104 年集中市場投資狀況",
         "url": "stock",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/stock.png",
+        "img": "https://static.taiwanstat.com/statistics/images/stock.png",
         "description": "最近台幣貶值嚴重，究竟禍因是什麼？投資人的信心？政府的政策？還是其他國的牽連影響？",
         "author": "Weber Chi"
       },
       {
         "title": "民國 65 ~ 104 年政府歲入歲出狀況",
         "url": "revenue",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/revenue.png",
+        "img": "https://static.taiwanstat.com/statistics/images/revenue.png",
         "description": "台灣政府不論執政黨為誰，歲入大於歲出之年了了無幾。歷年來歲出遠大於歲入，餘絀連年為負。這一切對台灣的影響會如何？",
         "author": "Weber Chi"
       },
       {
         "title": "臺灣歷年有發警報颱風統計",
         "url": "typhoon",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/typhoon.png",
+        "img": "https://static.taiwanstat.com/statistics/images/typhoon.png",
         "description": "颱風對台灣的影響很大，是水資源的重要來源，但也可能造成重大的災情，來看看歷年侵台的颱風吧！",
         "author": "Fu-Siou Li"
       },
       {
         "title": "民國 63 ~ 104 年全國實徵淨額---按稅目別分",
         "url": "taxation",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/taxation.png",
+        "img": "https://static.taiwanstat.com/statistics/images/taxation.png",
         "description": "你知道台灣在過去 40 年的稅收有如何的變化？課稅多寡是否在台灣經濟扮演著重要的角色？每一種稅項在總計稅收之內到底佔多少比例呢？讓我們來一探究竟！",
         "author": "Weber Chi"
       },
       {
         "title": "2007 ~ 2014 年台灣垃圾處理統計",
         "url": "garbage",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/garbage.png",
+        "img": "https://static.taiwanstat.com/statistics/images/garbage.png",
         "description": "台灣每年產生 700 萬噸以上的垃圾(一天2萬噸)，這麼大量的垃圾如何處理是一個重要的課題。究竟衛生掩埋、焚化、資源回收，哪個才是台灣垃圾處理最大宗？而2002年環保暑發佈了《垃圾回收再利用法》是否改變了台灣垃圾處理的方式？",
         "author": "Fu-Siou Li"
       },
       {
         "title": "2007 ~ 2014 年台灣 GDP",
         "url": "gdp",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/gdp.png",
+        "img": "https://static.taiwanstat.com/statistics/images/gdp.png",
         "description": "國內生產總值是國民經濟核算的核心指標。台灣近幾年的經濟到底好不好？以數據顯示，台灣的經濟雖然較去年 GDP 成長了3.37%。但你知道每年各行業別的變化嗎？就讓我們以近年的國內生產毛額趨勢來看看台灣近年來的經濟吧！！",
         "author": "Li-Jung Chi"
       },
       {
         "title": "1992 - 2015 年台灣人口變化趨勢趨勢",
         "url": "aging",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/aging.png",
+        "img": "https://static.taiwanstat.com/statistics/images/aging.png",
         "description": "你知道台灣各縣市從 1992 年到現在人口變化的趨勢是如何嗎？今日臺灣高齡化程度最高的地區是哪裡嗎？ 少子化程度最高的？讓我們用 30 秒的動態圖表，讓你看到台灣這 20 年來的轉變吧！",
         "author": "Weber Chi"
       },
       {
         "title": "103年台灣受雇人員薪資比較",
         "url": "salary",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/salary.png",
+        "img": "https://static.taiwanstat.com/statistics/images/salary.png",
         "description": "薪資與工時往往是人選擇工作所考慮的要素。但是你知道哪些行業薪水高嗎？哪些行業工時明顯和薪資不成比例呢？而在提倡性別平等的環境下，男女同工不同酬的情況又有多嚴重？我們視覺化了各大行業，讓大家更清楚看到各行業之間的差別，一起來看看吧!",
         "author": "Fu-Siou Li"
       },
       {
         "title": "102 年台灣各縣市醫院數據統計",
         "url": "hospital",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/hospital.jpg",
+        "img": "https://static.taiwanstat.com/statistics/images/hospital.jpg",
         "description": "用數據看台灣團隊整理了政府開放的醫院的統計資料，希望大家一起從數據上同理醫療人員的辛苦與瞭解各縣市的醫療資源分配。註：由於原始資料還有許多細項，如欲瞭解更多細節可以點選資料來源連結，觀看更多資訊。",
         "author": "Chi-Hsuan Huang"
       },
       {
         "title": "台灣行業別用電比例 1998 ~ 2014 年",
         "url": "electric-consume",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/electric_consume.png",
+        "img": "https://static.taiwanstat.com/statistics/images/electric_consume.png",
         "description": "近年能源爭議不斷，我們盡可能把複雜的全台灣行業別用電及歷史資料用一張圖呈現。你知道你所在的行業佔的比例多少嗎？用電量在近十年二十年的變化又是什麼呢？",
         "author": "郭亭劭"
       },
       {
         "title": "台灣 1996 - 2012 年癌症發生率",
         "url": "cancer",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/cancer.png",
+        "img": "https://static.taiwanstat.com/statistics/images/cancer.png",
         "description": "你知道台灣全癌症發生率自從1996年至2012年增加了41.57%嗎？由於高齡化、生活型態改變、肥胖人口增加及癌症篩檢的推廣，使得台灣癌症發生人數仍持續在增加。根據國民健康署最新的癌症報告，2012年癌症新發人數為9萬6,694人，發生人數較2011年增加4,012人。",
         "author": " Kevin Chi"
       },
       {
         "title": "1991 至 2013 台灣人口長條圖",
         "url": "population",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/population.png",
+        "img": "https://static.taiwanstat.com/statistics/images/population.png",
         "description": "平常我們可能只知道台灣總人口數的改變，也常聽見總人口約有兩千三百萬人，那麽到底台灣各地的人口變化如何呢？讓我們一起瞭解台灣歷年縣市人口的變化吧！"
       },
       {
         "title": "台灣進出口國家排名",
         "url": "trade",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/trade.png",
+        "img": "https://static.taiwanstat.com/statistics/images/trade.png",
         "description": "你知道哪些國家是台灣重要的貿易夥伴嗎？今年4月台灣進出口皆開始呈現衰退，而對外的貿易台灣卻是經濟的命脈。為了讓大家對於國際貿易更加了解，我們做了簡單的排行，大家一起來看看吧！",
         "author": "郭亭劭"
       },
       {
         "title": "台灣102年18歲以上過重及肥胖率",
         "url": "obesity",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/obesity.png",
+        "img": "https://static.taiwanstat.com/statistics/images/obesity.png",
         "description": "肥胖所帶來健康的威脅甚鉅，隨著即將面臨到國人體重增加的暑假高峰期，趕快跟著用數據看台灣團隊，一起來看看哪些城市最需要減減肥吧！",
         "author": " Kevin Chi"
       },
       {
         "title": "台灣 1993 至 2014 年失業數據",
         "url": "unemployment",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/unemployment.jpg",
+        "img": "https://static.taiwanstat.com/statistics/images/unemployment.jpg",
         "description": "失業率是重要的經濟指標，與國家經濟穩定與人民的幸福息息相關。從數據上顯示至從2009失業率達5.85% 為20內最嚴重以來，失業率已經逐漸在下降。用數據看台灣以多元的圖表將台灣20年內的失業率資料詳細完整的呈獻給您！",
         "author": " Kevin Chi"
       },
       {
         "title": "台灣用電來源結構分析",
         "url": "energy",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/energy.png",
+        "img": "https://static.taiwanstat.com/statistics/images/energy.png",
         "description": "電的議題非常複雜，因為電力來源多。這個網站讓你對台灣的用電來源 “一目瞭然”。目前用電來源分為四大類水力、核能、火力、再生能源。在圓餅圖內點下四大類按詳細可進一步看到產自台電或非台電的比例，及場用電和淨發電量的比例。",
         "author": "郭亭劭"
       },
       {
         "title": "pm2.5 2014 年各觀測站資料",
         "url": "pm2.5_map",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/pm2.5.png",
+        "img": "https://static.taiwanstat.com/statistics/images/pm2.5.png",
         "description": "做了 PM2.5 空污即時系統後，近幾日商周、報紙有很多媒體都在報導有關空污的資訊。我們團隊很好奇台灣 103 年整年的空污狀況，於是把台灣北、中、南、東、離島的空品區資料做呈現。",
         "author": "Li-Jung Chi"
       },
       {
         "title": "台灣物價指數變化",
         "url": "price",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/price.png",
+        "img": "https://static.taiwanstat.com/statistics/images/price.png",
         "description": " 最近報紙在討論豬價的事情，我們團隊非常好奇 台灣物價指數今年二月相對於去年的二月到底有何變化。於是我們分析出了較去年同月漲幅前五類別與較去年同月跌幅前五類別，我們也製作了物價對價關係圖來讓每個人可以對每項物價做對照，哪些是同時項目漲價、哪些項目同時降價。",
         "author": "Li-Jung Chi"
       },
       {
         "title": "台灣富人所得統計(1977-2013)",
         "url": "income",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/income.png",
+        "img": "https://static.taiwanstat.com/statistics/images/income.png",
         "description": "在資本主義下，必然會產生貧富差距的問題，像是前幾年美國就有佔領華爾街的抗議活動 <我們就是那99%的人>，而近幾年在台灣社會似乎也開始關注了。為了讓大家了解台灣貧富差距的問題到了什麼地步，我們團隊視覺化了台灣的所得資料，讓大家可以用互動式的圖表來觀察貧富差距的問題。資料來源是世界高所得資料庫（world top income database，WTID）。",
         "author": "郭亭劭"
       },
       {
         "title": "1986 年到 2013 年台灣主要死因死亡率變化",
         "url": "deathrate",
-        "img": "https://s3-ap-northeast-1.amazonaws.com/static.twstat.com/statistics/images/deathrate.png",
+        "img": "https://static.taiwanstat.com/statistics/images/deathrate.png",
         "description": "惡性腫瘤一直是台灣歷年的主要死因，隨著醫療技術的發達，死亡率也隨之下降，但你知道有些死因的死亡率卻是不減反增嗎？一起來看看這幾年的死亡率變化吧！",
         "author": "Fu-Siou Li"
       }
